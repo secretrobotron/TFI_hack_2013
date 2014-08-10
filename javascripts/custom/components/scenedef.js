@@ -23,7 +23,7 @@ var Pages = function () {
           url: "pages/1/1.html", 
           sound: {
             urls: ['assets/1/sound/1.1_background.mp3', 'assets/1/sound/1.1_background.oga'],
-            loop: false,
+            loop: true,
             buffer:true,
             autoplay: false,
             fadein:800
@@ -34,25 +34,34 @@ var Pages = function () {
           url: "pages/1/2.html", 
           sound: {
             urls: ['assets/1/sound/1.2_background.mp3', 'assets/1/sound/1.2_background.oga'],
-            loop: false,
+            loop: true,
             buffer:true,
             autoplay: false,
             fadein:800
           },
-          narration: []
+          narration: [   
+          {
+              urls: ['assets/1/sound/1.2_narrative.mp3', 'assets/1/sound/1.2_narrative.oga'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:0,
+              delay: 3000
+            }
+            ]
         },
         { 
           url: "pages/1/3.html", 
           sound: {
             urls: ['assets/1/sound/1.3_background.mp3', 'assets/1/sound/1.3_background.oga'],
-            loop: false,
+            loop: true,
             buffer:true,
             autoplay: false,
             fadein:800
           },
           narration: [
             {
-              urls: ['assets/1/sound/1.3_narrative.mp3', 'assets/1/sound/1.3_narrative.oga'],
+              urls: ['assets/1/sound/1.3_narrative.mp3'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -65,25 +74,14 @@ var Pages = function () {
           url: "pages/1/4.html", 
           sound: {
             urls: ['assets/1/sound/1.4_background.mp3', 'assets/1/sound/1.4_background.oga'],
-            loop: false,
-            buffer:true,
-            autoplay: false,
-            fadein:800
-          },
-          narration: []
-        },
-        { 
-          url: "pages/1/5.html", 
-          sound: {
-            urls: ['assets/1/sound/1.5_background.mp3', 'assets/1/sound/1.5_background.oga'],
-            loop: false,
+            loop: true,
             buffer:true,
             autoplay: false,
             fadein:800
           },
           narration: [
-            {
-              urls: ['assets/1/sound/1.5_narrative.mp3', 'assets/1/sound/1.5_narrative.oga'],
+              {
+              urls: ['assets/1/sound/1.4_narrative.mp3'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -93,10 +91,30 @@ var Pages = function () {
           ]
         },
         { 
+          url: "pages/1/5.html", 
+          sound: {
+            urls: ['assets/1/sound/1.5_background.mp3', 'assets/1/sound/1.5_background.oga'],
+            loop: true,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+          },
+          narration: [
+            {
+              urls: ['assets/1/sound/1.5b_narrative.mp3'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:0,
+              delay: 1500
+            }
+          ]
+        },
+        { 
           url: "pages/1/6.html", 
           sound: {
             urls: ['assets/1/sound/1.6_background.mp3', 'assets/1/sound/1.6_background.oga'],
-            loop: false,
+            loop: true,
             buffer:true,
             autoplay: false,
             fadein:800
@@ -105,8 +123,8 @@ var Pages = function () {
         { 
           url: "pages/1/7.html", 
           sound: {
-            urls: ['assets/1/sound/1.7_background.mp3', 'assets/1/sound/1.7_background.oga'],
-            loop: false,
+            urls: ['assets/1/sound/1.7_background.mp3', 'assets/1/sound/1.7_background_aif.mp3'],
+            loop: true,
             buffer:true,
             autoplay: false,
             fadein:800
@@ -128,6 +146,7 @@ var Pages = function () {
               fadein:0,
               delay: 3000,
               // well now this is not json encodable
+              //What is going on here?
               onend: function () {
                 setTimeout( function () { console.log('go to next scene'); next(); }, 2000); // wait 2 sec, go next page
               }
@@ -141,7 +160,7 @@ var Pages = function () {
           url: "pages/1/8.html", 
           sound: {
             urls: ['assets/1/sound/1.8_background.mp3', 'assets/1/sound/1.8_background.oga'],
-            loop: false,
+            loop: true,
             buffer:true,
             autoplay: false,
             fadein:800

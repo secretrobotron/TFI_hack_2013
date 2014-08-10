@@ -4,7 +4,7 @@ $(function(){
 
 
         $(window).on("load resize orientationchange", function() { focalpoint(); });
-        $('.audio').on('click', function(){ toggleSound(); });
+        // $('.audio').on('click', function(){ toggleSound(); });
 
 
     $(document).ajaxComplete(function(){

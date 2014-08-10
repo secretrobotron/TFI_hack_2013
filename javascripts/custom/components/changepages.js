@@ -182,6 +182,19 @@ if (trans) {
 
   changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
   changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
+  //Adding the timed out narrations. 
+  //if you are in chapter 1
+  if (_pageIndex === 0 ) {
+    console.log("you are in chapter 1"); 
+    //if youw ere counting, count again every time we are in a new frame. 
+    if (_timer.isTimerOn()) {
+      _timer.resetTimer(); 
+      } else {
+        _timer.startTimer(); 
+      }
+    } else {
+      _timer.stopTimer(); 
+    }
   
   framecounter.text((_frameIndex+1) + "/" + (frameCount));
 

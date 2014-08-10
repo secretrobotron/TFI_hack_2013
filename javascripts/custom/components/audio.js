@@ -1,43 +1,166 @@
+ ///THESE ARE THE BACKGROUND AND NARRATION AUDIO PLAYERS
+ /////////TO MAKE SURE BACKGROUND AND NARRATION ARE FADING IN AND OUT AS OPPOSED TO JUST GETTING CUT OFF. 
+ //////// So that they are crossfading between each other. 
 
             var currentFrameNarration = null,
-                currentFrameBackground = null,
-                currentPageBackground = null;
+                currentFrameBackground1 = null,
+                currentPageBackground1 = null,
+                currentFrameBackground2 = null,
+                currentPageBackground2 = null;
+
+            var pageBg1Playing = false;
+            var pageBg2Playing = false;
+            var frameBg1Playing = false;
+            var frameBg2Playing = false;            
 
             // page background audio
             function changePageBackground(info) { 
-              if (currentPageBackground)
-                currentPageBackground.fadeOut(0, 400);
-              if (!info) return; 
 
-              currentPageBackground = new Howl(info);
-              currentPageBackground.fadeIn(1, info.fadein || 800); 
+              //if bg1 is not null, then it is playing and bg2 needs to be created and bg1 faded out
+              if (pageBg1Playing){
+
+                if (!info){
+
+                  //if there is no info then return early and fade out bg1
+                  currentPageBackground1.fadeOut(0, 400);
+                  pageBg1Playing = false;
+
+                  return;
+                }else{
+                  
+                  currentPageBackground2 = new Howl(info);
+                  currentPageBackground2.fadeIn(1, info.fadein || 800);
+                  pageBg2Playing = true;
+                  currentPageBackground1.fadeOut(0, 400);
+                  pageBg1Playing = false;
+
+                }
+
+                //if bg1 is null, check bg2
+              }else if( pageBg2Playing ){
+
+              if (!info){
+                    //if there is no info then return early and fade out bg2
+                    currentPageBackground2.fadeOut(0, 400);
+                    pageBg2Playing = false;
+                    return;
+                  }else{
+
+                    currentPageBackground1 = new Howl(info);
+                    currentPageBackground1.fadeIn(1, info.fadein || 800);
+                    pageBg1Playing = true;
+                    currentPageBackground2.fadeOut(0, 400);
+                    pageBg2Playing = false;
+                  }
+
+              }else{
+
+                if (!info){
+                  return;
+                } 
+                //they are both null, so start up bg1
+                currentPageBackground1 = new Howl(info);
+                currentPageBackground1.fadeIn(1, info.fadein || 800);
+                pageBg1Playing = true;
+
+              }
+
             }
 
             function changeFrameBackground(info) { 
-              if (currentFrameBackground)
-                currentFrameBackground.fadeOut(0, 400);
-              if (!info) return; 
+              //if bg1 is not null, then it is playing and bg2 needs to be created and bg1 faded out
+              if (frameBg1Playing){
 
-              currentFrameBackground = new Howl(info);
-              currentFrameBackground.fadeIn(1, info.fadein || 800); 
+                if (!info){
+                  //if there is no info then return early and fade out bg1
+                  currentFrameBackground1.fadeOut(0, 400);
+                  frameBg1Playing = false;
+                  return;
+                }else{
+                  //create 2 and fadeout 1
+                  currentFrameBackground2 = new Howl(info);
+                  currentFrameBackground2.fadeIn(1, info.fadein || 800);
+                  frameBg2Playing = true;
+                  currentFrameBackground1.fadeOut(0, 400);
+                  frameBg1Playing = false;
+                }
+
+                //if bg1 is null, check bg2
+              }else if( frameBg2Playing ){
+
+              if (!info){
+                    //if there is no info then return early and fade out bg2
+                    currentFrameBackground2.fadeOut(0, 400);
+                    frameBg2Playing = false;
+                    return;
+                  }else{
+                    //create 2 and fadeout 1
+                    currentFrameBackground1 = new Howl(info);
+                    currentFrameBackground1.fadeIn(1, info.fadein || 800);
+                    frameBg1Playing = true;
+                    currentFrameBackground2.fadeOut(0, 400);
+                    frameBg2Playing = false;
+                  }
+
+              }else{
+
+                if (!info){
+                  return;
+                } 
+                //they are both null, so start up bg1
+                currentFrameBackground1 = new Howl(info);
+                currentFrameBackground1.fadeIn(1, info.fadein || 800);
+                frameBg1Playing = true;
+              }
+
             }
 
+
+
+
+////////////////////////This makes sure that we don't repeat the narratives//////////////
+/////////////////////////////////////////////////////
+
+            var currentDelay; 
+            var hasDelay = false;
+            //there is somethign waitng to play  
+
             function delayAudio(cfa, si) {
-              // todo track timer to cancel
-              setTimeout( 
+              console.log(cfa );
+              //This makes sure that we don't repeat the narratives
+              if (hasDelay) {
+                clearTimeout(currentDelay); 
+                currentDelay = setTimeout( 
                 function () { 
                   console.log('playing delayed audio');
                   cfa.fadeIn(1, si.fadein || 0); 
+                  hasDelay = false; 
                 },
                 si.delay
-              );
-            }
+                );
+              }
+                else {
+                      currentDelay = setTimeout( 
+                      function () { 
+                      console.log('playing delayed audio');
+                      cfa.fadeIn(1, si.fadein || 0); 
+                      hasDelay = false; 
+                     },
+                      si.delay
+                    );
+
+                    hasDelay = true; 
+                }
+
+              }
 
             function changeFrameNarration(info) { 
               // cancel current frame audio instances
-              if (currentFrameNarration) {
-                currentFrameNarration.fadeOut(0,400);
-              }
+              //You erase this function so that you don't shut Martha up if you change the slides. 
+              //
+              // if (currentFrameNarration) {
+              //  // currentFrameNarration.fadeOut(0,400);
+              // }
 
               if (!info) return; 
 
@@ -46,6 +169,7 @@
                 for (var i=0; i< info.length; i++) {
                   var si = info[i]; 
                   if (si.played) continue;
+                  //if you didn't do 
                   si.played = true;
                   currentFrameNarration = new Howl(si);
                   if (si.delay) {
@@ -65,6 +189,8 @@
               }
             }
 
+            var soundEnabled = true; 
+            
             function toggleSound(){
               if (soundEnabled) {
                 soundEnabled = false;
