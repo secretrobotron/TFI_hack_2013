@@ -12,16 +12,12 @@ var Pages = function () {
         loop: true,
         buffer:true,
         autoplay: false,
-        fadein:800, 
-        onend: function() {
-                //only start the timer after she has finished speaking. 
-                _timer.startTimer(); 
-              }
+        fadein:800 
             },
 
       frames: [
         { 
-          url: "pages/1/intro.html", 
+          url: "pages/1/intro.html"
         },
         { 
           url: "pages/1/1.html", 
@@ -33,7 +29,7 @@ var Pages = function () {
             fadein:800, 
             onend: function() {
                 //only start the timer after she has finished speaking. 
-                _timer.startTimer(); 
+                _timer.checkTimer(); 
               }
 
           },
@@ -177,7 +173,7 @@ var Pages = function () {
               //What is going on here?
               onend: function() {
                 //only start the timer after she has finished speaking. 
-                _timer.startTimer(); 
+                _timer.checkTimer(); 
               }
             }
           ]
@@ -201,7 +197,7 @@ var Pages = function () {
               delay: 3000, 
                onend: function() {
                 //only start the timer after she has finished speaking. 
-                _timer.startTimer(); 
+                _timer.checkTimer(); 
               }
             }
           ]
@@ -225,7 +221,7 @@ var Pages = function () {
               delay: 3000, 
                onend: function() {
                 //only start the timer after she has finished speaking. 
-                _timer.startTimer(); 
+                _timer.checkTimer(); 
               }
             }
           ]
@@ -238,7 +234,7 @@ var Pages = function () {
       url: "pages/2.html", title: "The Stairs", 
       frames: [
         { 
-          url: "pages/2/1.html", 
+          url: "pages/2/1.html"
         },
       ]
     },
