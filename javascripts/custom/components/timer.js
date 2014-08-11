@@ -1,7 +1,7 @@
 
 //This is the listener to when people are doing soemthing int he applicaiton or not 
 
-<<<<<<< HEAD
+
 // I am assing this comment to push it and see if it works. 
 
 
@@ -9,12 +9,6 @@ var Timer = function() {
 
 var firstNarration = {
               urls: ['assets/1/sound/1.2_narrative.mp3'],
-=======
-var Timer = function() {
-
-var firstNarration = {
-              urls: ['assets/1/sound/1.2_narrative.mp3', 'assets/1/sound/1.2_narrative.oga'],
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
               loop: false,
               buffer:true,
               autoplay: false,
@@ -23,11 +17,9 @@ var firstNarration = {
             }; 
 
 var secondNarration = {
-<<<<<<< HEAD
+
             urls: ['assets/1/sound/1.0_narrative.mp3', 'assets/1/sound/1.0_narrative.oga'],
-=======
-            urls: ['assets/1/sound/1.9_narrative.mp3', 'assets/1/sound/1.9_narrative.oga'],
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
+
             loop: false,
             buffer:true,
             autoplay: false,
