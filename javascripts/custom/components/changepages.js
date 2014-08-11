@@ -179,6 +179,8 @@ if (trans) {
 
 };
 
+  //we have to stop the timer aevery time we change frames. 
+  _timer.stopTimer(); 
 
   changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
   changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));

@@ -67,6 +67,7 @@ this.startTimer = function(delay)  {
 	}; 
 
 	this.stopTimer = function () {
+		console.log("timer stopped"); 
 		timerOn = false; 
 		//restart the timer
 		if (firstSound) {
@@ -79,6 +80,7 @@ this.startTimer = function(delay)  {
 	}; 
 
 	this.resetTimer = function () {
+		currentFrameIndex = _frameIndex;
 		this.stopTimer();
 		//this keep sthe condition for 1.7 when called at a different place. 
 		if (_frameIndex == 7) {
@@ -105,16 +107,21 @@ this.startTimer = function(delay)  {
           console.log("you are in chapter 1")
           //if youw ere counting, count again every time we are in a new frame. 
           if (this.isTimerOn() ) {
-          	console.log("the timer is on"); 
+          	console.log("the timer was on"); 
             //timer was on and i moved to next frame and im not in page 7. 
+            //if ive moved. 
             if (_frameIndex != currentFrameIndex) {
+            	console.log("this is the frameindex" + _frameIndex); 
+            	console.log("this is the currentFrameIndex" + currentFrameIndex); 
             	this.resetTimer(); 
             	console.log("the timer has been reset, because it was on and you are in a different frame"); 
             } 
+            console.log("frames are equal"); 
           } else { 
           	//if she has done speaking the delayed audio.. ?
           	//give a bigger delay to 1.7 
           	  if (_frameIndex == 7) {
+          	  	console.log("frame is 7"); 
           	  	//this is how long it will take to start the audio 
           	  	this.startTimer(45000); 
           	  } else {
