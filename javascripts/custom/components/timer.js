@@ -56,11 +56,7 @@ this.startTimer = function()  {
 				console.log("playing second timeout sound"); 
 				firstSound = false; 
 				timerOn = false; 
-<<<<<<< HEAD
 			}, 90000); //90000
-=======
-			}, 20000); //90000
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
 
 		}, 15000); //play this after 15 sec 
 
@@ -86,7 +82,6 @@ this.startTimer = function()  {
 	this.isTimerOn = function() {
 		return timerOn; 
 	}
-<<<<<<< HEAD
 
 		//IF THE USER DOES NOTHING, THEY WILL HEAR THIS. 
 		//THIS IS ADDING THE TIMED OUT NARRATIONS FOR CHAPTER 1
@@ -108,8 +103,7 @@ this.startTimer = function()  {
             _timer.stopTimer(); 
         }
     }
-=======
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
+
 }
 
 //global timer. 

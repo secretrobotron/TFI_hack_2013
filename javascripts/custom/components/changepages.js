@@ -182,57 +182,6 @@ if (trans) {
 
   changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
   changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
-  
-////////IF THE USER DOES NOTHING, THEY WILL HEAR THIS. 
-//THIS IS ADDING THE TIMED OUT NARRATIONS FOR CHAPTER 1 AND MAKING SURE IT WAITS A LITTLE LONGER ON CHAPTER 7--> ////
-<<<<<<< HEAD
-    // var chapterSeven = false; 
-    //   if ( _pages.getFrameIndex(0,7) === "pages/1/7.html") {
-    //     console.log()
-    //     chapterSeven = true; 
-    //     }
-        //so this is also true!!!! 
-        //where does this actually go? we need it to be at the end of every 
-  // var checkTimer = function() {
-  //   console.log("i am checking the timer"); 
-  //       if (_pageIndex === 0) {
-  //         console.log("you are in chapter 1 and not in 1.7")
-  //         //if youw ere counting, count again every time we are in a new frame. 
-  //         if (_timer.isTimerOn() ) {
-  //           //timer was on and i moved to next frame and im not in page 7. 
-  //           _timer.resetTimer(); 
-  //         } else {
-  //             _timer.startTimer(); 
-  //         }
-  //       } else {
-  //           //if you are not in chapter 1 or 1.7 
-  //           //console.log("you are not in chapter1 or you are at 1.7"); 
-  //           _timer.stopTimer(); 
-  //           chapterSeven = false; 
-  //       }
-  //   }
-=======
-    var chapterSeven = false; 
-      if ( _pages.getFrameIndex(0,7) === "pages/1/7.html") {
-        chapterSeven = true; 
-        }
-
-  if (_pageIndex === 0 &&  !chapterSeven) {
-    //if youw ere counting, count again every time we are in a new frame. 
-    if (_timer.isTimerOn() ) {
-      //timer was on and i moved to next frame and im not in page 7. 
-      _timer.resetTimer(); 
-    } else {
-        _timer.startTimer(); 
-    }
-  } else {
-      //if you are not in chapter 1 or 1.7 
-      console.log("you are not in chapter1 or you are at 1.7"); 
-      _timer.stopTimer(); 
-      chapterSeven = false; 
-  }
-  
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
   framecounter.text((_frameIndex+1) + "/" + (frameCount));
 
   var end = _pages.pageCount() - 1;

@@ -8,7 +8,6 @@ var Pages = function () {
 //      transition: 'fade', // 'horizontal', 'vertical'
       transition: 'fade',
       sound: { // 'background'
-<<<<<<< HEAD
         urls: ['assets/1/sound/1.0_entire_scene_background.mp3'],
         loop: true,
         buffer:true,
@@ -19,14 +18,6 @@ var Pages = function () {
                 _timer.startTimer(); 
               }
             },
-=======
-        urls: ['assets/1/sound/1.background_audio_track_full.mp3'],
-        loop: true,
-        buffer:true,
-        autoplay: false,
-        fadein:800
-      },
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
 
       frames: [
         { 
@@ -39,15 +30,12 @@ var Pages = function () {
             loop: true,
             buffer:true,
             autoplay: false,
-<<<<<<< HEAD
             fadein:800, 
             onend: function() {
                 //only start the timer after she has finished speaking. 
                 _timer.startTimer(); 
               }
-=======
-            fadein:800
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
+
           },
           narration: []
         },
@@ -67,14 +55,10 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-<<<<<<< HEAD
               delay: 3000, 
               onend: function() {
                 _timer.checkTimer(); 
               }
-=======
-              delay: 3000
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
             }
             ]
         },
@@ -94,15 +78,10 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-<<<<<<< HEAD
               delay: 3000, 
               onend: function() {
                 _timer.checkTimer(); 
               }
-
-=======
-              delay: 3000
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
             }
           ]
         },
@@ -122,14 +101,10 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-<<<<<<< HEAD
               delay: 3000, 
               onend: function() {
                 _timer.checkTimer(); 
               }
-=======
-              delay: 3000
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
             }
           ]
         },
@@ -142,28 +117,18 @@ var Pages = function () {
             autoplay: false,
             fadein:800
           },
-<<<<<<< HEAD
           //this will change 
           narration: [
             {
               urls: ['assets/1/sound/1.5_narrative.mp3'],
-=======
-          narration: [
-            {
-              urls: ['assets/1/sound/1.5b_narrative.mp3'],
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
               loop: false,
               buffer:true,
               autoplay: false,
               fadein:0,
-<<<<<<< HEAD
               delay: 1500, 
               onend: function() {
                 _timer.checkTimer(); 
               }
-=======
-              delay: 1500
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
             }
           ]
         },
@@ -174,14 +139,10 @@ var Pages = function () {
             loop: true,
             buffer:true,
             autoplay: false,
-<<<<<<< HEAD
             fadein:800, 
             onend: function() {
                 _timer.checkTimer(); 
               }
-=======
-            fadein:800
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
           },
         },
 
@@ -193,12 +154,8 @@ var Pages = function () {
             loop: true,
             buffer:true,
             autoplay: false,
-<<<<<<< HEAD
             fadein:800 
 
-=======
-            fadein:800
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
           },
           narration: [
             {
@@ -225,10 +182,6 @@ var Pages = function () {
             }
           ]
         },
-<<<<<<< HEAD
-        //frame 8 
-=======
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
         { 
           url: "pages/1/8.html", 
           sound: {
@@ -238,7 +191,6 @@ var Pages = function () {
             autoplay: false,
             fadein:800
           },
-<<<<<<< HEAD
            narration: [
             {
               urls: ['assets/1/sound/1.8_narrative.mp3'],
@@ -253,8 +205,6 @@ var Pages = function () {
               }
             }
           ]
-=======
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
         },
         { 
           url: "pages/1/9.html", 
@@ -272,15 +222,11 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-<<<<<<< HEAD
               delay: 3000, 
                onend: function() {
                 //only start the timer after she has finished speaking. 
                 _timer.startTimer(); 
               }
-=======
-              delay: 3000
->>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
             }
           ]
         },
