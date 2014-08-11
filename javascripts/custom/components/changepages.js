@@ -185,6 +185,7 @@ if (trans) {
   
 ////////IF THE USER DOES NOTHING, THEY WILL HEAR THIS. 
 //THIS IS ADDING THE TIMED OUT NARRATIONS FOR CHAPTER 1 AND MAKING SURE IT WAITS A LITTLE LONGER ON CHAPTER 7--> ////
+<<<<<<< HEAD
     // var chapterSeven = false; 
     //   if ( _pages.getFrameIndex(0,7) === "pages/1/7.html") {
     //     console.log()
@@ -210,6 +211,28 @@ if (trans) {
   //           chapterSeven = false; 
   //       }
   //   }
+=======
+    var chapterSeven = false; 
+      if ( _pages.getFrameIndex(0,7) === "pages/1/7.html") {
+        chapterSeven = true; 
+        }
+
+  if (_pageIndex === 0 &&  !chapterSeven) {
+    //if youw ere counting, count again every time we are in a new frame. 
+    if (_timer.isTimerOn() ) {
+      //timer was on and i moved to next frame and im not in page 7. 
+      _timer.resetTimer(); 
+    } else {
+        _timer.startTimer(); 
+    }
+  } else {
+      //if you are not in chapter 1 or 1.7 
+      console.log("you are not in chapter1 or you are at 1.7"); 
+      _timer.stopTimer(); 
+      chapterSeven = false; 
+  }
+  
+>>>>>>> 66bbe942ed98f242ccaf5feb263856f486fcd87c
   framecounter.text((_frameIndex+1) + "/" + (frameCount));
 
   var end = _pages.pageCount() - 1;
