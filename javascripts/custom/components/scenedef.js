@@ -170,7 +170,7 @@ var Pages = function () {
           url: "pages/1/9.html", 
           sound: {
             urls: ['assets/1/sound/1.9_background.mp3', 'assets/1/sound/1.9_background.oga'],
-            loop: false,
+            loop: true,
             buffer:true,
             autoplay: false,
             fadein:800

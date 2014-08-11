@@ -13,7 +13,7 @@ var firstNarration = {
             }; 
 
 var secondNarration = {
-            urls: ['assets/1/sound/1.2_narrative.mp3', 'assets/1/sound/1.2_narrative.oga'],
+            urls: ['assets/1/sound/1.9_narrative.mp3', 'assets/1/sound/1.9_narrative.oga'],
             loop: false,
             buffer:true,
             autoplay: false,
