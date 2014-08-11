@@ -120,6 +120,8 @@ var Pages = function () {
             fadein:800
           },
         },
+
+        //frame 7 (talking to woman scene)
         { 
           url: "pages/1/7.html", 
           sound: {
@@ -147,12 +149,10 @@ var Pages = function () {
               delay: 3000,
               // well now this is not json encodable
               //What is going on here?
-              onend: function () {
-                setTimeout( function () { console.log('go to next scene'); next(); }, 2000); // wait 2 sec, go next page
+              onend: function() {
+                //only start the timer after she has finished speaking. 
+                _timer.startTimer(); 
               }
-              /*onstart: function () { // we do this one
-                setTimeout( function () { console.log('narration start, go to next scene'); changePage('next'); }, 5000); 
-              }*/
             }
           ]
         },
@@ -188,6 +188,8 @@ var Pages = function () {
         },
       ] 
     },
+
+    //CHAPTER 2//
     { 
       url: "pages/2.html", title: "The Stairs", 
       frames: [
@@ -235,6 +237,9 @@ var Pages = function () {
   this.getFrameSound = function (page, frame) { return pageinfo[page].frames[frame].sound; }
   this.getPageSound = function (page, frame) { return pageinfo[page].sound; }
   this.getFrameNarration = function (page, frame) { return pageinfo[page].frames[frame].narration; }
+
+  //what index am I on?
+  this.getFrameIndex = function (page, frame) { return pageinfo[page].frames[frame].url}; 
 
   this.getFrames = function (page) {
     return pageinfo[page].frames;

@@ -182,19 +182,28 @@ if (trans) {
 
   changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
   changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
-  //Adding the timed out narrations. 
-  //if you are in chapter 1
-  if (_pageIndex === 0 ) {
-    console.log("you are in chapter 1"); 
+  
+////////IF THE USER DOES NOTHING, THEY WILL HEAR THIS. 
+//THIS IS ADDING THE TIMED OUT NARRATIONS FOR CHAPTER 1 AND MAKING SURE IT WAITS A LITTLE LONGER ON CHAPTER 7--> ////
+    var chapterSeven = false; 
+      if ( _pages.getFrameIndex(0,7) === "pages/1/7.html") {
+        chapterSeven = true; 
+        }
+
+  if (_pageIndex === 0 &&  !chapterSeven) {
     //if youw ere counting, count again every time we are in a new frame. 
-    if (_timer.isTimerOn()) {
+    if (_timer.isTimerOn() ) {
+      //timer was on and i moved to next frame and im not in page 7. 
       _timer.resetTimer(); 
-      } else {
-        _timer.startTimer(); 
-      }
     } else {
-      _timer.stopTimer(); 
+        _timer.startTimer(); 
     }
+  } else {
+      //if you are not in chapter 1 or 1.7 
+      console.log("you are not in chapter1 or you are at 1.7"); 
+      _timer.stopTimer(); 
+      chapterSeven = false; 
+  }
   
   framecounter.text((_frameIndex+1) + "/" + (frameCount));
 

@@ -157,7 +157,6 @@
             function changeFrameNarration(info) { 
               // cancel current frame audio instances
               //You erase this function so that you don't shut Martha up if you change the slides. 
-              //
               // if (currentFrameNarration) {
               //  // currentFrameNarration.fadeOut(0,400);
               // }
