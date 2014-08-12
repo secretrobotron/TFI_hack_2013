@@ -121,9 +121,15 @@
 ////////////////////////This makes sure that we don't repeat the narratives//////////////
 /////////////////////////////////////////////////////
 
-            var currentDelay; 
+            var currentDelay = null; 
             var hasDelay = false;
             //there is somethign waitng to play  
+
+            function clearDelayedAudio(){
+              if(currentDelay)
+                clearTimeout(currentDelay); 
+              hasDelay = false;
+            }
 
             function delayAudio(cfa, si) {
               console.log(cfa );
