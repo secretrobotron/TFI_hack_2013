@@ -616,6 +616,7 @@ body, #modal {
   background-color: transparent;
   border: 0px none transparent;
   z-index: 1;
+  outline: none;
 }
 
 /* line 65, ../sass/_shared.scss */

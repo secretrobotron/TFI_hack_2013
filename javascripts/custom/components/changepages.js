@@ -21,8 +21,6 @@
     animating = false;
     
 
-
-
     function hideNavNext() {nextbutton.addClass('hidden');}
     function showNavNext() {nextbutton.removeClass('hidden');}
     function hideNavPrev() {prevbutton.addClass('hidden');}
@@ -115,6 +113,12 @@ function changeFrame(value) {
   
   if (value==="next") {
     if (_frameIndex < frameCount-1) _frameIndex++;
+    //remove navigation to chapter 7 
+    if (_frameIndex === 9 && _pageIndex === 0) {
+      hideNavNext();
+    }  else {
+      showNavNext(); 
+    }
   } 
   else if (value==="prev") { 
     if (_frameIndex > 0) _frameIndex--;
@@ -232,3 +236,4 @@ function prev() {
     if (_frameIndex > 0) { changeFrame('prev'); } 
     else if(_pageIndex > 0) { changePage('prev', 'last');}
 };
+
