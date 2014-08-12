@@ -2183,8 +2183,10 @@ button {
 
 /* line 236, ../sass/_shared.scss */
 .prevbutton, .nextbutton {
-  width: 10%;
-  height: 100%;
+  width: 50%;
+  height: 10%;
+  bottom:100%;
+  top:95%;
   position: absolute;
   -webkit-user-select: none;
   -webkit-user-drag: none;
@@ -2197,8 +2199,7 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.2);
   display: block;
   position: absolute;
-  top: 50%;
-  margin-top: -20px;
+  top:0;
   width: 30px;
   height: 40px;
   line-height: 38px;
@@ -2206,6 +2207,8 @@ button {
   text-decoration: none;
   background-clip: padding-box;
 }
+
+
 @media only screen and (min-width: 768px) {
   /* line 244, ../sass/_shared.scss */
   .prevbutton .btn, .nextbutton .btn {
@@ -2214,6 +2217,13 @@ button {
     width: 40px;
     height: 56px;
     line-height: 54px;
+  }
+
+  .prevbutton .btn {
+    margin-left:-40px;
+  }
+  .nextbutton .btn{
+    margin-right:-40px;
   }
 }
 @media only screen and (min-width: 1280px) {
@@ -2224,35 +2234,39 @@ button {
     height: 70px;
     line-height: 68px;
   }
+  .prevbutton .btn {
+    margin-left:-50px;
+  }
+  .nextbutton .btn{
+    margin-right:-50px;
+  }
 }
 
 /* line 277, ../sass/_shared.scss */
 .prevbutton {
   right: initial;
   left: 0;
+  text-align: right;
 }
 /* line 277, ../sass/_shared.scss */
 .prevbutton .btn {
-  left: 0;
-  border-left: 0;
+  left: 100%;
 }
 
 /* line 278, ../sass/_shared.scss */
 .nextbutton {
   left: initial;
-  right: 0;
+  left: 50%;
 }
 /* line 278, ../sass/_shared.scss */
 .nextbutton .btn {
-  right: 0;
-  border-right: 0;
+  left: 0;
 }
 
-/* line 280, ../sass/_shared.scss */
-.prevbutton.btn, .nextbutton.btn {
-  right: 0;
+//* line 280, ../sass/_shared.scss */
+/*.prevbutton.btn, .nextbutton.btn {
   border-right: 0;
-}
+}*/
 
 /* line 284, ../sass/_shared.scss */
 ul.slider {
