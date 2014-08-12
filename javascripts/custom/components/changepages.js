@@ -22,9 +22,9 @@
     
 
     function hideNavNext() {nextbutton.addClass('hidden');}
-    function showNavNext() {nextbutton.removeClass('hidden');}
+    function showNavNext() { if( nextbutton.hasClass("hidden") ){ nextbutton.removeClass('hidden'); } }
     function hideNavPrev() {prevbutton.addClass('hidden');}
-    function showNavPrev() {prevbutton.removeClass('hidden');}
+    function showNavPrev() { if( nextbutton.hasClass("hidden") ){ prevbutton.removeClass('hidden');} }
     function hideNav() {nextbutton.addClass('hidden'); prevbutton.addClass('hidden');}
     function showNav() {nextbutton.removeClass('hidden'); prevbutton.removeClass('hidden');}
 
@@ -180,9 +180,20 @@ if (trans) {
   //we have to stop the timer aevery time we change frames. 
   _timer.stopTimer(); 
 
+  console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
+
+  //make sure delayed audio does not play after frame change;
+  clearDelayedAudio();
   changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
   changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
-  framecounter.text((_frameIndex+1) + "/" + (frameCount));
+
+  if(_pageIndex == 0 && _frameIndex == 0 ) framecounter.addClass("hidden");
+  else {
+    if(framecounter.hasClass("hidden"))
+      framecounter.removeClass("hidden");
+  }
+
+  framecounter.text((_frameIndex) + "/" + (frameCount-1));
 
   var end = _pages.pageCount() - 1;
   var frameEnd = _pages.getFrameCount(_pageIndex) - 1;
