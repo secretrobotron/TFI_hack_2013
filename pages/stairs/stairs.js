@@ -2,6 +2,7 @@
 
   window.top.hideNav();
 
+  console.log("stairs.js is loaded"); 
   var FADE_TRANSITION_DURATION = 1000;
 
   var FLOOR_SOUND_DELAY = 500;
@@ -257,6 +258,7 @@
           progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
           video.pause();
           progressButton.classList.remove('hidden');
+          document.querySelector('#skip-notice').classList.remove('hidden');
           setTimeout(function(){
             progressExplanation.classList.remove('hidden');
           }, 500);
@@ -277,7 +279,7 @@
       });
 
       popcorn.cue(SKIP_NOTICE_TIME, function() {
-        document.querySelector('#skip-notice').classList.remove('hidden');
+        //document.querySelector('#skip-notice').classList.remove('hidden');
         window.top.addEventListener('keydown', function onSkipNoticeKeyDown (e) {
           if (e.which === 32) {
             skipping = true;
@@ -305,6 +307,7 @@
       function attemptToPlayVideo (e) {
         e.preventDefault();
         if (!playing) {
+          console.log("video should be playing"); 
           playing = true;
           video.play();
           video.classList.remove('paused');
