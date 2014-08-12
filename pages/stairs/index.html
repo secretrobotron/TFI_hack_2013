@@ -65,6 +65,15 @@
         visibility: hidden;
       }
 
+      .skipbutton {
+        background-color: transparent;
+        border: 0px none transparent;
+        z-index: 1;
+        outline: none;
+        padding-top: 80%; 
+
+      }
+
       #progress-button {
         position: fixed;
         margin-top: -35px;
@@ -100,6 +109,7 @@
         width: 100%;
         text-align: center;
         font-size: 10pt;
+        color: #fff;
       }
     </style>
     <script id="floor-data" type="text/json">
@@ -111,7 +121,6 @@
     <script src="../../javascripts/vendor/popcorn.min.js"></script>
     <script src="../../javascripts/custom/components/loader.js"></script>
     <script src="stairs.js"></script>
-    <link rel="stylesheet" href="../../stylesheets/app.css" />
   </head>
   <body>
     <script>
@@ -154,8 +163,8 @@
     <div id="progress-button" class="hidden fadeable">&rarr;</div>
     <div id="progress-explanation" class="hidden fadeable">Walk with Marta</div>
 
-<!--      <button onClick="next();" value="Next" id="nextbutton" class="nextbutton"><span class="btn">&rarr;</span></button> -->
-    <!-- <div id="skip-notice" class="fadeable hidden">Skip steps. Meet Martha at the top.</div> --> <!-- rigth now it is a space, should be a clikc. ** Show remainder steps--> 
-        <button onClick="page.changePage(0,1)" id="skip-notice" class="fadeable hidden nextbutton" style= "outline: none;">Skip steps. Meet Martha at the top.</div>
+    <!-- this button should take you to the video at the top of the stairs...should be a clikc. ** Show remainder steps--> 
+    <!-- onClick="changePage(0,1)"--> 
+        <button id="skip-notice" class="fadeable hidden skipbutton" style= "outline: none;">Skip steps. Meet Martha at the top.</div>
   </body>
 </html>
