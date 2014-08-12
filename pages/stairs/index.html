@@ -111,6 +111,7 @@
     <script src="../../javascripts/vendor/popcorn.min.js"></script>
     <script src="../../javascripts/custom/components/loader.js"></script>
     <script src="stairs.js"></script>
+    <link rel="stylesheet" href="../../stylesheets/app.css" />
   </head>
   <body>
     <script>
@@ -152,6 +153,9 @@
     <div id="stair-counter" class="hidden fadeable"><sup>Step</sup><span>0</span>/89</div>
     <div id="progress-button" class="hidden fadeable">&rarr;</div>
     <div id="progress-explanation" class="hidden fadeable">Walk with Marta</div>
-    <div id="skip-notice" class="fadeable hidden">Press [SPACE] to skip.</div>
+
+<!--      <button onClick="next();" value="Next" id="nextbutton" class="nextbutton"><span class="btn">&rarr;</span></button> -->
+    <!-- <div id="skip-notice" class="fadeable hidden">Skip steps. Meet Martha at the top.</div> --> <!-- rigth now it is a space, should be a clikc. ** Show remainder steps--> 
+        <button onClick="page.changePage(0,1)" id="skip-notice" class="fadeable hidden nextbutton" style= "outline: none;">Skip steps. Meet Martha at the top.</div>
   </body>
 </html>
