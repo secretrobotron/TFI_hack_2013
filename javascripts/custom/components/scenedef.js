@@ -238,12 +238,16 @@ var Pages = function () {
         },
       ]
     },
+    ///
     { 
       url: "pages/4.html", title: "The Apartment", 
       frames: [
         { 
           url: "pages/4/1.html", 
         },
+        { 
+          url: "pages/4/2.html", 
+        }
       ]
     },
 
