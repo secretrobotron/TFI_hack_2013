@@ -60,7 +60,7 @@ this.startTimer = function(delay)  {
 				console.log("playing second timeout sound"); 
 				firstSound = false; 
 				timerOn = false; 
-			}, 90000); //90000
+			}, 50000); //90000
 
 		}, delayTime); //play this after 15 sec 
 

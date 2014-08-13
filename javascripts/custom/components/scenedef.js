@@ -155,7 +155,23 @@ var Pages = function () {
           },
           narration: [
             {
-              urls: ['assets/1/sound/1.7_narrative_a.mp3', 'assets/1/sound/1.7_narrative_a.oga'],
+              urls: ['assets/1/sound/1.7a_narrative.mp3', 'assets/1/sound/1.7_narrative_a.oga'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:0,
+              delay: 3000
+            },
+                  {
+              urls: ['assets/1/sound/1.7b_narrative.mp3', 'assets/1/sound/1.7_narrative_a.oga'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:0,
+              delay: 3000
+            },
+                  {
+              urls: ['assets/1/sound/1.7c_narrative.mp3', 'assets/1/sound/1.7_narrative_a.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -163,7 +179,7 @@ var Pages = function () {
               delay: 3000
             },
             {
-              urls: ['assets/1/sound/1.7_narrative_b.mp3', 'assets/1/sound/1.7_narrative_b.oga'],
+              urls: ['assets/1/sound/1.7d_narrative.mp3', 'assets/1/sound/1.7_narrative_b.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -213,6 +229,10 @@ var Pages = function () {
           },
           narration: [
             {
+              onload: function() {
+                hideNavNext(); 
+                console.log("the right arrow is removed"); 
+              }, 
               urls: ['assets/1/sound/1.9_narrative.mp3', 'assets/1/sound/1.9_narrative.oga'],
               loop: false,
               buffer:true,
