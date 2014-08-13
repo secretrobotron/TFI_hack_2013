@@ -8,7 +8,7 @@
 var Timer = function() {
 
 var firstNarration = {
-              urls: ['assets/1/sound/1.2_narrative.mp3'],
+              urls: ['assets/1/sound/1.10_narrative.mp3'],
               loop: false,
               buffer:true,
               autoplay: false,

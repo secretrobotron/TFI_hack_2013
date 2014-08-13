@@ -65,33 +65,6 @@
         visibility: hidden;
       }
 
-      .skipbutton {
-        background-color: transparent;
-        border: 0px none transparent;
-        z-index: 1;
-        outline: none;
-        padding-top: 80%; 
-
-      }
-
-      #progress-button {
-        position: fixed;
-        margin-top: -35px;
-        width: 50px;
-        height: 70px;
-        line-height: 68px;
-        right: 0;
-        background-color: rgba(0, 0, 0, 0.8);
-        top: 95%;
-        left:50%;
-        text-align: center;
-        text-decoration: none;
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        background-clip: padding-box;
-        font-size: 14px;
-        cursor: pointer;
-      }
 
       #progress-explanation {
         position: fixed;
@@ -103,16 +76,43 @@
         line-height: 70px;
       }
 
+      #progress-button {
+        position: fixed;
+        margin-top: -35px;
+        width: 50px;
+        height: 70px;
+        line-height: 68px;
+        right: 0;
+    /*    background-color: rgba(0, 0, 0, 0.8);*/
+        top: 85%;
+        left:50%;
+        text-align: center;
+        text-decoration: none;
+        /*color: #fff;*/
+        border: 1px solid rgba(255, 255, 255, 0.2);
+       /* background-clip: padding-box;*/
+        border-radius: 100%;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 5;
+      }
+
       #skip-notice {
         position: fixed;
-        top:85%;
+        margin-top: 95px;
+        top: 95%;
         width: 100%;
         text-align: center;
         font-size: 10pt;
         color: #fff;
         z-index: 5;
         background-clip: padding-box;
+        background-color: transparent;
+        border: 0px none transparent;
+        outline: none;
+        top: 80%; 
       }
+
     </style>
     <script id="floor-data" type="text/json">
     ["00:00:35;00", "00:00:50;11", "00:01:05;11", "00:01:25;02", "00:01:43;14"]
@@ -159,14 +159,16 @@
     <video class="fadeable" width="320" height="240" preload="auto">
       <source src="../../assets/2/video/Stairs05.15.2013_720.mp4" type="video/mp4"></source>
       <source src="../../assets/2/video/Stairs05.15.2013_720.webmhd.webm" type="video/webm"></source>
+      <!-- include hte source for the video at the top of the stairs here--> 
+      <!-- <source src="../../assets/2/video/" type="video/mp4"></source> --> 
     </video>
     <div id="floor-counter" class="hidden fadeable"><sup>Floor</sup><span>1</span>/6</div>
     <div id="stair-counter" class="hidden fadeable"><sup>Step</sup><span>0</span>/89</div>
-    <div id="progress-button" class="hidden fadeable">&rarr;</div>
-    <div id="progress-explanation" class="hidden fadeable">Walk with Marta</div>
-
+<!--     <div id="progress-button" class="hidden fadeable">&rarr;</div>
+    <div id="progress-explanation" class="hidden fadeable">Walk with Marta</div> -->
+    <button id="progress-button" class="fadeable hidden"> Go </button>
     <!-- this button should take you to the video at the top of the stairs...should be a clikc. ** Show remainder steps--> 
     <!-- onClick="changePage(0,1)"--> 
-        <button id="skip-notice" class="fadeable hidden skipbutton" style= "outline: none;">Skip steps. Meet Martha at the top.</div>
+    <button id="skip-notice" onClick="alert('clicked on skip!')" class="fadeable hidden" style= "outline: none;">Skip steps. Meet Martha at the top.</button>
   </body>
 </html>

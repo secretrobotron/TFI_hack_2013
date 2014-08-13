@@ -216,6 +216,7 @@
     var stairCounter = document.querySelector('#stair-counter');
     var floorCounter = document.querySelector('#floor-counter');
     var floorCounterSpan = floorCounter.querySelector('span');
+    var skipNotice = document.querySelector('#skip-notice'); 
     video = document.querySelector('video');
 
     var stepData = JSON.parse(document.querySelector('#step-data').innerHTML);
@@ -251,29 +252,41 @@
 
       // start stairway interaction
       popcorn.cue(INTERACTION_START_TIME, function () {
+        //show the stair controls 
         stairCounter.classList.remove('hidden');
         floorCounter.classList.remove('hidden');
+        progressButton.classList.remove('hidden');
+        skipNotice.classList.remove('hidden');
         video.classList.add('paused');
         setTimeout(function () {
           progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
+          //pausing the video 
           video.pause();
-          progressButton.classList.remove('hidden');
-          document.querySelector('#skip-notice').classList.remove('hidden');
-          setTimeout(function(){
-            progressExplanation.classList.remove('hidden');
-          }, 500);
-        }, 1000);
+          // progressButton.classList.remove('hidden');
+          // skipNotice.classList.remove('hidden');
+          //showing you that you can skip when the video is paused. 
+          skipNotice.classList.remove('hidden');
+          // setTimeout(function(){
+          //   progressExplanation.classList.remove('hidden');
+          // }, 500); //and every 5 seconds, it is showing you the progress Explanation (walk with martha)
+        }, 1000); //every second, it is checking you are clicking go. 
       });
 
-      // stop stairway interaction
+      // stop stairway interaction 
+      //(AFTER EVERYTHING INSIDE OF THE STAIRS IS DONE AND YOU ARE WATCHING THE LAST VIDEO)
       popcorn.cue(INTERACTION_END_TIME, function () {
         progressButton.classList.add('hidden');
         setTimeout(function () {
           stairCounter.classList.add('hidden');
           floorCounter.classList.add('hidden');
         }, 2000);
-        progressButton.removeEventListener('mousedown', onProgressButtonMouseDown, false);
+        //this is the original one:
+        // progressButton.removeEventListener('mousedown', onProgressButtonMouseDown, false);
+        //going to see if this works when I click on it: 
+        progressButton.removeEventListener('mousedown', alert('go works'), false);
         window.top.removeEventListener('mouseup', onProgressButtonMouseUp, false);
+        //THIS MIGHT HAVE TO STOP OR THIS IS WHAT ISN'T WORKING
+        //WE WOULD PUT THE VIDEO THAT WORKS HERE (the last one)
         video.play();
         video.classList.remove('paused');
       });
