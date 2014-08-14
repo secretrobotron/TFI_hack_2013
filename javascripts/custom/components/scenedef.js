@@ -16,11 +16,13 @@ var Pages = function () {
             },
 
       frames: [
+
         { 
           url: "pages/1/intro.html"
         },
+
         { 
-          url: "pages/1/1.html", 
+          url: "pages/1/1.html",
           sound: {
             urls: ['assets/1/sound/1.1_background.mp3', 'assets/1/sound/1.1_background.oga'],
             loop: true,
@@ -35,6 +37,7 @@ var Pages = function () {
           },
           narration: []
         },
+
         { 
           url: "pages/1/2.html", 
           sound: {
@@ -104,30 +107,75 @@ var Pages = function () {
             }
           ]
         },
-        { 
-          url: "pages/1/5.html", 
-          sound: {
-            urls: ['assets/1/sound/1.5_background.mp3', 'assets/1/sound/1.5_background.oga'],
-            loop: true,
-            buffer:true,
-            autoplay: false,
-            fadein:800
-          },
-          //this will change 
-          narration: [
-            {
-              urls: ['assets/1/sound/1.5_narrative.mp3'],
-              loop: false,
-              buffer:true,
-              autoplay: false,
-              fadein:0,
-              delay: 1500, 
-              onend: function() {
-                _timer.checkTimer(); 
+
+        //object holding subframes
+        {
+          subframes : [
+            //subframe 1
+           { 
+              url: "pages/1/5.html",
+              visited:false,
+              isDefault: false, 
+              sound: {
+                urls: ['assets/1/sound/1.5_background.mp3', 'assets/1/sound/1.5_background.oga'],
+                loop: true,
+                buffer:true,
+                autoplay: false,
+                fadein:800
+              },
+              //this will change 
+              narration: {
+                urls: ['assets/1/sound/1.5_narrative.mp3'],
+                loop: false,
+                buffer:true,
+                autoplay: false,
+                fadein:0,
+                delay: 1500, 
+                onend: function() {
+                  _timer.checkTimer(); 
+                }
               }
+            },
+            //subframe 2
+            { 
+              url: "pages/1/5b.html", 
+              visited:false,
+              isDefault: true,
+              sound: {
+                urls: ['assets/1/sound/1.5_background.mp3', 'assets/1/sound/1.5_background.oga'],
+                loop: true,
+                buffer:true,
+                autoplay: false,
+                fadein:800
+              },
+              //this will change 
+              narration: {
+                urls: ['assets/1/sound/1.5b_narrative.mp3'],
+                loop: false,
+                buffer:true,
+                autoplay: false,
+                fadein:0,
+                delay: 1500, 
+                onend: function() {
+                  //move on to chapter 2, this can't be stopped
+                  setTimeout(function(){ changePage("next"); },2000);
+
+                }
+              }
+              
             }
           ]
         },
+
+        //subframe object template 
+        // {
+        //   subframes : [
+
+                //list of subframe objects
+
+        //   ]
+        // },
+
         { 
           url: "pages/1/6.html", 
           sound: {
@@ -292,21 +340,114 @@ var Pages = function () {
   // todo add ajax loader if needed,
   // possibly add _pageIndex and _frameIndex to this
 
+  this.currentSubframeIndex = 0;
+  this.resetSubframeIndex = function(){ this.currentSubframeIndex = 0; }
+
   this.pageCount = function () { return pageinfo.length; }
   this.getPageInfo = function (page)  { return pageinfo[page]; }
   this.getPageTitle = function (page)  { return pageinfo[page].title; }
   this.getTransition = function (page)  { return pageinfo[page].transition || 'crossFade'; }
 
   this.getPageUrl = function (page) { return pageinfo[page].url; }
-  this.getFrameSound = function (page, frame) { return pageinfo[page].frames[frame].sound; }
   this.getPageSound = function (page, frame) { return pageinfo[page].sound; }
-  this.getFrameNarration = function (page, frame) { return pageinfo[page].frames[frame].narration; }
+
+  this.getFrameNarration = function (page, frame) { 
+
+    if( this.doesFrameHaveSubframes( page,frame )  ){
+      console.log("getting subframe narration for subframe: "+this.currentSubframeIndex);
+      var n = this.getSubframeByIndex( page, frame, this.currentSubframeIndex ).narration;
+      console.log(n);
+      return n;
+    }else{
+      return pageinfo[page].frames[frame].narration; 
+    }
+
+  }
+  this.getFrameSound = function (page, frame) { 
+    
+    if( this.doesFrameHaveSubframes( page,frame )  ){
+      console.log("getting subframe sound for subframe: "+this.currentSubframeIndex);
+      var s = this.getSubframeByIndex( page, frame, this.currentSubframeIndex ).sound;
+      console.log(s);
+      return s;
+    }else{
+      return pageinfo[page].frames[frame].sound; 
+    }
+
+  }
 
   //what index am I on?
-  this.getFrameIndex = function (page, frame) { return pageinfo[page].frames[frame].url}; 
+  this.getFrameIndex = function (page, frame) { return pageinfo[page].frames[frame].url; }; 
+
 
   this.getFrames = function (page) {
     return pageinfo[page].frames;
+  }
+
+  this.doesFrameHaveSubframes = function( page, frame ){
+
+    console.log( "checking for subframes" );
+
+    if( pageinfo[page].frames[frame].subframes ){
+      console.log( "has subframes" );
+      return true;
+    }
+    else{
+      console.log( "NO subframes" );
+      return false;
+    }
+
+  }
+
+  this.getSubframeByIndex = function( page, frame, subframe_index ){
+
+    if( subframe_index < pageinfo[page].frames[frame].subframes.length ){
+        var sf = pageinfo[page].frames[frame].subframes[subframe_index];
+        console.log(sf);
+       return sf;
+
+    }
+    else{
+      console.log("you asked for a subframe that was not there at index: "+subframe_index);
+    }
+
+  } 
+
+  this.visitSubframe = function( page, frame ){
+
+    console.log( "getting subframe" );
+    var subframes = pageinfo[page].frames[frame].subframes;
+
+    var foundSubframe = false;
+      for(var i = 0; i < subframes.length; i++ ){
+          console.log( "checking subframe" );
+          console.log( subframes[i] );
+
+          //if we've already been there, skip this and go to the next loop iteration. 
+          if(subframes[i].visited) continue;
+          else {
+            this.currentSubframeIndex = i;
+            console.log("found unvisited subframe ad index: "+this.currentSubframeIndex);
+            foundSubframe = true;
+            subframes[i].visited = true;
+            return subframes[i];
+            break;
+          }
+
+      }
+    
+      if(!foundSubframe){
+        console.log("all subframes visted");
+        for(var i = 0; i < subframes.length; i++ ){
+          //if we've already been there, skip this and go to the next loop iteration. 
+          if(subframes[i].isDefault){
+            this.currentSubframeIndex = i;
+            console.log("found default");
+            return subframes[i];
+          } 
+        }
+      }
+
   }
 
   this.getFrameCount = function (page) {
@@ -317,5 +458,14 @@ var Pages = function () {
 var _pages = new Pages();
 
 
-function getCurrentFrameUrl() { return _pages.getFrames(_pageIndex)[_frameIndex].url; }
+function getCurrentFrameUrl() { 
+
+  //checking if the current frame has any subrames within the chapter. 
+  if( _pages.doesFrameHaveSubframes( _pageIndex, _frameIndex ) ){
+    return _pages.visitSubframe( _pageIndex, _frameIndex ).url;
+  }
+  else{
+      return _pages.getFrames(_pageIndex)[_frameIndex].url; 
+  }
+}
 

@@ -616,7 +616,7 @@ body, #modal {
 .pageview, .prevbutton, .nextbutton {
   background-color: transparent;
   border: 0px none transparent;
-  z-index: 1;
+  z-index: 5;
   outline: none;
 }
 
@@ -670,6 +670,19 @@ body, #modal {
   -ms-animation-duration: 1s;
   -o-animation-duration: 1s;
   animation-duration: 1s;
+}
+/* special case for the intro gif being a little longer than 1 second  */
+.old.first_gif.animate {
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -ms-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -ms-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  animation-duration: 2s;
 }
 
 /* line 97, ../sass/_shared.scss */
