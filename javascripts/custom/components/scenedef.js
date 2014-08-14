@@ -303,7 +303,7 @@ var Pages = function () {
       frames: [
         { 
           url: "pages/2/1.html"
-        },
+        }
       ]
     },
     ///
@@ -311,10 +311,7 @@ var Pages = function () {
       url: "pages/4.html", title: "The Apartment", 
       frames: [
         { 
-          url: "pages/4/1.html", 
-        },
-        { 
-          url: "pages/4/2.html", 
+          url: "pages/4/1.html"
         }
       ]
     },
@@ -324,14 +321,14 @@ var Pages = function () {
       transition: 'vertical',
       frames: [
         { 
-          url: "pages/5/1.html", 
+          url: "pages/5/1.html"
         },
         { 
-          url: "pages/5/2.html",  
+          url: "pages/5/2.html"  
         },
         { 
-          url: "pages/5/3.html", 
-        },
+          url: "pages/5/3.html"
+        }
         ] 
     },
 

@@ -46,7 +46,7 @@
       //         var navFrameLink = $('<a/>').text('Page ' + (frameNumber + 1)).attr('onClick', 'changePage('+ i +', ' +frameNumber +')').appendTo(navFrame);
       //   });
       // };  
-  };
+  }
 //});
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -134,7 +134,7 @@ function changeFrame(value, callback) {
 if (animating) {
   trans = false;
   animating = false;
-};
+}
 
 if (trans) {
   if (trans === 'fade') trans = 'crossFade';
@@ -152,7 +152,7 @@ if (trans) {
         frameNew.addClass('animate');
 
         ///special case for intro gif to last longer in its intro transition
-        if(_frameIndex == 1 && _pageIndex == 0){
+        if(_frameIndex == 1 && _pageIndex === 0){
           frameOld.addClass("first_gif");
         }
 
@@ -182,7 +182,7 @@ if (trans) {
         }); 
     });
 
-};
+}
 
   //we have to stop the timer aevery time we change frames. 
   _timer.stopTimer(); 
@@ -195,7 +195,7 @@ if (trans) {
   changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
 
 
-  if(_pageIndex == 0 && _frameIndex == 0 ) framecounter.addClass("hidden");
+  if(_pageIndex === 0 && _frameIndex === 0 ) framecounter.addClass("hidden");
   else {
     if(framecounter.hasClass("hidden"))
       framecounter.removeClass("hidden");
@@ -211,7 +211,6 @@ if (trans) {
 
     //optional call back
     if(callback) callback();
-
 
 }
 
@@ -248,15 +247,16 @@ function changePage(value, frame) {
 function next() { 
 
 //special case for the intro to unhide the loaded animated gif
-    if( _frameIndex ==0 && _pageIndex == 0 ){
+    if( _frameIndex ===0 && _pageIndex === 0 ){
       $("#intro_title").addClass("hidden");
       $("#intro_gif").removeClass("hidden");
     }
 
     if (_frameIndex < _pages.getFrameCount(_pageIndex)-1) { 
 
-      ///special case dont show back nav at beginning
-      if( _frameIndex == 0 && _pageIndex == 0 ){
+      ///special cases 
+      if( _frameIndex === 0 && _pageIndex === 0 ){
+        //dont show back nav at beginning, use the callback option to call hide on the cursor
         changeFrame('next', hideNavPrev );
       }else{
         changeFrame('next'); 
@@ -266,11 +266,11 @@ function next() {
     else if(_pageIndex < _pages.pageCount()-1){ 
       changePage('next'); 
     }
-}; 
+}
 
 function prev() { 
 
     if (_frameIndex > 0) { changeFrame('prev'); } 
     else if(_pageIndex > 0) { changePage('prev', 'last');}
-};
+}
 
