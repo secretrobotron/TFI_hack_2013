@@ -13,7 +13,13 @@
 
   // in seconds; latter segment converts from frames to fractions of second (base 10)
   var INTERACTION_START_TIME = 20 + (19 / VIDEO_FPS);
+
+  //here is where I change where the interaction stops and the video can just play 
   var INTERACTION_END_TIME = 105 + (0 / VIDEO_FPS);
+  //I think this may be it 
+ 
+
+
   var SKIP_NOTICE_TIME = 10;
 
   var video;
@@ -210,6 +216,9 @@
     loop();
   }
 
+ 
+
+
   function init(e) {
     var progressButton = document.querySelector('#progress-button');
     var progressExplanation = document.querySelector('#progress-explanation');
@@ -266,9 +275,12 @@
           // skipNotice.classList.remove('hidden');
           //showing you that you can skip when the video is paused. 
           skipNotice.classList.remove('hidden');
-          // setTimeout(function(){
-          //   progressExplanation.classList.remove('hidden');
-          // }, 500); //and every 5 seconds, it is showing you the progress Explanation (walk with martha)
+          setTimeout(function(){
+            //when you let go of go, then you see the skip notice. 
+            skipNotice.classList.remove('hidden'); 
+
+            //progressExplanation.classList.remove('hidden');
+          }, 500); //and every 5 seconds, it is showing you the progress Explanation (walk with martha)
         }, 1000); //every second, it is checking you are clicking go. 
       });
 
@@ -279,6 +291,8 @@
         setTimeout(function () {
           stairCounter.classList.add('hidden');
           floorCounter.classList.add('hidden');
+          //THE VIDEO SHOULD PLAY HERE 
+          //video.play(); 
         }, 2000);
         //this is the original one:
         // progressButton.removeEventListener('mousedown', onProgressButtonMouseDown, false);
@@ -291,6 +305,7 @@
         video.classList.remove('paused');
       });
 
+      //THE NON-WORKING IMPLEMENTATION OF THE SKIP BUTTON 
       popcorn.cue(SKIP_NOTICE_TIME, function() {
         //document.querySelector('#skip-notice').classList.remove('hidden');
         window.top.addEventListener('keydown', function onSkipNoticeKeyDown (e) {
@@ -352,6 +367,19 @@
           }, FADE_TRANSITION_DURATION);
         }
       }
+
+  
+       //This will allow the user to go to the end. 
+      function onSkipButton() {
+            //this is what will happen when you click the skip button
+        console.log("the button should skip to the last frame"); 
+        skipNotice.classList.add('hidden');
+       // popcorn.floor = floorData[4]
+        skipping = true; 
+        //popcorn.step({ start: Popcorn.util.toSeconds("00:01:44;8", 24) });
+      }
+      //her i grab the button 
+      document.getElementById('skip-notice').addEventListener('click', onSkipButton, false); 
       
       function onProgressButtonMouseUp (e) {
         attemptToPauseVideo(e);
@@ -360,7 +388,11 @@
       }
 
       function onProgressButtonMouseDown (e) {
-        progressExplanation.classList.add('hidden');
+        //progressExplanation.classList.add('hidden');
+        progressButton.classList.add('hidden');
+        //progressButton.innerHTML() 
+        progressButton.css('background-color: rgba(0, 0, 0, 0.8)'); 
+        //progressButton.css('text-color:')
         attemptToPlayVideo(e);
         window.addEventListener('mouseup', onProgressButtonMouseUp, false);
         window.top.addEventListener('mouseup', onProgressButtonMouseUp, false);
@@ -380,5 +412,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', init, false);
+
 
 }());
