@@ -68,6 +68,7 @@
             }
 
             function changeFrameBackground(info) { 
+
               //if bg1 is not null, then it is playing and bg2 needs to be created and bg1 faded out
               if (frameBg1Playing){
 
