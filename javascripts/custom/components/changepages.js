@@ -104,7 +104,7 @@ function changeSlider(value) {
 // FRAMES ///////////////
 /////////////////////////////////////////////////////////////////////////////////
 
-function changeFrame(value) {
+function changeFrame(value, callback) {
   frameview = $(".frameview").first();
   _pages.resetSubframeIndex();
 
@@ -208,6 +208,11 @@ if (trans) {
   if(_pageIndex === end && _frameIndex === frameEnd){ hideNavNext(); showNavPrev(); }
   else if (_pageIndex === 0 && _frameIndex === 0)   { showNavNext(); hideNavPrev(); }
   else                                            { showNav(); }
+
+    //optional call back
+    if(callback) callback();
+
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -248,8 +253,19 @@ function next() {
       $("#intro_gif").removeClass("hidden");
     }
 
-    if (_frameIndex < _pages.getFrameCount(_pageIndex)-1) { changeFrame('next'); } 
-    else if(_pageIndex < _pages.pageCount()-1){ changePage('next'); }
+    if (_frameIndex < _pages.getFrameCount(_pageIndex)-1) { 
+
+      ///special case dont show back nav at beginning
+      if( _frameIndex == 0 && _pageIndex == 0 ){
+        changeFrame('next', hideNavPrev );
+      }else{
+        changeFrame('next'); 
+     }
+
+    } 
+    else if(_pageIndex < _pages.pageCount()-1){ 
+      changePage('next'); 
+    }
 }; 
 
 function prev() { 
