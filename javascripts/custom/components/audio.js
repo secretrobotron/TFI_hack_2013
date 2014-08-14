@@ -125,6 +125,7 @@
             var hasDelay = false;
             //there is somethign waitng to play  
 
+            //safety so that we clear the audio. 
             function clearDelayedAudio(){
               if(currentDelay)
                 clearTimeout(currentDelay); 

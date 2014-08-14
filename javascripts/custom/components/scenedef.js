@@ -168,7 +168,7 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 3000
+              // delay: 3000
             },
                   {
               urls: ['assets/1/sound/1.7c_narrative.mp3', 'assets/1/sound/1.7_narrative_a.oga'],
@@ -176,7 +176,7 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 3000
+              // delay: 3000
             },
             {
               urls: ['assets/1/sound/1.7d_narrative.mp3', 'assets/1/sound/1.7_narrative_b.oga'],
@@ -184,7 +184,7 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 3000,
+              // delay: 3000,
               // well now this is not json encodable
               //What is going on here?
               onend: function() {
