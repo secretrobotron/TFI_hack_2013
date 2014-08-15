@@ -231,6 +231,7 @@
     var stepData = JSON.parse(document.querySelector('#step-data').innerHTML);
     var floorData = JSON.parse(document.querySelector('#floor-data').innerHTML);
 
+    ///making a new method for popcorn objects
     Popcorn.plugin('step', {
       start: function () {
         ++numSteps;
@@ -269,6 +270,8 @@
         video.classList.add('paused');
         setTimeout(function () {
           progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
+          progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
+
           //pausing the video 
           video.pause();
           // progressButton.classList.remove('hidden');
@@ -293,31 +296,14 @@
           floorCounter.classList.add('hidden');
           //THE VIDEO SHOULD PLAY HERE 
           //video.play(); 
-        }, 2000);
+        }, 2000); //this waits 2 seconds to hide the counter so you can see it zoom up to 89
         //this is the original one:
-        // progressButton.removeEventListener('mousedown', onProgressButtonMouseDown, false);
-        //going to see if this works when I click on it: 
-        progressButton.removeEventListener('mousedown', alert('go works'), false);
-        window.top.removeEventListener('mouseup', onProgressButtonMouseUp, false);
+         progressButton.removeEventListener('mousedown', onProgressButtonMouseDown, false);
+        progressButton.removeEventListener('mousedown', onProgressButtonMouseUp, false);
         //THIS MIGHT HAVE TO STOP OR THIS IS WHAT ISN'T WORKING
         //WE WOULD PUT THE VIDEO THAT WORKS HERE (the last one)
         video.play();
         video.classList.remove('paused');
-      });
-
-      //THE NON-WORKING IMPLEMENTATION OF THE SKIP BUTTON 
-      popcorn.cue(SKIP_NOTICE_TIME, function() {
-        //document.querySelector('#skip-notice').classList.remove('hidden');
-        window.top.addEventListener('keydown', function onSkipNoticeKeyDown (e) {
-          if (e.which === 32) {
-            skipping = true;
-            document.querySelector('#skip-notice').classList.add('hidden');
-            progressExplanation.classList.add('hidden');
-            video.currentTime = INTERACTION_END_TIME;
-            video.play();
-            window.top.removeEventListener('keydown', onSkipNoticeKeyDown, false);
-          }
-        }, false);
       });
 
       stepData.forEach(function (step) {
@@ -376,26 +362,23 @@
         skipNotice.classList.add('hidden');
        // popcorn.floor = floorData[4]
         skipping = true; 
-        //popcorn.step({ start: Popcorn.util.toSeconds("00:01:44;8", 24) });
+        popcorn.play(INTERACTION_END_TIME);
       }
       //her i grab the button 
       document.getElementById('skip-notice').addEventListener('click', onSkipButton, false); 
       
       function onProgressButtonMouseUp (e) {
+        progressButton.style.backgroundColor = "rgba(255, 255, 255, 0.8)"; 
+        progressButton.style.color = "rgba(0, 0, 0, 0.8)"; 
         attemptToPauseVideo(e);
-        window.removeEventListener('mouseup', onProgressButtonMouseUp, false);
-        window.top.removeEventListener('mouseup', onProgressButtonMouseUp, false);
       }
 
       function onProgressButtonMouseDown (e) {
-        //progressExplanation.classList.add('hidden');
-        progressButton.classList.add('hidden');
-        //progressButton.innerHTML() 
-        progressButton.css('background-color: rgba(0, 0, 0, 0.8)'); 
-        //progressButton.css('text-color:')
+ 
+        progressButton.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; 
+        progressButton.style.color = "rgba(255, 255, 255, 0.8)"; 
         attemptToPlayVideo(e);
-        window.addEventListener('mouseup', onProgressButtonMouseUp, false);
-        window.top.addEventListener('mouseup', onProgressButtonMouseUp, false);
+   
       }
 
       volumeTweenController = prepareVolumeTweening();
