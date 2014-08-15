@@ -321,14 +321,18 @@ var Pages = function () {
       transition: 'vertical',
       frames: [
         { 
-          url: "pages/5/1.html"
+          url: "pages/5/1.1.html"
+
         },
-        { 
-          url: "pages/5/2.html"  
-        },
-        { 
-          url: "pages/5/3.html"
-        }
+         // {
+         //  url: "pages/5/1.html"
+         // }
+        // { 
+        //   url: "pages/5/2.html"  
+        // },
+        // { 
+        //   url: "pages/5/3.html"
+        // }
         ] 
     },
 
