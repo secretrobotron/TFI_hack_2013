@@ -217,8 +217,6 @@
   }
 
  
-
-
   function init(e) {
     var progressButton = document.querySelector('#progress-button');
     var progressExplanation = document.querySelector('#progress-explanation');
@@ -395,6 +393,5 @@
   }
 
   document.addEventListener('DOMContentLoaded', init, false);
-
 
 }());
