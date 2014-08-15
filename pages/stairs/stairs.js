@@ -217,6 +217,8 @@
   }
 
  
+
+
   function init(e) {
     var progressButton = document.querySelector('#progress-button');
     var progressExplanation = document.querySelector('#progress-explanation');
@@ -294,13 +296,7 @@
           floorCounter.classList.add('hidden');
           //THE VIDEO SHOULD PLAY HERE 
           //video.play(); 
-        }, 2000); //this waits 2 seconds to hide the counter so you can see it zoom up to 89
-        //this is the original one:
-         progressButton.removeEventListener('mousedown', onProgressButtonMouseDown, false);
-        progressButton.removeEventListener('mousedown', onProgressButtonMouseUp, false);
-        //THIS MIGHT HAVE TO STOP OR THIS IS WHAT ISN'T WORKING
-        //WE WOULD PUT THE VIDEO THAT WORKS HERE (the last one)
-        video.play();
+        }, 2000);//this delays the stair counter dissapearing to let you see it zoom up to 89
         video.classList.remove('paused');
       });
 
@@ -393,5 +389,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', init, false);
+
 
 }());
