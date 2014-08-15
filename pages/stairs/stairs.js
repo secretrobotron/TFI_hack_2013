@@ -220,6 +220,7 @@
 
 
   function init(e) {
+
     var progressButton = document.querySelector('#progress-button');
     var progressExplanation = document.querySelector('#progress-explanation');
     var stairCounter = document.querySelector('#stair-counter');
@@ -256,9 +257,7 @@
       window.addEventListener('resize', positionVideo, false);
       positionVideo();
 
-      popcorn = Popcorn(video, {
-        // frameAnimation: true
-      });
+      popcorn = Popcorn("#stairs_video");
 
       // start stairway interaction
       popcorn.cue(INTERACTION_START_TIME, function () {
@@ -266,25 +265,24 @@
         stairCounter.classList.remove('hidden');
         floorCounter.classList.remove('hidden');
         progressButton.classList.remove('hidden');
-        skipNotice.classList.remove('hidden');
+
         video.classList.add('paused');
+
         setTimeout(function () {
+
           progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
           progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
 
           //pausing the video 
-          video.pause();
+          popcorn.pause();
           // progressButton.classList.remove('hidden');
           // skipNotice.classList.remove('hidden');
           //showing you that you can skip when the video is paused. 
           skipNotice.classList.remove('hidden');
-          setTimeout(function(){
-            //when you let go of go, then you see the skip notice. 
-            skipNotice.classList.remove('hidden'); 
 
-            //progressExplanation.classList.remove('hidden');
-          }, 500); //and every 5 seconds, it is showing you the progress Explanation (walk with martha)
-        }, 1000); //every second, it is checking you are clicking go. 
+        }, 1000); //after a second allow skipping and the button interaction
+
+
       });
 
       // stop stairway interaction 
@@ -296,9 +294,31 @@
           floorCounter.classList.add('hidden');
           //THE VIDEO SHOULD PLAY HERE 
           //video.play(); 
-        }, 2000);//this delays the stair counter dissapearing to let you see it zoom up to 89
+        }, 2000);
+        //this is the original one:
+        //progressButton.removeEventListener('mousedown', onProgressButtonMouseDown, false);
+        //going to see if this works when I click on it: 
+        //progressButton.removeEventListener('mousedown', onProgressButtonMouseUp, false);
+        //window.top.removeEventListener('mouseup', onProgressButtonMouseUp, false);
+        //THIS MIGHT HAVE TO STOP OR THIS IS WHAT ISN'T WORKING
+        //WE WOULD PUT THE VIDEO THAT WORKS HERE (the last one)
+        popcorn.play();
         video.classList.remove('paused');
       });
+
+      // popcorn.cue(SKIP_NOTICE_TIME, function() {
+      //   //document.querySelector('#skip-notice').classList.remove('hidden');
+      //   window.top.addEventListener('keydown', function onSkipNoticeKeyDown (e) {
+      //     if (e.which === 32) {
+      //       skipping = true;
+      //       document.querySelector('#skip-notice').classList.add('hidden');
+      //       progressExplanation.classList.add('hidden');
+      //       video.currentTime = INTERACTION_END_TIME;
+      //       video.play();
+      //       window.top.removeEventListener('keydown', onSkipNoticeKeyDown, false);
+      //     }
+      //   }, false);
+      // });
 
       stepData.forEach(function (step) {
         // Attempt to force a float for time, wrt 24 fps.
@@ -323,6 +343,15 @@
         }
       }
 
+
+      function tryAnotherFloorAudio () {
+        setTimeout(function () {
+          if (!playing) {
+            floorAudioController.playFloorAudio(tryAnotherFloorAudio);
+          }
+        }, FLOOR_SOUND_SEQUENCE_DELAY + Math.round(Math.random()*FLOOR_SOUND_SEQUENCE_DELAY_VARIANCE));
+      }
+
       function attemptToPauseVideo (e) {
         e.preventDefault();
         if (keyUpTimeout === -1 && !skipping) {
@@ -333,42 +362,37 @@
               video.pause();
               keyUpTimeout = -1;
               backgroundAudioController.fadeIn();
-
-              function tryAnotherFloorAudio () {
-                setTimeout(function () {
-                  if (!playing) {
-                    floorAudioController.playFloorAudio(tryAnotherFloorAudio);
-                  }
-                }, FLOOR_SOUND_SEQUENCE_DELAY + Math.round(Math.random()*FLOOR_SOUND_SEQUENCE_DELAY_VARIANCE));
-              }
-
               floorAudioController.playFloorAudio(tryAnotherFloorAudio);
             }
           }, FADE_TRANSITION_DURATION);
         }
+
       }
 
   
        //This will allow the user to go to the end. 
       function onSkipButton() {
             //this is what will happen when you click the skip button
-        console.log("the button should skip to the last frame"); 
+        console.log("the button should skip to the last frame: "+INTERACTION_END_TIME); 
         skipNotice.classList.add('hidden');
        // popcorn.floor = floorData[4]
         skipping = true; 
-        popcorn.play(INTERACTION_END_TIME);
+        console.log(popcorn);
+       //WTMFF = WHAT THE MOTHER FUCKING FUCK??!!!
+        popcorn.currentTime(INTERACTION_END_TIME).play();
       }
       //her i grab the button 
       document.getElementById('skip-notice').addEventListener('click', onSkipButton, false); 
       
       function onProgressButtonMouseUp (e) {
+        skipping = false;
         progressButton.style.backgroundColor = "rgba(255, 255, 255, 0.8)"; 
         progressButton.style.color = "rgba(0, 0, 0, 0.8)"; 
         attemptToPauseVideo(e);
       }
 
       function onProgressButtonMouseDown (e) {
- 
+        skipping = false;
         progressButton.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; 
         progressButton.style.color = "rgba(255, 255, 255, 0.8)"; 
         attemptToPlayVideo(e);
