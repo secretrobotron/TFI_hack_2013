@@ -140,8 +140,8 @@
             var a = document.createElement('audio');
             var s1 = document.createElement('source');
             var s2 = document.createElement('source');
-            s1.src = '../../assets/2/sound/2.' + (floorIndex + 1) + letter + '.mp3';
-            s2.src = '../../assets/2/sound/2.' + (floorIndex + 1) + letter + '.oga';
+            s1.src = 'https://s3-us-west-2.amazonaws.com/89steps/assets/2_stairs/sound/2.' + (floorIndex + 1) + letter + '.mp3';
+            s2.src = 'https://s3-us-west-2.amazonaws.com/89steps/assets/2_stairs/sound/2.' + (floorIndex + 1) + letter + '.oga';
             s1.type = 'audio/mp3';
             s2.type = 'audio/ogg';
             a.appendChild(s1);
@@ -157,8 +157,8 @@
      <!--  <source src="../../assets/2/sound/2.0backgroundloop.mp3" type="audio/mp3"></source> -->
     </audio>
     <video id="stairs_video"class="fadeable" width="320" height="240" preload="auto">
-      <source src="../../assets/2/video/Stairs05.15.2013_720.mp4" type="video/mp4"></source>
-      <source src="../../assets/2/video/Stairs05.15.2013_720.webmhd.webm" type="video/webm"></source>
+      <source src="https://s3-us-west-2.amazonaws.com/89steps/assets/2_stairs/video/Stairs05.15.2013_720.mp4" type="video/mp4"></source>
+      <source src="https://s3-us-west-2.amazonaws.com/89steps/assets/2_stairs/video/Stairs05.15.2013_720.webmhd.webm" type="video/webm"></source>
     </video>
     <div id="floor-counter" class="hidden fadeable"><sup>Floor</sup><span>1</span>/6</div>
     <div id="stair-counter" class="hidden fadeable"><sup>Step</sup><span>0</span>/89</div>

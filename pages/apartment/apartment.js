@@ -100,6 +100,7 @@
     var leftButton = document.querySelector('#left-button');
     var rightButton = document.querySelector('#right-button');
     var continueMessage = document.querySelector('#continue-message');
+    var lookAround = document.querySelector('#look-around'); 
 
     var startVideo = document.querySelector('video[data-video="start"]');
     var backgroundVideo = document.querySelector('video[data-video="background"]');
@@ -110,6 +111,8 @@
     var centerVideos = [backgroundVideo, kitchenVideo, startVideo];
     var videos = centerVideos.concat(rightVideos).concat(leftVideos);
     var audio = Array.prototype.slice.call(document.querySelectorAll('audio'));
+
+    var PATH = "http://89steps.s3.amazonaws.com/assets/4_apt/"; 
 
     var videoContainerIndex = 0;
 
@@ -180,10 +183,12 @@
 
       if (videoContainerIndex === 1) {
         leftButton.classList.add('hidden');
+        lookAround.classList.add('hidden'); 
         leftButton.removeEventListener('click', onLeftButtonClick, false);
       }
       else if (videoContainerIndex === 0) {
         rightButton.classList.remove('hidden');
+        lookAround.classList.remove('hidden'); 
         rightButton.addEventListener('click', onRightButtonClick, false);        
       }
     }
@@ -195,10 +200,12 @@
 
       if (videoContainerIndex === -1) {
         rightButton.classList.add('hidden');
+        lookAround.classList.add('hidden'); 
         rightButton.removeEventListener('click', onRightButtonClick, false);
       }
       else if (videoContainerIndex === 0) {
         leftButton.classList.remove('hidden');
+        lookAround.classList.remove('hidden'); 
         leftButton.addEventListener('click', onLeftButtonClick, false);        
       }
     }
@@ -275,6 +282,7 @@
           rightButton.addEventListener('click', onRightButtonClick, false);
         }, BUTTON_SHOW_DELAY);
 
+        //If background video has ended, then take me to the next scene. 
         backgroundVideo.addEventListener('ended', function (e) {
           if (window.parent && window.parent.next) {
             window.parent.next();

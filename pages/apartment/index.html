@@ -40,10 +40,11 @@
         width: 50px;
         height: 70px;
         line-height: 68px;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(255, 255, 255, 0.8);
+        color: 0;
         text-align: center;
         text-decoration: none;
-        color: #fff;
+        /*color: #fff;*/
         border: 1px solid rgba(255, 255, 255, 0.2);
         background-clip: padding-box;
         font-size: 14px;
@@ -121,64 +122,66 @@
     <script src="../../javascripts/vendor/popcorn.min.js"></script>
     <script src="../../javascripts/custom/components/loader.js"></script>
     <script src="apartment.js"></script>
+
   </head>
   <body>
     <div id="video-container">
       <div class="video-sub-container center">
         <video preload="auto" data-video="start">
-         <!--  <source src="../../assets/4/video/4.0a_MainVideo.mp4.mp4" type="video/mp4"></source> -->
-          <source src="../../assets/4/video/4.0a_MainVideo.webmhd.webm" type="video/webm"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.0a_MainVideo.mp4" type="video/mp4"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.0a_MainVideo.webmhd.webm" type="video/webm"></source>
         </video>
         <video preload="auto" data-video="background">
-          <source src="../../assets/4/video/4.0b_Video.mp4.mp4" type="video/mp4"></source>
-          <source src="../../assets/4/video/4.0b_Video.webmhd.webm" type="video/webm"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.0b_Video.mp4.mp4" type="video/mp4"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.0b_Video.webmhd.webm" type="video/webm"></source>
         </video>
         <video preload="auto" data-video="kitchen" hidden loop="true">
-          <source src="../../assets/4/video/4.1_cooking_crop.mp4" type="video/mp4"></source>
-          <source src="../../assets/4/video/4.1_cooking_crop.webmhd.webm" type="video/webm"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.1_cooking_crop.mp4" type="video/mp4"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.1_cooking_crop.webmhd.webm" type="video/webm"></source>
         </video>
       </div>
       <div class="video-sub-container right">
         <video preload="auto" data-video="right" hidden loop="true">
-          <source src="../../assets/4/video/4.2a.mp4.mp4" type="video/mp4"></source>
-          <source src="../../assets/4/video/4.2a.webmhd.webm" type="video/webm"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.2a.mp4.mp4" type="video/mp4"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.2a.webmhd.webm" type="video/webm"></source>
         </video>
         <video preload="auto" data-video="right" hidden loop="true">
-          <source src="../../assets/4/video/4.2b.mp4.mp4" type="video/mp4"></source>
-          <source src="../../assets/4/video/4.2b.webmhd.webm" type="video/webm"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.2b.mp4.mp4" type="video/mp4"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.2b.webmhd.webm" type="video/webm"></source>
         </video>
         <video preload="auto" data-video="right" hidden loop="true">
-          <source src="../../assets/4/video/4.2c.mp4.mp4" type="video/mp4"></source>
-          <source src="../../assets/4/video/4.2c.webmhd.webm" type="video/webm"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.2c.mp4.mp4" type="video/mp4"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.2c.webmhd.webm" type="video/webm"></source>
         </video>
       </div>
       <div class="video-sub-container left">
         <video preload="auto" data-video="left" hidden loop="true">
-          <source src="../../assets/4/video/4.3a.mp4.mp4" type="video/mp4"></source>
-          <source src="../../assets/4/video/4.3a.webmhd.webm" type="video/webm"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.3a.mp4.mp4" type="video/mp4"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.3a.webmhd.webm" type="video/webm"></source>
         </video>
         <video preload="auto" data-video="left" hidden loop="true">
-          <source src="../../assets/4/video/4.3b.mp4.mp4" type="video/mp4"></source>
-          <source src="../../assets/4/video/4.3b.webmhd.webm" type="video/webm"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.3b.mp4.mp4" type="video/mp4"></source>
+          <source src="http://89steps.s3.amazonaws.com/assets/4_apt/video/4.3b.webmhd.webm" type="video/webm"></source>
         </video>
       </div>
       <audio preload="auto">
-        <source src="../../assets/4/sound/4_feeding_pigeons.mp3.mp3" type="audio/mp3"></source>
-        <source src="../../assets/4/sound/4_feeding_pigeons.oggvorbis.ogg" type="audio/ogg"></source>
+        <source src= "http://89steps.s3.amazonaws.com/assets/4_apt/sound/4_feeding_pigeons.mp3.mp3" type="audio/mp3" ></source>
+        <source src="http://89steps.s3.amazonaws.com/assets/4_apt/sound/4_feeding_pigeons.oggvorbis.ogg" type="audio/ogg"></source>
       </audio>
       <audio preload="auto">
-        <source src="../../assets/4/sound/4_Flourescent_Light_Drip.mp3.mp3" type="audio/mp3"></source>
-        <source src="../../assets/4/sound/4_Flourescent_Light_Drip.oggvorbis.ogg" type="audio/ogg"></source>
+        <source src="http://89steps.s3.amazonaws.com/assets/4_apt/sound/4_Flourescent_Light_Drip.mp3.mp3" type="audio/mp3"></source>
+        <source src="http://89steps.s3.amazonaws.com/assets/4_apt/sound/4_Flourescent_Light_Drip.oggvorbis.ogg" type="audio/ogg"></source>
       </audio>
       <audio preload="auto">
-        <source src="../../assets/4/sound/4_turn_off_tap.mp3.mp3" type="audio/mp3"></source>
-        <source src="../../assets/4/sound/4_turn_off_tap.oggvorbis.ogg" type="audio/ogg"></source>
+        <source src="http://89steps.s3.amazonaws.com/assets/4_apt/sound/4_turn_off_tap.mp3.mp3" type="audio/mp3"></source>
+        <source src="http://89steps.s3.amazonaws.com/assets/4_apt/sound/4_turn_off_tap.oggvorbis.ogg" type="audio/ogg"></source>
       </audio>
       <audio preload="auto">
-        <source src="../../assets/4/sound/4.1_soup.mp3.mp3" type="audio/mp3"></source>
-        <source src="../../assets/4/sound/4.1_soup.oggvorbis.ogg" type="audio/ogg"></source>
+        <source src="http://89steps.s3.amazonaws.com/assets/4_apt/sound/4.1_soup.mp3.mp3" type="audio/mp3"></source>
+        <source src="http://89steps.s3.amazonaws.com/assets/4_apt/sound/4.1_soup.oggvorbis.ogg" type="audio/ogg"></source>
       </audio>
     </div>
+    <div id="look-around" class= "hidden fadeable">Look Around</div>
     <div id="right-button" class="hidden fadeable">&rarr;</div>
     <div id="left-button" class="hidden fadeable">&larr;</div>
     <div id="continue-message" class="hidden fadeable">Continue</div>
