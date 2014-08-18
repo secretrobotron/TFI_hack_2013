@@ -310,7 +310,7 @@ var Pages = function () {
         }
       ]
     },
-    ///
+    ///CHAPTER 4//
     { 
       url: "pages/4.html", title: "The Apartment", 
       frames: [
@@ -320,6 +320,7 @@ var Pages = function () {
       ]
     },
 
+    //CHAPTER 5// 
     { 
       url: "pages/5.html", title: "The Website", 
       transition: 'vertical',

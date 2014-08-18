@@ -16,9 +16,8 @@
 
   //here is where I change where the interaction stops and the video can just play 
   var INTERACTION_END_TIME = 105 + (0 / VIDEO_FPS);
-  //I think this may be it 
- 
 
+  var VIDEO_END_TIME = 118 + (0 / VIDEO_FPS);   //the video is 2:00 min- 120 seconds. 
 
   var SKIP_NOTICE_TIME = 10;
 
@@ -292,33 +291,19 @@
         setTimeout(function () {
           stairCounter.classList.add('hidden');
           floorCounter.classList.add('hidden');
+          skipNotice.classList.add('hidden'); 
           //THE VIDEO SHOULD PLAY HERE 
-          //video.play(); 
+          video.play(); 
         }, 2000);
-        //this is the original one:
-        //progressButton.removeEventListener('mousedown', onProgressButtonMouseDown, false);
-        //going to see if this works when I click on it: 
-        //progressButton.removeEventListener('mousedown', onProgressButtonMouseUp, false);
-        //window.top.removeEventListener('mouseup', onProgressButtonMouseUp, false);
-        //THIS MIGHT HAVE TO STOP OR THIS IS WHAT ISN'T WORKING
-        //WE WOULD PUT THE VIDEO THAT WORKS HERE (the last one)
         popcorn.play();
         video.classList.remove('paused');
-      });
+          //jump to the next chapter. 
+          popcorn.cue(VIDEO_END_TIME, function() {
+          console.log("it should go to the apartment scene now");
+           //changePage("next"); 
+      }); 
+  });
 
-      // popcorn.cue(SKIP_NOTICE_TIME, function() {
-      //   //document.querySelector('#skip-notice').classList.remove('hidden');
-      //   window.top.addEventListener('keydown', function onSkipNoticeKeyDown (e) {
-      //     if (e.which === 32) {
-      //       skipping = true;
-      //       document.querySelector('#skip-notice').classList.add('hidden');
-      //       progressExplanation.classList.add('hidden');
-      //       video.currentTime = INTERACTION_END_TIME;
-      //       video.play();
-      //       window.top.removeEventListener('keydown', onSkipNoticeKeyDown, false);
-      //     }
-      //   }, false);
-      // });
 
       stepData.forEach(function (step) {
         // Attempt to force a float for time, wrt 24 fps.

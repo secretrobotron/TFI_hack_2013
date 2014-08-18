@@ -10,7 +10,7 @@
 
 
             body, #modal{
-                background-image: url('../assets/shared/loader.gif');
+                background-image: url('https://s3-us-west-2.amazonaws.com/89steps/assets/shared/loader.gif');
                 background-repeat: no-repeat;
                 background-position: center;
                 background-color: #000;}
@@ -114,7 +114,7 @@
         .texture{
             position: absolute;
             pointer-events: none;
-            background-image: url('../assets/shared/colornoise.png');
+            background-image: url('https://s3-us-west-2.amazonaws.com/89steps/assets/shared/colornoise.png');
             // @include breakpoint(hidpi) { background-size: 125px 113px; }
             top:-400px;
             left:-400px;
