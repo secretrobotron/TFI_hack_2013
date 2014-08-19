@@ -17,7 +17,7 @@
   //here is where I change where the interaction stops and the video can just play 
   var INTERACTION_END_TIME = 105 + (0 / VIDEO_FPS);
 
-  var VIDEO_END_TIME = 118 + (0 / VIDEO_FPS);   //the video is 2:00 min- 120 seconds. 
+  var VIDEO_END_TIME = 120 + (0 / VIDEO_FPS);   //the video is 2:00 min- 120 seconds. 
 
   var SKIP_NOTICE_TIME = 10;
 
@@ -297,10 +297,15 @@
         }, 2000);
         popcorn.play();
         video.classList.remove('paused');
-          //jump to the next chapter. 
+          //jump to the next chapter, when video ends 
           popcorn.cue(VIDEO_END_TIME, function() {
           console.log("it should go to the apartment scene now");
-           //changePage("next"); 
+          console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
+          // getCurrentFrameURL("pages/5.html"); 
+          frameview.removeClass('loaded').load(getCurrentFrameUrl("pages/4/1.html"),
+          //xgetCurrenFrameURL("pages/4/1.html"); 
+          //go to apartment/index.html
+          //MAYBE i SHOULD MAKE A NEW POPCORN.JS ELEMENT AND HAVE IT START PLAYING THAT?
       }); 
   });
 

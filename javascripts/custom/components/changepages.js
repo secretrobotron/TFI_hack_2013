@@ -262,6 +262,8 @@ function next() {
         changeFrame('next'); 
      }
 
+     //special case for the end of the stairs scene?
+
     } 
     else if(_pageIndex < _pages.pageCount()-1){ 
       changePage('next'); 
