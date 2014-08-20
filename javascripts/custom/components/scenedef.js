@@ -150,7 +150,13 @@ var Pages = function () {
               //this will change 
               narration: [
               {
+                  onload: function() {
+                  console.log("hide arrows"); 
+                  hideNavNext(); 
+                  hideNavPrev(); 
+                }, 
                 urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.5b_narrative.mp3'],
+
                 loop: false,
                 buffer:true,
                 autoplay: false,
@@ -376,6 +382,9 @@ var Pages = function () {
             }
           ]
         },
+
+
+
         { 
           url: "pages/1/9.html", 
           sound: {
@@ -574,11 +583,6 @@ var Pages = function () {
 
   }
 
-
-  //try to set this: 
-  // this.setFrameURL = function (url) {
-  //   return _pages.getFrame(_pageIndex, _frameIndex).url; 
-  // }
 
 
 

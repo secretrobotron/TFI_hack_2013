@@ -299,13 +299,13 @@
          });
 
         //wehn video ends 
-        popcorn.cue(VIDEO_END_TIME, function() {
-        console.log("it should go to the apartment scene now");
-        //changePage("apt", 0);  
+        popcorn.cue(VIDEO_END_TIME, function(e) {
+        //console.log("it should go to the apartment scene now");
         //take me to the next page (apt) 
-         if (window.parent && window.parent.next) {
-            window.parent.next();
-          }
+            window.parent.next()
+            hideNavNext(); 
+            hideNavPrev(); 
+          
       }); 
 
 

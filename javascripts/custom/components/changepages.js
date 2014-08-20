@@ -252,16 +252,6 @@ function next() {
 
   console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
 
-
-  if (_frameIndex == 0 && _pageIndex == 1) {
-      console.log("went into special case now"); 
-      // var pageIndex = 2, 
-      // var frameIndex = 0, 
-      // _pageIndex = pageIndex, 
-      // _frameIndex = frameIndex, 
-      changePage(("next" + 1), 0); 
-    }
-
 //special case for the intro to unhide the loaded animated gif
     if( _frameIndex == 0 && _pageIndex == 0 ){
       console.log("went into first special case"); 
