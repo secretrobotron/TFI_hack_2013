@@ -122,7 +122,8 @@ var Pages = function () {
                 fadein:800
               },
               //this will change 
-              narration: {
+              narration: [
+              {
                 urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.5_narrative.mp3'],
                 loop: false,
                 buffer:true,
@@ -133,9 +134,9 @@ var Pages = function () {
                   _timer.checkTimer(); 
                 }
               }
+              ]
             },
-            //subframe 2
-            { 
+            { //subframe 2
               url: "pages/1/5b.html", 
               visited:false,
               isDefault: true,
@@ -147,7 +148,8 @@ var Pages = function () {
                 fadein:800
               },
               //this will change 
-              narration: {
+              narration: [
+              {
                 urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.5b_narrative.mp3'],
                 loop: false,
                 buffer:true,
@@ -160,10 +162,10 @@ var Pages = function () {
 
                 }
               }
-              
-            }
-          ]
-        },
+            ] //end of narration objects      
+          } //end subframe 2 
+        ] //end subframe object 
+      }, //end of 1.5 
 
         //subframe object template 
         // {
@@ -174,6 +176,8 @@ var Pages = function () {
         //   ]
         // },
 
+        {
+          subframes: [
         { 
           url: "pages/1/6.html", 
           sound: {
@@ -185,8 +189,52 @@ var Pages = function () {
             onend: function() {
                 _timer.checkTimer(); 
               }
-          },
-        },
+          },       
+        }, //end subframe 1 
+  
+        {  // start subframe 2 
+          url: "pages/1/6.html", 
+          sound: {
+            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6_background.oga'],
+            loop: true,
+            buffer:true,
+            autoplay: false,
+            fadein:800, 
+
+          }, 
+          narration:  [
+          {
+            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6b_narrative.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6b_narrative_a.oga'],
+              played: false, 
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:0,
+              delay: 3000
+          }
+        ] //end of the narration object 
+       } //end subframe 2 
+      ] //end subframe object 
+    }, //end 1.6 
+
+
+
+
+      // narration: [
+      //     {
+      //         urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6b_narrative.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6b_narrative_a.oga'],
+      //         played: false, 
+      //         loop: false,
+      //         buffer:true,
+      //         autoplay: false,
+      //         fadein:0,
+      //         delay: 3000
+      //     }, 
+      //   ]
+
+
+
+
 
         //frame 7 (talking to woman scene)
         { 
@@ -243,7 +291,67 @@ var Pages = function () {
               }
             }
           ]
-        },
+        }, //end of 1.7 
+
+
+//start of 1.8 
+
+  {
+          subframes: [
+            
+            { // start subframe 1 
+            url: "pages/1/8.html", 
+            sound: {
+            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8_background.oga'],
+            loop: true,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+            }, 
+            narration: [
+            {
+              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8_narrative.mp3'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:0,
+              delay: 3000, 
+               onend: function() {
+                //only start the timer after she has finished speaking. 
+                _timer.checkTimer(); 
+              }
+            }
+          ] // end of narration object
+        }, //end of subframe 1 
+        //subframe 2 
+            { // start subframe 1 
+            url: "pages/1/8.html", 
+            sound: {
+            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8_background.oga'],
+            loop: true,
+            buffer:true,
+            autoplay: false,
+            fadein:800
+            }, 
+            narration: [
+            {
+              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8b_narrative.mp3'],
+              loop: false,
+              buffer:true,
+              autoplay: false,
+              fadein:0,
+              delay: 3000, 
+               onend: function() {
+                //only start the timer after she has finished speaking. 
+                _timer.checkTimer(); 
+              }
+            }
+          ] // end of narration object
+        }, //end of subframe 1 
+    ] // end of subframes 
+  },  //end of 1.8
+
+
         { 
           url: "pages/1/8.html", 
           sound: {

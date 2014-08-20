@@ -301,9 +301,12 @@
         //wehn video ends 
         popcorn.cue(VIDEO_END_TIME, function() {
         console.log("it should go to the apartment scene now");
-        changePage("apt", 0);  
-        //next();
-        }); 
+        //changePage("apt", 0);  
+        //take me to the next page (apt) 
+         if (window.parent && window.parent.next) {
+            window.parent.next();
+          }
+      }); 
 
 
       stepData.forEach(function (step) {
