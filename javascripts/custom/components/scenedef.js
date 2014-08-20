@@ -1,5 +1,3 @@
-
-
 var Pages = function () {
   var pageinfo = [
     { 
@@ -306,10 +304,21 @@ var Pages = function () {
       url: "pages/2.html", title: "The Stairs", 
       frames: [
         { 
-          url: "pages/2/1.html"
+          url: "pages/2/1.html" //this doesn't exist 
         }
       ]
     },
+    // //starts evan hack
+    // { 
+    //   url: "pages/apartment/index.html", title: "The Stairs", 
+    //   frames: [
+    //     { 
+    //       url: "pages/apartment/index.html" //this doesn't exist 
+    //     }
+    //   ]
+    // },
+    // //end evan hack
+
     ///CHAPTER 4//
     { 
       url: "pages/4.html", title: "The Apartment", 
@@ -457,6 +466,14 @@ var Pages = function () {
 
   }
 
+
+  //try to set this: 
+  // this.setFrameURL = function (url) {
+  //   return _pages.getFrame(_pageIndex, _frameIndex).url; 
+  // }
+
+
+
   this.getFrameCount = function (page) {
     return pageinfo[page].frames.length;
   };
@@ -475,4 +492,3 @@ function getCurrentFrameUrl() {
       return _pages.getFrames(_pageIndex)[_frameIndex].url; 
   }
 }
-

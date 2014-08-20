@@ -187,7 +187,7 @@ if (trans) {
   //we have to stop the timer aevery time we change frames. 
   _timer.stopTimer(); 
 
-  console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
+  //console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
 
   //make sure delayed audio does not play after frame change;
   clearDelayedAudio();
@@ -221,10 +221,14 @@ if (trans) {
 function changePage(value, frame) {
     var pagect = _pages.pageCount();
 
+    //console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
+
+
     if (value==="next") { if (_pageIndex < pagect-1) _pageIndex++; }
     else if (value==="prev") { if (_pageIndex > 0) _pageIndex--; } 
     else if (value==="first") { _pageIndex = 0; } 
     else if (value==="last"){ _pageIndex = pagect - 1; } 
+    else if (value==="apt") {_pageIndex = 2}
     else { _pageIndex = Math.max(0, Math.min(pagect - 1, parseInt(value))); }
 
     pageview.fadeOut('fast', function() { 
@@ -246,11 +250,26 @@ function changePage(value, frame) {
 
 function next() { 
 
+  console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
+
+
+  if (_frameIndex == 0 && _pageIndex == 1) {
+      console.log("went into special case now"); 
+      // var pageIndex = 2, 
+      // var frameIndex = 0, 
+      // _pageIndex = pageIndex, 
+      // _frameIndex = frameIndex, 
+      changePage(("next" + 1), 0); 
+    }
+
 //special case for the intro to unhide the loaded animated gif
-    if( _frameIndex ===0 && _pageIndex === 0 ){
+    if( _frameIndex == 0 && _pageIndex == 0 ){
+      console.log("went into first special case"); 
       $("#intro_title").addClass("hidden");
       $("#intro_gif").removeClass("hidden");
     }
+
+
 
     if (_frameIndex < _pages.getFrameCount(_pageIndex)-1) { 
 

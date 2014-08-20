@@ -130,6 +130,7 @@
             function clearDelayedAudio(){
               if(currentDelay)
                 clearTimeout(currentDelay); 
+                console.log("just cleared the delay"); 
               hasDelay = false;
             }
 
@@ -169,17 +170,19 @@
               //  // currentFrameNarration.fadeOut(0,400);
               // }
 
+              //the subgrame narration is not entering this loop, so we can't hear it with a delay. 
               if (!info) return; 
 
               // find first non played clip
               if (Array.isArray(info)) {
                 for (var i=0; i< info.length; i++) {
                   var si = info[i]; 
-                  if (si.played) continue;
-                  //if you didn't do 
+                  if (si.played) continue; //if you already played it, go to the next iteration of the loop 
+                  //if you didn't do it, make it true. 
                   si.played = true;
                   currentFrameNarration = new Howl(si);
                   if (si.delay) {
+                    //it is not adding subframe narrations here 
                     console.log('delayed audio to be played: ', si.delay, si.urls[0]);
                     delayAudio(currentFrameNarration, si);
                   }
@@ -193,6 +196,7 @@
                 info.played = true;
                 currentFrameNarration = new Howl(info);
                 currentFrameNarration.fadeIn(1, info.fadein || 0); 
+                console.log("narration fading in"); 
               }
             }
 

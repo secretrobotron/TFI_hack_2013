@@ -2,9 +2,7 @@
 
   window.top.hideNav();
 
-  console.log("stairs.js is loaded"); 
   var FADE_TRANSITION_DURATION = 1000;
-
   var FLOOR_SOUND_DELAY = 500;
   var FLOOR_SOUND_SEQUENCE_DELAY = 1500;
   var FLOOR_SOUND_SEQUENCE_DELAY_VARIANCE = 3000;
@@ -17,7 +15,7 @@
   //here is where I change where the interaction stops and the video can just play 
   var INTERACTION_END_TIME = 105 + (0 / VIDEO_FPS);
 
-  var VIDEO_END_TIME = 120 + (0 / VIDEO_FPS);   //the video is 2:00 min- 120 seconds. 
+  var VIDEO_END_TIME = 119 + (0 / VIDEO_FPS);   //the video is 2:00 min- 120 seconds. 
 
   var SKIP_NOTICE_TIME = 10;
 
@@ -287,27 +285,25 @@
       // stop stairway interaction 
       //(AFTER EVERYTHING INSIDE OF THE STAIRS IS DONE AND YOU ARE WATCHING THE LAST VIDEO)
       popcorn.cue(INTERACTION_END_TIME, function () {
-        progressButton.classList.add('hidden');
-        setTimeout(function () {
-          stairCounter.classList.add('hidden');
-          floorCounter.classList.add('hidden');
-          skipNotice.classList.add('hidden'); 
-          //THE VIDEO SHOULD PLAY HERE 
-          video.play(); 
-        }, 2000);
+      progressButton.classList.add('hidden');
+          setTimeout(function () {
+            stairCounter.classList.add('hidden');
+            floorCounter.classList.add('hidden');
+            skipNotice.classList.add('hidden'); 
+            //THE VIDEO SHOULD PLAY HERE 
+            video.play(); 
+          }, 2000);
+        
         popcorn.play();
         video.classList.remove('paused');
-          //jump to the next chapter, when video ends 
-          popcorn.cue(VIDEO_END_TIME, function() {
-          console.log("it should go to the apartment scene now");
-          console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
-          // getCurrentFrameURL("pages/5.html"); 
-          frameview.removeClass('loaded').load(getCurrentFrameUrl("pages/4/1.html"),
-          //xgetCurrenFrameURL("pages/4/1.html"); 
-          //go to apartment/index.html
-          //MAYBE i SHOULD MAKE A NEW POPCORN.JS ELEMENT AND HAVE IT START PLAYING THAT?
-      }); 
-  });
+         });
+
+        //wehn video ends 
+        popcorn.cue(VIDEO_END_TIME, function() {
+        console.log("it should go to the apartment scene now");
+        changePage("apt", 0);  
+        //next();
+        }); 
 
 
       stepData.forEach(function (step) {
@@ -376,15 +372,15 @@
       
       function onProgressButtonMouseUp (e) {
         skipping = false;
-        progressButton.style.backgroundColor = "rgba(255, 255, 255, 0.8)"; 
-        progressButton.style.color = "rgba(0, 0, 0, 0.8)"; 
+        progressButton.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+        progressButton.style.color = "rgba(0, 0, 0, 0.8)";
         attemptToPauseVideo(e);
       }
 
       function onProgressButtonMouseDown (e) {
         skipping = false;
-        progressButton.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; 
-        progressButton.style.color = "rgba(255, 255, 255, 0.8)"; 
+        progressButton.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+        progressButton.style.color = "rgba(255, 255, 255, 0.8)";
         attemptToPlayVideo(e);
    
       }
