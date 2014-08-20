@@ -6,7 +6,7 @@ var Pages = function () {
 //      transition: 'fade', // 'horizontal', 'vertical'
       transition: 'fade',
       sound: { // 'background'
-        urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.0_entire_scene_background.mp3'],
+        urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.0_entire_scene_background.mp3'],
         loop: true,
         buffer:true,
         autoplay: false,
@@ -22,7 +22,7 @@ var Pages = function () {
         { 
           url: "pages/1/1.html",
           sound: {
-            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.1_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.1_background.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.1_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.1_background.oga'],
             loop: true,
             buffer:true,
             autoplay: false,
@@ -39,7 +39,7 @@ var Pages = function () {
         { 
           url: "pages/1/2.html", 
           sound: {
-            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.2_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.2_background.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.2_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.2_background.oga'],
             loop: true,
             buffer:true,
             autoplay: false,
@@ -47,7 +47,7 @@ var Pages = function () {
           },
           narration: [   
           {
-              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.2_narrative.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.2_narrative.oga'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.2_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.2_narrative.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -62,7 +62,7 @@ var Pages = function () {
         { 
           url: "pages/1/3.html", 
           sound: {
-            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.3_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.3_background.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.3_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.3_background.oga'],
             loop: true,
             buffer:true,
             autoplay: false,
@@ -70,7 +70,7 @@ var Pages = function () {
           },
           narration: [
             {
-              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.3_narrative.mp3'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.3_narrative.mp3'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -85,7 +85,7 @@ var Pages = function () {
         { 
           url: "pages/1/4.html", 
           sound: {
-            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.4_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.4_background.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.4_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.4_background.oga'],
             loop: true,
             buffer:true,
             autoplay: false,
@@ -93,7 +93,7 @@ var Pages = function () {
           },
           narration: [
               {
-              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.4_narrative.mp3'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.4_narrative.mp3'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -115,7 +115,7 @@ var Pages = function () {
               visited:false,
               isDefault: false, 
               sound: {
-                urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.5_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.5_background.oga'],
+                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.5_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.5_background.oga'],
                 loop: true,
                 buffer:true,
                 autoplay: false,
@@ -124,7 +124,7 @@ var Pages = function () {
               //this will change 
               narration: [
               {
-                urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.5_narrative.mp3'],
+                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.5_narrative.mp3'],
                 loop: false,
                 buffer:true,
                 autoplay: false,
@@ -141,7 +141,7 @@ var Pages = function () {
               visited:false,
               isDefault: true,
               sound: {
-                urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.5_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.5_background.oga'],
+                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.5_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.5_background.oga'],
                 loop: true,
                 buffer:true,
                 autoplay: false,
@@ -155,7 +155,7 @@ var Pages = function () {
                   hideNavNext(); 
                   hideNavPrev(); 
                 }, 
-                urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.5b_narrative.mp3'],
+                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.5b_narrative.mp3'],
 
                 loop: false,
                 buffer:true,
@@ -187,7 +187,7 @@ var Pages = function () {
         { 
           url: "pages/1/6.html", 
           sound: {
-            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6_background.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6_background.oga'],
             loop: true,
             buffer:true,
             autoplay: false,
@@ -201,7 +201,7 @@ var Pages = function () {
         {  // start subframe 2 
           url: "pages/1/6.html", 
           sound: {
-            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6_background.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6_background.oga'],
             loop: true,
             buffer:true,
             autoplay: false,
@@ -210,7 +210,7 @@ var Pages = function () {
           }, 
           narration:  [
           {
-            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6b_narrative.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6b_narrative_a.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative_a.oga'],
               played: false, 
               loop: false,
               buffer:true,
@@ -228,7 +228,7 @@ var Pages = function () {
 
       // narration: [
       //     {
-      //         urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6b_narrative.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.6b_narrative_a.oga'],
+      //         urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative_a.oga'],
       //         played: false, 
       //         loop: false,
       //         buffer:true,
@@ -246,7 +246,7 @@ var Pages = function () {
         { 
           url: "pages/1/7.html", 
           sound: {
-            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.7_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.7_background_aif.mp3'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7_background_aif.mp3'],
             loop: true,
             buffer:true,
             autoplay: false,
@@ -255,7 +255,7 @@ var Pages = function () {
           },
           narration: [
             {
-              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.7A_narrative.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.7A_narrative_a.oga'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7A_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7A_narrative_a.oga'],
               played: false, 
               loop: false,
               buffer:true,
@@ -264,7 +264,7 @@ var Pages = function () {
               delay: 3000
             },
                   {
-              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.7B_narrative.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.7B_narrative_a.oga'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7B_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7B_narrative_a.oga'],
               played: false, 
               loop: false,
               buffer:true,
@@ -273,7 +273,7 @@ var Pages = function () {
               // delay: 3000
             },
                   {
-              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.7C_narrative.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.7C_narrative_a.oga'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7C_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7C_narrative_a.oga'],
               played: false, 
               loop: false,
               buffer:true,
@@ -282,7 +282,7 @@ var Pages = function () {
               // delay: 3000
             },
             {
-              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.7D_narrative.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.7D_narrative_b.oga'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7D_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7D_narrative_b.oga'],
               played: false, 
               loop: false,
               buffer:true,
@@ -308,7 +308,7 @@ var Pages = function () {
             { // start subframe 1 
             url: "pages/1/8.html", 
             sound: {
-            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8_background.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.oga'],
             loop: true,
             buffer:true,
             autoplay: false,
@@ -316,7 +316,7 @@ var Pages = function () {
             }, 
             narration: [
             {
-              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8_narrative.mp3'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_narrative.mp3'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -333,7 +333,7 @@ var Pages = function () {
             { // start subframe 1 
             url: "pages/1/8.html", 
             sound: {
-            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8_background.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.oga'],
             loop: true,
             buffer:true,
             autoplay: false,
@@ -341,7 +341,7 @@ var Pages = function () {
             }, 
             narration: [
             {
-              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8b_narrative.mp3'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8b_narrative.mp3'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -361,7 +361,7 @@ var Pages = function () {
         { 
           url: "pages/1/8.html", 
           sound: {
-            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8_background.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.oga'],
             loop: true,
             buffer:true,
             autoplay: false,
@@ -369,7 +369,7 @@ var Pages = function () {
           },
            narration: [
             {
-              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.8_narrative.mp3'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_narrative.mp3'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -388,7 +388,7 @@ var Pages = function () {
         { 
           url: "pages/1/9.html", 
           sound: {
-            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.9_background.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.9_background.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.9_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.9_background.oga'],
             loop: true,
             buffer:true,
             autoplay: false,
@@ -400,7 +400,7 @@ var Pages = function () {
                 hideNavNext(); 
                 console.log("the right arrow is removed"); 
               }, 
-              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.9_narrative.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.9_narrative.oga'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.9_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.9_narrative.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -447,25 +447,22 @@ var Pages = function () {
     },
 
     //CHAPTER 5// 
-    { 
-      url: "pages/5.html", title: "The Website", 
-      transition: 'vertical',
-      frames: [
-        { 
-          url: "pages/5/1.html"
+    // { 
+    //   url: "pages/5.html", title: "The Website", 
+    //   transition: 'vertical',
+    //   frames: [
+    //     { 
+    //       url: "pages/5/1.html",
 
-        },
-         // {
-         //  url: "pages/5/1.html"
-         // }
-        // { 
-        //   url: "pages/5/2.html"  
-        // },
-        // { 
-        //   url: "pages/5/3.html"
-        // }
-        ] 
-    },
+    //     },
+    //     { 
+    //       url: "pages/5/2.html",  
+    //     },
+    //     { 
+    //       url: "pages/5/3.html",
+    //     }
+    //     ] 
+    // },
 
     ];
 

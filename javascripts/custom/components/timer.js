@@ -8,7 +8,7 @@
 var Timer = function() {
 
 var firstNarration = {
-              urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.10_narrative.mp3'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.10_narrative.mp3'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -18,7 +18,7 @@ var firstNarration = {
 
 var secondNarration = {
 
-            urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.0_narrative.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/1_street/sound/1.0_narrative.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.0_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.0_narrative.oga'],
 
             loop: false,
             buffer:true,
