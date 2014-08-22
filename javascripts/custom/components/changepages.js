@@ -165,9 +165,24 @@ if (trans) {
           frameNew.children().unwrap();
           animating = false;
 
+          var videoElements = frameview[0].querySelectorAll('video.frame-video');
+          var videoCount = videoElements.length;
+          var loadedVideos = 0;
+
           // force video to play!
-          Array.prototype.forEach.call(frameview[0].querySelectorAll('video.frame-video'), function (v) {
+          //this means the video is not buffered. 
+          Array.prototype.forEach.call(videoElements, function (v) {
             v.play();
+            v.oncanplaythrough = function(){
+              loadedVideos++;
+              if (videoCount === loadedVideos){
+                //everything is loaded
+                //start the audio
+                clearDelayedAudio();
+                changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
+                changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
+              }
+            };
           });
         },1500);
       });
@@ -189,11 +204,6 @@ if (trans) {
 
   //console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
 
-  //make sure delayed audio does not play after frame change;
-  clearDelayedAudio();
-  changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
-  changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
-
 
   if(_pageIndex === 0 && _frameIndex === 0 ) framecounter.addClass("hidden");
   else {
@@ -213,6 +223,15 @@ if (trans) {
     if(callback) callback();
 
 }
+
+
+
+
+
+// function switchAudio(pages,_pageIndex, _frameIndex){
+//   //make sure delayed audio does not play after frame change;
+  
+// }
 
 /////////////////////////////////////////////////////////////////////////////////
 // PAGES ///////////////
@@ -235,6 +254,7 @@ function changePage(value, frame) {
         pageview.removeClass('loaded').load(_pages.getPageUrl(_pageIndex), function() {
             frame ? changeFrame(frame) : changeFrame('first');
             pageview.fadeIn();
+            //start the audio after the fade in. 
         }); 
     });
 

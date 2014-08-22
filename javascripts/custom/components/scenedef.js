@@ -151,7 +151,7 @@ var Pages = function () {
               narration: [
               {
                   onload: function() {
-                  console.log("hide arrows"); 
+                  console.log("hide arrows");
                   hideNavNext(); 
                   hideNavPrev(); 
                 }, 
@@ -161,7 +161,7 @@ var Pages = function () {
                 buffer:true,
                 autoplay: false,
                 fadein:0,
-                delay: 1500, 
+                delay: 1500,
                 onend: function() {
                   //move on to chapter 2, this can't be stopped
                   setTimeout(function(){ changePage("next"); },2000);
@@ -265,7 +265,7 @@ var Pages = function () {
             },
                   {
               urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7B_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7B_narrative_a.oga'],
-              played: false, 
+              played: false,
               loop: false,
               buffer:true,
               autoplay: false,
@@ -274,7 +274,7 @@ var Pages = function () {
             },
                   {
               urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7C_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7C_narrative_a.oga'],
-              played: false, 
+              played: false,
               loop: false,
               buffer:true,
               autoplay: true,
@@ -283,7 +283,7 @@ var Pages = function () {
             },
             {
               urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7D_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7D_narrative_b.oga'],
-              played: false, 
+              played: false,
               loop: false,
               buffer:true,
               autoplay: true,
@@ -293,7 +293,7 @@ var Pages = function () {
               //What is going on here?
               onend: function() {
                 //only start the timer after she has finished speaking. 
-                _timer.checkTimer(); 
+                _timer.checkTimer();
               }
             }
           ]
@@ -516,14 +516,14 @@ var Pages = function () {
 
   this.doesFrameHaveSubframes = function( page, frame ){
 
-    console.log( "checking for subframes" );
+    // console.log( "checking for subframes" );
 
     if( pageinfo[page].frames[frame].subframes ){
-      console.log( "has subframes" );
+      // console.log( "has subframes" );
       return true;
     }
     else{
-      console.log( "NO subframes" );
+      // console.log( "NO subframes" );
       return false;
     }
 
@@ -549,9 +549,11 @@ var Pages = function () {
     var subframes = pageinfo[page].frames[frame].subframes;
 
     var foundSubframe = false;
+
+
       for(var i = 0; i < subframes.length; i++ ){
           console.log( "checking subframe" );
-          console.log( subframes[i] );
+          console.log( subframes[i].visited );
 
           //if we've already been there, skip this and go to the next loop iteration. 
           if(subframes[i].visited) continue;

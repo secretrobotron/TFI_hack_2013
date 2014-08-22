@@ -30,7 +30,7 @@
         visibility: hidden;
       }
 
-      #left-button, #right-button {
+      #left-button, #right-button, #look-around {
         -webkit-user-select: none;
            -moz-user-select: none;
             -ms-user-select: none;
@@ -51,6 +51,26 @@
         cursor: pointer;
         top: 95%;
       }
+
+      #look-around {
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+        position: fixed;
+        margin-top: -10px;
+        width: 120px;
+        height: 50px;
+        line-height: 43px;
+        color: 0;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        top: 88%;
+        left:49.5%;
+        margin-left: -50px;
+      }
+
 
       #left-button {
         left: 50%;
@@ -104,13 +124,6 @@
 
       video[data-video="kitchen"] {
         left: 0;
-      }
-
-      #look-around {
-        position: fixed;    /*    //margin-right: -50px;*/
-        margin-left: 47%;
-        margin-top: 50%;
-        font-size: 17px;
       }
 
       #continue-message {

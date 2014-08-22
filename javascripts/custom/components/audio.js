@@ -130,18 +130,18 @@
             function clearDelayedAudio(){
               if(currentDelay)
                 clearTimeout(currentDelay); 
-                console.log("just cleared the delay"); 
+                //console.log("just cleared the delay"); 
               hasDelay = false;
             }
 
             function delayAudio(cfa, si) {
-              console.log(cfa );
+              //console.log(cfa );
               //This makes sure that we don't repeat the narratives
               if (hasDelay) {
                 clearTimeout(currentDelay); 
                 currentDelay = setTimeout( 
                 function () { 
-                  console.log('playing delayed audio');
+                  //console.log('playing delayed audio');
                   cfa.fadeIn(1, si.fadein || 0); 
                   hasDelay = false; 
                 },
@@ -151,7 +151,7 @@
                 else {
                       currentDelay = setTimeout( 
                       function () { 
-                      console.log('playing delayed audio');
+                      //console.log('playing delayed audio');
                       cfa.fadeIn(1, si.fadein || 0); 
                       hasDelay = false; 
                      },
@@ -183,7 +183,7 @@
                   currentFrameNarration = new Howl(si);
                   if (si.delay) {
                     //it is not adding subframe narrations here 
-                    console.log('delayed audio to be played: ', si.delay, si.urls[0]);
+                    //console.log('delayed audio to be played: ', si.delay, si.urls[0]);
                     delayAudio(currentFrameNarration, si);
                   }
                   else  
@@ -196,7 +196,7 @@
                 info.played = true;
                 currentFrameNarration = new Howl(info);
                 currentFrameNarration.fadeIn(1, info.fadein || 0); 
-                console.log("narration fading in"); 
+                //console.log("narration fading in"); 
               }
             }
 
