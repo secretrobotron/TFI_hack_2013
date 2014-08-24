@@ -447,6 +447,19 @@ var Pages = function () {
     },
 
     //CHAPTER 5// 
+
+    // { 
+    //   url: "pages/5.html", title: "The Website", 
+    //   frames: [
+    //     { 
+    //       url: "pages/website/website.html"
+    //     }
+    //   ]
+    // },
+
+
+
+
     // { 
     //   url: "pages/5.html", title: "The Website", 
     //   transition: 'vertical',
