@@ -173,15 +173,6 @@ var Pages = function () {
         ] //end subframe object 
       }, //end of 1.5 
 
-        //subframe object template 
-        // {
-        //   subframes : [
-
-                //list of subframe objects
-
-        //   ]
-        // },
-
         {
           subframes: [
         { 
@@ -222,24 +213,6 @@ var Pages = function () {
        } //end subframe 2 
       ] //end subframe object 
     }, //end 1.6 
-
-
-
-
-      // narration: [
-      //     {
-      //         urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative_a.oga'],
-      //         played: false, 
-      //         loop: false,
-      //         buffer:true,
-      //         autoplay: false,
-      //         fadein:0,
-      //         delay: 3000
-      //     }, 
-      //   ]
-
-
-
 
 
         //frame 7 (talking to woman scene)
@@ -459,27 +432,35 @@ var Pages = function () {
     },
 
 // //CHAPTER 6 
-// {
-//   url: 
-// }
 
 
-    // {
-    //   url: "pages/5.html", title: "The Website", 
-    //   transition: 'vertical',
-    //   frames: [
-    //     { 
-    //       url: "pages/5/1.html",
+  // {
+  //   url: "pages/6.html", title: "Microfilm", 
+  //     transition: 'fade', 
+  //     frames: [
+  //       { 
+  //         url: "pages/website/index.html"
+  //       }
+  //     ]
+  //   },
 
-    //     },
-    //     { 
-    //       url: "pages/5/2.html",  
-    //     },
-    //     { 
-    //       url: "pages/5/3.html",
-    //     }
-    //     ] 
-    // },
+
+
+// //CHAPTER 7 
+
+
+
+// //CHAPTER 8 
+
+
+
+// //CHAPTER 9 
+
+
+
+
+// //CHAPTER 10
+
 
     ];
 
