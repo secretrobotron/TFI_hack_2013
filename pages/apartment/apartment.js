@@ -288,7 +288,9 @@
         //If background video has ended, then take me to the next scene. 
         backgroundVideo.addEventListener('ended', function (e) {
           if (window.parent && window.parent.next) {
-            window.parent.next();
+            //window.parent.next();
+            alert("click here to go to her real estate website"); 
+            continueMessage.classList.remove("hidden"); 
           }
           else {
             videoContainer.style.left = '50%';
