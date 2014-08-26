@@ -41,7 +41,7 @@ background:white;
 }
 
 #slideshow{
-	background-color: black;
+	/*background-color: black;*/
 	color:white;
 }
 
@@ -129,6 +129,13 @@ html{
 	padding: 20px;
 }
 
+.active {
+	display: inline-block;
+}
+
+.hidden {
+	display:none;
+}
 
 /***************************/
 /*      IMAGES LAYOUT      */
@@ -180,7 +187,7 @@ html{
 </style>
 
 <!-- all the of the scripts go here  -->
- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+ <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script>window.jQuery || document.write('<script src="javascripts/vendor/jquery-2.0.0.min.js"><\/script>')</script>
 
 
@@ -227,11 +234,41 @@ html{
 
 		<div id="right-column">
 
-				<div id="slideshow">
-					
-					slideshow
-				</div>
+<!-- to hold the space --> 
+<div id="slideshow">
+<!-- </div> -->
+				<!--slideshow--> 
+				<!-- <div class="focalpoint" data-focus-scale="contain"> -->
+					<ul class="slider" style="z-index:10px;  top:165px; width:450px; height:420px;">
+						<!--living room--> 
+						<li class="active"><img data-focus-scale="contain" style="width: 450px; height: 450px" src="	
+						https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.04_01_living.jpg"/> <li> 
 
+						<li><video class="hidden" style="position: absolute; width: 450px; height: 450px" loop> 
+
+					    <source src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/video/5.04_01_living.mp4" type="video/mp4"></source>
+					    <source src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/video/5.04_01_living.webmhd.webm" type="video/webm"></source>
+					    </video>
+						</li>
+
+
+
+
+
+
+
+
+						    <button onClick="changeSlider('prev');" value="Prev" class="prevbutton"><span class="btn">&larr;</span></button>
+    						<button onClick="changeSlider('next');" value="Next" class="nextbutton"><span class="btn">&rarr;</span></button>
+    						<span class="counter">1/5</span>
+
+					</ul> 
+		
+				</div> <!--end of slideshow--> 
+</br>
+</br>
+</br>
+</br>
 				<p> WoW! Where to begin with this great deal? We are offering 2 side by side units that can be combined and used as great living space!Unit 25 features a full renovated 1 bedroom, complete with new cabinetry, stainless appliances, a full sized pantry and wood floors. The full bathroom has a tub and has been renovated as well. The bedroom fits a full sized bed with dresser and has a spacious closet. The second unit connects to the first in two places, one wall connects in the living room and the second through the bedroom, giving the owner several options. The second unit has 1 full sized bedroom, a kitchenette (no stove), a full bathroom that's very spacious and a separate space that could be converted into a 3rd large bedroom with a full wall closet or this space could work great as an office or home gym. You will love living in such a diverse neighborhood as Williamsburg! With all of the fantastic eateries, bars, galleries and shops, you'll wonder why you didn't move there sooner. Let's not forget the proximity to Manhattan, living only 5 short blocks from the G train at the Metropolitan Avenue station and an even shorter walk to the J/M/Z at the Marcy Avenue station is awesome for commuting.This building has a maximum income restriction of $69,720 for one person and $79,680 for two people. Please make sure that you have been pre-approved for a mortgage or are an all cash buyer before you contact for viewing. <p>
 				&#9644;
 

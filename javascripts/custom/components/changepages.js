@@ -53,58 +53,63 @@
 // Sliders ///////////////
 /////////////////////////////////////////////////////////////////////////////////
 
-function changeSlider(value) {
-  var slider = $("ul.slider"),
-  slides = slider.children('li'),
-  slideCount = slides.length, 
-  slidecounter = slider.children('.counter'), 
-  currentIndex = slideIndex;
+// function changeSlider(value) {
+//   console.log("changeSlider has been clicked" + value); 
+//   var slider = $("ul.slider"),
+//   slides = slider.children('li'),
+//   slideCount = slides.length, 
+//   slidecounter = slider.children('.counter'), 
+//   currentIndex = slideIndex;
   
-  if (value==="next") {
-    slideIndex < slideCount-1 ? slideIndex++ : slideIndex = 0;
-  } 
-  else if (value==="prev") { 
-    slideIndex > 0 ? slideIndex-- : slideIndex = slideCount-1;
-  } 
-  else if (value==="first") { 
-    slideIndex = 0;
-  } 
-  else if (value==="last") {
-    slideIndex = slideCount - 1;
-  } 
-  else { 
-    slideIndex = Math.min(slideCount-1, Math.max(0, parseInt(value)));
-  }
+//   if (value==="next") {
+//     slideIndex < slideCount-1 ? slideIndex++ : slideIndex = 0;
+//   } 
+//   else if (value==="prev") { 
+//     slideIndex > 0 ? slideIndex-- : slideIndex = slideCount-1;
+//   } 
+//   else if (value==="first") { 
+//     slideIndex = 0;
+//   } 
+//   else if (value==="last") {
+//     slideIndex = slideCount - 1;
+//   } 
+//   else { 
+//     slideIndex = Math.min(slideCount-1, Math.max(0, parseInt(value)));
+//   }
 
-  slides.removeClass('active');
+//   slides.removeClass('active');
+//   slides.addClass('hidden'); 
 
-  slides.eq(slideIndex).addClass('active').find('video').each( function () { 
-    var el = $(this)[0];
-    if (el) el.play(); 
-  } );
+//   slides.eq(slideIndex).removeClass('hidden'); 
 
-  slides.eq(currentIndex).find('video').each( function () { 
-    var el = $(this)[0];
-    if (el) el.pause(); 
-  } );
+//   slides.eq(slideIndex).addClass('active').find('video').each( function () { 
+//     var el = $(this)[0];
+//     if (el) el.play(); 
+//   } );
 
-    // slideview.fadeOut('fast', function() { 
-    //     slideview.removeClass('loaded').load(getCurrentslideUrl(), function() { 
-    //         slideview.show();
-    //     }); 
-    // });
+//   slides.eq(currentIndex).find('video').each( function () { 
+//     var el = $(this)[0];
+//     if (el) el.pause(); 
+//   } );
 
-  // changeslideBackground(_pages.getslideSound(_pageIndex, slideIndex));
-  // changeslideNarration(_pages.getslideNarration(_pageIndex, slideIndex));
+//     // slideview.fadeOut('fast', function() { 
+//     //     slideview.removeClass('loaded').load(getCurrentslideUrl(), function() { 
+//     //         slideview.show();
+//     //     }); 
+//     // });
+
+//   // changeslideBackground(_pages.getslideSound(_pageIndex, slideIndex));
+//   // changeslideNarration(_pages.getslideNarration(_pageIndex, slideIndex));
   
-  slidecounter.text((slideIndex+1) + "/" + (slideCount));
-}
+//   slidecounter.text((slideIndex+1) + "/" + (slideCount));
+// }
 
 /////////////////////////////////////////////////////////////////////////////////
 // FRAMES ///////////////
 /////////////////////////////////////////////////////////////////////////////////
 
 function changeFrame(value, callback) {
+  console.log("changeFrame click");
   frameview = $(".frameview").first();
   _pages.resetSubframeIndex();
 
@@ -157,7 +162,7 @@ if (trans) {
         }
 
         frameOld.addClass('animate');
-        changeSlider('first');
+        // changeSlider('first');
         animating = true;
 
         setTimeout(function(){
@@ -192,7 +197,7 @@ if (trans) {
 
     frameview.fadeOut('fast', function() { 
         frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() {
-            changeSlider('first');
+            // changeSlider('first');
             frameview.fadeIn();
         }); 
     });
