@@ -17,7 +17,7 @@ function init(e) {
 	var nextButton = document.querySelector("#next-button"); 
 	var crime = document.querySelector("#crime"); 
 	var transit = document.querySelector("#transit"); 
-
+ 
 	activeAddress(); 
 	activePrice(); 
 	activeAgent(); 
@@ -40,7 +40,8 @@ function activeAddress() {
 				urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.02_address_audio_01.mp3'], 
 				buffer: false, 
 			}).play(); 
-		}); 
+		});
+
 } 
 
 function activePrice() {
@@ -174,7 +175,6 @@ function changeSlider(value) {
 
 
 document.addEventListener('DOMContentLoaded', init, false);
-
 
 
 

@@ -19,7 +19,8 @@
 
 #nav{
 	color: #ffffff;
-	background-color: #00dc0a;} 
+	background-color: #00dc0a;
+	cursor: pointer;} 
 
 #wrap{
 	background-color: white;
@@ -47,6 +48,7 @@ background:white;
 
 #unit-info{
 	background-color: #d3d3d3;
+	cursor: pointer;
 }
 body {
 	background-color: #d3d3d3;
@@ -118,15 +120,18 @@ html{
 #agent{
 	height: 250px;
 	width: 100%;
+	cursor:pointer;
 }
 
 #a1, #a2, #a3, #a4, #a5{ 
  padding-bottom: 10px;
  height: 7%;
+ cursor: pointer;
 }
 #unit-info{
 	height:100px;
 	padding: 20px;
+	cursor:pointer;
 }
 
 .active {
@@ -148,6 +153,7 @@ html{
 	margin-left:auto;
 	margin-right:auto;
 	height:110px;	
+	cursor: pointer;
 }
 
 #a1, #a2, #a3, #a4, #a5{ 
@@ -157,18 +163,21 @@ html{
 #map {
 	height: 400px;
 	width: 100%;
+	cursor:pointer;
 }
 
 #crime, #schools{
 	width:50%;
 	height:170px;
 	float:left;
+	cursor: pointer;
 }
 
 #transit, #amen{
 	width:50%;
 	height:170px;
 	float:right;
+	cursor: pointer;
 }
 
 #price{
@@ -178,11 +187,23 @@ html{
 	margin-left:auto;
 	margin-right:auto;
 	height:100px;
+	cursor: pointer;
 }
+
 
 /***************************/
 /*    ROLLOVER BUTTONS     */
 /***************************/
+img {
+    opacity: 0.8;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+img:hover {
+    opacity: 1.0;
+     outline: 1.5px solid yellow; 
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}
 
 </style>
 
@@ -224,12 +245,12 @@ html{
 
 <div id="wrap"> 
 
-	<div id="nav"> 89Steps Real Estate <button id="next-button" style="float:right"> Go to the next chapter </button> </div>
+	<div id="nav"> 89Steps Real Estate <button  id="next-button" style="float:right"> Go to the next chapter </button> </div>
 
 
 	<div id="main">
 
-		<img id="address" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.02_address.png"> 
+		<img id="address" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.02_address.png">
 		<img id="price"  src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.03_price.png"> 
 
 		<div id="right-column">
@@ -272,7 +293,7 @@ html{
 				<p> WoW! Where to begin with this great deal? We are offering 2 side by side units that can be combined and used as great living space!Unit 25 features a full renovated 1 bedroom, complete with new cabinetry, stainless appliances, a full sized pantry and wood floors. The full bathroom has a tub and has been renovated as well. The bedroom fits a full sized bed with dresser and has a spacious closet. The second unit connects to the first in two places, one wall connects in the living room and the second through the bedroom, giving the owner several options. The second unit has 1 full sized bedroom, a kitchenette (no stove), a full bathroom that's very spacious and a separate space that could be converted into a 3rd large bedroom with a full wall closet or this space could work great as an office or home gym. You will love living in such a diverse neighborhood as Williamsburg! With all of the fantastic eateries, bars, galleries and shops, you'll wonder why you didn't move there sooner. Let's not forget the proximity to Manhattan, living only 5 short blocks from the G train at the Metropolitan Avenue station and an even shorter walk to the J/M/Z at the Marcy Avenue station is awesome for commuting.This building has a maximum income restriction of $69,720 for one person and $79,680 for two people. Please make sure that you have been pre-approved for a mortgage or are an all cash buyer before you contact for viewing. <p>
 				&#9644;
 
-			s		<div id="unit-info">
+					<a><div id="unit-info">
 							<b>Unit #25 Information</b>
 						</br>
 
@@ -285,7 +306,7 @@ html{
 						*2 kitchens		*2 baths
 
 						*3 bedrooms
-					</div>
+					</div></a>
 			<img id="map" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.14_map_01.png">
 
 				<div>
