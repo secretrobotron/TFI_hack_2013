@@ -17,6 +17,15 @@ function init(e) {
 	var nextButton = document.querySelector("#next-button"); 
 	var crime = document.querySelector("#crime"); 
 	var transit = document.querySelector("#transit"); 
+
+	$(".fancybox")
+    .attr('rel', 'gallery')
+    .fancybox({
+        padding : 0, 
+        arrows: true, 
+        closeBtn: true, 
+        loop: true, 
+    });
  
 	activeAddress(); 
 	activePrice(); 
