@@ -1,3 +1,23 @@
+
+.SouvenirStd-Light { 
+  font-family: SouvenirStd-Light;
+  font-weight: normal;
+  font-style: normal;
+}
+.SouvenirStd-Medium { 
+  font-family: SouvenirStd-Medium;
+  font-weight: normal;
+  font-style: normal;
+}
+.SouvenirStd-Bold { 
+  font-family: SouvenirStd-Bold;
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
 /* line 97, ../sass/_type.scss */
 p.lead {
   font-size: 1ememCalc(3.5px);
@@ -74,9 +94,9 @@ p aside {
 /* Default header styles */
 /* line 165, ../sass/_type.scss */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Source Sans Pro", Helvetica, arial, sans-serif;
-  font-weight: bold;
-  font-style: normal;
+  font-family: SouvenirStd-Bold; 
+  font-weight: normal; 
+  font-style: normal; 
   color: #222222;
   text-rendering: optimizeLegibility;
   margin-top: 0.2em;
@@ -325,7 +345,9 @@ blockquote p {
   line-height: 35px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   background-clip: padding-box;
-  color: #cccccc;
+ 
+  opacity: 0.5;
+  z-index: 10;
 }
 /* line 12, ../sass/_topbar.scss */
 .top-bar ul {
@@ -379,7 +401,7 @@ blockquote p {
   padding: 0 12px;
   width: 100%;
   height: 35px;
-  background: #060606;
+/*  background: #060606;*/
   color: #cccccc;
   font-weight: normal;
   line-height: 35px;
