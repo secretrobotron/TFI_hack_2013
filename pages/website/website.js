@@ -18,13 +18,11 @@ function init(e) {
 	var crime = document.querySelector("#crime"); 
 	var transit = document.querySelector("#transit"); 
 
-	$(".fancybox")
-    .attr('rel', 'gallery')
-    .fancybox({
+	$(".fancybox").fancybox({
         padding : 0, 
         arrows: true, 
-        closeBtn: true, 
-        loop: true, 
+        closeBtn: true,
+        // loop: true, 
     });
  
 	activeAddress(); 
