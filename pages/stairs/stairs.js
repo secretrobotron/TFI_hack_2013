@@ -224,6 +224,7 @@
     var floorCounter = document.querySelector('#floor-counter');
     var floorCounterSpan = floorCounter.querySelector('span');
     var skipNotice = document.querySelector('#skip-notice'); 
+    var instructions = document.querySelector('#instructions'); 
     video = document.querySelector('video');
 
     var stepData = JSON.parse(document.querySelector('#step-data').innerHTML);
@@ -258,29 +259,35 @@
 
       // start stairway interaction
       popcorn.cue(INTERACTION_START_TIME, function () {
-        //show the stair controls 
-        stairCounter.classList.remove('hidden');
-        floorCounter.classList.remove('hidden');
-        progressButton.classList.remove('hidden');
-
+       
+        //show the instructions
+        instructions.classList.remove('hidden'); 
         video.classList.add('paused');
+        // popcorn.pause(); 
+         window.onkeypress = function() { 
+           //show the stair controls 
+            instructions.classList.add('hidden'); 
+            stairCounter.classList.remove('hidden');
+            floorCounter.classList.remove('hidden');
+            progressButton.classList.remove('hidden');
+        //shows you you can skip when the button is paused(); 
+            skipNotice.classList.remove('hidden');
 
-        setTimeout(function () {
+           alert("keypress event detected!");
+          }
 
-          progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
-          progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
-
-          //pausing the video 
-          popcorn.pause();
-          // progressButton.classList.remove('hidden');
-          // skipNotice.classList.remove('hidden');
-          //showing you that you can skip when the video is paused. 
-          skipNotice.classList.remove('hidden');
-
-        }, 1000); //after a second allow skipping and the button interaction
-
-
+         setTimeout(function () {
+           progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
+           progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
+        //   //pausing the video 
+           popcorn.pause();
+        //   //showing you that you can skip when the video is paused. 
+        //   // skipNotice.classList.remove('hidden');
+         }, 700); //after a second allow skipping and the button interaction
       });
+
+  
+          
 
       // stop stairway interaction 
       //(AFTER EVERYTHING INSIDE OF THE STAIRS IS DONE AND YOU ARE WATCHING THE LAST VIDEO)

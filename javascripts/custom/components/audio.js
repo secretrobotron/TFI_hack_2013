@@ -206,6 +206,7 @@
               if (soundEnabled) {
                 soundEnabled = false;
                 Howler.mute();
+                //here is where we will add the alternative images. change image source with jquery 
                 $('.audio').text('Enable Audio');
               } else{
                 soundEnabled = true;

@@ -42,7 +42,7 @@ function init(e) {
 
 //this activates everything for the address 
 function activeAddress() {
-	address.addEventListener('click', function(e) {
+	address.addEventListener('hover', function(e) {
 			var sound = new Howl({
 				urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.02_address_audio_01.mp3'], 
 				buffer: false, 
@@ -52,7 +52,7 @@ function activeAddress() {
 } 
 
 function activePrice() {
-	price.addEventListener('click', function(e) {
+	price.addEventListener('hover', function(e) {
 			var sound = new Howl({
 				urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.03_price_audio_01.mp3'], 
 				buffer: false, 
@@ -62,7 +62,7 @@ function activePrice() {
 }
 
 function activeAgent() {
-	agent.addEventListener('click', function(e) {
+	agent.addEventListener('hover', function(e) {
 		var sound = new Howl({
 				urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.05_agent_audio_01.mp3'], 
 				buffer: false, 
@@ -71,7 +71,7 @@ function activeAgent() {
 }
 
 function activeA1() {
-	a1.addEventListener('click', function(e) {
+	a1.addEventListener('hover', function(e) {
 		var sound = new Howl({
 				urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.08_apt19_audio_01.mp3'], 
 				buffer: false, 
@@ -81,7 +81,7 @@ function activeA1() {
 
 
 function activeA2() {
-	a2.addEventListener('click', function(e) {
+	a2.addEventListener('hover', function(e) {
 		var sound = new Howl({
 					urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.08_apt27_audio_01.mp3'], 
 					buffer: false, 
@@ -90,7 +90,7 @@ function activeA2() {
 }
 
 function activeA3() {
-	a3.addEventListener('click', function(e) {
+	a3.addEventListener('hover', function(e) {
 		var sound = new Howl({
 					urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.08_apt20_audio_01.mp3'], 
 					buffer: false, 
@@ -99,19 +99,19 @@ function activeA3() {
 }
 
 function activeA4() {
-	a4.addEventListener('click', function(e) {
+	a4.addEventListener('hover', function(e) {
 		console.log("a4"); 
 	})
 }
 
 function activeA5() {
-	a5.addEventListener('click', function(e){
+	a5.addEventListener('hover', function(e){
 		console.log("a5"); 
 	})
 }
 
 function changeMap() {
-	map.addEventListener('click', function(e) {
+	map.addEventListener('hover', function(e) {
 		console.log("changed the src"); 
 		this.src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.14_map_02.gif"; 
 
@@ -123,13 +123,13 @@ function changeMap() {
 }
 
 // function goToNext() {
-// 	nextButton.addEventListener('click', function(e){
+// 	nextButton.addEventListener('hover', function(e){
 // 		alert("this will go to the next page"); 
 // 	})
 // }
 
 function changeSlider(value) {
-  console.log("changeSlider has been clicked" + value); 
+  console.log("changeSlider has been hovered" + value); 
   var slider = $("ul.slider"),
   slides = slider.children('li'),
   slideCount = slides.length, 
