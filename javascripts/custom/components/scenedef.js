@@ -13,7 +13,7 @@ var Pages = function () {
 
 
       {
-      url: "pages/1.html", 
+      url: "../pages/1.html", 
       title: "The Street", 
 //      transition: 'fade', // 'horizontal', 'vertical'
       transition: 'fade',

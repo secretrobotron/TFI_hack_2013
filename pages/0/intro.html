@@ -7,14 +7,22 @@
 
 					  .midright{
 					    margin-top:200px;
-					    margin-right: 220px;
+					    margin-right: 250px;
 					    padding: 20px;
 					  }
 					   .midleft{
-					    margin-top:200px;
-					    margin-left: 290px;
+					    margin-top:230px;
+					    margin-left: 410px;
 					    padding: 20px;
 					  }
+
+					   .fadeable {
+				        -webkit-transition: 1s opacity, 1s visibility;
+				           -moz-transition: 1s opacity, 1s visibility;
+				            -ms-transition: 1s opacity, 1s visibility;
+				             -o-transition: 1s opacity, 1s visibility;
+				                transition: 1s opacity, 1s visibility;
+				      }
 
     </style>
 
@@ -99,9 +107,9 @@ function init() {
 			  	<source src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/video/1.0.webmhd.webm" type="video/webm"></source>
 			  </video>
 		
-				<div id="introtitles" class= "fullScreen" style= "background-color:rgba(0,0,0,0.5); z-index:5">
-						<img class="left midleft" style="height:20%; width:15%; outline:none" src= "http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/UnionDocs-Logo.png">
-						<img class="right midright" style="height:30%; width: 35%; outline:none" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/POV_logo_nobackground.png">
+				<div id="introtitles" class= "fullScreen fadeable" style= "background-color:rgba(0,0,0,0.5); z-index:5">
+						<img class="left midleft" style="height:23%; width:10%; outline:none" src= "http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/UnionDocs-Logo.png">
+						<img class="right midright" style="height:30%; width: 27%; outline:none" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/POV_logo_nobackground.png">
 
 						 <div id="text" class="center" style="text-align:center"> 
 						 <h2> A UnionDocs Production
@@ -111,10 +119,10 @@ function init() {
 						</div>
 				</div>
 
-				<div id="89steps" class="hidden fullScreen" style="z-index:5; text-align:center; margin-top:250px; font-size:3em">
+				<div id="89steps" class="hidden fadeable fullScreen" style="z-index:5; text-align:center; margin-top:250px; font-size:3em">
 					<h1> 89 Steps </h1>
 				</div>	
-				<div id="chapter" class="hidden fullScreen" style="z-index:5; text-align:center; margin-top:170px; font-size:0.5em">	
+				<div id="chapter" class="hidden fadeable fullScreen" style="z-index:5; text-align:center; margin-top:170px; font-size:0.5em">	
 						<h2>A chapter of Living Los Sures</h2>
 
 				</div>
