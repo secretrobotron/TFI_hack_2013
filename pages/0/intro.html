@@ -7,12 +7,12 @@
 
 					  .midright{
 					    margin-top:200px;
-					    margin-right: 240px;
+					    margin-right: 220px;
 					    padding: 20px;
 					  }
 					   .midleft{
 					    margin-top:200px;
-					    margin-left: 140px;
+					    margin-left: 290px;
 					    padding: 20px;
 					  }
 
@@ -76,6 +76,10 @@ function init() {
 
 	popcorn.cue(37, function() {
 		console.log("cued"); 
+		//go to the next chapter
+		setTimeout(function() {
+			window.parent.next(); 
+		}, 10000); 
 	}); 
 	// window.parent.next()
 
@@ -96,8 +100,8 @@ function init() {
 			  </video>
 		
 				<div id="introtitles" class= "fullScreen" style= "background-color:rgba(0,0,0,0.5); z-index:5">
-					<!-- 	<img class="left midleft" style="height:30%; width:25%; outline:none" src= "UX-ASSETS/UD_logo.jpg"> -->
-						<img class="right midright" style="height:30%; width: 35%; outline:none" src="http://89steps.s3.amazonaws.com/assets/1_street/img/POV_logo_nobackground.png">
+						<img class="left midleft" style="height:20%; width:15%; outline:none" src= "http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/UnionDocs-Logo.png">
+						<img class="right midright" style="height:30%; width: 35%; outline:none" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/POV_logo_nobackground.png">
 
 						 <div id="text" class="center" style="text-align:center"> 
 						 <h2> A UnionDocs Production

@@ -410,23 +410,13 @@ var Pages = function () {
         }
       ]
     },
-    // //starts evan hack
-    // { 
-    //   url: "pages/apartment/index.html", title: "The Stairs", 
-    //   frames: [
-    //     { 
-    //       url: "pages/apartment/index.html" //this doesn't exist 
-    //     }
-    //   ]
-    // },
-    // //end evan hack
 
     ///CHAPTER 4//
     { 
       url: "pages/4.html", title: "The Apartment", 
       frames: [
         { 
-          url: "pages/4/1.html"
+          url: "pages/4/1.html" //leads you to the next stuff. 
         }
       ]
     },
