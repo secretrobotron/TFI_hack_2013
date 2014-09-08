@@ -25,78 +25,21 @@
 				      }
 
     </style>
+      		<script src="../../javascripts/vendor/popcorn.min.js"></script>
+           <!--  // <script src="../../javascripts/custom/components/loader.js"></script> -->
 
-	        <script src="../../../../javascripts/vendor/popcorn.min.js"></script>
-            <script src="../../../../javascripts/custom/components/loader.js"></script>
+    		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
      
-		    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		      <link rel="stylesheet" type="text/css" href="../../webfonts/MyFontsWebfontsKit.css">
-		      <link rel="stylesheet" type="text/css" href="../../../../stylesheets/app.css">
-		      <script src="../../../../javascripts/vendor/fastclick.js"></script>
-		      <script src="../../../../javascripts/vendor/howler.min.js"></script>
-		      <script src="../../../../javascripts/custom/plugins.js"></script>
-		      <script src="../../../../javascripts/custom/components/scenedef.js"></script>
-   			  <script src="../../../../javascripts/custom/components/changepages.js"></script> 
-		      <script src="../../../../javascripts/custom/components/audio.js"></script>
-		      <script src="../../../../javascripts/custom/components/timer.js"></script>
+		      <link rel="stylesheet" type="text/css" href="../../stylesheets/app.css">
+		      <script src="../../javascripts/vendor/fastclick.js"></script>
+		      <script src="../../javascripts/vendor/howler.min.js"></script>
+		      <script src="../../javascripts/custom/plugins.js"></script>
+		      <script src="../../javascripts/custom/components/scenedef.js"></script>
+   			  <script src="../../javascripts/custom/components/changepages.js"></script> 
+		      <script src="../../javascripts/custom/components/audio.js"></script>
+		      <script src="../../javascripts/custom/components/timer.js"></script>
 			
-<script>
-
-	init(); 
-
-	var video; 
-	var popcorn; 
-	var nav = document.querySelector("nav"); 
-
-
-function init() {
-	//how do I get this to hide before?
-	$('#nav').hide();
-	hideNav(); 
-	// 
-	console.log("init has been called"); 
-	var introtitles = document.querySelector("#introtitles"); 
-	var popcorn = Popcorn("#intro"); 
-	// var 89steps = document.querySelector("#89steps"); 
-	// var chapter = document.querySelector("#chapter"); 
-
-	//load video and pause it 
-	popcorn.preload("auto");
-	popcorn.pause(); 
-	popcorn.autoplay(false); 
-	// popcorn.pause();
-
-	setTimeout(function() {
-		popcorn.play(); 
-		console.log("fired timeout"); 
-
-		//set the timeout for the fadeout 
-		setTimeout(function() {
-			// introtitles.fadeOut();
-			introtitles.classList.add('hidden'); 
-		}, 10000) //the seconds
-	}, 4000); //start video after 4 seconds of firing the dom.
-	
-	//appear the titles and then jump to the next one. 
-
-	//take me to the next chapter
-	// window.parent.next()
-
-	popcorn.cue(37, function() {
-		console.log("cued"); 
-		//go to the next chapter
-		setTimeout(function() {
-			window.parent.next(); 
-		}, 10000); 
-	}); 
-	// window.parent.next()
-
-		// setTimeout(function() {
-		// 	chapter.classList.remove('hidden'); 
-		// }, 3000); 
-	}
-
-</script>
 
 	</head>
 
@@ -135,6 +78,67 @@ function init() {
 	<!-- <audio data-background="true" preload="auto">
       <source src="../../../assets/2/sound/2.0backgroundloop.mp3" type="audio/mp3"></source>
     </audio> -->
+
+
+    <script>
+
+	init(); 
+
+	var video; 
+	var popcorn; 
+	var nav = document.querySelector("nav"); 
+
+
+	function init() {
+	//how do I get this to hide before?
+	$('#nav').hide();
+	hideNav(); 
+	// 
+	console.log("init has been called"); 
+	var introtitles = document.querySelector("#introtitles"); 
+	var popcorn = Popcorn("#intro"); 
+
+	//load video and pause it 
+	popcorn.preload("auto");
+	popcorn.pause(); 
+	popcorn.autoplay(false); 
+	// popcorn.pause();
+
+	setTimeout(function() {
+		popcorn.play(); 
+		console.log("fired timeout"); 
+
+		//set the timeout for the fadeout 
+		setTimeout(function() {
+			// introtitles.fadeOut();
+			introtitles.classList.add('hidden'); 
+		}, 10000) //the seconds
+	}, 4000); //start video after 4 seconds of firing the dom.
+	
+	//appear the titles and then jump to the next one. 
+
+	//take me to the next chapter
+	// window.parent.next()
+
+	popcorn.cue(37, function() {
+		console.log("cued"); 
+		//go to the next chapter
+		setTimeout(function() {
+			// window.parent.next(); 
+		}, 8000); 
+	}); 
+	// window.parent.next()
+
+		// setTimeout(function() {
+		// 	chapter.classList.remove('hidden'); 
+		// }, 3000); 
+	// init(); 
+	}
+	//execute this after it knows what it is. 
+	// init(); 
+	
+
+</script>
 
   </body>
 </html>

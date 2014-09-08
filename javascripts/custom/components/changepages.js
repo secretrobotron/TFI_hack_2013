@@ -196,12 +196,28 @@ if (trans) {
 } else {
 
     frameview.fadeOut('fast', function() { 
+         if (getCurrentFrameContainer() === 'iframe') {
+         frameview.removeClass('loaded');
+
+          var iframe = frameview[0].querySelector('iframe');
+
+          if (!iframe) {
+            iframe = document.createElement('iframe');
+            frameview[0].appendChild(iframe);
+          }
+
+         iframe.src = getCurrentFrameUrl();
+            setTimeout(function () {
+            frameview.fadeIn();
+         }, 100);
+      }
+      else {
         frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() {
             // changeSlider('first');
             frameview.fadeIn();
         }); 
+      }
     });
-
 }
 
   //we have to stop the timer aevery time we change frames. 
