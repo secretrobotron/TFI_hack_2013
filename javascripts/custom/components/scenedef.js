@@ -1,6 +1,18 @@
 var Pages = function () {
   var pageinfo = [
-    { 
+      { 
+        url:"pages/0.html", 
+        title: "The Introduction", 
+        transition: 'fade', 
+        frames: [
+          {
+              url: "pages/0/intro.html"
+          }, 
+        ], 
+      }, 
+
+
+      {
       url: "pages/1.html", 
       title: "The Street", 
 //      transition: 'fade', // 'horizontal', 'vertical'

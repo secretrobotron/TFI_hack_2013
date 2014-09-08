@@ -91,10 +91,10 @@ p aside {
 /* Default header styles */
 /* line 165, ../sass/_type.scss */
 h1, h2, h3, h4, h5, h6 {
-  font-family: SouvenirStd-Bold; 
+  font-family: SouvenirStd-Light; 
   font-weight: normal; 
   font-style: normal; 
-  color: #222222;
+  color: #ffffff;
   text-rendering: optimizeLegibility;
   margin-top: 0.2em;
   margin-bottom: 0.5em;
@@ -102,7 +102,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* line 175, ../sass/_type.scss */
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
-  font-size: 60%;
+  font-size: 80%;
   color: #6f6f6f;
   line-height: 0;
 }
@@ -370,7 +370,7 @@ blockquote p {
   display: block;
   padding: 0 12px;
   width: 50%;
-  color: #cccccc;
+  color: #ffffff;
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -386,7 +386,7 @@ blockquote p {
   margin: 0;
   width: auto;
   height: auto !important;
-  background: #111111;
+ /* background: #ffffff;*/
 }
 /* line 47, ../sass/_topbar.scss */
 .top-bar-section ul li {
@@ -405,8 +405,8 @@ blockquote p {
 }
 /* line 59, ../sass/_topbar.scss */
 .top-bar-section ul li > a:hover, .top-bar-section ul li.active a {
-  background: #090909;
-}
+/*  background: #090909;
+*/}
 /* line 64, ../sass/_topbar.scss */
 .top-bar-section ul.right li .dropdown {
   right: 0;

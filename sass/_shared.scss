@@ -56,7 +56,7 @@
         .content{position: absolute; bottom:0px; left:0; right:0; top:$topbar-height; overflow: hidden;}
 
         .pageview, .prevbutton, .nextbutton{
-            @extend fullScreen;
+            @extend .fullScreen;
             background-color: transparent;
             border: 0px none transparent;
             z-index: 1;
