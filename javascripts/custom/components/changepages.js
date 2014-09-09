@@ -195,6 +195,8 @@ if (trans) {
   }); 
 } else {
 
+  //
+
     frameview.fadeOut('fast', function() { 
          if (getCurrentFrameContainer() === 'iframe') {
          frameview.removeClass('loaded');
@@ -209,12 +211,14 @@ if (trans) {
          iframe.src = getCurrentFrameUrl();
             setTimeout(function () {
             frameview.fadeIn();
+            frameview.addClass('loaded'); 
          }, 100);
       }
       else {
         frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() {
             // changeSlider('first');
             frameview.fadeIn();
+
         }); 
       }
     });

@@ -99,8 +99,8 @@
 
     var leftButton = document.querySelector('#left-button');
     var rightButton = document.querySelector('#right-button');
-    var continueMessage = document.querySelector('#continue-message');
-    var lookAround = document.querySelector('#look-around'); 
+    // var continueMessage = document.querySelector('#continue-message');
+    var instructions = document.querySelector('#instructions'); 
 
     var startVideo = document.querySelector('video[data-video="start"]');
     var backgroundVideo = document.querySelector('video[data-video="background"]');
@@ -179,17 +179,15 @@
     function onLeftButtonClick (e) {
       videoContainerIndex = Math.min(videoContainerIndex + 1, 1);
       playPositionedVideo();
-      lookAround.classList.remove('hidden'); 
+      instructions.classList.remove('hidden'); 
       videoContainer.style.left = 50 + videoContainerIndex * 100 + '%';
 
       if (videoContainerIndex === 1) {
         leftButton.classList.add('hidden');
-        //lookAround.classList.add('hidden'); 
         leftButton.removeEventListener('click', onLeftButtonClick, false);
       }
       else if (videoContainerIndex === 0) {
         rightButton.classList.remove('hidden');
-       // lookAround.classList.remove('hidden'); 
         rightButton.addEventListener('click', onRightButtonClick, false);        
       }
     }
@@ -197,17 +195,15 @@
     function onRightButtonClick (e) {
       videoContainerIndex = Math.max(videoContainerIndex - 1, -1);
       playPositionedVideo();
-      lookAround.classList.remove('hidden'); 
+      instructions.classList.remove('hidden'); 
       videoContainer.style.left = 50 + videoContainerIndex * 100 + '%';
 
       if (videoContainerIndex === -1) {
         rightButton.classList.add('hidden');
-        //lookAround.classList.add('hidden'); 
         rightButton.removeEventListener('click', onRightButtonClick, false);
       }
       else if (videoContainerIndex === 0) {
         leftButton.classList.remove('hidden');
-        // lookAround.classList.remove('hidden'); 
         leftButton.addEventListener('click', onLeftButtonClick, false);        
       }
     }
@@ -280,7 +276,7 @@
         setTimeout(function () {
           rightButton.classList.remove('hidden');
           leftButton.classList.remove('hidden');
-          lookAround.classList.remove('hidden'); 
+          instructions.classList.remove('hidden'); 
           leftButton.addEventListener('click', onLeftButtonClick, false);
           rightButton.addEventListener('click', onRightButtonClick, false);
         }, BUTTON_SHOW_DELAY);
@@ -297,7 +293,7 @@
             leftButton.removeEventListener('click', onLeftButtonClick, false);
             rightButton.removeEventListener('click', onRightButtonClick, false);
             rightButton.classList.remove('hidden');
-            lookAround.classList.remove('hidden'); 
+            instructions.classList.remove('hidden'); 
             leftButton.classList.add('hidden');
             continueMessage.classList.remove('hidden');
             rightButton.addEventListener('click', function (e) {

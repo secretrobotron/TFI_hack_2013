@@ -451,16 +451,9 @@ var Pages = function () {
 
 // //CHAPTER 7 
 
-
-
 // //CHAPTER 8 
 
-
-
 // //CHAPTER 9 
-
-
-
 
 // //CHAPTER 10
 
