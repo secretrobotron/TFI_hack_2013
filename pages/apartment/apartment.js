@@ -5,9 +5,13 @@
   var BACKGROUND_SOUND_DELAY = 2000;
   var BACKGROUND_SOUND_VARIANCE = 4000;
 
+
+
   function prepareBackgroundSoundsLoop (sounds) {
     var currentSound;
     var nextSound;
+
+    //there iis something here where it is playing the same audio over and over 
 
     function playNextSound () {
       nextSound = sounds[Math.floor(Math.random() * sounds.length)];
@@ -26,6 +30,7 @@
     }
 
     return {
+      //takes a group of sounds and ensures that they play as a backgroup 
       start: function () {
         playNextSound();
       }
@@ -91,15 +96,15 @@
     }
   }
 
-  function init(e) {
+function init(e) {
+    // $('#overlay').fadeOut();
 
+
+    //hide the navigation. 
     if (window.parent && window.parent.hideNav) {
       window.parent.hideNav();
     }
 
-    var leftButton = document.querySelector('#left-button');
-    var rightButton = document.querySelector('#right-button');
-    // var continueMessage = document.querySelector('#continue-message');
     var instructions = document.querySelector('#instructions'); 
 
     var startVideo = document.querySelector('video[data-video="start"]');
@@ -109,10 +114,8 @@
     var leftVideos = Array.prototype.slice.call(document.querySelectorAll('video[data-video="left"]'));
     var videoContainer = document.querySelector('#video-container');
     var centerVideos = [backgroundVideo, kitchenVideo, startVideo];
-    var videos = centerVideos.concat(rightVideos).concat(leftVideos);
+    var videos = centerVideos.concat(rightVideos).concat(leftVideos); //they are all part of the array. 
     var audio = Array.prototype.slice.call(document.querySelectorAll('audio'));
-
-    var PATH = "http://89steps.s3.amazonaws.com/assets/4_apt/"; 
 
     var videoContainerIndex = 0;
 
@@ -229,34 +232,57 @@
 
     }
 
-    Popcorn.plugin('step', {
-      start: function () {
-        ++numSteps;
-      }
-    });
-
-    Popcorn.plugin('floor', {
-      start: function () {
-        ++numFloors;
-        floorAudioController.resetFloorIndex();
-        floorCounterSpan.innerHTML = numFloors;
-      }
-    });
-
     leftVideos.videoIndex = 0;
     rightVideos.videoIndex = 0;
 
+    //here, it is checking that all of the audio and video files are part of the assets array. 
     var assets = videos.concat(audio);
 
+//this should potentially get this to not start the audio at the same time. 
+    
+    volumeTweenController.start();
+    startVideo.play(); 
+    backgroundVideo.play(); 
+    prepareBackgroundSoundsLoop(audio).start(); 
+  }
+
+function preLoad(e) {
+     // $('#overlay').fadeIn();
+     console.log("i am in preload"); 
+
+    var instructions = document.querySelector('#instructions'); 
+
+    var startVideo = document.querySelector('video[data-video="start"]');
+    var backgroundVideo = document.querySelector('video[data-video="background"]');
+    var kitchenVideo = document.querySelector('video[data-video="kitchen"]');
+    var rightVideos = Array.prototype.slice.call(document.querySelectorAll('video[data-video="right"]'));
+    var leftVideos = Array.prototype.slice.call(document.querySelectorAll('video[data-video="left"]'));
+    var videoContainer = document.querySelector('#video-container');
+    var centerVideos = [backgroundVideo, kitchenVideo, startVideo]; 
+
+    //check that all videos have loaded or wait for them to load. 
+    var videos = centerVideos.concat(rightVideos).concat(leftVideos); //they are all part of the array. 
+
+  //check that all audio has loaded 
+    var audio = Array.prototype.slice.call(document.querySelectorAll('audio'));
+
+    //after you wait, now you ensure if it is loaded. 
+    var assets = videos.concat(audio);
+
+    //util.loader.ensureLoaded(assets, init) //this should be the things that should be in other places. 
+
     util.loader.ensureLoaded(assets, function(){
+      console.log("in ensureLoaded + have fired callback"); 
       window.addEventListener('resize', positionVideo, false);
       positionVideo();
       
       var volumeTweenController = prepareVolumeTweening();
 
-      volumeTweenController.start();
+      // volumeTweenController.start();
+      //moved it to init to fix the audio. 
 
       rightVideos.concat(leftVideos).concat(kitchenVideo).forEach(function (video) {
+        console.log("preparing volume tween"); 
         volumeTweenController.prepareVolumeTweenForElement(video, 0);
       });
 
@@ -265,13 +291,14 @@
       kitchenVideo.hidden = true;
       backgroundVideo.hidden = true;
 
-      startVideo.play();
+
+      startVideo.pause();
       startVideo.addEventListener('ended', function onStartVideoEnded (e) {
         startVideo.removeEventListener('ended', onStartVideoEnded, false);
   
         backgroundVideo.hidden = false;
         startVideo.hidden = true;
-        backgroundVideo.play();
+        backgroundVideo.pause();
 
         setTimeout(function () {
           rightButton.classList.remove('hidden');
@@ -284,6 +311,7 @@
         //If background video has ended, then take me to the next scene. 
         backgroundVideo.addEventListener('ended', function (e) {
           if (window.parent && window.parent.next) {
+            //uncomment that out to go to the next page. 
             //window.parent.next();
             alert("click here to go to her real estate website"); 
             continueMessage.classList.remove("hidden"); 
@@ -295,16 +323,51 @@
             rightButton.classList.remove('hidden');
             instructions.classList.remove('hidden'); 
             leftButton.classList.add('hidden');
-            continueMessage.classList.remove('hidden');
             rightButton.addEventListener('click', function (e) {
             }, false);
           }
         }, false);
       }, false);
 
-      prepareBackgroundSoundsLoop(audio).start();
-    });
-  }
+      //prepareBackgroundSoundsLoop(audio).start();
 
-  document.addEventListener('DOMContentLoaded', init, false);
+      function positionVideo () {
+      var aspectRatio = backgroundVideo.videoWidth / backgroundVideo.videoHeight;
+      var scale = 1;
+
+      videoContainer.style.width = backgroundVideo.videoWidth + 'px';
+      videoContainer.style.height = backgroundVideo.videoHeight + 'px';
+      videoContainer.style.marginLeft = -backgroundVideo.videoWidth / 2 + 'px';
+      videoContainer.style.marginTop = -backgroundVideo.videoHeight / 2 + 'px';
+
+      if (window.innerWidth / backgroundVideo.videoWidth * backgroundVideo.videoHeight < window.innerHeight) {
+        scale = window.innerHeight / backgroundVideo.videoHeight;
+      }
+      else {
+        scale = window.innerWidth / backgroundVideo.videoWidth;
+      }
+
+      videoContainer.style.transform = videoContainer.style.WebkitTransform = videoContainer.style.MozTransform = 
+        videoContainer.style.webkitTransform = videoContainer.style.mozTransform = 'scale(' + scale + ')';
+
+    }
+    }); //ensureloader ends. 
+
+    }; //preloader ends 
+
+    // setTimeout(function() {
+    //   init(); 
+    // }, 2000); 
+  // setTimeout(function() {
+  //   $('#overlay').fadeOut();
+  //       setTimeout(function() {
+  //       init(); 
+  //     },6000); 
+  // },6000) 
+ 
+ 
+    //showLoading(); 
+  
+
+  document.addEventListener('DOMContentLoaded', preLoad, false);
 }());
