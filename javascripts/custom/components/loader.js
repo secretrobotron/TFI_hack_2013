@@ -3,7 +3,7 @@
   global.util = global.util || {};
 
   var __waiters = {
-    IMG: function (image, onLoaded, onError) {
+    IMG: function (image, onProgress, onLoaded, onError) {
       //this remains the same, it is not at html5 element. 
             if (!image.complete) {
               image.addEventListener('load', function internalOnLoaded (e) {
@@ -44,33 +44,31 @@
   // };
 
 
-    VIDEO: function(video, onLoaded, onError) {
+    VIDEO: function(video, onProgress, onLoaded, onError) {
                 console.log("invideowait" + video); 
 
-                video.addEventListener('progress', function updateProgressBar(e) {
+                video.addEventListener('progress', function updateProgress(e) {
+                  console.log('lol');
                   // video.removeEventListener('progress', updateProgressBar, false);
-                  onLoaded.call(video, e);
+                  onProgress.call(video, e);
                   // var percent = null; 
                   // console.log("this is the percent" + percent); 
 
                   //it doesn't enter the if statement, so it never atually loads the videos, which is clearly a problem. 
-                     var videoDuration = video.attr('duration');
                       if (video.attr('readyState')) {
-                          var buffered = video.attr("buffered").end(0);
-                          var percent = 100 * buffered / videoDuration;
+                          var buffered = video.buffered.end(0);
+                          var percent = 100 * buffered / video.duration;
 
                           //Your code here
                           console.log("percent" + percent); 
 
 
                           //If finished buffering buffering quit calling it
-                            if (buffered >= videoDuration) {
-                                    video.removeEventListener('progress', updateProgressBar, false);
-                                    clearInterval(this.watchBuffer);
+                            if (buffered >= video.duration) {
+                                    video.removeEventListener('progress', updateProgress, false);
                                     onLoaded.call(video,e); 
                             }
                       }
-                  var watchBuffer = setInterval(updateProgressBar, 500);
                 }, false); 
 
                 console.log("never entered the if statement"); 
@@ -110,7 +108,7 @@
               //   }, false);
               // }, 
 
-    AUDIO: function (audio, onLoaded, onError) {
+    AUDIO: function (audio, onProgress, onLoaded, onError) {
                   audio.addEventListener('progress', function progressCompleted(e) {
                   var percent = null; 
                   if (audio && audio.buffered && audio.buffered.length >0 && audio.buffered.end && audio.duration) {
@@ -140,10 +138,10 @@
     }; //end of waiters 
 
   var __loader = {
-    ensureLoaded: function (assets, callback) {
+    ensureLoaded: function (assets, progressCallback, finishedCallback) {
       if (Number(assets.length) !== assets.length) {
         __loader.ensureLoaded([assets], function () {
-          callback(assets);
+          finishedCallback(assets);
         });
         return;
       }
@@ -152,15 +150,15 @@
 
       function checkItems () {
         if (itemsFinished === assets.length) {
-          callback(assets);
+          finishedCallback(assets);
           console.log("check items"); 
           //or send it somewhere. 
         }
       }
 
-      function itemProgress() {
+      function itemProgressCallback() {
         console.log("i am checking the asset progress"); 
-
+        progressCallback(itemsFinished);
       }
 
       function itemErrorCallback () {
@@ -176,7 +174,7 @@
 
       assets.forEach(function (asset) {
         if (__waiters[asset.nodeName]) {
-          __waiters[asset.nodeName](asset, itemProgress, itemErrorCallback); 
+          __waiters[asset.nodeName](asset, itemProgressCallback, itemLoadedCallback, itemErrorCallback); 
           // __waiters[asset.nodeName](asset, itemLoadedCallback, itemErrorCallback); //report on the progress?
         }
       });

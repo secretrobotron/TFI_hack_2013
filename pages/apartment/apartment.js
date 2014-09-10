@@ -271,7 +271,10 @@ function preLoad(e) {
 
     //util.loader.ensureLoaded(assets, init) //this should be the things that should be in other places. 
 
-    util.loader.ensureLoaded(assets, function(){
+    util.loader.ensureLoaded(assets, function () {
+        //cool i received a progress update!
+        // progressBar.update(oweifnoiwmef);
+    }, function(){
       console.log("in ensureLoaded + have fired callback"); 
       window.addEventListener('resize', positionVideo, false);
       positionVideo();
@@ -352,6 +355,10 @@ function preLoad(e) {
 
     }
     }); //ensureloader ends. 
+
+    assets.forEach(function (asset) {
+      asset.load && asset.load();
+    });
 
     }; //preloader ends 
 
