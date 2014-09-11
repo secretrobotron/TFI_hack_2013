@@ -24,29 +24,31 @@
 
 
     VIDEO: function(video, onProgress, onLoaded, onError) {
-                console.log("invideowaitevan" + video); 
+                // console.log("invideowaitevan" + video); 
 
                 video.addEventListener('progress', function checkProgress(e) {
-                  console.log("checking progressxxx"); 
+                  // console.log("checking progressxxx"); 
                   var percent = null; 
                   if (video && video.buffered && video.buffered.length >0 && video.buffered.end && video.duration) {
                     percent = video.buffered.end(0) / video.duration;
-                       console.log("video download:" + percent); 
+                       // console.log("1 video download:" + percent); 
                   }
+                  //browser configuration??never goes in there? 
                   else if (video && video.bytesTotal != undefined && video.bytesTotal > 0 && video.bufferedBytes != undefined) {
                   percent = video.bufferedBytes / video.bytesTotal; 
-                     console.log("video download:" + percent); 
+                     console.log("2 video download:" + percent); 
                      //onLoaded.call(video,e); 
                 }
                 if (percent !== null) {
+                  //makes sure it is never less than zero or more than a 100. 
                     percent = 100 * Math.min(1, Math.max(0, percent));
                     //video.removeEventListener('progress', progressCompleted, false);
-                    console.log("video download:" + percent); 
+                    console.log("3 video download:" + percent); 
                      if (percent == 100) {
                       console.log("you're done"); 
                       onLoaded.call(video,e); 
                       video.removeEventListener('progress', checkProgress, false); 
-                     } 
+                     }
           
                     // video.removeEventListener('progress,')
                     //maybe push these somewhere?to an array?
