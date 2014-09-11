@@ -12,7 +12,6 @@ var Pages = function () {
         ], 
       }, 
 
-
       {
       url: "../pages/1.html", 
       title: "The Street", 
@@ -27,40 +26,23 @@ var Pages = function () {
             },
 
       frames: [
-
         { 
-          url: "pages/1/intro.html"
-        },
-
-        { 
-          url: "pages/1/1.html",
-          sound: {
-            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.1_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.1_background.oga'],
-            loop: true,
-            buffer:true,
-            autoplay: false,
-            fadein:800, 
-            onend: function() {
-                //only start the timer after she has finished speaking. 
-                _timer.checkTimer(); 
-              }
-
-          },
-          narration: []
-        },
-
-        { 
-          url: "pages/1/2.html", 
-          sound: {
-            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.2_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.2_background.oga'],
-            loop: true,
-            buffer:true,
-            autoplay: false,
-            fadein:800
-          },
+          //first frame (skipping 1/1.html because we dont need two of those anymore)
+          url: "pages/1/intro.html", 
+            sound: {
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.1_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.1_background.oga'],
+              loop: true,
+              buffer:true,
+              autoplay: false,
+              fadein:800, 
+              onend: function() {
+                  //only start the timer after she has finished speaking. 
+                  _timer.checkTimer(); 
+                }
+            },
           narration: [   
           {
-              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.2_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.2_narrative.oga'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.1_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.1_narrative.oga'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -72,29 +54,74 @@ var Pages = function () {
             }
             ]
         },
+      
+
+        // { 
+        //   url: "pages/1/1.html",
+        //   sound: {
+        //     urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.1_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.1_background.oga'],
+        //     loop: true,
+        //     buffer:true,
+        //     autoplay: false,
+        //     fadein:800, 
+        //     onend: function() {
+        //         //only start the timer after she has finished speaking. 
+        //         _timer.checkTimer(); 
+        //       }
+
+        //   },
+        //   narration: []
+        // },
+
+//second frame 
+        { 
+          url: "pages/1/2.html", 
+              sound: {
+                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.2_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.2_background.oga'],
+                loop: true,
+                buffer:true,
+                autoplay: false,
+                fadein:800
+              },
+          },
+          // narration: [   
+          // {
+          //     urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.2_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.2_narrative.oga'],
+          //     loop: false,
+          //     buffer:true,
+          //     autoplay: false,
+          //     fadein:0,
+          //     delay: 3000, 
+          //     onend: function() {
+          //       _timer.checkTimer(); 
+          //     }
+          //   }
+          //   ]
+        // },
         { 
           url: "pages/1/3.html", 
-          sound: {
-            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.3_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.3_background.oga'],
-            loop: true,
-            buffer:true,
-            autoplay: false,
-            fadein:800
-          },
-          narration: [
-            {
-              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.3_narrative.mp3'],
-              loop: false,
+            sound: {
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.3_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.3_background.oga'],
+              loop: true,
               buffer:true,
               autoplay: false,
-              fadein:0,
-              delay: 3000, 
-              onend: function() {
-                _timer.checkTimer(); 
-              }
-            }
-          ]
-        },
+              fadein:800
+            },
+          },
+          // narration: [
+          //   {
+          //     urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.3_narrative.mp3'],
+          //     loop: false,
+          //     buffer:true,
+          //     autoplay: false,
+          //     fadein:0,
+          //     delay: 3000, 
+          //     onend: function() {
+          //       _timer.checkTimer(); 
+          //     }
+          //   }
+          // ]
+        // },
         { 
           url: "pages/1/4.html", 
           sound: {
@@ -106,7 +133,7 @@ var Pages = function () {
           },
           narration: [
               {
-              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.4_narrative.mp3'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.4_narrative.mp3', 'http://89steps.s3.amazonaws.com/assets/1_street/sound/1.4_narrative.ogg'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -134,20 +161,6 @@ var Pages = function () {
                 autoplay: false,
                 fadein:800
               },
-              //this will change 
-              narration: [
-              {
-                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.5_narrative.mp3'],
-                loop: false,
-                buffer:true,
-                autoplay: false,
-                fadein:0,
-                delay: 1500, 
-                onend: function() {
-                  _timer.checkTimer(); 
-                }
-              }
-              ]
             },
             { //subframe 2
               url: "pages/1/5b.html", 
@@ -160,31 +173,34 @@ var Pages = function () {
                 autoplay: false,
                 fadein:800
               },
-              //this will change 
-              narration: [
-              {
-                  onload: function() {
-                  console.log("hide arrows");
-                  hideNavNext(); 
-                  hideNavPrev(); 
-                }, 
-                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.5b_narrative.mp3'],
-
-                loop: false,
-                buffer:true,
-                autoplay: false,
-                fadein:0,
-                delay: 1500,
-                onend: function() {
-                  //move on to chapter 2, this can't be stopped
-                  setTimeout(function(){ changePage("next"); },2000);
-
-                }
-              }
-            ] //end of narration objects      
           } //end subframe 2 
         ] //end subframe object 
       }, //end of 1.5 
+              //this will change 
+            //   narration: [
+            //   {
+            //       onload: function() {
+            //       console.log("hide arrows");
+            //       hideNavNext(); 
+            //       hideNavPrev(); 
+            //     }, 
+            //     urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.5b_narrative.mp3'],
+
+            //     loop: false,
+            //     buffer:true,
+            //     autoplay: false,
+            //     fadein:0,
+            //     delay: 1500,
+            //     onend: function() {
+            //       //move on to chapter 2, this can't be stopped
+            //       setTimeout(function(){ changePage("next"); },2000);
+
+            //     }
+            //   }
+            // ] //end of narration objects      
+      //     } //end subframe 2 
+      //   ] //end subframe object 
+      // }, //end of 1.5 
 
         {
           subframes: [
@@ -199,11 +215,22 @@ var Pages = function () {
             onend: function() {
                 _timer.checkTimer(); 
               }
-          },       
+          }, 
+            narration:  [
+            {
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6_narrative_a.ogg'],
+                played: false, 
+                loop: false,
+                buffer:true,
+                autoplay: false,
+                fadein:0,
+                delay: 3000
+            }
+          ] //end of the narration ob      
         }, //end subframe 1 
   
         {  // start subframe 2 
-          url: "pages/1/6.html", 
+          url: "pages/1/6b.html", 
           sound: {
             urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6_background.oga'],
             loop: true,
@@ -214,13 +241,18 @@ var Pages = function () {
           }, 
           narration:  [
           {
-            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative_a.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative.ogg'],
               played: false, 
               loop: false,
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 3000
+              delay: 3000,  
+              onend: function() {
+                  //move on to chapter 2, this can't be stopped
+                  setTimeout(function(){ changePage("next"); },2000);
+
+                }
           }
         ] //end of the narration object 
        } //end subframe 2 
@@ -241,49 +273,55 @@ var Pages = function () {
           },
           narration: [
             {
-              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7A_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7A_narrative_a.oga'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7_narrative.ogg'],
               played: false, 
               loop: false,
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 3000
-            },
-                  {
-              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7B_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7B_narrative_a.oga'],
-              played: false,
-              loop: false,
-              buffer:true,
-              autoplay: false,
-              fadein:0,
-              // delay: 3000
-            },
-                  {
-              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7C_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7C_narrative_a.oga'],
-              played: false,
-              loop: false,
-              buffer:true,
-              autoplay: true,
-              fadein:0,
-              // delay: 3000
-            },
-            {
-              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7D_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7D_narrative_b.oga'],
-              played: false,
-              loop: false,
-              buffer:true,
-              autoplay: true,
-              fadein:0,
-              // delay: 3000,
-              // well now this is not json encodable
-              //What is going on here?
-              onend: function() {
-                //only start the timer after she has finished speaking. 
+              delay: 3000, 
+               onend: function() {
+            //     //only start the timer after she has finished speaking. 
                 _timer.checkTimer();
               }
-            }
+            },
           ]
         }, //end of 1.7 
+            //       {
+            //   urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7B_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7B_narrative_a.oga'],
+            //   played: false,
+            //   loop: false,
+            //   buffer:true,
+            //   autoplay: false,
+            //   fadein:0,
+            //   // delay: 3000
+            // },
+            //       {
+            //   urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7C_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7C_narrative_a.oga'],
+            //   played: false,
+            //   loop: false,
+            //   buffer:true,
+            //   autoplay: true,
+            //   fadein:0,
+            //   // delay: 3000
+            // },
+            // {
+            //   urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7D_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.7D_narrative_b.oga'],
+            //   played: false,
+            //   loop: false,
+            //   buffer:true,
+            //   autoplay: true,
+            //   fadein:0,
+            //   // delay: 3000,
+            //   // well now this is not json encodable
+            //   //What is going on here?
+            //   onend: function() {
+            //     //only start the timer after she has finished speaking. 
+            //     _timer.checkTimer();
+            //   }
+            // }
+        //   ]
+        // }, //end of 1.7 
 
 
 //start of 1.8 
@@ -319,7 +357,7 @@ var Pages = function () {
             { // start subframe 1 
             url: "pages/1/8.html", 
             sound: {
-            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.oga'],
+            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.ogg'],
             loop: true,
             buffer:true,
             autoplay: false,
@@ -327,7 +365,7 @@ var Pages = function () {
             }, 
             narration: [
             {
-              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8b_narrative.mp3'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_narrative.ogg'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -344,30 +382,30 @@ var Pages = function () {
   },  //end of 1.8
 
 
-        { 
-          url: "pages/1/8.html", 
-          sound: {
-            urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.oga'],
-            loop: true,
-            buffer:true,
-            autoplay: false,
-            fadein:800
-          },
-           narration: [
-            {
-              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_narrative.mp3'],
-              loop: false,
-              buffer:true,
-              autoplay: false,
-              fadein:0,
-              delay: 3000, 
-               onend: function() {
-                //only start the timer after she has finished speaking. 
-                _timer.checkTimer(); 
-              }
-            }
-          ]
-        },
+        // { 
+        //   url: "pages/1/8.html", 
+        //   sound: {
+        //     urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_background.oga'],
+        //     loop: true,
+        //     buffer:true,
+        //     autoplay: false,
+        //     fadein:800
+        //   },
+        //    narration: [
+        //     {
+        //       urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.8_narrative.mp3'],
+        //       loop: false,
+        //       buffer:true,
+        //       autoplay: false,
+        //       fadein:0,
+        //       delay: 3000, 
+        //        onend: function() {
+        //         //only start the timer after she has finished speaking. 
+        //         _timer.checkTimer(); 
+        //       }
+        //     }
+        //   ]
+        // },
 
 
 
@@ -386,7 +424,7 @@ var Pages = function () {
                 hideNavNext(); 
                 console.log("the right arrow is removed"); 
               }, 
-              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.9_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.9_narrative.oga'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.9_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.9_narrative.ogg'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -430,6 +468,7 @@ var Pages = function () {
       frames: [
         { 
           url: "pages/listing/index.html"
+          //onload: _timer.checkTimer(); 
         }
       ]
     },
