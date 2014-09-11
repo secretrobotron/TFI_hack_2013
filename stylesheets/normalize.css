@@ -320,6 +320,7 @@ input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
+  cursor: url('UX-ASSETS/Arrows/right.cur');
   /* 3 */
 }
 
