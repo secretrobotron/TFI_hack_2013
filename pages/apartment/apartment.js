@@ -239,11 +239,16 @@ function init(e) {
     //after you wait, now you ensure if it is loaded. 
     var assets = videos.concat(audio);
 
+    //util.loader.ensureLoaded(assets,progress,init)
+
     util.loader.ensureLoaded(assets, function() {
       //this is the progress function that will be called. 
+      console.log("im checking progress"); 
       $('#overlay').fadeIn(); 
+      //update progress bar 
 
     }, function(){
+        console.log("i am doign what i do when im finished"); 
       //this is what should be known as init. 
             $('#overlay').fadeOut();
 
@@ -330,6 +335,7 @@ function init(e) {
 
     //ensure that assets did load. this is where the asynchronicity of javascript becomes especially important.  
       assets.forEach(function (asset) {
+        console.log("checking assets loaded"); 
       asset.load && asset.load();
     }); //end of checking for assets
 

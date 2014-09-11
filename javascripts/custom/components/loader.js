@@ -24,35 +24,66 @@
 
 
     VIDEO: function(video, onProgress, onLoaded, onError) {
-                console.log("invideowait" + video); 
+                console.log("invideowaitevan" + video); 
 
                 video.addEventListener('progress', function checkProgress(e) {
-                  console.log("checking progress"); 
-                  onLoaded.call(video, e);
-                  // var percent = null; 
-                      
+                  console.log("checking progressxxx"); 
+                  var percent = null; 
+                  if (video && video.buffered && video.buffered.length >0 && video.buffered.end && video.duration) {
+                    percent = video.buffered.end(0) / video.duration;
+                       console.log("video download:" + percent); 
+                  }
+                  else if (video && video.bytesTotal != undefined && video.bytesTotal > 0 && video.bufferedBytes != undefined) {
+                  percent = video.bufferedBytes / video.bytesTotal; 
+                     console.log("video download:" + percent); 
+                     //onLoaded.call(video,e); 
+                }
+                if (percent !== null) {
+                    percent = 100 * Math.min(1, Math.max(0, percent));
+                    //video.removeEventListener('progress', progressCompleted, false);
+                    console.log("video download:" + percent); 
+                     if (percent == 100) {
+                      console.log("you're done"); 
+                      onLoaded.call(video,e); 
+                      video.removeEventListener('progress', checkProgress, false); 
+                     } 
+          
+                    // video.removeEventListener('progress,')
+                    //maybe push these somewhere?to an array?
+                    // ... do something with var percent here (e.g. update the progress bar)
+                   }
+                 }, false);
+                  video.addEventListener('error', function internalOnError (e) {
+                    video.removeEventListener('error', internalOnError, false);
+                    onError.call(video, e);
+                  }, false);
+        },
+                        
                       // //is it ready to play? 
                       // if (video.readyState) {
-                          var buffered = video.buffered.end(0);
-                          var percent = 100 * buffered / video.duration;
+                          // var buffered = video.buffered.end(0);
+                          // console.log("buffered: " + buffered +"\n"); 
+                          // var percent = 100 * buffered / video.duration;
+                          // console.log("percent" + percent+"\n"); 
 
                           //if it is loaded 
-                          //if (percent = 100)
-                          if (buffered >= video.duration) {
-                                  console.log("percent" + percent); 
-                                  video.removeEventListener('progress', checkProgress, false);
-                                  clearInterval(watchBuffer); 
-                                  onLoaded.call(video, e);
-                          }
-                      // }
-                  var watchBuffer = setInterval(checkProgress, 500);
-                }, false); 
-
-                  video.addEventListener('error', function internalOnError (e) {
-                  video.removeEventListener('error', internalOnError, false);
-                  onError.call(video, e);
-                }, false);
-              },  
+              //             if (percent >= 100) {
+              //             // if (buffered >= video.duration) {
+              //                     console.log("im done"); 
+              //                     video.removeEventListener('progress', checkProgress, false);
+              //                     // clearInterval(watchBuffer); 
+              //                     onLoaded.call(video, e);
+              //             }
+              //         // }
+              //     // var watchBuffer = setInterval(checkProgress, 500);
+              //   }, false); 
+              //   console.log("videoeventlistener for progress added");
+              //     video.addEventListener('error', function internalOnError (e) {
+              //     video.removeEventListener('error', internalOnError, false);
+              //     onError.call(video, e);
+              //   }, false);
+                  
+              // },  
 
 
     AUDIO: function (audio, onProgress, onLoaded, onError) {
@@ -101,6 +132,7 @@
   var __loader = {
     //the finished callback is where the init stuff is being called inside
     //of the js stuff 
+    //do i need to add another funciton for the errorcallback in the constructor?
     ensureLoaded: function (assets, progressCallback, finishedCallback) {
       if (Number(assets.length) !== assets.length) {
         __loader.ensureLoaded([assets], function () {
@@ -120,12 +152,16 @@
       }
 
       function itemProgressCallback() {
-        if (progress != 100) {
-           progressCallback(assets);
-        } else {
-          finishedCallback(assets); 
-        }
+        console.log("itemProgressCallback"); 
+
       }
+
+      //   if (progress !== 100) {
+      //      progressCallback(assets);
+      //   } else {
+      //     finishedCallback(assets); 
+      //   }
+      // }
 
       function itemErrorCallback () {
         ++itemsFinished;
@@ -134,8 +170,9 @@
 
       function itemLoadedCallback () {
         ++itemsFinished;
-        console.log("loadedcallback"); 
-        checkItems();
+        console.log("loadedcallback" + this); 
+        // checkItems();
+        finishedCallback(assets); 
       }
 
       assets.forEach(function (asset) {
