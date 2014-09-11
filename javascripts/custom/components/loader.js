@@ -158,12 +158,6 @@
 
       }
 
-      //   if (progress !== 100) {
-      //      progressCallback(assets);
-      //   } else {
-      //     finishedCallback(assets); 
-      //   }
-      // }
 
       function itemErrorCallback () {
         ++itemsFinished;
