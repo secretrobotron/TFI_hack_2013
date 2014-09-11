@@ -36,16 +36,17 @@
                   //browser configuration??never goes in there? 
                   else if (video && video.bytesTotal != undefined && video.bytesTotal > 0 && video.bufferedBytes != undefined) {
                   percent = video.bufferedBytes / video.bytesTotal; 
-                     console.log("2 video download:" + percent); 
+                     // console.log("2 video download:" + percent); 
                      //onLoaded.call(video,e); 
                 }
                 if (percent !== null) {
                   //makes sure it is never less than zero or more than a 100. 
                     percent = 100 * Math.min(1, Math.max(0, percent));
+                    //onProgress.call(video,e); 
                     //video.removeEventListener('progress', progressCompleted, false);
-                    console.log("3 video download:" + percent); 
+                    // console.log("3 video download:" + percent); 
                      if (percent == 100) {
-                      console.log("you're done"); 
+                      // console.log("you're done"); 
                       video.removeEventListener('progress', checkProgress, false); 
                       onLoaded.call(video,e); 
                       // video.removeEventListener('progress', checkProgress, false); 
@@ -104,9 +105,11 @@
 
                 if (percent !== null) {
                   percent = 100 * Math.min(1, Math.max(0, percent));
+                  //onProgress.call(audio,e)
                   //video.removeEventListener('progress', progressCompleted, false);
                   console.log("audio download:" + percent); 
                   if (percent == 100) {
+                    console.log("done audio"); 
                        audio.removeEventListener('progress', progressCompleted, false); 
                        onLoaded.call(audio,e); 
                   }
@@ -157,16 +160,29 @@
       var itemsFinished = 0;
 
       function checkItems () {
+        //i ti snever incresing the numebr of items in here. 
+
         if (itemsFinished === assets.length) {
           finishedCallback(assets);
-          console.log("check items"); 
+          //callback(assets); 
+          console.log("finished items"); 
           //or send it somewhere. 
+        } else {
+          itemProgressCallback(assets); 
         }
       }
 
       function itemProgressCallback() {
-        console.log("itemProgressCallback"); 
-
+         console.log("itemProgressCallback"); 
+         //var currItem = this.asset; 
+        //check to see if you are done, don't increas the items. 
+        // var currItem = this.asset; 
+        // var prevItem 
+        // if (currItem != prevItem) {
+        //   ++itemsFinished;
+         // finishedCallback(assets);  
+        // }
+        // checkItems(); 
       }
 
       function itemErrorCallback () {
@@ -176,9 +192,9 @@
 
       function itemLoadedCallback () {
         ++itemsFinished;
-        console.log("loadedcallback" + this); 
-        // checkItems();
-        finishedCallback(assets); 
+        // console.log("loadedcallback" + this); 
+         checkItems();
+        //finishedCallback(assets); 
       }
 
       assets.forEach(function (asset) {

@@ -319,9 +319,21 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
-  cursor: pointer;
-/*  cursor: url('UX-ASSETS/Arrows/right.cur');
-*/  /* 3 */
+/*  cursor: pointer;*/
+/*  cursor: url(../UX-ASSETS/Arrows/right.cur), pointer;*/
+/*  cursor: pointer;*/
+  /* 3 */
+}
+
+.prevbutton {
+    -webkit-appearance: button;
+    cursor:url(../UX-ASSETS/Arrows/left.cur), pointer;
+
+}
+
+.nextbutton {
+  -webkit-appearance: button;
+    cursor: url(../UX-ASSETS/Arrows/right.cur), pointer;
 }
 
 /**
