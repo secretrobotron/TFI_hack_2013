@@ -218,6 +218,7 @@
 
   function init(e) {
 
+    ("i am in init in stairs"); 
     var progressButton = document.querySelector('#progress-button');
     var progressExplanation = document.querySelector('#progress-explanation');
     var stairCounter = document.querySelector('#stair-counter');

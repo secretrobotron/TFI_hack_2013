@@ -21,7 +21,7 @@
 
     iframe.frameview {
       border: none;
-    }
+    } 
     
   </style>
 </head>
@@ -29,8 +29,26 @@
 
 <div class="content">
   <div class="pageview" name="pageview"></div>
-  <button onClick="prev();" value="Prev" id="prevbutton" class="prevbutton hidden"><span class="btn" >&larr;</span></button>
-  <button onClick="next();" value="Next" id="nextbutton" class="nextbutton"><span class="btn">&rarr;</span></button>
+
+
+  <!-- <button onClick="prev();" value="Prev" id="prevbutton button" class="prevbutton hidden"><span class="btn"><img src="UX-ASSETS/Arrows/left.png"></span></button> -->
+
+
+<!--  //this are the event listeners to turn the buttons into key presses: 
+        button.addEventlistener('keydown', prev(), false); 
+         prev(e) {
+         (if e.keyCode == 37) {
+         prev();
+         } if e.keyCode == 39 {
+          next(); 
+         }
+         } -->
+
+  <button id="prevbutton" class="prevbutton hidden" value="Prev">/><span class="btn"><img src="UX-ASSETS/Arrows/left.png"></span></button>
+
+ <!--  <button onClick="next();" value="Next" id="nextbutton button" class="nextbutton hidden"><span class="btn"><img src="UX-ASSETS/Arrows/right.png"></span></button>
+ -->
+ <button value="Next" id="nextbutton" class="nextbutton hidden"><span class="btn"><img src="UX-ASSETS/Arrows/right.png"></span></button>
 
 </div>
 
@@ -81,6 +99,23 @@
   <script src="javascripts/custom/components/filters.js"></script>
   <script src="javascripts/custom/components/placement.js"></script>
   <script src="javascripts/custom/components/initialization.js"></script>
+
+   <!-- <script>
+  var button = document.getElementbyId("#prevbutton"); 
+    button.addEventlistener('keydown', change(), false); 
+         
+
+         function change(e) {
+            if (e.keyCode == 37) {
+            console.log('prev'); 
+           prev();
+           } if (e.keyCode == 39) {
+            console.log('next'); 
+            next(); 
+           }
+         };  
+
+  </script> --> 
 
 </body>
 </html>

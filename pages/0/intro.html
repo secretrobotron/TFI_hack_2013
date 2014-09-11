@@ -49,9 +49,9 @@
 			  	<source src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/video/1.0.webmhd.webm" type="video/webm"></source>
 			  </video>
 		
-				<div id="introtitles" class= "fullScreen fadeable" style= "background-color:rgba(0,0,0,0.5); z-index:5">
+				<div id="title" class= "fullScreen fadeable" style= "background-color:rgba(0,0,0,0.5); z-index:5">
 						<img class="left midleft" style="height:23%; width:10%; outline:none" src= "http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/UnionDocs-Logo.png">
-						<img class="right midright" style="height:30%; width: 27%; outline:none" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/POV_logo_nobackground.png">
+						<img class="right midright" style="height:25%; width: 27%; outline:none" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/POV_logo_nobackground.png">
 
 						 <div id="text" class="center" style="text-align:center"> 
 						 <h2> A UnionDocs Production
@@ -60,9 +60,6 @@
 						 </h2>
 						</div>
 				</div>
-
-				<div id="89steps" class="hidden fadeable fullScreen" style="z-index:5; text-align:center; margin-top:250px; font-size:3em">89 Steps</div>	
-				<div id="chapter" class="hidden fadeable fullScreen" style="z-index:5; text-align:center; margin-top:170px; font-size:0.5em">A chapter of Living Los Sures</div>
 		</div>
 		<div class="focalpoint" style="z-index:3;"></div>
 
@@ -73,7 +70,7 @@
 
     <script>
 
-	init(); 
+	// init(); 
 
 	var video; 
 	var popcorn; 
@@ -86,9 +83,10 @@
 	hideNav(); 
 	// 
 	console.log("init has been called"); 
-	var introtitles = document.querySelector("introtitles"); 
+	// var introtitles = document.querySelector("introtitles"); 
 	var popcorn = Popcorn("#intro");
-
+	var title = document.querySelector("#title");
+	
 
 	//load video and pause it 
 	popcorn.preload("auto");
@@ -102,8 +100,8 @@
 
 		//set the timeout for the fadeout 
 		setTimeout(function() {
-			// introtitles.fadeOut();
-			introtitles.classList.add('hidden'); 
+			title.classList.add('hidden'); 
+			// title.fadeOut(); //undefined is not a function. 
 		}, 10000) //the seconds
 	}, 4000); //start video after 4 seconds of firing the dom.
 	
@@ -117,7 +115,7 @@
 	}); 
 	
 	}
-	
+	document.addEventListener('DOMContentLoaded', init, false);
 	
 </script>
 

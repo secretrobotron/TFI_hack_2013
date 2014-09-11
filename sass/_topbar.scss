@@ -2,7 +2,7 @@
    position: relative;
    overflow: hidden;
    height: $topbar-height;
-   background: #060606;
+
    font-size: $topbar-font-size;
    line-height: $topbar-height;
    border-bottom:1px solid rgba(255,255,255,0.2); 
@@ -51,7 +51,6 @@
                padding: 0 12px;
                width: 100%;
                height: $topbar-height;
-               background: #060606;
                color: $topbar-color;
                font-weight: normal;
                line-height: $topbar-height;

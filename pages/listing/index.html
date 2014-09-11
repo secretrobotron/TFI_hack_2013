@@ -121,6 +121,12 @@ html{
 #slideshow{
 	height:420px;
 }
+
+.slideshowimg {
+	width: 450px; 
+	height: 450px; 
+}
+
 #agent{
 	height: 250px;
 	width: 100%;
@@ -247,7 +253,7 @@ img:hover {
       <script src="../../javascripts/custom/components/initialization.js"></script>
        <script src="../../javascripts/vendor/popcorn.min.js"></script>
     <script src="../../javascripts/custom/components/loader.js"></script>
-        <script src="listing.js"></script>
+        <!-- // <script src="listing.js"></script> -->
 
 
 </head>
@@ -280,56 +286,57 @@ img:hover {
 <!-- </div> -->
 				<!--slideshow--> 
 				<!-- <div class="focalpoint" data-focus-scale="contain"> -->
-					<ul class="slider" style="z-index:10px;  top:165px; width:450px; height:420px;">
-						<!--living room--> 
-						<li class="active"><img data-focus-scale="contain" style="width: 450px; height: 450px" src="	
-						https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.04_01_living.jpg"/> 
-						</li> 
+					
+				<div class="slider slideshowimg" style="z-index:10px;  top:165px; width:450px; height:420px;">
 
-						<li><video class="hidden" style="position: absolute; width: 450px; height: 450px" loop> 
+					<a class="fancybox" data-fancybox-type="image" data-fancybox-group="group1" title="apt" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.04_01_living.jpg"><img src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.04_01_living_thumb.png" alt=""></a>
+					<a class="fancybox" data-fancybox-type="iframe" data-fancybox-group="group1" title="the video" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/video/5.04_01_living.mp4" style="autoplay=0&showinfo=0&controls=0"></a>
+					<a class="fancybox" data-fancybox-type="image" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.04_02_stove.jpg"></a>
+					<a class="fancybox" data-fancybox-type="iframe" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/video/5.04_02_stove.webmhd.webm"></a>
+					<a class="fancybox" data-fancybox-type="image" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.04_03_fridge.jpg"></a>
+					<a class="fancybox" data-fancybox-type="iframe" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/video/5.04_03_fridge.webmhd.webm"></a>
+					<a class="fancybox" data-fancybox-type="image" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.04_04_bathroom.jpg"></a>
+					<a class="fancybox" data-fancybox-type="iframe" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/video/5.04_04_bathroom.webmhd.webm"></a>
+					<a class="fancybox" data-fancybox-type="image" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.04_05_living.jpg"></a>
+					<a class="fancybox" data-fancybox-type="iframe" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/video/5.04_05_living.webmhd.webm"></a>
+					<a class="fancybox" data-fancybox-type="image" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.04_06_hallway.jpg"></a>
+					<a class="fancybox" data-fancybox-type="iframe" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/video/5.04_06_hallway.webmhd.webm"></a>
+					<a class="fancybox" data-fancybox-type="image" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.04_07_kitchen.jpg"></a>
+					<a class="fancybox" data-fancybox-type="iframe" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/video/5.04_07_kitchen.webmhd.webm"></a>
+					<a class="fancybox" data-fancybox-type="image" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.04_08_door.jpg"></a>
+					<a class="fancybox" data-fancybox-type="iframe" data-fancybox-group="group1" title="" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/video/5.04_08_door.webmhd.webm"></a>
 
-					    <source src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/video/5.04_01_living.mp4" type="video/mp4"></source>
-					    <source src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/video/5.04_01_living.webmhd.webm" type="video/webm"></source>
-					    </video>
-						</li>
 
-
-
-						    <button onClick="changeSlider('prev');" value="Prev" class="prevbutton"><span class="btn">&larr;</span></button>
-    						<button onClick="changeSlider('next');" value="Next" class="nextbutton"><span class="btn">&rarr;</span></button>
-    						<span class="counter">1/5</span>
-
-					</ul> 
+				</div>
 		
-				</div> <!--end of slideshow--> 
+	</div> <!--end of slideshow--> 
 </br>
 </br>
 </br>
 </br>
 				<p> WoW! Where to begin with this great deal? We are offering 2 side by side units that can be combined and used as great living space!Unit 25 features a full renovated 1 bedroom, complete with new cabinetry, stainless appliances, a full sized pantry and wood floors. The full bathroom has a tub and has been renovated as well. The bedroom fits a full sized bed with dresser and has a spacious closet. The second unit connects to the first in two places, one wall connects in the living room and the second through the bedroom, giving the owner several options. The second unit has 1 full sized bedroom, a kitchenette (no stove), a full bathroom that's very spacious and a separate space that could be converted into a 3rd large bedroom with a full wall closet or this space could work great as an office or home gym. You will love living in such a diverse neighborhood as Williamsburg! With all of the fantastic eateries, bars, galleries and shops, you'll wonder why you didn't move there sooner. Let's not forget the proximity to Manhattan, living only 5 short blocks from the G train at the Metropolitan Avenue station and an even shorter walk to the J/M/Z at the Marcy Avenue station is awesome for commuting.This building has a maximum income restriction of $69,720 for one person and $79,680 for two people. Please make sure that you have been pre-approved for a mortgage or are an all cash buyer before you contact for viewing. <p>
 				&#9644;
-
-					<a><div id="unit-info">
+					<div id="unit-info">
 							<b>Unit #25 Information</b>
 						</br>
 
 						* 27 units		*6 stories
-
+						</br>
 						* Built in 1912		*Income restrictions
-
+						</br>
 						* Tenant Organized	*HDFC
-
+						</br>
 						*2 kitchens		*2 baths
-
+						</br>
 						*3 bedrooms
-					</div></a>
+					</div>
 			<img id="map" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.14_map_01.png">
 
 				<div>
-					<a class="fancybox" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.15_crime_pop"><img id="crime" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.15_crime" alt=""/></a> 
-					<img id="transit"  src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.16_transit">
-					<img id="schools" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.17_schools">
-					<img id="amen" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.18_amenities">
+					<a class="fancybox" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.15_crime_pop.jpg"><img id="crime" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.15_crime.jpg" alt=""/></a> 
+					<a class="fancybox" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.16_transit_pop.jpg"><img id="transit" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.16_transit.jpg" alt=""/></a>
+					<a class="fancybox" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.17_schools_pop.jpg"> <img id="schools" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.17_schools.jpg" alt=""></a>
+					<a class="fancybox" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.18_amenities_pop.jpg"><img id="amen" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.18_amenities.jpg" alt=""></a>
 
 				</div>
 		</div> <!-- this is the end of the right column --> 
@@ -369,7 +376,7 @@ img:hover {
 			 			1 br 1 ba  |  Co-op</p>
 				<a class="fancybox" rel="gallery3" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.10_apt20_02.jpg"> <img id="a3" rel="gallery3" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.10_apt20_02.jpg" alt=""/></a>
 					<div class="hidden">
-						<a class="fancybox" rel="gallery3" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.10_apt20_01.gif"> <img id="a3" rel="gallery3" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.10_apt20_01.gif" alt=""/></a>
+						<a class="fancybox" rel="gallery3" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.10_apt20_01.jpg"> <img id="a3" rel="gallery3" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.10_apt20_01.jpg" alt=""/></a>
 						<a class="fancybox" rel="gallery3" href="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.10_apt20_03.jpg"> <img id="a3" rel="gallery3" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/img/5.10_apt20_03.jpg" alt=""/></a>
 					</div>
 						<p> 330 S 3rd St #23 Brooklyn, NY 11238 </br> 
@@ -402,8 +409,9 @@ img:hover {
  	</div> <!-- this is the end of main--> 
 
  	<div class="square hidden"> 
- 		You are getting a call 
+ 		You are getting a call.  
  	</div>
+ 	 <script src="listing.js"></script>
 
 </div> <!-- this is the end of the wrap container--> 
 

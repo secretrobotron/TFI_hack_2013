@@ -5,6 +5,7 @@
   var __waiters = {
     IMG: function (image, onLoaded, onError) {
       //this remains the same, it is not at html5 element. 
+      //what would progress for an image look like?
             if (!image.complete) {
               image.addEventListener('load', function internalOnLoaded (e) {
                 image.removeEventListener('load', internalOnLoaded, false);
@@ -20,97 +21,41 @@
             }
     },
 
-  //   VIDEO: function (video, onLoaded, onError) {
-  //     //when you can play the whole thing 
-  //     video.addEventListener('canplaythrough', function internalOnCanPlayThrough (e) {
-  //       video.removeEventListener('canplaythrough', internalOnCanPlayThrough, false);
-  //       onLoaded.call(video, e);
-  //     }, false);
-  //     video.addEventListener('error', function internalOnError (e) {
-  //       video.removeEventListener('error', internalOnError, false);
-  //       onError.call(video, e);
-  //     }, false);
-  //   },
-  //   AUDIO: function (audio, onLoaded, onError) {
-  //     audio.addEventListener('canplaythrough', function internalOnCanPlayThrough (e) {
-  //       audio.removeEventListener('canplaythrough', internalOnCanPlayThrough, false);
-  //       onLoaded.call(audio, e);
-  //     }, false);
-  //     audio.addEventListener('error', function internalOnError (e) {
-  //       audio.removeEventListener('error', internalOnError, false);
-  //       onError.call(audio, e);
-  //     }, false);
-  //   }
-  // };
 
 
-    VIDEO: function(video, onLoaded, onError) {
+    VIDEO: function(video, onProgress, onLoaded, onError) {
                 console.log("invideowait" + video); 
 
-                video.addEventListener('progress', function updateProgressBar(e) {
-                  // video.removeEventListener('progress', updateProgressBar, false);
+                video.addEventListener('progress', function checkProgress(e) {
+                  console.log("checking progress"); 
                   onLoaded.call(video, e);
                   // var percent = null; 
-                  // console.log("this is the percent" + percent); 
+                      
+                      // //is it ready to play? 
+                      // if (video.readyState) {
+                          var buffered = video.buffered.end(0);
+                          var percent = 100 * buffered / video.duration;
 
-                  //it doesn't enter the if statement, so it never atually loads the videos, which is clearly a problem. 
-                     var videoDuration = video.attr('duration');
-                      if (video.attr('readyState')) {
-                          var buffered = video.attr("buffered").end(0);
-                          var percent = 100 * buffered / videoDuration;
-
-                          //Your code here
-                          console.log("percent" + percent); 
-
-
-                          //If finished buffering buffering quit calling it
-                            if (buffered >= videoDuration) {
-                                    video.removeEventListener('progress', updateProgressBar, false);
-                                    clearInterval(this.watchBuffer);
-                                    onLoaded.call(video,e); 
-                            }
-                      }
-                  var watchBuffer = setInterval(updateProgressBar, 500);
+                          //if it is loaded 
+                          //if (percent = 100)
+                          if (buffered >= video.duration) {
+                                  console.log("percent" + percent); 
+                                  video.removeEventListener('progress', checkProgress, false);
+                                  clearInterval(watchBuffer); 
+                                  onLoaded.call(video, e);
+                          }
+                      // }
+                  var watchBuffer = setInterval(checkProgress, 500);
                 }, false); 
 
-                console.log("never entered the if statement"); 
-                video.addEventListener('error', function internalOnError (e) {
+                  video.addEventListener('error', function internalOnError (e) {
                   video.removeEventListener('error', internalOnError, false);
                   onError.call(video, e);
                 }, false);
               },  
 
 
-
-
-
-               //    if (video && video.buffered && video.buffered.length > 0 && video.buffered.end && video.duration) {
-               //      percent = video.buffered.end(0) / video.duration;
-               //         console.log("video download:" + percent); 
-               //         // onLoad.call(video,e); 
-               //    }
-               //    else if (video && video.bytesTotal != undefined && video.bytesTotal > 0 && video.bufferedBytes != undefined) {
-               //    percent = video.bufferedBytes / video.bytesTotal; 
-               //       console.log("video download:" + percent); 
-               //  }
-
-               //  if (percent !== null) {
-               //    percent = 100 * Math.min(1, Math.max(0, percent));
-               //   //video.removeEventListener('progress', progressCompleted, false);
-               //    console.log("video download:" + percent); 
-               //    onLoaded.call(video,e); 
-               //    //maybe push these somewhere?to an array?
-               //    // ... do something with var percent here (e.g. update the progress bar)
-               //   }
-               // }, false);
-              //   console.log("never entered the if statement"); 
-              //   video.addEventListener('error', function internalOnError (e) {
-              //     video.removeEventListener('error', internalOnError, false);
-              //     onError.call(video, e);
-              //   }, false);
-              // }, 
-
-    AUDIO: function (audio, onLoaded, onError) {
+    AUDIO: function (audio, onProgress, onLoaded, onError) {
                   audio.addEventListener('progress', function progressCompleted(e) {
                   var percent = null; 
                   if (audio && audio.buffered && audio.buffered.length >0 && audio.buffered.end && audio.duration) {
@@ -139,11 +84,27 @@
       }, 
     }; //end of waiters 
 
+
+  //   AUDIO: function (audio, onLoaded, onError) {
+  //     audio.addEventListener('canplaythrough', function internalOnCanPlayThrough (e) {
+  //       audio.removeEventListener('canplaythrough', internalOnCanPlayThrough, false);
+  //       onLoaded.call(audio, e);
+  //     }, false);
+  //     audio.addEventListener('error', function internalOnError (e) {
+  //       audio.removeEventListener('error', internalOnError, false);
+  //       onError.call(audio, e);
+  //     }, false);
+  //   }
+  // };
+
+
   var __loader = {
-    ensureLoaded: function (assets, callback) {
+    //the finished callback is where the init stuff is being called inside
+    //of the js stuff 
+    ensureLoaded: function (assets, progressCallback, finishedCallback) {
       if (Number(assets.length) !== assets.length) {
         __loader.ensureLoaded([assets], function () {
-          callback(assets);
+          finishedCallback(assets);
         });
         return;
       }
@@ -152,15 +113,18 @@
 
       function checkItems () {
         if (itemsFinished === assets.length) {
-          callback(assets);
+          finishedCallback(assets);
           console.log("check items"); 
           //or send it somewhere. 
         }
       }
 
-      function itemProgress() {
-        console.log("i am checking the asset progress"); 
-
+      function itemProgressCallback() {
+        if (progress != 100) {
+           progressCallback(assets);
+        } else {
+          finishedCallback(assets); 
+        }
       }
 
       function itemErrorCallback () {
@@ -176,7 +140,7 @@
 
       assets.forEach(function (asset) {
         if (__waiters[asset.nodeName]) {
-          __waiters[asset.nodeName](asset, itemProgress, itemErrorCallback); 
+          __waiters[asset.nodeName](asset, itemProgressCallback, itemLoadedCallback, itemErrorCallback); 
           // __waiters[asset.nodeName](asset, itemLoadedCallback, itemErrorCallback); //report on the progress?
         }
       });
@@ -186,3 +150,5 @@
   global.util.loader = __loader;
 
 }(window));
+
+
