@@ -46,8 +46,9 @@
                     console.log("3 video download:" + percent); 
                      if (percent == 100) {
                       console.log("you're done"); 
-                      onLoaded.call(video,e); 
                       video.removeEventListener('progress', checkProgress, false); 
+                      onLoaded.call(video,e); 
+                      // video.removeEventListener('progress', checkProgress, false); 
                      }
           
                     // video.removeEventListener('progress,')
@@ -93,11 +94,11 @@
                   var percent = null; 
                   if (audio && audio.buffered && audio.buffered.length >0 && audio.buffered.end && audio.duration) {
                     percent = audio.buffered.end(0) / audio.duration;
-                       console.log("audio download:" + percent); 
+                       // console.log("audio download:" + percent); 
                   }
                   else if (audio && audio.bytesTotal != undefined && audio.bytesTotal > 0 && audio.bufferedBytes != undefined) {
                   percent = audio.bufferedBytes / audio.bytesTotal; 
-                     console.log("audio download:" + percent); 
+                     // console.log("audio download:" + percent); 
                      //onLoaded.call(video,e); 
                 }
 
@@ -105,11 +106,21 @@
                   percent = 100 * Math.min(1, Math.max(0, percent));
                   //video.removeEventListener('progress', progressCompleted, false);
                   console.log("audio download:" + percent); 
-                  onLoaded.call(audio,e); 
+                  if (percent == 100) {
+                       audio.removeEventListener('progress', progressCompleted, false); 
+                       onLoaded.call(audio,e); 
+                  }
+            
                   //maybe push these somewhere?to an array?
                   // ... do something with var percent here (e.g. update the progress bar)
                  }
                }, false);
+                
+
+                //am i missing what happens when it is loaded???? 
+                //like adding an event listener that is actually checking to see if things are loiaded????
+
+
                 audio.addEventListener('error', function internalOnError (e) {
                   audio.removeEventListener('error', internalOnError, false);
                   onError.call(audio, e);
@@ -157,7 +168,6 @@
         console.log("itemProgressCallback"); 
 
       }
-
 
       function itemErrorCallback () {
         ++itemsFinished;
