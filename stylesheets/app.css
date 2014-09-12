@@ -543,7 +543,7 @@ html, body {
 
 /* line 12, ../sass/_shared.scss */
 body, #modal {
-  background-image: url("http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/loader.gif");
+  background-image: url("assets/shared/loader.gif");
   background-repeat: no-repeat;
   background-position: center;
   background-color: #000;
