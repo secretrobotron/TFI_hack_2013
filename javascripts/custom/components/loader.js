@@ -44,9 +44,9 @@
                     percent = 100 * Math.min(1, Math.max(0, percent));
                     //onProgress.call(video,e); 
                     //video.removeEventListener('progress', progressCompleted, false);
-                    // console.log("3 video download:" + percent); 
+                    console.log("video download:" + percent); 
                      if (percent == 100) {
-                      // console.log("you're done"); 
+                      console.log("you're done"); 
                       video.removeEventListener('progress', checkProgress, false); 
                       onLoaded.call(video,e); 
                       // video.removeEventListener('progress', checkProgress, false); 
@@ -183,6 +183,7 @@
          // finishedCallback(assets);  
         // }
         // checkItems(); 
+       
       }
 
       function itemErrorCallback () {

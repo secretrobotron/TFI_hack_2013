@@ -1,0 +1,53 @@
+<!doctype HTML>
+<head>
+
+<style>
+	.progress-label {
+	    float: left;
+	    margin-left: 50%;
+	    margin-top: 5px;
+	    font-weight: bold;
+	    text-shadow: 1px 1px 0 #fff;
+	}
+
+</style>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="javascripts/vendor/jquery-2.0.0.min.js"><\/script>')</script>
+
+	</head>
+	<body>
+		<div id="progressbar">
+		    <div class="progress-label">Loading...</div>
+		</div>
+
+		<script>
+		 $(function () {
+		      var progressbar = $("#progressbar"),
+		          progressLabel = $(".progress-label");
+
+		      progressbar.progressbar({
+		          value: false,
+		          change: function () {
+		              progressLabel.text(progressbar.progressbar("value") + "%");
+		          },
+		          complete: function () {
+		              progressLabel.text("Complete!");
+		          }
+		      });
+
+		      function progress() {
+		          var val = progressbar.progressbar("value") || 0;
+
+		          progressbar.progressbar("value", val + 1);
+
+		          if (val < 99) {
+		              setTimeout(progress, 100);
+		          }
+		      }
+
+		      setTimeout(progress, 3000);
+		  });
+		
+	</script> 
+	</body>
+</html>
