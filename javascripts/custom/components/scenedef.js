@@ -6,8 +6,9 @@ var Pages = function () {
         transition: 'fade', 
         frames: [
           {
-              url: "pages/0/intro.html", 
-              container: 'iframe'
+              url: "pages/0/intro.html",  //page1, frame 0 
+              container: 'iframe' 
+              // container: 'iframe'
           }, 
         ], 
       }, 
@@ -54,11 +55,11 @@ var Pages = function () {
           },
           narration: [
           {
-              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.1_narrative.mp3', 'http://89steps.s3.amazonaws.com/assets/1_street/sound/1.1_narrative.ogg'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.1_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.1_narrative.ogg'],
               loop: false,
               buffer:true,
               autoplay: false,
-              fadein:0,
+              fadein: 10,
               delay: 3000, 
               onend: function() {
                 _timer.checkTimer(); 
@@ -146,7 +147,7 @@ var Pages = function () {
               },
               narration: [
                   {
-                  urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.4_narrative.mp3', 'http://89steps.s3.amazonaws.com/assets/1_street/sound/1.4_narrative.ogg'],
+                  urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.4_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.4_narrative.ogg'],
                   loop: false,
                   buffer:true,
                   autoplay: false,

@@ -22,14 +22,16 @@
     },
 
 
+    VIDEO: function(video, onProgress, onLoaded, onError) { 
+                var path = $(video).children('source').attr('src');
+                console.log(path)
 
-    VIDEO: function(video, onProgress, onLoaded, onError) {
-                // console.log("invideowaitevan" + video); 
-
+                var timer = 0; 
+                
                 video.addEventListener('progress', function checkProgress(e) {
                   // console.log("checking progressxxx"); 
                   var percent = null; 
-                  if (video && video.buffered && video.buffered.length >0 && video.buffered.end && video.duration) {
+                  if (video && video.buffered && video.buffered.length >0 && video.duration) {
                     percent = video.buffered.end(0) / video.duration;
                        // console.log("1 video download:" + percent); 
                   }
@@ -41,12 +43,12 @@
                 }
                 if (percent !== null) {
                   //makes sure it is never less than zero or more than a 100. 
-                    percent = 100 * Math.min(1, Math.max(0, percent));
-                    //onProgress.call(video,e); 
+                    percent = parseInt(100 * Math.min(1, Math.max(0, percent)));
+                    onProgress(video,percent); 
                     //video.removeEventListener('progress', progressCompleted, false);
-                    console.log("video download:" + percent); 
+                    //console.log("video download:" + percent); 
                      if (percent == 100) {
-                      console.log("you're done"); 
+                      console.log("done " + path);
                       video.removeEventListener('progress', checkProgress, false); 
                       onLoaded.call(video,e); 
                       // video.removeEventListener('progress', checkProgress, false); 
@@ -61,96 +63,96 @@
                     video.removeEventListener('error', internalOnError, false);
                     onError.call(video, e);
                   }, false);
-        },
-                        
-                      // //is it ready to play? 
-                      // if (video.readyState) {
-                          // var buffered = video.buffered.end(0);
-                          // console.log("buffered: " + buffered +"\n"); 
-                          // var percent = 100 * buffered / video.duration;
-                          // console.log("percent" + percent+"\n"); 
 
-                          //if it is loaded 
-              //             if (percent >= 100) {
-              //             // if (buffered >= video.duration) {
-              //                     console.log("im done"); 
-              //                     video.removeEventListener('progress', checkProgress, false);
-              //                     // clearInterval(watchBuffer); 
-              //                     onLoaded.call(video, e);
-              //             }
-              //         // }
-              //     // var watchBuffer = setInterval(checkProgress, 500);
-              //   }, false); 
-              //   console.log("videoeventlistener for progress added");
-              //     video.addEventListener('error', function internalOnError (e) {
-              //     video.removeEventListener('error', internalOnError, false);
-              //     onError.call(video, e);
-              //   }, false);
-                  
-              // },  
+                              /************
 
+                The 'canplaythrough' event should be used to track whether asset has loaded, 
+                'progress' event may not be called, e.g. if asset is already cached
+                As the loader being used does not indicate progress (i.e. percent complete) can
+                comment out the progress event listener.
 
+                ************/
+
+                  // video.addEventListener('canplaythrough', function canPlayThrough(e) {
+                  //   video.removeEventListener('canplaythrough', canPlayThrough, false);
+                  //   onLoaded.call(video,e);
+                  // }, false);
+
+                  // video.addEventListener('error', function internalOnError (e) {
+                  //   video.removeEventListener('error', internalOnError, false);
+                  //   onError.call(video, e);
+                  // }, false);
+                },
+  
     AUDIO: function (audio, onProgress, onLoaded, onError) {
-                  audio.addEventListener('progress', function progressCompleted(e) {
-                  var percent = null; 
-                  if (audio && audio.buffered && audio.buffered.length >0 && audio.buffered.end && audio.duration) {
-                    percent = audio.buffered.end(0) / audio.duration;
-                       // console.log("audio download:" + percent); 
-                  }
-                  else if (audio && audio.bytesTotal != undefined && audio.bytesTotal > 0 && audio.bufferedBytes != undefined) {
-                  percent = audio.bufferedBytes / audio.bytesTotal; 
-                     // console.log("audio download:" + percent); 
-                     //onLoaded.call(video,e); 
-                }
+      var path = $(audio).children('source').attr('src');
+      console.log(path)
+        audio.addEventListener('progress', function checkProgress(e) {
+            //I think the reason why we are getting two sources i because it is an html5 version. cause it is only getting
+            //the mp3s
+            var percent = null;
 
-                if (percent !== null) {
-                  percent = 100 * Math.min(1, Math.max(0, percent));
-                  //onProgress.call(audio,e)
-                  //video.removeEventListener('progress', progressCompleted, false);
-                  console.log("audio download:" + percent); 
-                  if (percent == 100) {
-                    console.log("done audio"); 
-                       audio.removeEventListener('progress', progressCompleted, false); 
-                       onLoaded.call(audio,e); 
-                  }
-            
-                  //maybe push these somewhere?to an array?
-                  // ... do something with var percent here (e.g. update the progress bar)
-                 }
-               }, false);
-                
+            //Asset not completed, saving percentages
+            // if (audio && audio.buffered && audio.buffered.length > 0 && audio.buffered.end && audio.duration) {
+            if (audio && audio.buffered && audio.buffered.length > 0 && audio.duration) {
+                  percent = audio.buffered.end(0) / audio.duration;
+            }
 
-                //am i missing what happens when it is loaded???? 
-                //like adding an event listener that is actually checking to see if things are loiaded????
+            //Asset not completed, saving percentes ( browser specific)
+            else if (audio && audio.bytesTotal != undefined && audio.bytesTotal > 0 && audio.bufferedBytes != undefined) {
+                percent = audio.bufferedBytes / audio.bytesTotal; 
+                // console.log("audio download:" + percent); 
+                //onLoaded.call(video,e); 
+            }
 
+          if (percent !== null) {
+            percent = parseInt(100 * Math.min(1, Math.max(0, percent)));
+            //console.log('this is percent', percent);
+            onProgress(audio, percent);
+            if (percent == 100) {
 
-                audio.addEventListener('error', function internalOnError (e) {
-                  audio.removeEventListener('error', internalOnError, false);
-                  onError.call(audio, e);
-                }, false);
-      }, 
-    }; //end of waiters 
+                console.log("done " + path);
+              // console.log("done audio"); 
+                 audio.removeEventListener('progress', checkProgress, false); 
+                 onLoaded.call(audio,e);
+            }
+           }
+         }, false);
+          
+          audio.addEventListener('error', function internalOnError (e) {
+            audio.removeEventListener('error', internalOnError, false);
+            onError.call(audio, e);
+          }, false);
+      
+          /************
 
+          The 'canplaythrough' event should be used to track whether asset has loaded, 
+          'progress' event may not be called, e.g. if asset is already cached
+          As the loader being used does not indicate progress (i.e. percent complete) can
+          comment out the progress event listener.
 
-  //   AUDIO: function (audio, onLoaded, onError) {
-  //     audio.addEventListener('canplaythrough', function internalOnCanPlayThrough (e) {
-  //       audio.removeEventListener('canplaythrough', internalOnCanPlayThrough, false);
-  //       onLoaded.call(audio, e);
-  //     }, false);
-  //     audio.addEventListener('error', function internalOnError (e) {
-  //       audio.removeEventListener('error', internalOnError, false);
-  //       onError.call(audio, e);
-  //     }, false);
-  //   }
-  // };
+          ************/
+          
+          // audio.addEventListener('canplaythrough', function canPlayThrough(e) {
+          //   audio.removeEventListener('canplaythrough', canPlayThrough, false);
+          //   onLoaded.call(audio,e);
+          // }, false);
 
+          // audio.addEventListener('error', function internalOnError (e) {
+          //   audio.removeEventListener('error', internalOnError, false);
+          //   onError.call(audio, e);
+          // }, false);
+        }, 
+      }; //end of waiters 
 
   var __loader = {
     //the finished callback is where the init stuff is being called inside
     //of the js stuff 
     //do i need to add another funciton for the errorcallback in the constructor?
     ensureLoaded: function (assets, progressCallback, finishedCallback) {
+      var totalPercent = 0;
       if (Number(assets.length) !== assets.length) {
+          console.log("first conditional"); 
         __loader.ensureLoaded([assets], function () {
           finishedCallback(assets);
         });
@@ -158,6 +160,7 @@
       }
 
       var itemsFinished = 0;
+      var totalPercent = 0;
 
       function checkItems () {
         //i ti snever incresing the numebr of items in here. 
@@ -167,33 +170,26 @@
           //callback(assets); 
           console.log("finished items"); 
           //or send it somewhere. 
-        } else {
-          itemProgressCallback(assets); 
         }
+        // else {
+        //   itemProgressCallback(100);
+        // }
       }
 
-      function itemProgressCallback() {
-         console.log("itemProgressCallback"); 
-         //var currItem = this.asset; 
-        //check to see if you are done, don't increas the items. 
-        // var currItem = this.asset; 
-        // var prevItem 
-        // if (currItem != prevItem) {
-        //   ++itemsFinished;
-         // finishedCallback(assets);  
-        // }
-        // checkItems(); 
+      function itemProgressCallback(audio, percent){
+      console.log("progress calbback"); 
        
       }
 
       function itemErrorCallback () {
+        console.log('error');
         ++itemsFinished;
         checkItems();
       }
 
       function itemLoadedCallback () {
+        console.log('item finished');
         ++itemsFinished;
-        // console.log("loadedcallback" + this); 
          checkItems();
         //finishedCallback(assets); 
       }

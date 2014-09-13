@@ -109,7 +109,7 @@
 /////////////////////////////////////////////////////////////////////////////////
 
 function changeFrame(value, callback) {
-  console.log("changeFrame click");
+  // console.log("changeFrame click");
   frameview = $(".frameview").first();
   _pages.resetSubframeIndex();
 
@@ -227,8 +227,6 @@ if (trans) {
   //we have to stop the timer aevery time we change frames. 
   _timer.stopTimer(); 
 
-  //console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
-
 
   if(_pageIndex === 0 && _frameIndex === 0 ) framecounter.addClass("hidden");
   else {
@@ -283,6 +281,8 @@ function changePage(value, frame) {
         }); 
     });
 
+    //console.log("pagect," pagect);
+
     changePageBackground(_pages.getPageSound(_pageIndex));
 
     pagetitle.text(_pages.getPageTitle(_pageIndex));
@@ -295,23 +295,24 @@ function changePage(value, frame) {
 
 function next() { 
 
-  console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
+  // console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
 
 //special case for the intro to unhide the loaded animated gif
-    if( _frameIndex == 0 && _pageIndex == 0 ){
-      console.log("went into first special case"); 
-      $("#intro_title").addClass("hidden");
-      $("#intro_gif").removeClass("hidden");
-    }
+    // if( _frameIndex == 0 && _pageIndex == 0 ){
+    //   console.log("went into first special case"); 
+    //   $("#intro_title").addClass("hidden");
+    //   $("#intro_gif").removeClass("hidden");
+    // }
 
 
-
+    //what does this logic mean? 
     if (_frameIndex < _pages.getFrameCount(_pageIndex)-1) { 
 
       ///special cases 
       if( _frameIndex === 0 && _pageIndex === 0 ){
         //dont show back nav at beginning, use the callback option to call hide on the cursor
         changeFrame('next', hideNavPrev );
+        changeFrame('next', hideNavNext );
       }else{
         changeFrame('next'); 
      }

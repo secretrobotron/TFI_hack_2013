@@ -543,7 +543,7 @@ html, body {
 
 /* line 12, ../sass/_shared.scss */
 body, #modal {
-  background-image: url("assets/shared/loader.gif");
+/*  background-image: url("assets/shared/loader.gif");*/
   background-repeat: no-repeat;
   background-position: center;
   background-color: #000;
@@ -551,7 +551,7 @@ body, #modal {
 
 /* line 20, ../sass/_shared.scss */
 .left {
-  float: left !important;
+  float:left !important;
 }
 
 /* line 21, ../sass/_shared.scss */
@@ -2355,4 +2355,17 @@ ul.slider .counter {
   right: 0;
   border-bottom-width: 0;
   border-right-width: 0;
+}
+
+#overlay{
+  z-index:9;
+  position: relative;
+  padding: 80px;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: rgb(250,250,250);
+  text-align: center;
+  display:none;
 }

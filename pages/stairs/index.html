@@ -47,7 +47,7 @@
       .square {
         padding: 50px;
         width: 500px;
-        height: 150px;
+        height: 300px;
         margin-right:50px;
         margin-top: 280px;
         text-align: center;
@@ -168,20 +168,24 @@
     <script>
       (function(){
         var floors = [
-          ['C','D','E','F','G'],
-          ['A','B','C','D','E'],
-          ['A','B','C','D','E','F','G','H'],
-          ['A','B','C','D'],
-          ['A','B','C','D','E','F']
+          ['C','D','E','F','G','H','I'], //1
+          ['A','B','C','D','E','F','G','H','I','J','K','L'], //2
+          ['A','B','C','D','E','F','G','H','I','J','K'], //3
+          ['A','B','C','D','E','F','G','H','I'], //4
+          ['A','B','C','D','E','F','G','H','I','J','K'] //5
         ];
+        //this will be the audio array that will be concanated into the video. 
 
+        var audio = []; 
         floors.forEach(function (floor, floorIndex) {
+            //var audio = []; 
           floor.forEach(function (letter) {
             var a = document.createElement('audio');
+            audio.push(a); 
             var s1 = document.createElement('source');
             var s2 = document.createElement('source');
             s1.src = 'http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.' + (floorIndex + 1) + letter + '.mp3';
-            s2.src = 'http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.' + (floorIndex + 1) + letter + '.oga';
+            s2.src = 'http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.' + (floorIndex + 1) + letter + '.ogg';
             s1.type = 'audio/mp3';
             s2.type = 'audio/ogg';
             a.appendChild(s1);
@@ -189,21 +193,31 @@
             a.setAttribute('data-floor', (floorIndex + 1));
             a.preload = 'auto';
             document.body.appendChild(a);
+            //add the audio file created to an array called audio. 
           });
         });
+      //check to see if all the assets are in the audio. 
+      console.log("audio.length" + audio.length); 
       }());
     </script>
-    <audio data-background="true" preload="none">
-      <source src="http://89steps.s3.amazonaws.com/assets/2_stairs/sound/2.0backgroundloop.mp3" type="audio/mp3"></source>
-      <source src="http://89steps.s3.amazonaws.com/assets/2_stairs/sound/2.0backgroundloop.ogg" type="audio/ogg"></source>
+   <!--  <div id="overlay">
+        <h3>Scene 2: The Stairs</h3> 
+    </div> -->
+
+    <audio data-background="true" preload="auto">
+      <source src="https://s3-us-west-2.amazonaws.com/89steps/assets/2_stairs/sound/2.0backgroundloop.mp3" type="audio/mp3"></source>
+      <source src="http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.0backgroundloop.ogg" type="audio/ogg"></source>
     </audio>
-    <video id="stairs_video"class="fadeable" width="320" height="240" preload="none">
+    <video id="stairs_video"class="fadeable hidden" width="320" height="240" preload="auto">
       <source src="http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/video/Stairs05.15.2013_720.mp4" type="video/mp4"></source>
       <source src="http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/video/Stairs05.15.2013_720.webmhd.webm" type="video/webm"></source>
     </video>
     <div id="floor-counter" class="hidden fadeable"><sup>Floor</sup><span>1</span>/6</div>
     <div id="stair-counter" class="hidden fadeable"><sup>Step</sup><span>0</span>/89</div>
 
+<div id="overlay">
+        <h3>Scene 2: The Stairs</h3> 
+    </div>
         <div id="instructions" class="hidden fadeable square">
           <h4>CLICK and HOLD the UP key to walk up the steps. </br>
                   </br>
@@ -212,6 +226,7 @@
         Marta will wait and share a word or two. </br>
         </br>
         Click any key to continue. </h4>
+   <img style="width:55%; height:47%" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/arrows-key.gif">
         </div>
 <!--     <div id="progress-button" class="hidden fadeable">&rarr;</div>
     <div id="progress-explanation" class="hidden fadeable">Walk with Marta</div> -->

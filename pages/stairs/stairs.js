@@ -30,6 +30,7 @@
   var floorAudioController;
 
   function positionVideo () {
+    console.log("positioning video"); 
     var width, height;
     var aspectRatio = video.videoWidth / video.videoHeight;
 
@@ -246,9 +247,20 @@
       }
     });
 
-    var assets = [].concat(document.querySelector('audio')).concat(document.querySelector('video'));
+    //this will add the assets in the array audio as well as the background audio 
+    var audio = Array.prototype.slice.call(document.querySelectorAll('audio'));
+    //now we have all the assets
+    var assets = audio.concat(document.querySelector('video'));
+    //var assets = video.concat(audio); 
+    console.log("assets" + assets.length);
+    $("#overlay").fadeIn(); 
 
-    util.loader.ensureLoaded(assets, function(){
+    util.loader.ensureLoaded(assets, function(percent) {
+      console.log("total percenteges: ", percent);
+    }, function(){
+      console.log("DONEEEEE");
+      $("#overlay").fadeOut();
+      video.classList.remove('hidden');  
       var playing = false;
       var keyUpTimeout = -1;
       var skipping = false;
