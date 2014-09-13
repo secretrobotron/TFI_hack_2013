@@ -219,6 +219,10 @@
 
   function init(e) {
 
+       //this should make you be able to click the button when you press key. 
+
+         
+
     ("i am in init in stairs"); 
     var progressButton = document.querySelector('#progress-button');
     var progressExplanation = document.querySelector('#progress-explanation');
@@ -247,6 +251,8 @@
       }
     });
 
+
+
     //this will add the assets in the array audio as well as the background audio 
     var audio = Array.prototype.slice.call(document.querySelectorAll('audio'));
     //now we have all the assets
@@ -261,6 +267,13 @@
       console.log("DONEEEEE");
       $("#overlay").fadeOut();
       video.classList.remove('hidden');  
+      $("body").keydown(function(e) {
+        if (e.which == 38) {
+          console.log("up"); 
+          $('.progress').trigger("click"); 
+          // progressButton.trigger("click"); 
+        }
+      })
       var playing = false;
       var keyUpTimeout = -1;
       var skipping = false;
@@ -275,6 +288,7 @@
        
         //show the instructions
         instructions.classList.remove('hidden'); 
+        //progressButton.classList.remove('hidden');
         video.classList.add('paused');
         // popcorn.pause(); 
          window.onkeypress = function() { 
@@ -290,6 +304,7 @@
           }
 
          setTimeout(function () {
+          console.log("eventlisteneradded"); 
            progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
            progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
         //   //pausing the video 

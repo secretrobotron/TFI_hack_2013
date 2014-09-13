@@ -165,7 +165,8 @@
       function checkItems () {
         //i ti snever incresing the numebr of items in here. 
 
-        if (itemsFinished === assets.length) {
+        //this ensures that it loads
+        if (itemsFinished === assets.length-1) {
           finishedCallback(assets);
           //callback(assets); 
           console.log("finished items"); 

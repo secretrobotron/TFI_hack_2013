@@ -205,26 +205,26 @@
       }
     }
 
-    // function positionVideo () {
-    //   var aspectRatio = backgroundVideo.videoWidth / backgroundVideo.videoHeight;
-    //   var scale = 1;
+    function positionVideo () {
+      var aspectRatio = backgroundVideo.videoWidth / backgroundVideo.videoHeight;
+      var scale = 1;
 
-    //   videoContainer.style.width = backgroundVideo.videoWidth + 'px';
-    //   videoContainer.style.height = backgroundVideo.videoHeight + 'px';
-    //   videoContainer.style.marginLeft = -backgroundVideo.videoWidth / 2 + 'px';
-    //   videoContainer.style.marginTop = -backgroundVideo.videoHeight / 2 + 'px';
+      videoContainer.style.width = backgroundVideo.videoWidth + 'px';
+      videoContainer.style.height = backgroundVideo.videoHeight + 'px';
+      videoContainer.style.marginLeft = -backgroundVideo.videoWidth / 2 + 'px';
+      videoContainer.style.marginTop = -backgroundVideo.videoHeight / 2 + 'px';
 
-    //   if (window.innerWidth / backgroundVideo.videoWidth * backgroundVideo.videoHeight < window.innerHeight) {
-    //     scale = window.innerHeight / backgroundVideo.videoHeight;
-    //   }
-    //   else {
-    //     scale = window.innerWidth / backgroundVideo.videoWidth;
-    //   }
+      if (window.innerWidth / backgroundVideo.videoWidth * backgroundVideo.videoHeight < window.innerHeight) {
+        scale = window.innerHeight / backgroundVideo.videoHeight;
+      }
+      else {
+        scale = window.innerWidth / backgroundVideo.videoWidth;
+      }
 
-    //   videoContainer.style.transform = videoContainer.style.WebkitTransform = videoContainer.style.MozTransform = 
-    //     videoContainer.style.webkitTransform = videoContainer.style.mozTransform = 'scale(' + scale + ')';
+      videoContainer.style.transform = videoContainer.style.WebkitTransform = videoContainer.style.MozTransform = 
+        videoContainer.style.webkitTransform = videoContainer.style.mozTransform = 'scale(' + scale + ')';
 
-    // }
+    }
 
     Popcorn.plugin('step', {
       start: function () {
@@ -244,18 +244,18 @@
     rightVideos.videoIndex = 0;
 
     var assets = video.concat(audio);
+    //console.log('asset length', assets.length); 
+
+    //var assets = audio;
     console.log('asset length', assets.length); 
-
-    //var assets = video;
-
     //console.log('length', video.length);
 
     //console.dir(assets)
 
     //Change overlay text dynamically
     //$(".pagetitle")
-    $('#overlay h2').text('Scene 2: The Apartment');
-    $('#overlay span').text('joans rules');    
+    // $('#overlay h2').text('Scene 2: The Apartment');
+    // $('#overlay span').text('joans rules');    
 
     $('#overlay').fadeIn();
 
@@ -264,55 +264,55 @@
     }, function(){
       console.log("DONEEEEE");
       $('#overlay').fadeOut();
-      // window.addEventListener('resize', positionVideo, false);
-      // positionVideo();
+      window.addEventListener('resize', positionVideo, false);
+      positionVideo();
       
-      // var volumeTweenController = prepareVolumeTweening();
+      var volumeTweenController = prepareVolumeTweening();
 
-      // volumeTweenController.start();
+      volumeTweenController.start();
 
-      // rightVideos.concat(leftVideos).concat(kitchenVideo).forEach(function (video) {
-      //   volumeTweenController.prepareVolumeTweenForElement(video, 0);
-      // });
+      rightVideos.concat(leftVideos).concat(kitchenVideo).forEach(function (video) {
+        volumeTweenController.prepareVolumeTweenForElement(video, 0);
+      });
 
-      // volumeTweenController.prepareVolumeTweenForElement(backgroundVideo, 1);
+      volumeTweenController.prepareVolumeTweenForElement(backgroundVideo, 1);
 
-      // kitchenVideo.hidden = true;
-      // backgroundVideo.hidden = true;
+      kitchenVideo.hidden = true;
+      backgroundVideo.hidden = true;
 
-      // startVideo.play();
-      // startVideo.addEventListener('ended', function onStartVideoEnded (e) {
-      //   startVideo.removeEventListener('ended', onStartVideoEnded, false);
+      startVideo.play();
+      startVideo.addEventListener('ended', function onStartVideoEnded (e) {
+        startVideo.removeEventListener('ended', onStartVideoEnded, false);
   
-      //   backgroundVideo.hidden = false;
-      //   startVideo.hidden = true;
-      //   backgroundVideo.play();
+        backgroundVideo.hidden = false;
+        startVideo.hidden = true;
+        backgroundVideo.play();
 
-      //   setTimeout(function () {
-      //     rightButton.classList.remove('hidden');
-      //     leftButton.classList.remove('hidden');
-      //     leftButton.addEventListener('click', onLeftButtonClick, false);
-      //     rightButton.addEventListener('click', onRightButtonClick, false);
-      //   }, BUTTON_SHOW_DELAY);
+        setTimeout(function () {
+          rightButton.classList.remove('hidden');
+          leftButton.classList.remove('hidden');
+          leftButton.addEventListener('click', onLeftButtonClick, false);
+          rightButton.addEventListener('click', onRightButtonClick, false);
+        }, BUTTON_SHOW_DELAY);
 
-      //   backgroundVideo.addEventListener('ended', function (e) {
-      //     if (window.parent && window.parent.next) {
-      //       window.parent.next();
-      //     }
-      //     else {
-      //       videoContainer.style.left = '50%';
-      //       leftButton.removeEventListener('click', onLeftButtonClick, false);
-      //       rightButton.removeEventListener('click', onRightButtonClick, false);
-      //       rightButton.classList.remove('hidden');
-      //       leftButton.classList.add('hidden');
-      //       continueMessage.classList.remove('hidden');
-      //       rightButton.addEventListener('click', function (e) {
-      //       }, false);
-      //     }
-      //   }, false);
-      // }, false);
+        backgroundVideo.addEventListener('ended', function (e) {
+          if (window.parent && window.parent.next) {
+            window.parent.next();
+          }
+          else {
+            videoContainer.style.left = '50%';
+            leftButton.removeEventListener('click', onLeftButtonClick, false);
+            rightButton.removeEventListener('click', onRightButtonClick, false);
+            rightButton.classList.remove('hidden');
+            leftButton.classList.add('hidden');
+            continueMessage.classList.remove('hidden');
+            rightButton.addEventListener('click', function (e) {
+            }, false);
+          }
+        }, false);
+      }, false);
 
-      // prepareBackgroundSoundsLoop(audio).start();
+      prepareBackgroundSoundsLoop(audio).start();
     });
   }
 
