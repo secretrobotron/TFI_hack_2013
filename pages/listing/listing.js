@@ -23,7 +23,7 @@ function init(e) {
 
 	setTimeout(function() {
 
-	$("#overlay").fadeIn('slow'); 	
+	$("#overlay").fadeOut('slow'); 	
 	console.log("fadein"); 
 	},3000); 
 
