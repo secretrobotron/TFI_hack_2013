@@ -60,7 +60,7 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein: 10,
-              delay: 3000, 
+              delay: 1000, 
               onend: function() {
                 _timer.checkTimer(); 
               }
@@ -152,7 +152,7 @@ var Pages = function () {
                   buffer:true,
                   autoplay: false,
                   fadein:0,
-                  delay: 3000, 
+                  delay: 1000, 
                   onend: function() {
                     _timer.checkTimer(); 
                   }
@@ -254,7 +254,7 @@ var Pages = function () {
                       buffer:true,
                       autoplay: false,
                       fadein:0,
-                      delay: 3000, 
+                      delay: 1000, 
                       onend: function() {
                       _timer.checkTimer(); 
                     }, 
@@ -281,7 +281,7 @@ var Pages = function () {
                     buffer:true,
                     autoplay: false,
                     fadein:0,
-                    delay: 3000,  
+                    delay: 1000,  
                     onend: function() {
                         //move on to chapter 2, this can't be stopped
                         setTimeout(function(){ changePage("next"); },2000);
@@ -314,7 +314,7 @@ var Pages = function () {
                   buffer:true,
                   autoplay: false,
                   fadein:0,
-                  delay: 3000, 
+                  delay: 1000, 
                    onend: function() {
                 //     //only start the timer after she has finished speaking. 
                     _timer.checkTimer();
@@ -343,7 +343,7 @@ var Pages = function () {
                   buffer:true,
                   autoplay: false,
                   fadein:0,
-                  delay: 3000, 
+                  delay: 1000, 
                    onend: function() {
                 //     //only start the timer after she has finished speaking. 
                     _timer.checkTimer();
@@ -378,7 +378,7 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 3000, 
+              delay: 1000, 
                onend: function() {
                 //only start the timer after she has finished speaking. 
                 _timer.checkTimer(); 
@@ -405,7 +405,7 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 3000, 
+              delay: 1000, 
                onend: function() {
                 //only start the timer after she has finished speaking. 
                 _timer.checkTimer(); 
@@ -438,7 +438,7 @@ var Pages = function () {
               buffer:true,
               autoplay: false,
               fadein:0,
-              delay: 3000, 
+              delay: 1000, 
                onend: function() {
                 //only start the timer after she has finished speaking. 
                 _timer.checkTimer(); 

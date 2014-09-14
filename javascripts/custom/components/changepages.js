@@ -234,12 +234,14 @@ if (trans) {
       framecounter.removeClass("hidden");
   }
 
+  if(_pageIndex === 0 && _frameIndex === 9 ) { hideNavNext();}
+
   framecounter.text((_frameIndex) + "/" + (frameCount-1));
 
   var end = _pages.pageCount() - 1;
   var frameEnd = _pages.getFrameCount(_pageIndex) - 1;
   if(_pageIndex === end && _frameIndex === frameEnd){ hideNavNext(); showNavPrev(); }
-  else if (_pageIndex === 0 && _frameIndex === 0)   { showNavNext(); hideNavPrev(); }
+  else if (_pageIndex === 0 && _frameIndex === 0)   { hideNav(); }
   else                                            { showNav(); }
 
     //optional call back
