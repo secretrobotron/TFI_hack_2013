@@ -263,7 +263,7 @@
 
     util.loader.ensureLoaded(assets, function(percent) {
       console.log("total percenteges: ", percent);
-    }, function(){
+    }, function() {
       console.log("DONEEEEE");
       $("#overlay").fadeOut();
       video.classList.remove('hidden');  
