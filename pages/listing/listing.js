@@ -25,6 +25,8 @@ function init(e) {
 
 	$("#overlay").fadeOut('slow'); 	
 	console.log("fadein"); 
+	$('#prevbutton').addClass('hidden');
+ 	$('#nextbutton').addClass('hidden');
 	},3000); 
 
 
