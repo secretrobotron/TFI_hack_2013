@@ -245,9 +245,10 @@ if (trans) {
 
   var end = _pages.pageCount() - 1;
   var frameEnd = _pages.getFrameCount(_pageIndex) - 1;
-  if(_pageIndex === end && _frameIndex === frameEnd){ hideNavNext(); showNavPrev(); }
+  // if(_pageIndex === end && _frameIndex === frameEnd){ hideNavNext(); showNavPrev(); }
+  if(_pageIndex === end && _frameIndex === frameEnd){ hideNavNext(); }
   else if (_pageIndex === 0 && _frameIndex === 0)   { hideNav(); }
-  else                                            { showNav(); }
+  else                           { showNav(); }
 
     //optional call back
     if(callback) callback();
@@ -270,7 +271,7 @@ if (trans) {
 function changePage(value, frame) {
     var pagect = _pages.pageCount();
 
-    //console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
+    console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
 
     var newChapter = false; 
 
