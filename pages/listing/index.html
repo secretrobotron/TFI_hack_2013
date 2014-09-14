@@ -93,7 +93,7 @@ html{
 	margin: 0px auto;
 	position: fixed;
 	top: 0px;
-	z-index: 100;
+	z-index: 8;
 	left: 0px;
 }
 
@@ -216,6 +216,26 @@ html{
         z-index: 10;
       }
 
+
+.SouvenirStd-Light { 
+  font-family: SouvenirStd-Light;
+  font-weight: normal;
+  font-style: normal;
+}
+
+#overlay{
+  z-index:9;
+  position: relative;
+  padding: 80px;
+  padding-top: 200px;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: rgb(250,250,250);
+  text-align: center;
+  display:block;
+}
 /***************************/
 /*    ROLLOVER BUTTONS     */
 /***************************/
@@ -237,6 +257,7 @@ img:hover {
         <script>window.jQuery || document.write('<script src="javascripts/vendor/jquery-2.0.0.min.js"><\/script>')</script>
        <link rel="stylesheet" href="../../javascripts/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
         <script type="text/javascript" src="../../javascripts/fancybox/jquery.fancybox.pack.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../webfonts/MyFontsWebfontsKit.css">
 
 
       <script src="../../javascripts/vendor/fastclick.js"></script>
@@ -261,11 +282,12 @@ img:hover {
 
 <body>
 
-<div id="wrap"> 
-	<div id="overlay">
-        <h3>Scene 2: The Stairs</h3> 
+	  <div id="overlay" class="SouvenirStd-Light">
+        <h1><b>Scene 4:</b> The Listing</h1>
+        <h3>Loading...<h3>
     </div>
 
+<div id="wrap"> 
 	<div id="nav"> 89Steps Real Estate </div> 
 
 	<div id="main">

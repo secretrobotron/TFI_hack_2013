@@ -357,6 +357,7 @@ blockquote p {
 .top-bar ul {
   margin-bottom: 0;
   list-style: none;
+  text-align:center;
 }
 /* line 13, ../sass/_topbar.scss */
 .top-bar .row {
@@ -562,7 +563,7 @@ body, #modal {
 .center{
   display: inline-block;
   float: left;
-  margin-left: 380px;
+  margin-left: 0px;
 }
 
 /* line 23, ../sass/_shared.scss */
@@ -2362,6 +2363,7 @@ ul.slider .counter {
   position: relative;
   padding: 80px;
   margin: 0 auto;
+  padding-top: 200px;
   width: 100%;
   height: 100%;
   background-color: black;

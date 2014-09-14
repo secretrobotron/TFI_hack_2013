@@ -20,6 +20,14 @@ function init(e) {
 	var crime = document.querySelector("#crime"); 
 	var transit = document.querySelector("#transit"); 
 
+
+	setTimeout(function() {
+
+	$("#overlay").fadeIn('slow'); 	
+	console.log("fadein"); 
+	},3000); 
+
+
 	$(".fancybox").fancybox({
         padding : 0, 
         arrows: true, 
@@ -30,14 +38,14 @@ function init(e) {
     });
  
 	// activeAddress(); 
-	activePrice(); 
-	activeAgent(); 
-	activeA1(); 
-	activeA2(); 
-	activeA3(); 
-	activeA4(); 
-	activeA5(); 
-	changeMap(); 
+	// activePrice(); 
+	// activeAgent(); 
+	// activeA1(); 
+	// activeA2(); 
+	// activeA3(); 
+	// activeA4(); 
+	// activeA5(); 
+	// changeMap(); 
 
 }
 

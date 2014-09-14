@@ -100,6 +100,7 @@
     var leftButton = document.querySelector('#left-button');
     var rightButton = document.querySelector('#right-button');
     var continueMessage = document.querySelector('#continue-message');
+    var instructions = document.querySelector('#instructions'); 
 
     var startVideo = document.querySelector('video[data-video="start"]');
     var backgroundVideo = document.querySelector('video[data-video="background"]');
@@ -289,8 +290,9 @@
         backgroundVideo.play();
 
         setTimeout(function () {
-          rightButton.classList.remove('hidden');
-          leftButton.classList.remove('hidden');
+          //rightButton.classList.remove('hidden');
+          //leftButton.classList.remove('hidden');
+          instructions.classList.remove('hidden'); 
           leftButton.addEventListener('click', onLeftButtonClick, false);
           rightButton.addEventListener('click', onRightButtonClick, false);
         }, BUTTON_SHOW_DELAY);
