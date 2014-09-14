@@ -251,9 +251,10 @@ html{
 .calling{
 	z-index:9; 
 	background-color:rgba(0,0,0,100); 
-	position:relative;
-	margin-top:300px;
+	position:absolute;
+	margin-top:150px;
 	margin-left:18%; 
+	margin-right:18%;
 	padding:20px;
 }
 
@@ -272,9 +273,9 @@ img:hover {
     filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
-#ignore:hover {
-	background-image: url(https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/call/Ignore_Yellow.png);
-}
+/*#ignore:hover {
+	image: url(https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/call/Ignore_Yellow.png);
+}*/
 
 
 </style>
@@ -320,10 +321,10 @@ img:hover {
 <div id="wrap"> 
 
 	<div class="calling hidden">
-		<img style="position:relative" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/call/Phone.png">
-		<div>
-		<button> <img src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/call/Answer_Yellow.png"></button>
-		<button id="ignore"> <img src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/call/Ignore_White.png"></button>
+		<img style="position:relative; margin-left:30%; margin-right:20%; padding-bottom:5%" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/call/Phone.png">
+		<div style="margin-top:4px">
+		<img src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/call/Answer_Yellow.png">
+		<img id="ignore"src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/call/Ignore_White.png">
 	</div>
 	</div>
 

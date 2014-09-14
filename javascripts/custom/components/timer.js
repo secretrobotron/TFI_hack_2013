@@ -119,6 +119,7 @@ this.isCalling = function() {
     var player = new Howl(ring); 
     player.fadeIn(1, 800);
     
+    
     // if (you clik on the button) {
     //   //stop the player 
     // }
