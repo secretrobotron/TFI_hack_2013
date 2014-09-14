@@ -28,6 +28,8 @@
     function hideNav() {nextbutton.addClass('hidden'); prevbutton.addClass('hidden');}
     function showNav() {nextbutton.removeClass('hidden'); prevbutton.removeClass('hidden');}
 
+    // function disableKeyPress() {$("body").removeEventListener('keydown', keyPress, false);}
+
 
 // Fills the navigation with the appropriate links and dropdowns
 //$.each(pages, function(pageNumber){
@@ -107,6 +109,9 @@
 /////////////////////////////////////////////////////////////////////////////////
 // FRAMES ///////////////
 /////////////////////////////////////////////////////////////////////////////////
+
+// function disableKeyPress() {$("body").removeEventListener('keydown', keyPress, false);}
+
 
 function changeFrame(value, callback) {
   // console.log("changeFrame click");
@@ -267,8 +272,9 @@ function changePage(value, frame) {
 
     //console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
 
+    var newChapter = false; 
 
-    if (value==="next") { if (_pageIndex < pagect-1) _pageIndex++; }
+    if (value==="next") { if (_pageIndex < pagect-1) _pageIndex++; newChapter = true }
     else if (value==="prev") { if (_pageIndex > 0) _pageIndex--; } 
     else if (value==="first") { _pageIndex = 0; } 
     else if (value==="last"){ _pageIndex = pagect - 1; } 
@@ -288,6 +294,14 @@ function changePage(value, frame) {
     changePageBackground(_pages.getPageSound(_pageIndex));
 
     pagetitle.text(_pages.getPageTitle(_pageIndex));
+
+    //only make keypress work if we are inside a chapter. 
+    if (newChapter) {
+      console.log("you changed chapter"); 
+      newChapter = false; 
+    //   //remove the event listener for the key press 
+
+    }
   
 }
 

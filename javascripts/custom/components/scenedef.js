@@ -163,8 +163,6 @@ var Pages = function () {
               url: "pages/1/4b.html",
               visited:false,
               isDefault: true, 
-              visited:false,
-              isDefault: true,  
               sound: {
                 urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.4_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.4_background.oga'],
                 loop: true,
@@ -276,11 +274,10 @@ var Pages = function () {
                 narration:  [
                 {
                   urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative.ogg'],
-                    played: false, 
                     loop: false,
                     buffer:true,
                     autoplay: false,
-                    fadein:0,
+                    fadein: 0,
                     delay: 1000,  
                     onend: function() {
                         //move on to chapter 2, this can't be stopped
@@ -617,6 +614,7 @@ var Pages = function () {
           if(subframes[i].isDefault){
             this.currentSubframeIndex = i;
             console.log("found default");
+            //this means you are now in the second one. 
             return subframes[i];
           } 
         }

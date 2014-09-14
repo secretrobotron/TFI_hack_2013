@@ -29,6 +29,7 @@ function init(e) {
  	$('#nextbutton').addClass('hidden');
 	},3000); 
 
+	hideNav(); 
 
 	$(".fancybox").fancybox({
         padding : 0, 
