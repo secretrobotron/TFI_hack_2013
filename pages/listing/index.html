@@ -4,8 +4,7 @@
 <style>
 
 html, body {
-        background: #000;
-        font-family: Helvetica;
+       font-family: Helvetica;
         margin: 0;
         padding: 0;
         width: 100%;
@@ -248,6 +247,17 @@ html{
   text-align: center;
   display:block;
 }
+
+.calling{
+	z-index:9; 
+	background-color:rgba(0,0,0,100); 
+	position:relative;
+	margin-top:300px;
+	margin-left:18%; 
+	padding:20px;
+}
+
+
 /***************************/
 /*    ROLLOVER BUTTONS     */
 /***************************/
@@ -261,6 +271,11 @@ img:hover {
  /*    outline: 1.5px solid yellow; */
     filter: alpha(opacity=100); /* For IE8 and earlier */
 }
+
+#ignore:hover {
+	background-image: url(https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/call/Ignore_Yellow.png);
+}
+
 
 </style>
 
@@ -303,6 +318,15 @@ img:hover {
 
 
 <div id="wrap"> 
+
+	<div class="calling hidden">
+		<img style="position:relative" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/call/Phone.png">
+		<div>
+		<button> <img src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/call/Answer_Yellow.png"></button>
+		<button id="ignore"> <img src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/call/Ignore_White.png"></button>
+	</div>
+	</div>
+
 	<div id="nav"> 89Steps Real Estate </div> 
 
 	<div id="main">

@@ -39,6 +39,15 @@ function init(e) {
         prevEffect: 'fade', 
         // loop: true, 
     });
+
+	// setTimeout(function() {
+
+ //    _timer.isCalling(); 
+ //    //remove hidden on call. 
+
+	// },10000); 
+
+ 
  
 	// activeAddress(); 
 	// activePrice(); 
