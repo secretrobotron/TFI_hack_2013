@@ -66,8 +66,7 @@ var Pages = function () {
               loop: false,
               buffer:true,
               autoplay: false,
-              fadein: 0,
-              delay: .5, 
+              fadein: 0, 
               onend: function() {
                 _timer.checkTimer(); 
               }
@@ -214,36 +213,22 @@ var Pages = function () {
                   autoplay: false,
                   fadein:800
                 },
-                 narration:[]
+                 narration:[
+                 {
+                      urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6_narrative.ogg'],                     
+                        loop: false, 
+                        buffer:true,
+                        autoplay: false,
+                        fadein:0,
+                        delay: 0, 
+                        onend: function() {
+                        _timer.checkTimer(); 
+                      } 
+                    }
+                    ]
               } //end subframe 2 
             ] //end subframe object 
           }, //end of 1.5 
-              //this will change 
-            //   narration: [
-            //   {
-            //       onload: function() {
-            //       console.log("hide arrows");
-            //       hideNavNext(); 
-            //       hideNavPrev(); 
-            //     }, 
-            //     urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.5b_narrative.mp3'],
-
-            //     loop: false,
-            //     buffer:true,
-            //     autoplay: false,
-            //     fadein:0,
-            //     delay: 1500,
-            //     onend: function() {
-            //       //move on to chapter 2, this can't be stopped
-            //       setTimeout(function(){ changePage("next"); },2000);
-
-            //     }
-            //   }
-            // ] //end of narration objects      
-      //     } //end subframe 2 
-      //   ] //end subframe object 
-      // }, //end of 1.5 
-
         {
           subframes: [
               { 
@@ -291,7 +276,7 @@ var Pages = function () {
                     buffer:true,
                     autoplay: false,
                     fadein: 0,  
-                    delay: 1000, 
+                    delay: 0, 
                     onend: function() {
                         //move on to chapter 2, this can't be stopped
                         setTimeout(function(){ changePage("next"); },2000);
@@ -491,6 +476,16 @@ var Pages = function () {
       ]
     },
 
+ {
+  url: "pages/7.html", 
+  transition: 'fade', 
+  frames : [
+      {
+        url: "pages/7/1.html"
+      }
+
+    ]
+ }
 // //CHAPTER 6 
 
 

@@ -43,16 +43,15 @@ function init(e) {
         // loop: true, 
     });
 
-	// setTimeout(function() {
+	setTimeout(function() {
+    	_timer.isCalling();
+    	$('.calling').removeClass('hidden'); 
+    // $('.calling').addEventListener('click', function() {
+    // 	console.log("end call"); 
+    // }) 
+    //remove hidden on call. 
 
- //    _timer.isCalling();
- //    $('.calling').removeClass('hidden'); 
- //    // $('.calling').addEventListener('click', function() {
- //    // 	console.log("end call"); 
- //    // }) 
- //    //remove hidden on call. 
-
-	// },10000); 
+	},60000); 
 
  
  
