@@ -22,7 +22,8 @@ function init(e) {
 	var crime = document.querySelector("#crime"); 
 	var transit = document.querySelector("#transit"); 
 	var amenities = document.querySelector("#amen"); 
-	var answer = document.querySelector("#answer"); 
+	var answer = document.querySelector("#answer");
+	// var callVideo = document.querySelector('video[data-video="calling"]'); 
 
 
 	setTimeout(function() {
@@ -47,6 +48,8 @@ function init(e) {
     //CALL ENTERS:
 	setTimeout(function() {
 	  console.log("call coming in"); 
+	  	var callVideo = document.querySelector('video[data-video="calling"]'); 
+
 
 	      var ring = {
 
@@ -71,17 +74,19 @@ function init(e) {
 	    //ANSWER THE PHONE
 	    answer.addEventListener('click', function() {
 	    	player.pause(); 
-	    	$('.calling').addClass('hidden'); 
+	    	$('.calling').addClass('hidden');
+	 		callVideo.classList.remove('hidden'); 
+	    	callVideo.play();  
 	    	//go to martha's video: 
 	    	// window.parent.next(); 
 	    	//changePage("next")
 	    })
 	    
 
-	},90000); 
+	},12000); 
 
  
- 	answerPhone(); 
+ 	// answerPhone(); 
  
 	// activeAddress(); 
 	 activePrice(); 

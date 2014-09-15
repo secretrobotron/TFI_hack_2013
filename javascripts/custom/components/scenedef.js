@@ -200,7 +200,7 @@ var Pages = function () {
                 autoplay: false,
                 fadein:800
               },
-              narration:[]
+               narration:[]
             },
             { //subframe 2
               url: "pages/1/5b.html", 
@@ -216,6 +216,7 @@ var Pages = function () {
                  narration:[
                  {
                       urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6_narrative.ogg'],                     
+                        // played: false, 
                         loop: false, 
                         buffer:true,
                         autoplay: false,
@@ -279,7 +280,7 @@ var Pages = function () {
                     delay: 0, 
                     onend: function() {
                         //move on to chapter 2, this can't be stopped
-                        setTimeout(function(){ changePage("next"); },2000);
+                        // setTimeout(function(){ changePage("next"); },2000);
                       }
                     }
                   ]
@@ -476,29 +477,7 @@ var Pages = function () {
       ]
     },
 
- {
-  url: "pages/6.html", 
-  transition: 'fade', 
-  frames : [
-      {
-        url: "pages/6/1.html"
-      }
-
-    ]
- }
 // //CHAPTER 6 
-
-
-  // {
-  //   url: "pages/6.html", title: "Microfilm", 
-  //     transition: 'fade', 
-  //     frames: [
-  //       { 
-  //         url: "pages/listing/index.html"
-  //       }
-  //     ]
-  //   },
-
 
 
 // //CHAPTER 7 
