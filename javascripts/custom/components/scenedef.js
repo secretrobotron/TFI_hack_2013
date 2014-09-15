@@ -58,7 +58,7 @@ var Pages = function () {
             loop: true,
             buffer:true,
             autoplay: false,
-            fadein:800, 
+            fadein:100, 
           },
           narration: [
           {
@@ -152,7 +152,7 @@ var Pages = function () {
                 loop: true,
                 buffer:true,
                 autoplay: false,
-                fadein:800
+                fadein:100
               },
               narration: [
                   {
@@ -161,7 +161,7 @@ var Pages = function () {
                   buffer:true,
                   autoplay: false,
                   fadein:0,
-                  delay: 1000, 
+                  delay: 0, 
                   onend: function() {
                     _timer.checkTimer(); 
                   }
@@ -267,12 +267,12 @@ var Pages = function () {
                   loop: true,
                   buffer:true,
                   autoplay: false,
-                  fadein:800
+                  fadein:100
                 }, 
                 narration:  [
                 {
                   urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.6b_narrative.ogg'],
-                    played: false, 
+                    // played: false, 
                     loop: false,
                     buffer:true,
                     autoplay: false,
@@ -280,7 +280,7 @@ var Pages = function () {
                     delay: 0, 
                     onend: function() {
                         //move on to chapter 2, this can't be stopped
-                        // setTimeout(function(){ changePage("next"); },2000);
+                        setTimeout(function(){ changePage("next"); },2000);
                       }
                     }
                   ]

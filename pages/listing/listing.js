@@ -23,7 +23,9 @@ function init(e) {
 	var transit = document.querySelector("#transit"); 
 	var amenities = document.querySelector("#amen"); 
 	var answer = document.querySelector("#answer");
+	var ignore = document.querySelector("#ignore"); 
 	// var callVideo = document.querySelector('video[data-video="calling"]'); 
+	var videoplayed = true; 
 
 
 	setTimeout(function() {
@@ -46,46 +48,86 @@ function init(e) {
     });
 
     //CALL ENTERS:
-	setTimeout(function() {
-	  console.log("call coming in"); 
-	  	var callVideo = document.querySelector('video[data-video="calling"]'); 
+    function callComesIn() {
+				setTimeout(function(){
+				  console.log("call coming in"); 
+				  	var callVideo = document.querySelector('video[data-video="calling"]'); 
+				  	// var videoplayed = false; 
 
 
-	      var ring = {
+				      var ring = {
 
-	                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3'],
-	                loop: true,
-	                buffer:true,
-	                autoplay: false,
-	                fadein:0, 
-	                delay: 1000, 
-	                //this will take you to the next chapter (page)
-	              onend: function() {
-	            //the ring has stopped 
-	          }
-	    }; 
+				                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3'],
+				                loop: true,
+				                buffer:true,
+				                autoplay: false,
+				                fadein:0, 
+				                delay: 1000, 
+				                //this will take you to the next chapter (page)
+				              onend: function() {
+				            //the ring has stopped 
+				          }
+				    }; 
 
-	    var player = new Howl(ring); 
-	    player.fadeIn(1, 200);
+				    var player = new Howl(ring); 
+				    player.fadeIn(1, 200);
 
-	    //show the call 
-	   	$('.calling').removeClass('hidden'); 
+				    //show the call 
+				   	$('.calling').removeClass('hidden'); 
 
-	    //ANSWER THE PHONE
-	    answer.addEventListener('click', function() {
-	    	player.pause(); 
-	    	$('.calling').addClass('hidden');
-	 		callVideo.classList.remove('hidden'); 
-	    	callVideo.play();  
-	    	//go to martha's video: 
-	    	// window.parent.next(); 
-	    	//changePage("next")
-	    })
-	    
+				    //ANSWER THE PHONE
+				    answer.addEventListener('click', function() {
+				    	player.pause(); 
+				    	$('.calling').addClass('hidden');
+				 		callVideo.classList.remove('hidden'); 
+				    	callVideo.play();  
+				    	videoplayed = true; 
+				    	console.log(videoplayed); 
 
-	},12000); 
+				    	// if (!videoplayed) {
+				    	// 	console.log("get another call"); 
+				    	// }
 
+				    	  //  if (!videoplayed) {
+						     // 	console.log("second call"); 
+						     // 	setTimeout(callComesIn(),1000); 
+						     // }
+									    
+				    })
+
+				    //IGNORE THE CALL 
+				    ignore.addEventListener('click', function() {
+				    	//make it go away and then make you keep exploring the page 
+				    	player.pause(); 
+				   		$('.calling').addClass('hidden');
+				   		videoplayed = false; 
+				   		console.log(videoplayed); 
+
+				   			 if (!videoplayed) {
+						 	 	console.log("you shoudl get another call soon"); 
+						 	// 	console.log("get another call");
+							 	callComesIn();  
+							 	 }
+					})
+				    
+	    //Get a second call. 
+
+	     // if (!videoplayed) {
+	     // 	console.log("second call"); 
+	     // 	setTimeout(callComesIn(),1000); 
+	     // }
+
+	},60000); 
+		
+}
+
+	callComesIn(); 
  
+ 	//  if (!videoplayed) {
+ 	//  	console.log("you shoudl get another call soon"); 
+ 	// // 	console.log("get another call");
+ 	// callComesIn();  
+ 	//  }
  	// answerPhone(); 
  
 	// activeAddress(); 
