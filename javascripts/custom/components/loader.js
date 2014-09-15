@@ -27,6 +27,8 @@
                 console.log(path)
 
                 var timer = 0; 
+
+                var percent = null; 4
                 
                 video.addEventListener('progress', function checkProgress(e) {
                   // console.log("checking progressxxx"); 
@@ -44,9 +46,10 @@
                 if (percent !== null) {
                   //makes sure it is never less than zero or more than a 100. 
                     percent = parseInt(100 * Math.min(1, Math.max(0, percent)));
-                    onProgress(video,percent); 
+                    // onProgress(video,percent);
+                    onProgress.call(video,e);  
                     //video.removeEventListener('progress', progressCompleted, false);
-                    //console.log("video download:" + percent); 
+                    console.log("video download:" + percent); 
                      if (percent == 100) {
                       console.log("done " + path);
                       video.removeEventListener('progress', checkProgress, false); 
@@ -73,21 +76,23 @@
 
                 ************/
 
-                  // video.addEventListener('canplaythrough', function canPlayThrough(e) {
-                  //   video.removeEventListener('canplaythrough', canPlayThrough, false);
-                  //   onLoaded.call(video,e);
-                  // }, false);
+                  video.addEventListener('canplaythrough', function canPlayThrough(e) {
+                    video.removeEventListener('canplaythrough', canPlayThrough, false);
+                    onLoaded.call(video,e);
+                  }, false);
 
-                  // video.addEventListener('error', function internalOnError (e) {
-                  //   video.removeEventListener('error', internalOnError, false);
-                  //   onError.call(video, e);
-                  // }, false);
+                  video.addEventListener('error', function internalOnError (e) {
+                    video.removeEventListener('error', internalOnError, false);
+                    onError.call(video, e);
+                  }, false);
                 },
   
     AUDIO: function (audio, onProgress, onLoaded, onError) {
       var path = $(audio).children('source').attr('src');
       console.log(path)
+
         audio.addEventListener('progress', function checkProgress(e) {
+
             //I think the reason why we are getting two sources i because it is an html5 version. cause it is only getting
             //the mp3s
             var percent = null;
@@ -101,14 +106,15 @@
             //Asset not completed, saving percentes ( browser specific)
             else if (audio && audio.bytesTotal != undefined && audio.bytesTotal > 0 && audio.bufferedBytes != undefined) {
                 percent = audio.bufferedBytes / audio.bytesTotal; 
-                // console.log("audio download:" + percent); 
+                 console.log("audio download:" + percent); 
                 //onLoaded.call(video,e); 
             }
 
           if (percent !== null) {
             percent = parseInt(100 * Math.min(1, Math.max(0, percent)));
-            //console.log('this is percent', percent);
+            console.log('this is percent', percent);
             onProgress(audio, percent);
+            
             if (percent == 100) {
 
                 console.log("done " + path);
@@ -133,15 +139,15 @@
 
           ************/
           
-          // audio.addEventListener('canplaythrough', function canPlayThrough(e) {
-          //   audio.removeEventListener('canplaythrough', canPlayThrough, false);
-          //   onLoaded.call(audio,e);
-          // }, false);
+          audio.addEventListener('canplaythrough', function canPlayThrough(e) {
+            audio.removeEventListener('canplaythrough', canPlayThrough, false);
+            onLoaded.call(audio,e);
+          }, false);
 
-          // audio.addEventListener('error', function internalOnError (e) {
-          //   audio.removeEventListener('error', internalOnError, false);
-          //   onError.call(audio, e);
-          // }, false);
+          audio.addEventListener('error', function internalOnError (e) {
+            audio.removeEventListener('error', internalOnError, false);
+            onError.call(audio, e);
+          }, false);
         }, 
       }; //end of waiters 
 
@@ -171,15 +177,18 @@
           //callback(assets); 
           console.log("finished items"); 
           //or send it somewhere. 
-        }
-        // else {
-        //   itemProgressCallback(100);
-        // }
+        } 
+         else {
+          console.log("you are not done");
+          //itemLoadedCallback(assets);  
+          //this makes it call it like a million times. 
+           //itemProgressCallback();
+         } 
       }
 
       function itemProgressCallback(audio, percent){
-      console.log("progress calbback"); 
-       
+      console.log("progress callback"); 
+      //checkItems(); 
       }
 
       function itemErrorCallback () {

@@ -97,6 +97,7 @@
       window.parent.hideNav();
     }
 
+
     var leftButton = document.querySelector('#left-button');
     var rightButton = document.querySelector('#right-button');
     var continueMessage = document.querySelector('#continue-message');
@@ -113,6 +114,7 @@
     //var video = centerVideos.concat(rightVideos).concat(leftVideos);
     var video = rightVideos.concat(leftVideos);
     var audio = Array.prototype.slice.call(document.querySelectorAll('audio'));
+
 
     var videoContainerIndex = 0;
 
@@ -179,14 +181,18 @@
     function onLeftButtonClick (e) {
       videoContainerIndex = Math.min(videoContainerIndex + 1, 1);
       playPositionedVideo();
+      instructions.classList.remove('hidden'); 
       videoContainer.style.left = 50 + videoContainerIndex * 100 + '%';
 
       if (videoContainerIndex === 1) {
         leftButton.classList.add('hidden');
+        //instructions.classList.remove('hidden'); 
         leftButton.removeEventListener('click', onLeftButtonClick, false);
       }
       else if (videoContainerIndex === 0) {
         rightButton.classList.remove('hidden');
+
+         instructions.classList.remove('hidden'); 
         rightButton.addEventListener('click', onRightButtonClick, false);        
       }
     }
@@ -194,6 +200,7 @@
     function onRightButtonClick (e) {
       videoContainerIndex = Math.max(videoContainerIndex - 1, -1);
       playPositionedVideo();
+      instructions.classList.remove('hidden'); 
       videoContainer.style.left = 50 + videoContainerIndex * 100 + '%';
 
       if (videoContainerIndex === -1) {
@@ -201,6 +208,7 @@
         rightButton.removeEventListener('click', onRightButtonClick, false);
       }
       else if (videoContainerIndex === 0) {
+        //instructions.classList.remove('hidden'); 
         leftButton.classList.remove('hidden');
         leftButton.addEventListener('click', onLeftButtonClick, false);        
       }
@@ -258,10 +266,11 @@
     // $('#overlay h2').text('Scene 2: The Apartment');
     // $('#overlay span').text('joans rules');    
 
-    $('#overlay').fadeIn();
+    //$('#overlay').fadeIn();
 
     util.loader.ensureLoaded(assets, function(percent) {
       console.log("total percenteges: ", percent);
+       $('#overlay').fadeIn();
     }, function(){
       console.log("DONEEEEE");
       $('#overlay').fadeOut();
@@ -290,8 +299,6 @@
         backgroundVideo.play();
 
         setTimeout(function () {
-          //rightButton.classList.remove('hidden');
-          //leftButton.classList.remove('hidden');
           instructions.classList.remove('hidden'); 
           leftButton.addEventListener('click', onLeftButtonClick, false);
           rightButton.addEventListener('click', onRightButtonClick, false);
@@ -305,9 +312,8 @@
             videoContainer.style.left = '50%';
             leftButton.removeEventListener('click', onLeftButtonClick, false);
             rightButton.removeEventListener('click', onRightButtonClick, false);
-            rightButton.classList.remove('hidden');
+            instructions.classList.remove('hidden'); 
             leftButton.classList.add('hidden');
-            continueMessage.classList.remove('hidden');
             rightButton.addEventListener('click', function (e) {
             }, false);
           }

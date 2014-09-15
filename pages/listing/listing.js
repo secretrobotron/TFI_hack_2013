@@ -137,10 +137,10 @@ function activeA3() {
 
 function activateAmenities() {
 	//here is where the amenities. 
-	var sound = new Howl({
-		urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.ogg']
-		buffer: false, 
-	}).play(); 
+	// var sound = new Howl({
+	// 	urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.ogg']
+	// 	buffer: false 
+	// }).play(); 
 }
 
 function activeA4() {

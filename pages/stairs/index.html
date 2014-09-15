@@ -190,8 +190,9 @@
             audio.push(a); 
             var s1 = document.createElement('source');
             var s2 = document.createElement('source');
-            s1.src = 'http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.' + (floorIndex + 1) + letter + '.mp3';
-            s2.src = 'http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.' + (floorIndex + 1) + letter + '.ogg';
+
+            s1.src = 'https://s3-us-west-2.amazonaws.com/89steps/assets/2_stairs/sound/2.' + (floorIndex + 1) + letter + '.mp3';
+            s2.src = 'https://s3-us-west-2.amazonaws.com/89steps/assets/2_stairs/sound/2.' + (floorIndex + 1) + letter + '.ogg';
             s1.type = 'audio/mp3';
             s2.type = 'audio/ogg';
             a.appendChild(s1);
@@ -214,7 +215,7 @@
       <source src="https://s3-us-west-2.amazonaws.com/89steps/assets/2_stairs/sound/2.0backgroundloop.mp3" type="audio/mp3"></source>
       <source src="http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.0backgroundloop.ogg" type="audio/ogg"></source>
     </audio>
-    <video id="stairs_video"class="fadeable hidden" width="320" height="240" preload="auto">
+    <video id="stairs_video"class="fadeable hidden" width="320" height="240" preload="auto" data-video="stairs">
       <source src="http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/video/Stairs05.15.2013_720.mp4" type="video/mp4"></source>
       <source src="http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/video/Stairs05.15.2013_720.webmhd.webm" type="video/webm"></source>
     </video>
@@ -236,7 +237,7 @@
         </div>
 <!--     <div id="progress-button" class="hidden fadeable">&rarr;</div>
     <div id="progress-explanation" class="hidden fadeable">Walk with Marta</div> -->
-    <button onClick= "mousedown" id="progress-button" class="progress fadeable hidden"> Go </button>
+    <button onClick= "onProgressButtonMouseDown" id="progress-button" class="progress fadeable hidden"> Go </button>
     <!-- this button should take you to the video at the top of the stairs...should be a clikc. ** Show remainder steps--> 
     <button id="skip-notice" class="fadeable hidden" style= "outline: none;">Skip steps. Meet Marta at the top.</button>
   </body>

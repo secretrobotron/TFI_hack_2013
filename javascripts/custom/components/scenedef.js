@@ -264,7 +264,7 @@ var Pages = function () {
                         buffer:true,
                         autoplay: false,
                         fadein:0,
-                        delay: 1000, 
+                        delay: 0, 
                         onend: function() {
                         _timer.checkTimer(); 
                       } 

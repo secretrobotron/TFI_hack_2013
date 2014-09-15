@@ -31,6 +31,7 @@
 
   function positionVideo () {
     console.log("positioning video"); 
+    var video = document.querySelector('video[data-video="stairs"]');
     var width, height;
     var aspectRatio = video.videoWidth / video.videoHeight;
 
@@ -221,9 +222,7 @@
 
        //this should make you be able to click the button when you press key. 
 
-         
-
-    ("i am in init in stairs"); 
+    console.log("i am in init in stairs"); 
     var progressButton = document.querySelector('#progress-button');
     var progressExplanation = document.querySelector('#progress-explanation');
     var stairCounter = document.querySelector('#stair-counter');
@@ -231,7 +230,8 @@
     var floorCounterSpan = floorCounter.querySelector('span');
     var skipNotice = document.querySelector('#skip-notice'); 
     var instructions = document.querySelector('#instructions'); 
-    video = document.querySelector('video');
+    //var video = document.querySelector('video');
+    var video = document.querySelector('video[data-video="stairs"]');
 
     var stepData = JSON.parse(document.querySelector('#step-data').innerHTML);
     var floorData = JSON.parse(document.querySelector('#floor-data').innerHTML);
@@ -256,22 +256,26 @@
     //this will add the assets in the array audio as well as the background audio 
     var audio = Array.prototype.slice.call(document.querySelectorAll('audio'));
     //now we have all the assets
-    var assets = audio.concat(document.querySelector('video'));
+    // var video = document.querySelector('video'); 
+    //var assets = audio.concat(video);
+    var assets = audio; 
     //var assets = video.concat(audio); 
     console.log("assets" + assets.length);
     $("#overlay").fadeIn(); 
 
-    util.loader.ensureLoaded(assets, function(percent) {
-      console.log("total percenteges: ", percent);
+    util.loader.ensureLoaded(assets, function() {
+      console.log("total percenteges");
+
     }, function(){
       console.log("DONEEEEE");
       $("#overlay").fadeOut();
       video.classList.remove('hidden');  
+      
       $("body").keydown(function(e) {
         if (e.which == 38) {
           console.log("up"); 
-          $('.progress').trigger("click"); 
-          // progressButton.trigger("click"); 
+         // $('.progress').trigger("click"); 
+          progressButton.trigger("click"); 
         }
       })
       var playing = false;
