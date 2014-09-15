@@ -63,10 +63,6 @@ function init(e) {
 				                autoplay: false,
 				                fadein:0, 
 				                delay: 1000, 
-				                //this will take you to the next chapter (page)
-				              onend: function() {
-				            //the ring has stopped 
-				          }
 				    }; 
 
 				    var player = new Howl(ring); 
@@ -83,15 +79,6 @@ function init(e) {
 				    	callVideo.play();  
 				    	videoplayed = true; 
 				    	console.log(videoplayed); 
-
-				    	// if (!videoplayed) {
-				    	// 	console.log("get another call"); 
-				    	// }
-
-				    	  //  if (!videoplayed) {
-						     // 	console.log("second call"); 
-						     // 	setTimeout(callComesIn(),1000); 
-						     // }
 									    
 				    })
 
@@ -102,33 +89,20 @@ function init(e) {
 				   		$('.calling').addClass('hidden');
 				   		videoplayed = false; 
 				   		console.log(videoplayed); 
-
+				   			//GET A SECOND CALL IF YOU DIDN'T ANSWER
 				   			 if (!videoplayed) {
 						 	 	console.log("you shoudl get another call soon"); 
-						 	// 	console.log("get another call");
 							 	callComesIn();  
 							 	 }
 					})
 				    
-	    //Get a second call. 
-
-	     // if (!videoplayed) {
-	     // 	console.log("second call"); 
-	     // 	setTimeout(callComesIn(),1000); 
-	     // }
+	 
 
 	},60000); 
 		
 }
 
 	callComesIn(); 
- 
- 	//  if (!videoplayed) {
- 	//  	console.log("you shoudl get another call soon"); 
- 	// // 	console.log("get another call");
- 	// callComesIn();  
- 	//  }
- 	// answerPhone(); 
  
 	// activeAddress(); 
 	 activePrice(); 
