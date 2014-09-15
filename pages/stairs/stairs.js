@@ -270,15 +270,8 @@
       console.log("DONEEEEE");
       $("#overlay").fadeOut();
       video.classList.remove('hidden');  
-      
-      $("body").keydown(function(e) {
-        if (e.which == 38) {
-          console.log("up"); 
-         // $('.progress').trigger("click"); 
-          var progressButton = document.querySelector('#progress-button');
-          progressButton.trigger("click"); 
-        }
-      })
+
+
       var playing = false;
       var keyUpTimeout = -1;
       var skipping = false;
@@ -295,18 +288,42 @@
         instructions.classList.remove('hidden'); 
         //progressButton.classList.remove('hidden');
         video.classList.add('paused');
-        // popcorn.pause(); 
-         window.onkeypress = function() { 
-           //show the stair controls 
-            instructions.classList.add('hidden'); 
-            stairCounter.classList.remove('hidden');
-            floorCounter.classList.remove('hidden');
-            progressButton.classList.remove('hidden');
-        //shows you you can skip when the button is paused(); 
-            skipNotice.classList.remove('hidden');
+               window.addEventListener('click', function() {
+                    instructions.classList.add('hidden'); 
+                    stairCounter.classList.remove('hidden');
+                    floorCounter.classList.remove('hidden');
+                    progressButton.classList.remove('hidden');
+                //shows you you can skip when the button is paused(); 
+                    skipNotice.classList.remove('hidden');
 
-           alert("keypress event detected!");
-          }
+                 })
+
+
+       //Attempt to use keyboard controls 
+                  // $("body").keydown(function(e) {
+                  //   window.trigger('click'); 
+                  //   if (e.which == 38) {
+                  //     console.log("up"); 
+                  //    // $('.progress').trigger("click"); 
+                  //     var progressButton = document.querySelector('#progress-button');
+                  //     // progressButton.trigger("click"); 
+                  //   }
+                  // })
+
+
+
+        // popcorn.pause(); 
+        //  window.onkeypress = function() { 
+        //    //show the stair controls 
+        //     instructions.classList.add('hidden'); 
+        //     stairCounter.classList.remove('hidden');
+        //     floorCounter.classList.remove('hidden');
+        //     progressButton.classList.remove('hidden');
+        // //shows you you can skip when the button is paused(); 
+        //     skipNotice.classList.remove('hidden');
+
+        //    alert("keypress event detected!");
+        //   }
 
          setTimeout(function () {
           console.log("eventlisteneradded"); 
