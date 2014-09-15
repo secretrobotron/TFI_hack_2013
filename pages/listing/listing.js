@@ -22,6 +22,7 @@ function init(e) {
 	var crime = document.querySelector("#crime"); 
 	var transit = document.querySelector("#transit"); 
 	var amenities = document.querySelector("#amen"); 
+	var answer = document.querySelector("#answer"); 
 
 
 	setTimeout(function() {
@@ -43,20 +44,46 @@ function init(e) {
         // loop: true, 
     });
 
+    //CALL ENTERS:
 	setTimeout(function() {
-    	_timer.isCalling();
-    	$('.calling').removeClass('hidden'); 
-    // $('.calling').addEventListener('click', function() {
-    // 	console.log("end call"); 
-    // }) 
-    //remove hidden on call. 
+	  console.log("call coming in"); 
 
-	},60000); 
+	      var ring = {
+
+	                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3'],
+	                loop: true,
+	                buffer:true,
+	                autoplay: false,
+	                fadein:0, 
+	                delay: 1000, 
+	                //this will take you to the next chapter (page)
+	              onend: function() {
+	            //the ring has stopped 
+	          }
+	    }; 
+
+	    var player = new Howl(ring); 
+	    player.fadeIn(1, 200);
+
+	    //ANSWER THE PHONE
+	    answer.addEventListener('click', function() {
+	    	player.pause(); 
+	    	$('.calling').addClass('hidden'); 
+	    })
+	    
+     	$('.calling').removeClass('hidden'); 
+
+     	// if ((answer).click) {
+     	// 	player.pause(); 
+     	// }
+
+	},90000); 
 
  
+ 	answerPhone(); 
  
 	// activeAddress(); 
-	// activePrice(); 
+	 activePrice(); 
 	// activeAgent(); 
 	// activeA1(); 
 	// activeA2(); 
@@ -66,6 +93,16 @@ function init(e) {
 	// changeMap(); 
 	// activateAmenities(); 
 
+} 
+
+
+function answerPhone() {
+	answer.addEventListener('click', function() {
+		console.log("answered phone"); 
+	})
+	// player.pause(); 
+
+	// _timer.isCalling.player.stop(); 
 }
 
 // setTimeout(function(){
@@ -88,7 +125,7 @@ function init(e) {
 // } 
 
 function activePrice() {
-	price.addEventListener('hover', function(e) {
+	price.addEventListener('click', function(e) {
 			var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.03_price_audio_01.mp3'], 
 				buffer: false, 

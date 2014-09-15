@@ -98,34 +98,34 @@ this.startTimer = function(delay)  {
     //THIS IS ADDING THE TIMED OUT NARRATIONS FOR CHAPTER 1
     //we fire this at the end of oned in the json objects
 
-this.isCalling = function() {
+// this.isCalling = function() {
 
-  console.log("call coming in"); 
+//   console.log("call coming in"); 
 
-      var ring = {
+//       var ring = {
 
-                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3'],
-                loop: true,
-                buffer:true,
-                autoplay: false,
-                fadein:0, 
-                delay: 1000, 
-                //this will take you to the next chapter (page)
-              onend: function() {
-            //the ring has stopped 
-          }
-    }; 
+//                 urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3'],
+//                 loop: true,
+//                 buffer:true,
+//                 autoplay: false,
+//                 fadein:0, 
+//                 delay: 1000, 
+//                 //this will take you to the next chapter (page)
+//               onend: function() {
+//             //the ring has stopped 
+//           }
+//     }; 
 
-    var player = new Howl(ring); 
-    player.fadeIn(1, 800);
+//     var player = new Howl(ring); 
+//     player.fadeIn(1, 800);
     
     
-    // if (you clik on the button) {
-    //   //stop the player 
-    // }
+//     // if (you clik on the button) {
+//     //   //stop the player 
+//     // }
 
  
- }
+//  }
 
 
 

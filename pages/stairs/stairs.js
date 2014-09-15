@@ -275,6 +275,7 @@
         if (e.which == 38) {
           console.log("up"); 
          // $('.progress').trigger("click"); 
+          var progressButton = document.querySelector('#progress-button');
           progressButton.trigger("click"); 
         }
       })
