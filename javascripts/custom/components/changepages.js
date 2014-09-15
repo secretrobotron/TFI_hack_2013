@@ -190,6 +190,11 @@ if (trans) {
                 //start the audio
                 clearDelayedAudio();
                 changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
+
+                //this is what is happening it is not getting the narration 
+                console.log("about to get narration"); 
+
+                //this works. 
                 changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
               }
             };

@@ -21,6 +21,7 @@ function init(e) {
 	var nextButton = document.querySelector("#next-button"); 
 	var crime = document.querySelector("#crime"); 
 	var transit = document.querySelector("#transit"); 
+	var amenities = document.querySelector("#amen"); 
 
 
 	setTimeout(function() {
@@ -64,6 +65,7 @@ function init(e) {
 	// activeA4(); 
 	// activeA5(); 
 	// changeMap(); 
+	// activateAmenities(); 
 
 }
 
@@ -133,6 +135,14 @@ function activeA3() {
 			});  
 }
 
+function activateAmenities() {
+	//here is where the amenities. 
+	var sound = new Howl({
+		urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.ogg']
+		buffer: false, 
+	}).play(); 
+}
+
 function activeA4() {
 	a4.addEventListener('hover', function(e) {
 		console.log("a4"); 
@@ -157,54 +167,7 @@ function changeMap() {
 	}); 
 }
 
-// function goToNext() {
-// 	nextButton.addEventListener('hover', function(e){
-// 		alert("this will go to the next page"); 
-// 	})
-// }
 
-// function changeSlider(value) {
-//   console.log("changeSlider has been hovered" + value); 
-//   var slider = $("ul.slider"),
-//   slides = slider.children('li'),
-//   slideCount = slides.length, 
-//   slidecounter = slider.children('.counter'), 
-//   currentIndex = slideIndex;
-  
-//   if (value==="next") {
-//     slideIndex < slideCount-1 ? slideIndex++ : slideIndex = 0;
-//   } 
-//   else if (value==="prev") { 
-//     slideIndex > 0 ? slideIndex-- : slideIndex = slideCount-1;
-//   } 
-//   else if (value==="first") { 
-//     slideIndex = 0;
-//   } 
-//   else if (value==="last") {
-//     slideIndex = slideCount - 1;
-//   } 
-//   else { 
-//     slideIndex = Math.min(slideCount-1, Math.max(0, parseInt(value)));
-//   }
-
-//   slides.removeClass('active');
-//   slides.addClass('hidden'); 
-
-//   slides.eq(slideIndex).removeClass('hidden'); 
-
-//   slides.eq(slideIndex).addClass('active').find('video').each( function () { 
-//     var el = $(this)[0];
-//     if (el) el.play(); 
-//   } );
-
-//   slides.eq(currentIndex).find('video').each( function () { 
-//     var el = $(this)[0];
-//     if (el) el.pause(); 
-//   } );
-
-  
-//   slidecounter.text((slideIndex+1) + "/" + (slideCount));
-// }
 
 
 

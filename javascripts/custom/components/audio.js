@@ -173,6 +173,10 @@
               //the subgrame narration is not entering this loop, so we can't hear it with a delay. 
               if (!info) return; 
 
+              // console.log("no info"); 
+
+              console.log(Array.isArray(info)); 
+
               // find first non played clip
               if (Array.isArray(info)) {
                 for (var i=0; i< info.length; i++) {
@@ -183,7 +187,7 @@
                   currentFrameNarration = new Howl(si);
                   if (si.delay) {
                     //it is not adding subframe narrations here 
-                    //console.log('delayed audio to be played: ', si.delay, si.urls[0]);
+                    console.log('delayed audio to be played: ', si.delay, si.urls[0]);
                     delayAudio(currentFrameNarration, si);
                   }
                   else  
