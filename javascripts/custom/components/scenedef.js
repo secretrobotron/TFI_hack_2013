@@ -476,16 +476,16 @@ var Pages = function () {
       ]
     },
 
- // {
- //  url: "pages/7.html", 
- //  transition: 'fade', 
- //  frames : [
- //      {
- //        url: "pages/7/1.html"
- //      }
+ {
+  url: "pages/6.html", 
+  transition: 'fade', 
+  frames : [
+      {
+        url: "pages/6/1.html"
+      }
 
- //    ]
- // }
+    ]
+ }
 // //CHAPTER 6 
 
 

@@ -65,17 +65,18 @@ function init(e) {
 	    var player = new Howl(ring); 
 	    player.fadeIn(1, 200);
 
+	    //show the call 
+	   	$('.calling').removeClass('hidden'); 
+
 	    //ANSWER THE PHONE
 	    answer.addEventListener('click', function() {
 	    	player.pause(); 
 	    	$('.calling').addClass('hidden'); 
+	    	//go to martha's video: 
+	    	// window.parent.next(); 
+	    	//changePage("next")
 	    })
 	    
-     	$('.calling').removeClass('hidden'); 
-
-     	// if ((answer).click) {
-     	// 	player.pause(); 
-     	// }
 
 	},90000); 
 
