@@ -310,21 +310,6 @@
                   //   }
                   // })
 
-
-
-        // popcorn.pause(); 
-        //  window.onkeypress = function() { 
-        //    //show the stair controls 
-        //     instructions.classList.add('hidden'); 
-        //     stairCounter.classList.remove('hidden');
-        //     floorCounter.classList.remove('hidden');
-        //     progressButton.classList.remove('hidden');
-        // //shows you you can skip when the button is paused(); 
-        //     skipNotice.classList.remove('hidden');
-
-        //    alert("keypress event detected!");
-        //   }
-
          setTimeout(function () {
           console.log("eventlisteneradded"); 
            progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
