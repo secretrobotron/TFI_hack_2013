@@ -77,6 +77,7 @@
 	var nav = document.querySelector("nav"); 
 
 	function init() {
+		console.log("init"); 
 			// $('#overlay').fadeIn(); 
 			$('.nextbutton').addClass('hidden'); 
 
@@ -101,7 +102,6 @@
 			}, function() {
 				console.log("DONE"); 
 				title.fadeOut(); 
-				//title.classList.add('hidden');
 				popcorn.play();  
 
 				popcorn.cue(52, function() {

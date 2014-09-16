@@ -154,6 +154,8 @@ if (trans) {
   frameview.children().wrapAll('<div class="old ' + trans + '" />');
   frameview.prepend('<div class="new ' + trans + '" />');
 
+
+
   var frameNew = $('.new'),
   frameOld = $('.old');
   frameNew.eq(0).load(getCurrentFrameUrl(), function() {
@@ -172,18 +174,30 @@ if (trans) {
 
         setTimeout(function(){
           frameOld.remove();
+
           frameNew.children().unwrap();
+
           animating = false;
 
           var videoElements = frameview[0].querySelectorAll('video.frame-video');
           var videoCount = videoElements.length;
+          console.log(videoCount); 
           var loadedVideos = 0;
 
           // force video to play!
           //this means the video is not buffered. 
           Array.prototype.forEach.call(videoElements, function (v) {
-            v.play();
-            v.oncanplaythrough = function(){
+            //v.play();
+            //the audio is waiting for you to get through the videos
+            // v.load(); 
+            console.log(v); 
+
+             v.addEventListener('canplaythrough', function onCanPlayThrough () { 
+               v.removeEventListener('canplaythrough', onCanPlayThrough); 
+            // v.oncanplaythrough = function(){
+              v.play(); 
+              console.log('bobby');  
+
               loadedVideos++;
               if (videoCount === loadedVideos){
                 // console.log("everything is loaded, " + videoCount === loadedVideos)
@@ -198,7 +212,9 @@ if (trans) {
                 //this works. 
                 changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
               }
-            };
+             });
+
+
           });
         },1500);
       });
@@ -228,6 +244,7 @@ if (trans) {
       else {
         frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() {
             // changeSlider('first');
+            console.log("new frame fades in"); 
             frameview.fadeIn();
 
         }); 
@@ -295,8 +312,6 @@ function changePage(value, frame) {
             //start the audio after the fade in. 
         }); 
     });
-
-    //console.log("pagect," pagect);
 
     changePageBackground(_pages.getPageSound(_pageIndex));
 

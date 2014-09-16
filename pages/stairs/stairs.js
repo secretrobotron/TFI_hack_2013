@@ -299,15 +299,16 @@
                  })
 
 
-       //Attempt to use keyboard controls 
-                  // $("body").keydown(function(e) {
-                  //   window.trigger('click'); 
-                  //   if (e.which == 38) {
-                  //     console.log("up"); 
-                  //    // $('.progress').trigger("click"); 
-                  //     var progressButton = document.querySelector('#progress-button');
-                  //     // progressButton.trigger("click"); 
-                  //   }
+       // //Attempt to use keyboard controls 
+       //            $("body").keydown(function(e) {
+                
+       //              if (e.which == 38) {
+       //                console.log("up"); 
+       //               // $('.progress').trigger("mousedown"); 
+       //                var progressButton = document.querySelector('#progress-button');
+       //                progressButton.trigger("mousedown"); 
+       //              }
+       //            }); 
                   // })
 
          setTimeout(function () {
@@ -316,6 +317,7 @@
            progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
         //   //pausing the video 
            popcorn.pause();
+
         //   //showing you that you can skip when the video is paused. 
         //   // skipNotice.classList.remove('hidden');
          }, 700); //after a second allow skipping and the button interaction

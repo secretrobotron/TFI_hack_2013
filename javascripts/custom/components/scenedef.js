@@ -468,9 +468,10 @@ var Pages = function () {
       var n = this.getSubframeByIndex( page, frame, this.currentSubframeIndex ).narration;
       return n;
       console.log(n); 
+      console.log("got subframe narration"); 
 
     }else{
-      // console.log("got narration"); 
+      console.log("got narration"); 
       return pageinfo[page].frames[frame].narration; 
     }
 
@@ -480,10 +481,10 @@ var Pages = function () {
     if( this.doesFrameHaveSubframes( page,frame )  ){
       // console.log("getting subframe sound for subframe: "+this.currentSubframeIndex);
       var s = this.getSubframeByIndex( page, frame, this.currentSubframeIndex ).sound;
-      // console.log(s);
+      console.log(s);
       return s;
     }else{
-      // console.log("got sound"); 
+      console.log("got sound"); 
       return pageinfo[page].frames[frame].sound; 
     }
 
@@ -499,7 +500,7 @@ var Pages = function () {
 
   this.doesFrameHaveSubframes = function( page, frame ){
 
-    // console.log( "checking for subframes" );
+    console.log( "checking for subframes" );
 
     if( pageinfo[page].frames[frame].subframes ){
       // console.log( "has subframes" );
@@ -522,7 +523,7 @@ var Pages = function () {
     }
     else{
       // console.log("you asked for a subframe that was not there at index: "+subframe_index);
-      //return (subframe_index); 
+      return (subframe_index); 
     }
 
   } 
@@ -557,7 +558,7 @@ var Pages = function () {
           //if we've already been there, skip this and go to the next loop iteration. 
           if(subframes[i].isDefault){
             this.currentSubframeIndex = i;
-            // console.log("found default");
+            console.log("found default");
             //this means you are now in the second one. 
             return subframes[i];
           } 

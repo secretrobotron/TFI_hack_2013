@@ -141,7 +141,7 @@
                 clearTimeout(currentDelay); 
                 currentDelay = setTimeout( 
                 function () { 
-                  //console.log('playing delayed audio');
+                  console.log('playing delayed audio');
                   cfa.fadeIn(1, si.fadein || 0); 
                   hasDelay = false; 
                 },
@@ -173,7 +173,6 @@
               //the subgrame narration is not entering this loop, so we can't hear it with a delay. 
               if (!info) return; 
 
-              // console.log("no info"); 
 
               console.log(Array.isArray(info)); 
 
@@ -189,6 +188,7 @@
                   console.log("played" + si.played); 
                   currentFrameNarration = new Howl(si);
                   if (si.delay) {
+
                     //it is not adding subframe narrations here 
                     console.log('delayed audio to be played: ', si.delay, si.urls[0]);
                     delayAudio(currentFrameNarration, si);
@@ -203,7 +203,7 @@
                 info.played = true;
                 currentFrameNarration = new Howl(info);
                 currentFrameNarration.fadeIn(1, info.fadein || 0); 
-                //console.log("narration fading in"); 
+                console.log("narration fading in"); 
               }
             }
 
@@ -211,13 +211,17 @@
             
             function toggleSound(){
               if (soundEnabled) {
+                console.log("mute"); 
                 soundEnabled = false;
                 Howler.mute();
                 //here is where we will add the alternative images. change image source with jquery 
-                $('.audio').text('Enable Audio');
-              } else{
-                soundEnabled = true;
-                Howler.unmute();
-                $('.audio').text('Disable Audio')
+                // $('.audio').text('Enable Audio');
+                $('.audio').attr('src', "https://s3-us-west-2.amazonaws.com/89steps/assets/ux/Menu/Sound_Off.svg"); 
+              }else {
+                    console.log('unmute'); 
+                    soundEnabled = true;
+                    Howler.unmute();
+                    $('.audio').attr('src', "https://s3-us-west-2.amazonaws.com/89steps/assets/ux/Menu/Sound_On.svg"); 
+                }
               };
-            }
+            
