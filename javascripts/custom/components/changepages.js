@@ -186,9 +186,10 @@ if (trans) {
             v.oncanplaythrough = function(){
               loadedVideos++;
               if (videoCount === loadedVideos){
+                // console.log("everything is loaded, " + videoCount === loadedVideos)
                 //everything is loaded
                 //start the audio
-                clearDelayedAudio();
+                //clearDelayedAudio();
                 changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
 
                 //this is what is happening it is not getting the narration 

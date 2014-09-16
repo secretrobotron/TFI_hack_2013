@@ -84,7 +84,7 @@
   var __loader = {
     ensureLoaded: function (assets, progressCallback, finishedCallback) {
       if (Number(assets.length) !== assets.length) {
-        console.log("first conditional");
+        // console.log("first conditional");
         __loader.ensureLoaded([assets], function () {
           finishedCallback(assets);
         });

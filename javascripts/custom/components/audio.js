@@ -181,9 +181,12 @@
               if (Array.isArray(info)) {
                 for (var i=0; i< info.length; i++) {
                   var si = info[i]; 
+                  console.log("played" + si.played); 
                   if (si.played) continue; //if you already played it, go to the next iteration of the loop 
                   //if you didn't do it, make it true. 
+                  console.log("changing played to true"); 
                   si.played = true;
+                  console.log("played" + si.played); 
                   currentFrameNarration = new Howl(si);
                   if (si.delay) {
                     //it is not adding subframe narrations here 
