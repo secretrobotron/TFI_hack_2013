@@ -402,7 +402,15 @@ var Pages = function () {
       url: "pages/2.html", title: "The Stairs", 
       frames: [
         { 
-          url: "pages/2/1.html" //this doesn't exist 
+          url: "pages/2/1.html", //this doesn't exist 
+            sound: 
+              { // 'background'
+                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.0backgroundloop.mp3','http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.0backgroundloop.ogg' ],
+                loop: true,
+                buffer:true,
+                autoplay: false,
+                fadein:800 
+              },
         }
       ] //end of frames 
     }, //end of chapter 2 
@@ -412,7 +420,15 @@ var Pages = function () {
       url: "pages/4.html", title: "The Apartment", 
       frames: [
         { 
-          url: "pages/4/1.html" //leads you to the next stuff. 
+          url: "pages/4/1.html", //leads you to the next stuff. 
+            // sound: 
+            //   { // 'background'
+            //     urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.0_entire_scene_background.mp3'],
+            //     loop: true,
+            //     buffer:true,
+            //     autoplay: false,
+            //     fadein:800 
+            //   },
         }
       ]
     },
@@ -424,7 +440,15 @@ var Pages = function () {
       transition: 'vertical', 
       frames: [
         { 
-          url: "pages/listing/index.html"
+          url: "pages/listing/index.html",
+            // sound: 
+            //   { // 'background'
+            //     urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.0_entire_scene_background.mp3'],
+            //     loop: true,
+            //     buffer:true,
+            //     autoplay: false,
+            //     fadein:800 
+            //   },
           //onload: _timer.checkTimer(); 
         }
       ]
