@@ -1,5 +1,3 @@
-
-
 (function() {
 
   var VIDEO_TRANSITION_DURATION = 1000;
@@ -7,11 +5,9 @@
   var BACKGROUND_SOUND_DELAY = 2000;
   var BACKGROUND_SOUND_VARIANCE = 4000;
 
-
   function prepareBackgroundSoundsLoop (sounds) {
     var currentSound;
     var nextSound;
-
 
     function playNextSound () {
       nextSound = sounds[Math.floor(Math.random() * sounds.length)];
@@ -30,7 +26,6 @@
     }
 
     return {
-      //takes a group of sounds and ensures that they play as a backgroup 
       start: function () {
         playNextSound();
       }
@@ -96,13 +91,16 @@
     }
   }
 
-function init(e) {
-    //hide the navigation. 
+  function init(e) {
+
     if (window.parent && window.parent.hideNav) {
       window.parent.hideNav();
     }
 
-    var instructions = document.querySelector('#instructions'); 
+    var leftButton = document.querySelector('#left-button');
+    var rightButton = document.querySelector('#right-button');
+    var continueMessage = document.querySelector('#continue-message');
+    var lookAround = document.querySelector('#look-around'); 
 
     var startVideo = document.querySelector('video[data-video="start"]');
     var backgroundVideo = document.querySelector('video[data-video="background"]');
@@ -111,8 +109,10 @@ function init(e) {
     var leftVideos = Array.prototype.slice.call(document.querySelectorAll('video[data-video="left"]'));
     var videoContainer = document.querySelector('#video-container');
     var centerVideos = [backgroundVideo, kitchenVideo, startVideo];
-    var videos = centerVideos.concat(rightVideos).concat(leftVideos); //they are all part of the array. 
+    var videos = centerVideos.concat(rightVideos).concat(leftVideos);
     var audio = Array.prototype.slice.call(document.querySelectorAll('audio'));
+
+    var PATH = "http://89steps.s3.amazonaws.com/assets/4_apt/"; 
 
     var videoContainerIndex = 0;
 
@@ -179,15 +179,16 @@ function init(e) {
     function onLeftButtonClick (e) {
       videoContainerIndex = Math.min(videoContainerIndex + 1, 1);
       playPositionedVideo();
-      instructions.classList.remove('hidden'); 
       videoContainer.style.left = 50 + videoContainerIndex * 100 + '%';
 
       if (videoContainerIndex === 1) {
         leftButton.classList.add('hidden');
+        lookAround.classList.add('hidden'); 
         leftButton.removeEventListener('click', onLeftButtonClick, false);
       }
       else if (videoContainerIndex === 0) {
         rightButton.classList.remove('hidden');
+        lookAround.classList.remove('hidden'); 
         rightButton.addEventListener('click', onRightButtonClick, false);        
       }
     }
@@ -195,15 +196,16 @@ function init(e) {
     function onRightButtonClick (e) {
       videoContainerIndex = Math.max(videoContainerIndex - 1, -1);
       playPositionedVideo();
-      instructions.classList.remove('hidden'); 
       videoContainer.style.left = 50 + videoContainerIndex * 100 + '%';
 
       if (videoContainerIndex === -1) {
         rightButton.classList.add('hidden');
+        lookAround.classList.add('hidden'); 
         rightButton.removeEventListener('click', onRightButtonClick, false);
       }
       else if (videoContainerIndex === 0) {
         leftButton.classList.remove('hidden');
+        lookAround.classList.remove('hidden'); 
         leftButton.addEventListener('click', onLeftButtonClick, false);        
       }
     }
@@ -229,61 +231,55 @@ function init(e) {
 
     }
 
+    Popcorn.plugin('step', {
+      start: function () {
+        ++numSteps;
+      }
+    });
+
+    Popcorn.plugin('floor', {
+      start: function () {
+        ++numFloors;
+        floorAudioController.resetFloorIndex();
+        floorCounterSpan.innerHTML = numFloors;
+      }
+    });
+
     leftVideos.videoIndex = 0;
     rightVideos.videoIndex = 0;
 
-    //check that all videos have loaded or wait for them to load. 
-    var videos = centerVideos.concat(rightVideos).concat(leftVideos); //they are all part of the array. 
-  //check that all audio has loaded 
-    var audio = Array.prototype.slice.call(document.querySelectorAll('audio'));
-    //after you wait, now you ensure if it is loaded. 
     var assets = videos.concat(audio);
 
-    //util.loader.ensureLoaded(assets,progress,init)
+    util.loader.ensureLoaded(assets, function(){
+      
 
-    util.loader.ensureLoaded(assets, function() {
-      //this is the progress function that will be called. 
-      console.log("progress function"); 
-      $('#overlay').fadeIn(); 
-      //update progress bar 
+      window.addEventListener('resize', positionVideo, false);
+      positionVideo();
+      
+      var volumeTweenController = prepareVolumeTweening();
 
-    }, function(){
-        console.log("init function"); 
-      //this is what should be known as init. 
-            $('#overlay').fadeOut();
+      volumeTweenController.start();
 
-              //this should only happen after you have actually ensured that everything is loaded. 
-              window.addEventListener('resize', positionVideo, false);
-              positionVideo();
-              backgroundVideo.play();
-              
-              var volumeTweenController = prepareVolumeTweening();
+      rightVideos.concat(leftVideos).concat(kitchenVideo).forEach(function (video) {
+        volumeTweenController.prepareVolumeTweenForElement(video, 0);
+      });
 
-              volumeTweenController.start();
+      volumeTweenController.prepareVolumeTweenForElement(backgroundVideo, 1);
 
-          rightVideos.concat(leftVideos).concat(kitchenVideo).forEach(function (video) {
-          console.log("preparing volume tween"); 
-          volumeTweenController.prepareVolumeTweenForElement(video, 0);
-          });
+      kitchenVideo.hidden = true;
+      backgroundVideo.hidden = true;
 
-          volumeTweenController.prepareVolumeTweenForElement(backgroundVideo, 1);
-
-          kitchenVideo.hidden = true;
-          backgroundVideo.hidden = true;
-
-
-          startVideo.play(); 
-          startVideo.addEventListener('ended', function onStartVideoEnded (e) {
-          startVideo.removeEventListener('ended', onStartVideoEnded, false);
+      startVideo.play();
+      startVideo.addEventListener('ended', function onStartVideoEnded (e) {
+        startVideo.removeEventListener('ended', onStartVideoEnded, false);
   
         backgroundVideo.hidden = false;
         startVideo.hidden = true;
-        backgroundVideo.pause();
+        backgroundVideo.play();
 
         setTimeout(function () {
           rightButton.classList.remove('hidden');
           leftButton.classList.remove('hidden');
-          instructions.classList.remove('hidden'); 
           leftButton.addEventListener('click', onLeftButtonClick, false);
           rightButton.addEventListener('click', onRightButtonClick, false);
         }, BUTTON_SHOW_DELAY);
@@ -291,58 +287,23 @@ function init(e) {
         //If background video has ended, then take me to the next scene. 
         backgroundVideo.addEventListener('ended', function (e) {
           if (window.parent && window.parent.next) {
-            //uncomment that out to go to the next page. 
-            //window.parent.next();
-            alert("click here to go to her real estate website"); 
-            continueMessage.classList.remove("hidden"); 
+            window.parent.next();
           }
           else {
             videoContainer.style.left = '50%';
             leftButton.removeEventListener('click', onLeftButtonClick, false);
             rightButton.removeEventListener('click', onRightButtonClick, false);
             rightButton.classList.remove('hidden');
-            instructions.classList.remove('hidden'); 
             leftButton.classList.add('hidden');
+            continueMessage.classList.remove('hidden');
             rightButton.addEventListener('click', function (e) {
             }, false);
           }
-        }, false); //end of event listener ended for background video 
-      }, false); //end of event listener ended for start video 
-
+        }, false);
+      }, false);
       prepareBackgroundSoundsLoop(audio).start();
-
-      function positionVideo () {
-      var aspectRatio = backgroundVideo.videoWidth / backgroundVideo.videoHeight;
-      var scale = 1;
-
-      videoContainer.style.width = backgroundVideo.videoWidth + 'px';
-      videoContainer.style.height = backgroundVideo.videoHeight + 'px';
-      videoContainer.style.marginLeft = -backgroundVideo.videoWidth / 2 + 'px';
-      videoContainer.style.marginTop = -backgroundVideo.videoHeight / 2 + 'px';
-
-      if (window.innerWidth / backgroundVideo.videoWidth * backgroundVideo.videoHeight < window.innerHeight) {
-        scale = window.innerHeight / backgroundVideo.videoHeight;
-      }
-      else {
-        scale = window.innerWidth / backgroundVideo.videoWidth;
-      }
-
-      videoContainer.style.transform = videoContainer.style.WebkitTransform = videoContainer.style.MozTransform = 
-        videoContainer.style.webkitTransform = videoContainer.style.mozTransform = 'scale(' + scale + ')';
-
-    }
- 
-
-    //ensure that assets did load. this is where the asynchronicity of javascript becomes especially important.  
-      assets.forEach(function (asset) {
-        console.log("checking assets loaded"); 
-      asset.load && asset.load();
-    }); //end of checking for assets
-
-  }); //ensureloader ends. 
-
-}; //init ends 
-
+    });
+  }
 
   document.addEventListener('DOMContentLoaded', init, false);
 }());

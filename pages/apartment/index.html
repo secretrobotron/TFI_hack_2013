@@ -35,24 +35,28 @@
            -moz-user-select: none;
             -ms-user-select: none;
                 user-select: none;
-        position: fixed;
-        margin-top: -35px;
-        width: 50px;
-        height: 70px;
-        line-height: 68px;
-        background-color: rgba(255, 255, 255, 0.8);
-        color: 0;
+        position: absolute; 
+        width: 50%;
+        z-index:5;
+        height: 100%;
         text-align: center;
-        text-decoration: none;
         /*color: #fff;*/
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        background-clip: padding-box;
-        font-size: 14px;
-        cursor: pointer;
-        top: 95%;
+        top: 0;
       }
 
-      #look-around {
+      #left-button {
+        margin-left: -50px;
+        cursor: url(../../UX-ASSETS/Arrows/left.cur), pointer;
+      }
+
+      #right-button {
+        left: 50%;
+        margin-right: -50px;
+        cursor: url(../../UX-ASSETS/Arrows/right.cur), pointer;
+
+      }
+
+  /*    #look-around {
         -webkit-user-select: none;
            -moz-user-select: none;
             -ms-user-select: none;
@@ -70,18 +74,7 @@
         left:49.5%;
         margin-left: -50px;
       }
-
-
-      #left-button {
-        left: 50%;
-        margin-left: -50px;
-      }
-
-      #right-button {
-        left: 50%;
-        margin-right: -50px;
-
-      }
+*/
 
       #video-container {
         position: fixed;
@@ -143,6 +136,8 @@
         font-size: 70px;
         top: 50%;
         right: 60px;
+
+
       }
     </style>
      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -225,10 +220,29 @@
         <button id="leftButton"></button> -->
 
         <div id="look-around" class= "hidden fadeable">Look Around</div>
-        <div id="right-button" class="hidden fadeable">&rarr;</div>
-        <div id="left-button" class="hidden fadeable">&larr;</div>
+        <div id="right-button" class="hidden fadeable"></div>
+        <div id="left-button" class="hidden fadeable"></div>
         <div id="continue-message" class="hidden fadeable">Continue</div>
 
     </div>
+       <script>
+             //this should make you be able to click the button when you press key. 
+              function keyPress() {
+                 $("body").keydown(function(e) {
+                  // console.log("clicked"); 
+                  if(e.which == 37) { //left previous
+                     console.log("left"); 
+                     $('#left-button').trigger("click"); 
+                  } else if (e.which == 39) {
+                        console.log("right"); 
+                    $('#right-button').trigger("click"); 
+                  }
+                      }); 
+              }
+
+              keyPress(); 
+
+            </script>
+
   </body>
 </html>

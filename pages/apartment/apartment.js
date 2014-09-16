@@ -102,6 +102,7 @@
     var rightButton = document.querySelector('#right-button');
     var continueMessage = document.querySelector('#continue-message');
     var instructions = document.querySelector('#instructions'); 
+    var lookAround = document.querySelector('#look-around'); 
 
     var startVideo = document.querySelector('video[data-video="start"]');
     var backgroundVideo = document.querySelector('video[data-video="background"]');
@@ -109,10 +110,8 @@
     var rightVideos = Array.prototype.slice.call(document.querySelectorAll('video[data-video="right"]'));
     var leftVideos = Array.prototype.slice.call(document.querySelectorAll('video[data-video="left"]'));
     var videoContainer = document.querySelector('#video-container');
-    //var centerVideos = [backgroundVideo, kitchenVideo, startVideo];
-    //var centerVideos = [backgroundVideo];
-    //var video = centerVideos.concat(rightVideos).concat(leftVideos);
-    var video = rightVideos.concat(leftVideos);
+    var centerVideos = [backgroundVideo, kitchenVideo, startVideo];
+    var video = centerVideos.concat(rightVideos).concat(leftVideos);
     var audio = Array.prototype.slice.call(document.querySelectorAll('audio'));
 
 
@@ -181,18 +180,16 @@
     function onLeftButtonClick (e) {
       videoContainerIndex = Math.min(videoContainerIndex + 1, 1);
       playPositionedVideo();
-      instructions.classList.remove('hidden'); 
       videoContainer.style.left = 50 + videoContainerIndex * 100 + '%';
 
       if (videoContainerIndex === 1) {
         leftButton.classList.add('hidden');
-        //instructions.classList.remove('hidden'); 
+        lookAround.classList.add('hidden'); 
         leftButton.removeEventListener('click', onLeftButtonClick, false);
       }
       else if (videoContainerIndex === 0) {
         rightButton.classList.remove('hidden');
-
-         instructions.classList.remove('hidden'); 
+        lookAround.classList.remove('hidden'); 
         rightButton.addEventListener('click', onRightButtonClick, false);        
       }
     }
@@ -200,16 +197,16 @@
     function onRightButtonClick (e) {
       videoContainerIndex = Math.max(videoContainerIndex - 1, -1);
       playPositionedVideo();
-      instructions.classList.remove('hidden'); 
       videoContainer.style.left = 50 + videoContainerIndex * 100 + '%';
 
       if (videoContainerIndex === -1) {
         rightButton.classList.add('hidden');
+        lookAround.classList.add('hidden'); 
         rightButton.removeEventListener('click', onRightButtonClick, false);
       }
       else if (videoContainerIndex === 0) {
-        //instructions.classList.remove('hidden'); 
         leftButton.classList.remove('hidden');
+        lookAround.classList.remove('hidden'); 
         leftButton.addEventListener('click', onLeftButtonClick, false);        
       }
     }
@@ -234,31 +231,13 @@
         videoContainer.style.webkitTransform = videoContainer.style.mozTransform = 'scale(' + scale + ')';
 
     }
-
-    Popcorn.plugin('step', {
-      start: function () {
-        ++numSteps;
-      }
-    });
-
-    Popcorn.plugin('floor', {
-      start: function () {
-        ++numFloors;
-        floorAudioController.resetFloorIndex();
-        floorCounterSpan.innerHTML = numFloors;
-      }
-    });
+    //there was some popcorn js stuff from the steps left here. 
 
     leftVideos.videoIndex = 0;
     rightVideos.videoIndex = 0;
 
     var assets = video.concat(audio);
-    //console.log('asset length', assets.length); 
-
-    //var assets = audio;
     console.log('asset length', assets.length); 
-    //console.log('length', video.length);
-
     //console.dir(assets)
 
     //Change overlay text dynamically
@@ -274,6 +253,7 @@
     }, function(){
       console.log("DONEEEEE");
       $('#overlay').fadeOut();
+      
       window.addEventListener('resize', positionVideo, false);
       positionVideo();
       
@@ -291,19 +271,22 @@
       backgroundVideo.hidden = true;
 
       startVideo.play();
+      //this is when the start video ends, what do you want to have happen?
       startVideo.addEventListener('ended', function onStartVideoEnded (e) {
         startVideo.removeEventListener('ended', onStartVideoEnded, false);
-  
-        backgroundVideo.hidden = false;
-        startVideo.hidden = true;
-        backgroundVideo.play();
+
+          backgroundVideo.hidden = false;
+          startVideo.hidden = true;
+          backgroundVideo.play();
 
         setTimeout(function () {
-          instructions.classList.remove('hidden'); 
+          rightButton.classList.remove('hidden');
+          leftButton.classList.remove('hidden');
           leftButton.addEventListener('click', onLeftButtonClick, false);
           rightButton.addEventListener('click', onRightButtonClick, false);
         }, BUTTON_SHOW_DELAY);
 
+        //If background video has ended, then take me to the next scene. 
         backgroundVideo.addEventListener('ended', function (e) {
           if (window.parent && window.parent.next) {
             window.parent.next();
@@ -312,14 +295,13 @@
             videoContainer.style.left = '50%';
             leftButton.removeEventListener('click', onLeftButtonClick, false);
             rightButton.removeEventListener('click', onRightButtonClick, false);
-            instructions.classList.remove('hidden'); 
+            rightButton.classList.remove('hidden');
             leftButton.classList.add('hidden');
             rightButton.addEventListener('click', function (e) {
             }, false);
           }
         }, false);
       }, false);
-
       prepareBackgroundSoundsLoop(audio).start();
     });
   }
