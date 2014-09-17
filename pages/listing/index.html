@@ -236,9 +236,10 @@ html{
 #overlay{
   z-index:9;
   position: relative;
-  padding: 80px;
   padding-top: 200px;
-  margin: 0 auto;
+  left:0;
+  top:0;
+  margin-left:0; 
   width: 100%;
   height: 100%;
   font-size:0.83em;
@@ -259,7 +260,17 @@ html{
 	height:100%; 
 	padding:20px;
 }
-
+ .instructions{
+      z-index:30; 
+      background-color:rgba(0,0,0,0.7); 
+      position:fixed;
+      left:0;
+      top:0;
+      margin-left:0; 
+      width: 100%;
+      height:100%; 
+      padding:20px;
+    }
 
 /***************************/
 /*    ROLLOVER BUTTONS     */
@@ -310,13 +321,23 @@ html{
    
 
 </head>
+   	<div id="instructions" class="SouvenirStd-Light instructions hidden fadeable" style="text-align:center; font-size:25px; color: #ffffff;">
+              <div style="padding-top:10%">
+              	Marta has listed her apartment, 
+            	</br>
+				though she is unsure if she wants to sell
+				</br>
+				Use your arrow keys to move through the slideshow 
+				</br>
+				and your mouse to explore the listing.</div>
+        </div> 
 
 <body>
 
 
-	  <div id="overlay" class="SouvenirStd-Light" style="font-size:2em">
-        <h1>Scene 4: The Listing</h1>
-    </div>
+	  	<div id="overlay" class="SouvenirStd-Light" style="font-size:2em">
+        	<h1>Scene 4: The Listing</h1>
+    	</div>
 
     <video width="1280" height="720" class="frame-video hidden" data-video="calling" scrolling="no">
 	    <source src="http://dbef91h7r4asa.cloudfront.net/assets/5_website/video/5.21_martacall.mp4" type="video/mp4"></source>
@@ -325,6 +346,17 @@ html{
 
 <div id="wrap"> 
 
+<!--    	<div id="instructions" class="SouvenirStd-Light instructions fadeable" style="text-align:center; font-size:30px">
+              <div style="padding-top:10%">
+              	Marta has listed her apartment, 
+            	</br>
+				though she is unsure if she wants to sell
+				</br>
+				Use your arrow keys to move through the slideshow 
+				</br>
+				and your mouse to explore the listing.</div>
+        </div> 
+ -->
 	<div class="calling hidden">
 		<img style="position:relative; margin-left:41%; margin-right:40%; padding-bottom:7%; margin-top:15%" src="https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/call/Phone.png">
 		<div style="margin-top:4px">

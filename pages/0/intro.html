@@ -24,6 +24,18 @@
 				                transition: 1s opacity, 1s visibility;
 				      }
 
+				      .instructions{
+					      z-index:30; 
+					      background-color:rgba(0,0,0,0.7); 
+					      position:fixed;
+					      left:0;
+					      top:0;
+					      margin-left:0; 
+					      width: 100%;
+					      height:100%; 
+					      padding:20px;
+					    }
+
     </style>
     	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
       		<script src="../../javascripts/vendor/popcorn.min.js"></script>
@@ -49,11 +61,11 @@
 			  	<source src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/video/1.0.webmhd.webm" type="video/webm"></source>
 			  </video>
 		
-				<div id="title" class= "fullScreen fadeable" style= "background-color:rgba(0,0,0,0.5); z-index:5">
-						<img class="left midleft" style="height:25%; width:12%; outline:none" src= "http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/UnionDocs-Logo.png">
-						<img class="right midright" style="height:29%; width: 27%; outline:none" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/POV_logo_nobackground.png">
+				<div id="title" class= "instructions fadeable" style= "background-color:rgba(0,0,0,0.5); z-index:5">
 
-						 <div id="text" class="left" style="text-align:center; margin-left:400px;"> 
+						 <div id="text" style="text-align:center; margin-top:15%">
+							 <img style="height:220px; width:100px; outline:none; margin-right:8%; padding-bottom:5%" src= "http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/UnionDocs-Logo.png">
+							<img style="height:250px; width: 300px; outline:none; margin-left:8%; padding-bottom:5%" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/POV_logo_nobackground.png"> 
 						 <h2> A UnionDocs Production
 						      <br>
 							Produced in association with American Documentary | POV

@@ -78,20 +78,20 @@
 
         <script>
        //this should make you be able to click the button when you press key. 
-        function keyPress() {
-           $("body").keydown(function(e) {
-            // console.log("clicked"); 
-            if(e.which == 37) { //left previous
-              // console.log("prev"); 
-               $('.prevbutton').trigger("click"); 
-            } else if (e.which == 39) {
-                    // console.log("next"); 
-              $('.nextbutton').trigger("click"); 
-            }
-                }); 
-        }
+      // function keyPress() {
+        //    document.addEventListener('keydown',function(e) {
+        //       console.log('eventlistener'); 
+        //     if(e.which == 37) { //left previous
+        //       // console.log("prev"); 
+        //        $('.prevbutton').trigger("click"); 
+        //     } else if (e.which == 39) {
+        //             // console.log("next"); 
+        //       $('.nextbutton').trigger("click"); 
+        //     }
+        //         }, false); 
+        // }
 
-        keyPress(); 
+        // keyPress(); 
   </script>
   
 

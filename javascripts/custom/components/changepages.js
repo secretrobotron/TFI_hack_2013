@@ -20,6 +20,60 @@
     navList = $("#mainnav"),
     animating = false;
     
+    //give the function a name so you can listen and not listen to it. 
+    var keyPressLeft = function(e) {
+        if(e.which == 37) { //left previous
+          // console.log("prev"); 
+          $('.prevbutton').trigger("click"); 
+        } 
+    }
+
+    var keyPressRight = function(e) {
+        if (e.which == 39) {
+          $('.nextbutton').trigger("click"); 
+        }
+    }
+
+    // var keyPressUp = function(e) {
+    //   //for the stairs navigation
+    //   if (e.which == )
+    // }
+
+    function enableKeyRight() {
+      document.addEventListener('keydown', keyPressRight, false); 
+    }
+
+    function enableKeyLeft() {
+      document.addEventListener('keydown', keyPressLeft, false); 
+    }
+    //You can move left and right through the chapter. 
+    function enablekeyRightLeft() {
+          console.log('called keys'); 
+          document.addEventListener('keydown', keyPressRight, false); 
+          document.addEventListener('keydown', keyPressLeft, false); 
+        }
+
+    function disableKeyLeft() {
+        document.removeEventListener('keydown', keyPressLeft, false); 
+    }
+
+    function disableKeyRight() {
+          //it can't recognize that function. 
+          console.log('disabled keypress'); 
+          document.removeEventListener('keydown', keyPressRight, false); 
+        }
+
+    function disableRightLeft() {
+      document.removeEventListener('keydown', keyPressRight, false); 
+      document.removeEventListener('keydown', keyPressRight, false); 
+    }
+
+    //function disableRightLeft()
+  
+
+
+
+
 
     function hideNavNext() {nextbutton.addClass('hidden');}
     function showNavNext() { if( nextbutton.hasClass("hidden") ){ nextbutton.removeClass('hidden'); } }
