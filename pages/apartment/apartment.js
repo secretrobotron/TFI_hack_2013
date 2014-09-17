@@ -240,13 +240,6 @@
     console.log('asset length', assets.length); 
     //console.dir(assets)
 
-    //Change overlay text dynamically
-    //$(".pagetitle")
-    // $('#overlay h2').text('Scene 2: The Apartment');
-    // $('#overlay span').text('joans rules');    
-
-    //$('#overlay').fadeIn();
-
     util.loader.ensureLoaded(assets, function(percent) {
       console.log("total percenteges: ", percent);
        $('#overlay').fadeIn();
@@ -292,19 +285,13 @@
                   window.removeEventListener('click', showInstructions, false )
                   instructions.classList.add('hidden'); 
                   backgroundVideo.play(); 
-                   // rightButton.classList.remove('hidden');
-                   // leftButton.classList.remove('hidden');
-                   // leftButton.addEventListener('click', onLeftButtonClick, false);
-                   // rightButton.addEventListener('click', onRightButtonClick, false);
                 }, false); 
           }
 
           backgroundPlaying = true; 
 
-          console.log("isbackgroundplaying", backgroundPlaying); 
-
           if (backgroundPlaying) {
-            alert("backgroundplaying"); 
+                   //add button controls 
                    rightButton.classList.remove('hidden');
                    leftButton.classList.remove('hidden');
                    leftButton.addEventListener('click', onLeftButtonClick, false);
