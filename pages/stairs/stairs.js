@@ -283,11 +283,13 @@
 
       // start stairway interaction
       popcorn.cue(INTERACTION_START_TIME, function () {
-       
-        //show the instructions
+        //this is where you call that initial event listener for the up button. 
+       enableKeyUp(); 
+
+        //show the instructions + pause video 
         instructions.classList.remove('hidden'); 
-        //progressButton.classList.remove('hidden');
         video.classList.add('paused');
+
                window.addEventListener('click', function() {
                     instructions.classList.add('hidden'); 
                     stairCounter.classList.remove('hidden');
@@ -296,25 +298,28 @@
                 //shows you you can skip when the button is paused(); 
                     skipNotice.classList.remove('hidden');
 
-                 })
 
 
-       // //Attempt to use keyboard controls 
-       //            $("body").keydown(function(e) {
-                
-       //              if (e.which == 38) {
-       //                console.log("up"); 
-       //               // $('.progress').trigger("mousedown"); 
-       //                var progressButton = document.querySelector('#progress-button');
-       //                progressButton.trigger("mousedown"); 
-       //              }
-       //            }); 
-                  // })
+                   // progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
+                   // progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
+
+
+
+
+                 }); 
 
          setTimeout(function () {
           console.log("eventlisteneradded"); 
+          //this is to enable you to press the key up and go 
            progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
            progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
+           enableKeyUp(); 
+           //to enable the backspace, to skip 
+           enableKeyBackspace(); 
+
+
+           // progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
+           // progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
         //   //pausing the video 
            popcorn.pause();
 
@@ -414,7 +419,7 @@
        //WTMFF = WHAT THE MOTHER FUCKING FUCK??!!!
         popcorn.currentTime(INTERACTION_END_TIME).play();
       }
-      //her i grab the button 
+      //here i grab the button 
       document.getElementById('skip-notice').addEventListener('click', onSkipButton, false); 
       
       function onProgressButtonMouseUp (e) {

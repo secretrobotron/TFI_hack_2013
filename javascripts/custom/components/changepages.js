@@ -24,7 +24,7 @@
     var keyPressLeft = function(e) {
         if(e.which == 37) { //left previous
           // console.log("prev"); 
-          $('.prevbutton').trigger("click"); 
+          $('.prevbutton').trigger("mousedown"); 
         } 
     }
 
@@ -34,10 +34,27 @@
         }
     }
 
-    // var keyPressUp = function(e) {
-    //   //for the stairs navigation
-    //   if (e.which == )
-    // }
+    var keyPressUp = function(e) {
+      console.log("pressed a key"); 
+      if (e.which == 38) {
+        console.log("up"); 
+        $("#progress-button").trigger('mousedown'); 
+      }
+    }
+
+    var keyPressBackspace = function(e) {
+      if (e.which==32) {
+        $("#skip-notice").trigger('click'); 
+      }
+    }
+
+    function enableKeyBackspace() {
+      document.addEventListener('keydown', keyPressBackspace, false); 
+    }
+    
+    function enableKeyUp() {
+      document.addEventListener('keydown', keyPressUp, false); 
+    }
 
     function enableKeyRight() {
       document.addEventListener('keydown', keyPressRight, false); 
@@ -48,10 +65,10 @@
     }
     //You can move left and right through the chapter. 
     function enablekeyRightLeft() {
-          console.log('called keys'); 
-          document.addEventListener('keydown', keyPressRight, false); 
-          document.addEventListener('keydown', keyPressLeft, false); 
-        }
+      console.log('called keys'); 
+      document.addEventListener('keydown', keyPressRight, false); 
+      document.addEventListener('keydown', keyPressLeft, false); 
+    }
 
     function disableKeyLeft() {
         document.removeEventListener('keydown', keyPressLeft, false); 
@@ -67,13 +84,7 @@
       document.removeEventListener('keydown', keyPressRight, false); 
       document.removeEventListener('keydown', keyPressRight, false); 
     }
-
-    //function disableRightLeft()
   
-
-
-
-
 
     function hideNavNext() {nextbutton.addClass('hidden');}
     function showNavNext() { if( nextbutton.hasClass("hidden") ){ nextbutton.removeClass('hidden'); } }
@@ -104,61 +115,6 @@
       // };  
   }
 //});
-
-/////////////////////////////////////////////////////////////////////////////////
-// Sliders ///////////////
-/////////////////////////////////////////////////////////////////////////////////
-
-// function changeSlider(value) {
-//   console.log("changeSlider has been clicked" + value); 
-//   var slider = $("ul.slider"),
-//   slides = slider.children('li'),
-//   slideCount = slides.length, 
-//   slidecounter = slider.children('.counter'), 
-//   currentIndex = slideIndex;
-  
-//   if (value==="next") {
-//     slideIndex < slideCount-1 ? slideIndex++ : slideIndex = 0;
-//   } 
-//   else if (value==="prev") { 
-//     slideIndex > 0 ? slideIndex-- : slideIndex = slideCount-1;
-//   } 
-//   else if (value==="first") { 
-//     slideIndex = 0;
-//   } 
-//   else if (value==="last") {
-//     slideIndex = slideCount - 1;
-//   } 
-//   else { 
-//     slideIndex = Math.min(slideCount-1, Math.max(0, parseInt(value)));
-//   }
-
-//   slides.removeClass('active');
-//   slides.addClass('hidden'); 
-
-//   slides.eq(slideIndex).removeClass('hidden'); 
-
-//   slides.eq(slideIndex).addClass('active').find('video').each( function () { 
-//     var el = $(this)[0];
-//     if (el) el.play(); 
-//   } );
-
-//   slides.eq(currentIndex).find('video').each( function () { 
-//     var el = $(this)[0];
-//     if (el) el.pause(); 
-//   } );
-
-//     // slideview.fadeOut('fast', function() { 
-//     //     slideview.removeClass('loaded').load(getCurrentslideUrl(), function() { 
-//     //         slideview.show();
-//     //     }); 
-//     // });
-
-//   // changeslideBackground(_pages.getslideSound(_pageIndex, slideIndex));
-//   // changeslideNarration(_pages.getslideNarration(_pageIndex, slideIndex));
-  
-//   slidecounter.text((slideIndex+1) + "/" + (slideCount));
-// }
 
 /////////////////////////////////////////////////////////////////////////////////
 // FRAMES ///////////////
