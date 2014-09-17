@@ -274,6 +274,7 @@
 
       backgroundPause = false; 
       backgroundPlaying = false; 
+
       //this is when the start video ends, what do you want to have happen?
       startVideo.addEventListener('ended', function onStartVideoEnded (e) {
         startVideo.removeEventListener('ended', onStartVideoEnded, false);
@@ -291,30 +292,36 @@
                   window.removeEventListener('click', showInstructions, false )
                   instructions.classList.add('hidden'); 
                   backgroundVideo.play(); 
-                    backgroundPlaying = true; 
+                   // rightButton.classList.remove('hidden');
+                   // leftButton.classList.remove('hidden');
+                   // leftButton.addEventListener('click', onLeftButtonClick, false);
+                   // rightButton.addEventListener('click', onRightButtonClick, false);
+                }, false); 
+          }
+
+          backgroundPlaying = true; 
+
+          console.log("isbackgroundplaying", backgroundPlaying); 
+
+          if (backgroundPlaying) {
+            alert("backgroundplaying"); 
                    rightButton.classList.remove('hidden');
                    leftButton.classList.remove('hidden');
                    leftButton.addEventListener('click', onLeftButtonClick, false);
                    rightButton.addEventListener('click', onRightButtonClick, false);
-                }, false); 
-          }
-
-
-          if (backgroundPlaying) {
-            alert("backgroundplaying"); 
 
                 backgroundVideo.addEventListener('ended', function (e) {
-                if (window.parent && window.parent.next) {
-                  window.parent.next();
-                }
-                else {
-                  videoContainer.style.left = '50%';
-                  leftButton.removeEventListener('click', onLeftButtonClick, false);
-                  rightButton.removeEventListener('click', onRightButtonClick, false);
-                  rightButton.classList.remove('hidden');
-                  leftButton.classList.add('hidden');
-                  rightButton.addEventListener('click', function (e) {
-                  }, false);
+                  if (window.parent && window.parent.next) {
+                    window.parent.next();
+                  }
+                  else {
+                    videoContainer.style.left = '50%';
+                    leftButton.removeEventListener('click', onLeftButtonClick, false);
+                    rightButton.removeEventListener('click', onRightButtonClick, false);
+                    rightButton.classList.remove('hidden');
+                    leftButton.classList.add('hidden');
+                    rightButton.addEventListener('click', function (e) {
+                    }, false);
                 }
               }, false);
           }
