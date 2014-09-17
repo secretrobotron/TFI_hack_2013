@@ -1,7 +1,5 @@
 (function() {
 
-  //so you can't skip chapters, disable keypress to the right. 
-  disableKeyRight(); 
 
   var VIDEO_TRANSITION_DURATION = 1000;
   var BUTTON_SHOW_DELAY = 1500;

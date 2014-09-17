@@ -436,21 +436,30 @@ var Pages = function () {
     //CHAPTER 5// 
 
     { 
-      url: "pages/5.html", title: "The Listing", 
+      url: "pages/5b.html", title: "The Listing", 
       transition: 'vertical', 
       frames: [
-        { 
-          url: "pages/listing/index.html",
-            // sound: 
-            //   { // 'background'
-            //     urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.0_entire_scene_background.mp3'],
-            //     loop: true,
-            //     buffer:true,
-            //     autoplay: false,
-            //     fadein:800 
-            //   },
-          //onload: _timer.checkTimer(); 
+      //frame 1 
+        {
+          url: "pages/listing/1.html", 
+        }, 
+        {
+          url: "pages/5.html", 
         }
+
+        //frame 2 
+        // { 
+        //   url: "pages/listing/index.html",
+        //     // sound: 
+        //     //   { // 'background'
+        //     //     urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.0_entire_scene_background.mp3'],
+        //     //     loop: true,
+        //     //     buffer:true,
+        //     //     autoplay: false,
+        //     //     fadein:800 
+        //     //   },
+        //   //onload: _timer.checkTimer(); 
+        // }
       ]
     },
 

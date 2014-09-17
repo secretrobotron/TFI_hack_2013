@@ -312,9 +312,10 @@
           console.log("eventlisteneradded"); 
           //this is to enable you to press the key up and go 
            progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
-           progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
+           progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);   
+           //this should allow you to go up the stairs. 
            enableKeyUp(); 
-           //to enable the backspace, to skip 
+           //to enable the backspace, to skip // this works. 
            enableKeyBackspace(); 
 
 
@@ -322,9 +323,6 @@
            // progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
         //   //pausing the video 
            popcorn.pause();
-
-        //   //showing you that you can skip when the video is paused. 
-        //   // skipNotice.classList.remove('hidden');
          }, 700); //after a second allow skipping and the button interaction
       });
 
@@ -423,6 +421,7 @@
       document.getElementById('skip-notice').addEventListener('click', onSkipButton, false); 
       
       function onProgressButtonMouseUp (e) {
+        console.log("detect a moused up"); 
         skipping = false;
         progressButton.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
         progressButton.style.color = "rgba(0, 0, 0, 0.8)";
@@ -430,6 +429,7 @@
       }
 
       function onProgressButtonMouseDown (e) {
+        console.log("detect mouse down")
         skipping = false;
         progressButton.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
         progressButton.style.color = "rgba(255, 255, 255, 0.8)";

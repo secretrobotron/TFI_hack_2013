@@ -24,7 +24,7 @@
     var keyPressLeft = function(e) {
         if(e.which == 37) { //left previous
           // console.log("prev"); 
-          $('.prevbutton').trigger("mousedown"); 
+          $('.prevbutton').trigger("click"); 
         } 
     }
 
@@ -38,7 +38,8 @@
       console.log("pressed a key"); 
       if (e.which == 38) {
         console.log("up"); 
-        $("#progress-button").trigger('mousedown'); 
+        //this is not working, when you press up. 
+        $("#progress-button").trigger('click'); 
       }
     }
 

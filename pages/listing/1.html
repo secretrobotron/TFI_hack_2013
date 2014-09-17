@@ -1,0 +1,84 @@
+<!--THIS WILL BE THE FIRST FRAME OF THE LISTING EPISODE. -->
+
+
+<html>
+<head>
+
+	<!-- Here I will add the webfont-->
+
+</head>
+<style>
+
+	#overlay1{
+	  z-index:9;
+	  position: relative;
+	  padding: 80px;
+	  margin: 0 auto;
+	  padding-top: 30%;
+/*x*/
+	  width: 100%;
+	  height: 100%;
+	  background-color: black;
+	  color: rgb(250,250,250);
+	  text-align: center;
+	  display:none;
+	}
+	.instructions{
+      z-index:30; 
+      background-color:rgba(0,0,0,0.7); 
+      position:fixed;
+      left:0;
+      top:0;
+      margin-left:0; 
+      width: 100%;
+      height:100%; 
+      padding:20px;
+    }
+
+
+</style>
+ <script src="../../javascripts/vendor/popcorn.min.js"></script>
+
+	<div class="focalpoint" data-focus-scale="cover" data-focus-left=".66" data-focus-top=".66">
+		   <video width="1280" height="720" preload="auto" data-video="start">
+		    	<source src="http://dbef91h7r4asa.cloudfront.net/assets/5_website/video/5.00_video.mp4" type="video/mp4"></source>
+		    	<source src="http://dbef91h7r4asa.cloudfront.net/assets/5_website/video/5.00_video.webmhd.webm" type="video/webm"></source>
+    		</video> 
+
+<!-- here i will add the overlay--> 
+  	</div> 
+  	<div id="overlay1" class="SouvenirStd-Light" style="font-size:2em">
+        	<h1>Scene 4: The Listing</h1>
+    	</div> 
+
+  <script>
+	  var overlay = $('#overlay1'); 
+	  var startVideo = document.querySelector('video[data-video="start"]'); 
+	  //var instructions = $("#instructions"); 
+
+	  overlay.fadeIn(); 
+
+	  setTimeout(function() {
+	  	overlay.fadeOut(); 
+	  	startVideo.play(); 
+	  	hideNav(); 
+	  	}, 5000); 
+
+	  var popcorn = Popcorn(startVideo); 
+	  var VIDEO_END_TIME = 48;
+
+	  popcorn.cue(VIDEO_END_TIME, function() {
+	  	// var instructions = $("#instructions"); 
+	  	startVideo.pause(); 
+	  	// next(); 
+	  	//changeFrame('next'); 
+	  	console.log("enter the listing scene"); 
+	  	document.addEventListener('click', function() {
+	  		//next(); 
+	  		//go to the next one. 
+	  		//console.log("enter the listing scene"); 
+	  	}, false); 
+	  }); 
+
+  </script> 
+</html> 

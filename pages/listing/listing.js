@@ -7,7 +7,6 @@ function init(e) {
 
 	// _timer.checkTimer(); 
 	hideNav(); 
-
 	
 	var address = document.querySelector("#address");
 	var price = document.querySelector("#price"); 
@@ -28,13 +27,11 @@ function init(e) {
 	var videoplayed = true; 
 
 
-	setTimeout(function() {
-
-	$("#overlay").fadeOut('slow'); 	
-	console.log("fadein"); 
-	$('#prevbutton').addClass('hidden');
- 	$('#nextbutton').addClass('hidden');
-	},3000); 
+			setTimeout(function() {
+				$("#instructions").removeClass('hidden');  
+				$('#prevbutton').addClass('hidden');
+			 	$('#nextbutton').addClass('hidden');
+			},4000); 
 
 	hideNav(); 
 
@@ -47,67 +44,11 @@ function init(e) {
         // loop: true, 
     });
 
-
-    //CALL ENTERS:
-    function callComesIn() {
-				setTimeout(function(){
-				  console.log("call coming in"); 
-				  	var callVideo = document.querySelector('video[data-video="calling"]'); 
-				  	// var videoplayed = false; 
-
-
-				      var ring = {
-
-				                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3'],
-				                loop: true,
-				                buffer:true,
-				                autoplay: false,
-				                fadein:0, 
-				                delay: 1000, 
-				    }; 
-
-				    var player = new Howl(ring); 
-				    player.fadeIn(1, 200);
-
-				    //show the call 
-				   	$('.calling').removeClass('hidden'); 
-
-				    //ANSWER THE PHONE
-				    answer.addEventListener('click', function() {
-				    	player.pause(); 
-				    	$('.calling').addClass('hidden');
-				 		callVideo.classList.remove('hidden'); 
-				    	callVideo.play(); 
-				    	//remove the rest of the event listeners, so you can't click on anything else.  
-				    	videoplayed = true; 
-				    	console.log(videoplayed); 
-									    
-				    })
-
-				    //IGNORE THE CALL 
-				    ignore.addEventListener('click', function() {
-				    	//make it go away and then make you keep exploring the page 
-				    	player.pause(); 
-				   		$('.calling').addClass('hidden');
-				   		videoplayed = false; 
-				   		console.log(videoplayed); 
-				   			//GET A SECOND CALL IF YOU DIDN'T ANSWER
-				   			 if (!videoplayed) {
-						 	 	console.log("you shoudl get another call soon"); 
-							 	callComesIn();  
-							 	 }
-					})
-				    
-	 
-
-	},70000); 
-		
-}
-
-	callComesIn(); 
+	 //playStartVideo(); 
+	 callComesIn(); 
  
 	// activeAddress(); 
-	 activePrice(); 
+	//activePrice(); 
 	// activeAgent(); 
 	// activeA1(); 
 	// activeA2(); 
@@ -117,17 +58,75 @@ function init(e) {
 	// changeMap(); 
 	// activateAmenities(); 
 
-} 
+} //end of INIT
 
+ //CALL ENTERS:
+function callComesIn() {
+	setTimeout(function(){
+	console.log("call coming in"); 
+	var callVideo = document.querySelector('video[data-video="calling"]'); 
+	// var videoplayed = false; 
+	var ring = {
+			urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3'],
+			loop: true,
+			buffer:true,
+			autoplay: false,
+			fadein:0, 
+			delay: 1000, 
+			}; 
 
-function answerPhone() {
-	answer.addEventListener('click', function() {
-		console.log("answered phone"); 
-	})
-	// player.pause(); 
+	var player = new Howl(ring); 
+	player.fadeIn(1, 200);
 
-	// _timer.isCalling.player.stop(); 
+	//show the call 
+	$('.calling').removeClass('hidden'); 
+
+		//ANSWER THE CALL
+		answer.addEventListener('click', function() {
+			player.pause(); 
+			$('.calling').addClass('hidden');
+			callVideo.classList.remove('hidden'); 
+			callVideo.play(); 
+			//remove the rest of the event listeners, so you can't click on anything else.  
+			videoplayed = true; 
+			console.log(videoplayed); 
+									    
+		})
+
+		//IGNORE THE CALL 
+		ignore.addEventListener('click', function() {
+			//make it go away and then make you keep exploring the page 
+			player.pause(); 
+			$('.calling').addClass('hidden');
+			videoplayed = false; 
+			console.log(videoplayed); 
+				//GET A SECOND CALL IF YOU DIDN'T ANSWER
+				if (!videoplayed) {
+				console.log("you shoudl get another call soon"); 
+				callComesIn();  
+			}
+		})    
+	},70000); 
 }
+
+function playStartVideo() {
+	var startVideo = document.querySelector('video[data-video="start"]'); 
+	startVideo.play(); 
+	popcorn = Popcorn(startVideo); 
+	var VIDEO_END_TIME = 48; //in seconds
+
+		popcorn.cue(VIDEO_END_TIME, function() {
+			startVideo.pause(); 
+			startVideo.classList.add('hidden'); 
+			//init(); 
+		})
+}
+
+
+
+
+
+
 
 // setTimeout(function(){
 // 	$('#prevbutton').addClass('hidden');
