@@ -21,6 +21,24 @@ p.lead {
   line-height: 1.6;
 }
 
+
+.centerpage{
+
+  padding: 1em;
+  top-padding: 50%;
+  width: 400px;
+  height: 100%;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 10;
+  font-family: SouvenirStd-Light;
+  margin-right: -50%;
+  text-align:center;
+  transform: translate(-50%, -50%)  
+      }
+
+
 /* line 102, ../sass/_type.scss */
 .subheader {
   line-height: 1.4;

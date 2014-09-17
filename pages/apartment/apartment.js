@@ -280,10 +280,13 @@
           backgroundVideo.play();
 
         setTimeout(function () {
+    debugger; 
+          instructions.classList.remove('hidden'); 
           rightButton.classList.remove('hidden');
           leftButton.classList.remove('hidden');
           leftButton.addEventListener('click', onLeftButtonClick, false);
           rightButton.addEventListener('click', onRightButtonClick, false);
+    debugger; 
         }, BUTTON_SHOW_DELAY);
 
         //If background video has ended, then take me to the next scene. 

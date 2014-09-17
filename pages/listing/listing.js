@@ -76,7 +76,8 @@ function init(e) {
 				    	player.pause(); 
 				    	$('.calling').addClass('hidden');
 				 		callVideo.classList.remove('hidden'); 
-				    	callVideo.play();  
+				    	callVideo.play(); 
+				    	//remove the rest of the event listeners, so you can't click on anything else.  
 				    	videoplayed = true; 
 				    	console.log(videoplayed); 
 									    
@@ -98,7 +99,7 @@ function init(e) {
 				    
 	 
 
-	},60000); 
+	},70000); 
 		
 }
 
