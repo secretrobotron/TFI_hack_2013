@@ -430,34 +430,31 @@ var Pages = function () {
     { 
       url: "pages/5b.html", 
       title: "The Listing",
-      trans: 'fade',  
-      frames: [
-      //frame 1 
-        {
-          url: "pages/listing/1.html", 
-        }, 
-        {
-          url: "pages/5.html", 
-        }, 
-        //the third scene will be a video. 
-
-        //frame 2 
-        // { 
-        //   url: "pages/listing/index.html",
-        //     // sound: 
-        //     //   { // 'background'
-        //     //     urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.0_entire_scene_background.mp3'],
-        //     //     loop: true,
-        //     //     buffer:true,
-        //     //     autoplay: false,
-        //     //     fadein:800 
-        //     //   },
-        //   //onload: _timer.checkTimer(); 
-        // }
-      ]
-    },
-
-      //PART 2 
+      trans: 'fade',
+          sound: 
+                  { // 'background'
+                    urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.0_backgroundloop.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.0_backgroundloop.ogg' ],
+                    container: 'iframe', 
+                    loop: true,
+                    buffer:true,
+                    autoplay: false,
+                    fadein:800 
+                  },  
+          frames: [
+          //frame 1 
+            {
+              url: "pages/listing/1.html", //the intro video 
+            }, 
+            {
+              url: "pages/5.html", //the listing
+            }, 
+            {
+              url: "pages/listing/2.html" //the call video 
+            }, 
+       ]
+    }, //END OF CHAPTER 5 
+        
+  
     // { 
     //   url: "pages/4.html", title: "Part II", 
     //   frames: [
@@ -467,22 +464,7 @@ var Pages = function () {
     //   ]
     // },
 
-// //CHAPTER 6 
-
-
-// //CHAPTER 7 
-
-// //CHAPTER 8 
-
-// //CHAPTER 9 
-
-// //CHAPTER 10
-
-
     ];
-
-  // todo add ajax loader if needed,
-  // possibly add _pageIndex and _frameIndex to this
 
   this.currentSubframeIndex = 0;
   this.resetSubframeIndex = function(){ this.currentSubframeIndex = 0; }
@@ -536,10 +518,9 @@ var Pages = function () {
   }
 
   this.doesFrameHaveSubframes = function( page, frame ){
-
-    console.log( "checking for subframes" );
-
-    if( pageinfo[page].frames[frame].subframes ){
+    //this signifier was not correct, because if you don't have subframes, it doesn't really know how to check. 
+    //that is why you have two conditions, in case it doesn't have it. 
+    if( pageinfo[page].frames[frame] && pageinfo[page].frames[frame].subframes ){
       // console.log( "has subframes" );
       return true;
     }
@@ -551,10 +532,8 @@ var Pages = function () {
   }
 
   this.getSubframeByIndex = function( page, frame, subframe_index ){
-    // console.log("gettting subframe by index"); 
     if( subframe_index < pageinfo[page].frames[frame].subframes.length ){
         var sf = pageinfo[page].frames[frame].subframes[subframe_index];
-        // console.log(sf);
        return sf;
 
     }
@@ -566,15 +545,12 @@ var Pages = function () {
   } 
 
   this.visitSubframe = function( page, frame ){
-    //THE PROBELM IS HERE BECAUSE IT SAYS THAT WE DONT HAVE A SUBFRAME WHEN WE DO. 
 
      console.log( "getting subframe" );
     var subframes = pageinfo[page].frames[frame].subframes;
 
     var foundSubframe = false;
       for(var i = 0; i < subframes.length; i++ ){
-          // console.log( "checking subframe" );
-          // console.log( "been here:" + subframes[i].visited );
           //if we've already been there, skip this and go to the next loop iteration. 
           if(subframes[i].visited) continue;
           else {
@@ -605,14 +581,10 @@ var Pages = function () {
   }
 
 
-
-
   this.getFrameCount = function (page) {
     return pageinfo[page].frames.length;
   };
 };
-
-var _pages = new Pages();
 
 //get the current container of the frame 
 function getCurrentFrameContainer() {
@@ -627,7 +599,6 @@ function getCurrentFrameContainer() {
 
 
 function getCurrentFrameUrl() { 
-
   //checking if the current frame has any subrames within the chapter. 
   if( _pages.doesFrameHaveSubframes( _pageIndex, _frameIndex ) ){
     return _pages.visitSubframe( _pageIndex, _frameIndex ).url;
@@ -637,6 +608,7 @@ function getCurrentFrameUrl() {
   }
 }
 
+var _pages = new Pages();
 
 
 

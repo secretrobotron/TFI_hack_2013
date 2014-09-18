@@ -289,7 +289,7 @@
       popcorn = Popcorn("#stairs_video");
 
       // start stairway interaction
-      popcorn.cue(INTERACTION_START_TIME, function () {
+    popcorn.cue(INTERACTION_START_TIME, function () {
         //this is where you call that initial event listener for the up button. 
        window.parent.enableKeyUp(); 
 
@@ -304,12 +304,9 @@
                     progressButton.classList.remove('hidden');
                 //shows you you can skip when the button is paused(); 
                     skipNotice.classList.remove('hidden');
-                   // progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
-                   // progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
                  }); 
 
          setTimeout(function () {
-          console.log("eventlisteneradded"); 
           //this is to enable you to press the key up and go 
            progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
            progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);   
@@ -317,27 +314,19 @@
            window.parent.enableKeyUp(); 
            //to enable the backspace, to skip // this works. 
            window.parent.enableKeyBackspace(); 
-
-
-           // progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
-           // progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
            //pausing the video 
            popcorn.pause();
          }, 700); //after a second allow skipping and the button interaction
-      });
+      }); //END INTERACTION START TIME. 
 
   
-          
-
-      // stop stairway interaction 
-      //(AFTER EVERYTHING INSIDE OF THE STAIRS IS DONE AND YOU ARE WATCHING THE LAST VIDEO)
-      popcorn.cue(INTERACTION_END_TIME, function () {
+  //(AFTER EVERYTHING INSIDE OF THE STAIRS IS DONE AND YOU ARE WATCHING THE LAST VIDEO)
+  popcorn.cue(INTERACTION_END_TIME, function () {
       progressButton.classList.add('hidden');
           setTimeout(function () {
             stairCounter.classList.add('hidden');
             floorCounter.classList.add('hidden');
             skipNotice.classList.add('hidden'); 
-            //THE VIDEO SHOULD PLAY HERE 
             video.play(); 
           }, 2000);
         

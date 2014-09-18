@@ -4,9 +4,12 @@
 
 
 function init(e) {
+	//hide Navivgation for the listing. 
+	if (window.parent && window.parent.hideNav) {
+      window.parent.hideNav();
+    }
 
-	disableRightLeft(); 
-	hideNav(); 
+
 
 	// _timer.checkTimer(); 
 
@@ -29,14 +32,17 @@ function init(e) {
 	var videoplayed = true; 
 	// var instructions = document.querySelector("#instructions"); 
 
-				// $('#overlay').addClass('hidden'); 
 				$("#instructions").removeClass('hidden');  
-				$('#prevbutton').addClass('hidden');
-			 	$('#nextbutton').addClass('hidden');
+				// removeInstructions(); 
+				window.addEventListener('click', function hideInstructions() {
+						window.removeEventListener('click', hideInstructions); 
+						instructions.classList.add('hidden'); 
+					}, false); 
+
 		
 
-	hideNav(); 
-	removeInstructions(); 
+	// hideNav(); 
+	
 
 	$(".fancybox").fancybox({
         padding : 0, 
@@ -93,7 +99,7 @@ function callComesIn() {
 			changeFrame('next'); 
 			//remove the rest of the event listeners, so you can't click on anything else.  
 			videoplayed = true; 
-			console.log(videoplayed); 
+			//console.log(videoplayed); 
 									    
 		})
 
@@ -127,12 +133,12 @@ function playStartVideo() {
 }
 
 
-function removeInstructions() {
-	window.addEventListener('click', function hideInstructions() {
-		window.removeEventListener('click', hideInstructions); 
-		instructions.classList.add('hidden'); 
-	}, false); 
-}
+// function removeInstructions() {
+// 	window.addEventListener('click', function hideInstructions() {
+// 		window.removeEventListener('click', hideInstructions); 
+// 		instructions.classList.add('hidden'); 
+// 	}, false); 
+// }
 
 
 

@@ -20,27 +20,20 @@
               if (pageBg1Playing){
 
                 if (!info){
-debugger; 
-                  //currentPageBackground1.animate({volume: 0}, 1000); 
                   currentPageBackground1.fadeOut(0, 400);
-                  //currentPageBackground1.mute();  //this did work, it muted it. //but then it restarts again. 
                   pageBg1Playing = false;
-                  console.log('dont play the background audio'); 
-
                   return;
                 }else{
                   
                   currentPageBackground2 = new Howl(info);
                   currentPageBackground2.fadeIn(1, info.fadein || 800);
                   pageBg2Playing = true;
-debugger; 
                   currentPageBackground1.fadeOut(0, 400);
                   pageBg1Playing = false;
 
                 }
               //if bg1 is null, check bg2
               }else if( pageBg2Playing ){
-                  console.log('should be playing sound of 2'); 
 
                     if (!info){
                           //if there is no info then return early and fade out bg2
@@ -71,7 +64,6 @@ debugger;
             }
 
             function changeFrameBackground(info) { 
-debugger; 
               //if bg1 is not null, then it is playing and bg2 needs to be created and bg1 faded out
               if (frameBg1Playing){
                 console.log('skipped'); 
@@ -120,8 +112,6 @@ debugger;
               }
 
             }
-
-
 
 
 ////////////////////////This makes sure that we don't repeat the narratives//////////////
@@ -177,7 +167,6 @@ debugger;
 
               //the subgrame narration is not entering this loop, so we can't hear it with a delay. 
               if (!info) return; 
-
 
               console.log(Array.isArray(info)); 
 

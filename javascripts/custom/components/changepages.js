@@ -133,29 +133,29 @@ function changeFrame(value, callback) {
     currentIndex = _frameIndex,
     trans = _pages.getTransition(_pageIndex);
   
-  if (value==="next") {
-    if (_frameIndex < frameCount-1) _frameIndex++;
-  } 
-  else if (value==="prev") { 
-    if (_frameIndex > 0) _frameIndex--;
-  } 
-  else if (value==="first") { 
-    _frameIndex = 0;
-    trans = false;
-  } 
-  else if (value==="last") {
-    _frameIndex = frameCount - 1;
-    trans = false;
-  } 
-  else { 
-    _frameIndex = Math.min(frameCount-1, Math.max(0, parseInt(value)));
-    trans = false;
-  }
+        if (value==="next") {
+          if (_frameIndex < frameCount-1) _frameIndex++;
+        } 
+        else if (value==="prev") { 
+          if (_frameIndex > 0) _frameIndex--;
+        } 
+        else if (value==="first") { 
+          _frameIndex = 0;
+          trans = false;
+        } 
+        else if (value==="last") {
+          _frameIndex = frameCount - 1;
+          trans = false;
+        } 
+        else { 
+          _frameIndex = Math.min(frameCount-1, Math.max(0, parseInt(value)));
+          trans = false;
+        }
 
-  if (animating) {
-    trans = false;
-    animating = false;
-  }
+        if (animating) {
+          trans = false;
+          animating = false;
+        }
 
   if (trans) {
     if (trans === 'fade') trans = 'crossFade';
@@ -166,7 +166,6 @@ function changeFrame(value, callback) {
     frameview.prepend('<div class="new ' + trans + '" />');
 
 
-
     var frameNew = $('.new'),
     frameOld = $('.old');
     frameNew.eq(0).load(getCurrentFrameUrl(), function() {
@@ -175,84 +174,63 @@ function changeFrame(value, callback) {
       $(this).imagesLoaded(function(){
         focalpoint(function() {
           frameNew.addClass('animate');
-
-          ///special case for intro gif to last longer in its intro transition
-          // if(_frameIndex == 1 && _pageIndex === 0){
-          //   frameOld.addClass("first_gif");
-          // }
-
           frameOld.addClass('animate');
-          // changeSlider('first');
           animating = true;
           console.log("everytime"); 
 
+          //very important, this makes sure that you don't accumulate divs on top of each other. 
           frameNew.children().unwrap();
             
-          setTimeout(function(){
-            frameOld.remove();
+                setTimeout(function(){
+                    frameOld.remove();
 
 
-            animating = false;
+                    animating = false;
 
-            var videoElements = frameview[0].querySelectorAll('video.frame-video');
-            var videoCount = videoElements.length;
-            console.log(videoCount); 
-            var loadedVideos = 0;
+                    var videoElements = frameview[0].querySelectorAll('video.frame-video');
+                    var videoCount = videoElements.length;
+                    console.log(videoCount); 
+                    var loadedVideos = 0;
 
-            // force video to play!
-            //this means the video is not buffered. 
-            Array.prototype.forEach.call(videoElements, function (v) {
-              //v.play();
-              //the audio is waiting for you to get through the videos
-              // v.load(); 
-              //console.log(v); 
+                    // force video to play!
+                    //this means the video is not buffered. 
+                    Array.prototype.forEach.call(videoElements, function (v) {
+                      //the audio is waiting for you to get through the videos
 
-              //video is already loaded, if the video was already ready, callback was never called. 
-              if (v.readyState === 4){
-                v.play(); 
-                loadedVideos++;
-                if (videoCount === loadedVideos){
-                  //start the audio
-                  clearDelayedAudio();
-                  changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
-                  //this is what is happening it is not getting the narration 
-                  console.log("about to get narration"); 
-                  //this works. 
-                  changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
-                }
-              } else {
-                //wait for it to load
-                v.addEventListener('canplaythrough', function onCanPlayThrough () { 
-                  v.removeEventListener('canplaythrough', onCanPlayThrough); 
-                  // v.oncanplaythrough = function(){
-                  v.play(); 
-                  //console.log('bobby');  
-
-                  loadedVideos++;
-                  if (videoCount === loadedVideos){
-                    // console.log("everything is loaded, " + videoCount === loadedVideos)
-                    //everything is loaded
-                    //start the audio
-                    clearDelayedAudio();
-                    changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
-                    //this is what is happening it is not getting the narration 
-                    console.log("about to get narration"); 
-                    //this works. 
-                    changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
-                  }
-                 });
-              }
-
-
+                      //video is already loaded, if the video was already ready, callback was never called. 
+                      if (v.readyState === 4){
+                        v.play(); 
+                        loadedVideos++;
+                          if (videoCount === loadedVideos){
+                            //start the audio
+                            clearDelayedAudio();
+                            //get the background and frame audio. 
+                            changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
+                            changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
+                            }
+                        } else {
+                        //wait for it to load
+                          v.addEventListener('canplaythrough', function onCanPlayThrough () { 
+                            v.removeEventListener('canplaythrough', onCanPlayThrough); 
+                            v.play(); 
+                            loadedVideos++;
+                            //everything is loaded 
+                            if (videoCount === loadedVideos){
+                              //start the audio
+                              clearDelayedAudio();
+                              changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
+                              changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
+                            }
+                           });
+                        }
+                    });
+                  },1500); //end of set timeout function. 
             });
-          },1500);
-        });
-      });
-    }); 
-  } else {
+          });
+        }); 
+      } else {
 
-    //
-
+ 
       frameview.fadeOut('fast', function() { 
            if (getCurrentFrameContainer() === 'iframe') {
             console.log('iframe here'); 
@@ -310,14 +288,6 @@ function changeFrame(value, callback) {
 }
 
 
-
-
-
-// function switchAudio(pages,_pageIndex, _frameIndex){
-//   //make sure delayed audio does not play after frame change;
-  
-// }
-
 /////////////////////////////////////////////////////////////////////////////////
 // PAGES ///////////////
 /////////////////////////////////////////////////////////////////////////////////
@@ -325,8 +295,6 @@ function changeFrame(value, callback) {
 function changePage(value, frame) {
   //why do you need to get the parameter of frame 
     var pagect = _pages.pageCount();
-
-    //console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
 
     var newChapter = false; 
 
@@ -337,10 +305,9 @@ function changePage(value, frame) {
     else if (value==="apt") {_pageIndex = 2}
     else { _pageIndex = Math.max(0, Math.min(pagect - 1, parseInt(value))); }
 
+  //this was hapenning asynchronously, so you have to change the frame background noise in there. 
     pageview.fadeOut('fast', function() { 
-      
         pageview.removeClass('loaded').load(_pages.getPageUrl(_pageIndex), function() {
-debugger; 
             frame ?  changeFrame(frame) : changeFrame('first');
             changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
             pageview.fadeIn();
@@ -349,8 +316,6 @@ debugger;
     });
 
     changePageBackground(_pages.getPageSound(_pageIndex));
-    
-    console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
 
     pagetitle.text(_pages.getPageTitle(_pageIndex));
 
@@ -370,35 +335,19 @@ debugger;
 
 function next() { 
 
-  // console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
-
-//special case for the intro to unhide the loaded animated gif
-    // if( _frameIndex == 0 && _pageIndex == 0 ){
-    //   console.log("went into first special case"); 
-    //   $("#intro_title").addClass("hidden");
-    //   $("#intro_gif").removeClass("hidden");
-    // }
-
-
-    //what does this logic mean? 
     if (_frameIndex < _pages.getFrameCount(_pageIndex)-1) { 
-
-      ///special cases 
-      if( _frameIndex === 0 && _pageIndex === 0 ){
-        //dont show back nav at beginning, use the callback option to call hide on the cursor
-        changeFrame('next', hideNavPrev );
-        changeFrame('next', hideNavNext );
-      }else{
-        changeFrame('next'); 
-     }
-
-     //special case for the end of the stairs scene?
-
-    } 
-    else if(_pageIndex < _pages.pageCount()-1){ 
-      changePage('next'); 
-    }
-}
+          ///special cases 
+          if( _frameIndex === 0 && _pageIndex === 0 ){
+            //dont show back nav at beginning, use the callback option to call hide on the cursor
+            changeFrame('next', hideNavPrev );
+            changeFrame('next', hideNavNext );
+          } else{
+            changeFrame('next'); 
+            }
+          } else if(_pageIndex < _pages.pageCount()-1){ 
+          changePage('next'); 
+          }
+      }
 
 function prev() { 
 

@@ -361,7 +361,7 @@ blockquote p {
 /* line 1, ../sass/_topbar.scss */
 .top-bar {
   position: fixed;
-  top: 35px;
+  top: 15px;
   left: 0px;
   right: 0px;
   overflow: hidden;

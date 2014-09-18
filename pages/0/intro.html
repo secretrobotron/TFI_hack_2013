@@ -38,8 +38,8 @@
 
 					<!-- add a progress bar here--> 
 						 <div id="text" style="text-align:center; margin-top:15%">
-							 <img style="height:200px; width:210px; outline:none; margin-right:8%; padding-bottom:5%" src= "http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/UnionDocs-Logo.png">
-							<img style="height:230px; width: 300px; outline:none; margin-left:8%; padding-bottom:5%" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/POV_logo_nobackground.png"> 
+							 <img style="height:200px; width:380px; outline:none; margin-right:5%; padding-bottom:5%" src= "http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/UnionDocs-Logo.png">
+							<img style="height:230px; width: 300px; outline:none; margin-left:5%; padding-bottom:5%" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/POV_logo_nobackground.png"> 
 						 <h2> A UnionDocs Production
 						      <br>
 							Produced in association with American Documentary | POV
@@ -61,25 +61,21 @@
 	//console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
 	var video; 
 	// var popcorn; 
-	var nav = document.querySelector("nav"); 
-
+	var nav = document.querySelector(".top-bar-section"); 
 	function init() {
-		console.log("init"); 
-			//$('#overlay').fadeIn(); 
-			$('.nextbutton').addClass('hidden'); 
+		// $('.top-bar-section').hide(); 
 
-			//var introvideo = document.querySelector('video[data-video="intro"]'); 
-			//var popcorn = Popcorn(introvideo); 
+		//nav.hide(); 
+
+		console.log("init"); 
+			$('.nextbutton').addClass('hidden'); 
 			var popcorn = Popcorn("#intro");
 			var title = document.querySelector("#title");
-
-			//var assets = popcorn; 
 
 			//load video and pause it 
 			popcorn.preload("auto");
 			popcorn.pause(); 
 			popcorn.autoplay(false); 
-			// popcorn.pause();
 
 			if (popcorn.video.readyState === 4 ) {
 				title.classList.remove('hidden'); 
@@ -87,7 +83,7 @@
 						console.log('video is ready'); 
 						title.classList.add('hidden'); 
 						popcorn.play(); 
-					}, 3000); 
+					}, 5000); 
 			
 
 			} else {
@@ -98,7 +94,7 @@
 							console.log('video is ready'); 
 							title.classList.add('hidden'); 
 							popcorn.play(); 
-						}, 3000);
+						}, 5000);
 
 				}); 
 			}
