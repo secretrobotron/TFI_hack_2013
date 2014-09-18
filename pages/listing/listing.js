@@ -5,6 +5,9 @@
 
 function init(e) {
 
+	disableRightLeft(); 
+	hideNav(); 
+
 	// _timer.checkTimer(); 
 
 	var address = document.querySelector("#address");
@@ -33,7 +36,7 @@ function init(e) {
 		
 
 	hideNav(); 
-	//removeInstructions(); 
+	removeInstructions(); 
 
 	$(".fancybox").fancybox({
         padding : 0, 
@@ -85,8 +88,9 @@ function callComesIn() {
 		answer.addEventListener('click', function() {
 			player.pause(); 
 			$('.calling').addClass('hidden');
-			callVideo.classList.remove('hidden'); 
-			callVideo.play(); 
+			//callVideo.classList.remove('hidden'); 
+			//callVideo.play(); 
+			changeFrame('next'); 
 			//remove the rest of the event listeners, so you can't click on anything else.  
 			videoplayed = true; 
 			console.log(videoplayed); 

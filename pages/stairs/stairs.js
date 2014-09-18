@@ -291,7 +291,7 @@
       // start stairway interaction
       popcorn.cue(INTERACTION_START_TIME, function () {
         //this is where you call that initial event listener for the up button. 
-       enableKeyUp(); 
+       window.parent.enableKeyUp(); 
 
         //show the instructions + pause video 
         instructions.classList.remove('hidden'); 
@@ -304,15 +304,8 @@
                     progressButton.classList.remove('hidden');
                 //shows you you can skip when the button is paused(); 
                     skipNotice.classList.remove('hidden');
-
-
-
                    // progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
                    // progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
-
-
-
-
                  }); 
 
          setTimeout(function () {
@@ -321,14 +314,14 @@
            progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
            progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);   
            //this should allow you to go up the stairs. 
-           enableKeyUp(); 
+           window.parent.enableKeyUp(); 
            //to enable the backspace, to skip // this works. 
-           enableKeyBackspace(); 
+           window.parent.enableKeyBackspace(); 
 
 
            // progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
            // progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);
-        //   //pausing the video 
+           //pausing the video 
            popcorn.pause();
          }, 700); //after a second allow skipping and the button interaction
       });

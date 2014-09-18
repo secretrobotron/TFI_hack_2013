@@ -255,6 +255,7 @@ function changeFrame(value, callback) {
 
       frameview.fadeOut('fast', function() { 
            if (getCurrentFrameContainer() === 'iframe') {
+            console.log('iframe here'); 
            frameview.removeClass('loaded');
 
             var iframe = frameview[0].querySelector('iframe');
@@ -268,6 +269,7 @@ function changeFrame(value, callback) {
               setTimeout(function () {
               frameview.fadeIn();
               frameview.addClass('loaded'); 
+              console.log('added iframe'); 
            }, 100);
         }
         else {
@@ -321,9 +323,10 @@ function changeFrame(value, callback) {
 /////////////////////////////////////////////////////////////////////////////////
 
 function changePage(value, frame) {
+  //why do you need to get the parameter of frame 
     var pagect = _pages.pageCount();
 
-    console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
+    //console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
 
     var newChapter = false; 
 
@@ -335,14 +338,19 @@ function changePage(value, frame) {
     else { _pageIndex = Math.max(0, Math.min(pagect - 1, parseInt(value))); }
 
     pageview.fadeOut('fast', function() { 
+      
         pageview.removeClass('loaded').load(_pages.getPageUrl(_pageIndex), function() {
-            frame ? changeFrame(frame) : changeFrame('first');
+debugger; 
+            frame ?  changeFrame(frame) : changeFrame('first');
+            changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
             pageview.fadeIn();
             //start the audio after the fade in. 
         }); 
     });
 
     changePageBackground(_pages.getPageSound(_pageIndex));
+    
+    console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
 
     pagetitle.text(_pages.getPageTitle(_pageIndex));
 

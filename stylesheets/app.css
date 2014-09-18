@@ -2255,7 +2255,7 @@ button {
 /* line 236, ../sass/_shared.scss */
 .prevbutton, .nextbutton {
   width: 50%;
-  height: 100%;
+  height: 65%;
 /*  bottom:100%;
   top:95%;*/
   position: absolute;

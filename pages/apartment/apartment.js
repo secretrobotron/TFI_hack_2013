@@ -241,9 +241,15 @@
     console.log('asset length', assets.length); 
     //console.dir(assets)
 
+      $('#overlay').fadeIn();
     util.loader.ensureLoaded(assets, function(percent) {
       console.log("total percenteges: ", percent);
-       $('#overlay').fadeIn();
+          percent *= 100;
+          percent += "%";
+          $("#AptProgressBar #Progress").stop()
+        .animate({
+          width : percent
+        }, 100);
     }, function(){
       console.log("DONEEEEE");
       $('#overlay').fadeOut();

@@ -1,19 +1,8 @@
-<html>
-  <head>
+
+
     <style>
     				body{
 					  	background-color: black;
-					  }
-
-					  .midright{
-					    margin-top:200px;
-					    margin-right: 250px;
-					    padding: 20px;
-					  }
-					   .midleft{
-					    margin-top:230px;
-					    margin-left: 410px;
-					    padding: 20px;
 					  }
 
 					   .fadeable {
@@ -37,26 +26,7 @@
 					    }
 
     </style>
-    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-      		<script src="../../javascripts/vendor/popcorn.min.js"></script>
-           <!--  // <script src="../../javascripts/custom/components/loader.js"></script> -->
-     
-		      <link rel="stylesheet" type="text/css" href="../../webfonts/MyFontsWebfontsKit.css">
-		      <link rel="stylesheet" type="text/css" href="../../stylesheets/app.css">
-		      <script src="../../javascripts/vendor/fastclick.js"></script>
-		      <script src="../../javascripts/vendor/howler.min.js"></script>
-		      <script src="../../javascripts/custom/plugins.js"></script>
-		      <script src="../../javascripts/custom/components/scenedef.js"></script>
-   			  <script src="../../javascripts/custom/components/changepages.js"></script> 
-		      <script src="../../javascripts/custom/components/audio.js"></script>
-		      <script src="../../javascripts/custom/components/timer.js"></script>
-			  <script src="../../javascripts/custom/components/loader.js"></script>
-
-	</head>
-
-	<body>
 		<!--the frameview is not loaded, which is why it is not showing up but you can hear it.--> 
-		<!-- <div class="fullScreen frameview"> -->
 		<div class="focalpoint" data-focus-scale="cover" data-focus-left=".66" data-focus-top=".66" style="
 		z-index:10">
 			  <video width="1280" height="720" class="frame-video" id="intro" data-video:"intro">
@@ -68,7 +38,7 @@
 
 					<!-- add a progress bar here--> 
 						 <div id="text" style="text-align:center; margin-top:15%">
-							 <img style="height:200px; width:100px; outline:none; margin-right:8%; padding-bottom:5%" src= "http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/UnionDocs-Logo.png">
+							 <img style="height:200px; width:210px; outline:none; margin-right:8%; padding-bottom:5%" src= "http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/UnionDocs-Logo.png">
 							<img style="height:230px; width: 300px; outline:none; margin-left:8%; padding-bottom:5%" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/POV_logo_nobackground.png"> 
 						 <h2> A UnionDocs Production
 						      <br>
@@ -117,7 +87,7 @@
 						console.log('video is ready'); 
 						title.classList.add('hidden'); 
 						popcorn.play(); 
-					}, 10000); 
+					}, 3000); 
 			
 
 			} else {
@@ -128,7 +98,7 @@
 							console.log('video is ready'); 
 							title.classList.add('hidden'); 
 							popcorn.play(); 
-						}, 10000);
+						}, 3000);
 
 				}); 
 			}
@@ -139,19 +109,18 @@
 				console.log("cued"); 
 				//go to the next chapter:
 				setTimeout(function() {
-					window.parent.next(); 
+					//window.parent.next(); 
+					next(); 
 				}, 8000); 
 			}); 
 
 	console.log("INTRO: I'm on page "+_pageIndex +" and frame: "+_frameIndex);
 	}
 
-	document.addEventListener('DOMContentLoaded', init, false);
+	init(); 
 
 	
 </script>
 
-  </body>
-</html>
 
 

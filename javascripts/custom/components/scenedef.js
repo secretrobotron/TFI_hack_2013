@@ -10,7 +10,7 @@ var Pages = function () {
             frames: [
               {
                   url: "pages/0/intro.html",  //page1, frame 0 
-                  container: 'iframe'
+                 // container: 'iframe'
               }, 
             ], 
           },
@@ -252,7 +252,7 @@ var Pages = function () {
                         delay: 0,
                         onend: function() {
                           //move on to chapter 2, this can't be stopped
-                          setTimeout(function(){ changePage("next"); },2000);
+                          setTimeout(function(){ changePage("next"); },1500);
                         } 
                       }]
                   }, 
@@ -405,7 +405,7 @@ var Pages = function () {
           url: "pages/2/1.html", //this doesn't exist 
             sound: 
               { // 'background'
-                urls: [3,'http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.0backgroundloop.ogg' ],
+                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.0backgroundloop.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.0backgroundloop.ogg' ],
                 loop: true,
                 buffer:true,
                 autoplay: false,
@@ -438,7 +438,8 @@ var Pages = function () {
         }, 
         {
           url: "pages/5.html", 
-        }
+        }, 
+        //the third scene will be a video. 
 
         //frame 2 
         // { 
@@ -457,14 +458,14 @@ var Pages = function () {
     },
 
       //PART 2 
-    { 
-      url: "pages/4.html", title: "Part II", 
-      frames: [
-        { 
-          url: "pages/part2/index.html", //leads you to the//this could also have a background audio here.  next stuff. 
-        }
-      ]
-    },
+    // { 
+    //   url: "pages/4.html", title: "Part II", 
+    //   frames: [
+    //     { 
+    //       url: "pages/part2/index.html", //leads you to the//this could also have a background audio here.  next stuff. 
+    //     }
+    //   ]
+    // },
 
 // //CHAPTER 6 
 

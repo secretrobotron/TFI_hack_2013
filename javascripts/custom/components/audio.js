@@ -20,10 +20,12 @@
               if (pageBg1Playing){
 
                 if (!info){
-
-                  //if there is no info then return early and fade out bg1
+debugger; 
+                  //currentPageBackground1.animate({volume: 0}, 1000); 
                   currentPageBackground1.fadeOut(0, 400);
+                  //currentPageBackground1.mute();  //this did work, it muted it. //but then it restarts again. 
                   pageBg1Playing = false;
+                  console.log('dont play the background audio'); 
 
                   return;
                 }else{
@@ -31,27 +33,28 @@
                   currentPageBackground2 = new Howl(info);
                   currentPageBackground2.fadeIn(1, info.fadein || 800);
                   pageBg2Playing = true;
+debugger; 
                   currentPageBackground1.fadeOut(0, 400);
                   pageBg1Playing = false;
 
                 }
-
-                //if bg1 is null, check bg2
+              //if bg1 is null, check bg2
               }else if( pageBg2Playing ){
+                  console.log('should be playing sound of 2'); 
 
-              if (!info){
-                    //if there is no info then return early and fade out bg2
-                    currentPageBackground2.fadeOut(0, 400);
-                    pageBg2Playing = false;
-                    return;
-                  }else{
+                    if (!info){
+                          //if there is no info then return early and fade out bg2
+                          currentPageBackground2.fadeOut(0, 400);
+                          pageBg2Playing = false;
+                          return;
+                        }else{
 
-                    currentPageBackground1 = new Howl(info);
-                    currentPageBackground1.fadeIn(1, info.fadein || 800);
-                    pageBg1Playing = true;
-                    currentPageBackground2.fadeOut(0, 400);
-                    pageBg2Playing = false;
-                  }
+                          currentPageBackground1 = new Howl(info);
+                          currentPageBackground1.fadeIn(1, info.fadein || 800);
+                          pageBg1Playing = true;
+                          currentPageBackground2.fadeOut(0, 400);
+                          pageBg2Playing = false;
+                        }
 
               }else{
 
@@ -68,9 +71,10 @@
             }
 
             function changeFrameBackground(info) { 
-
+debugger; 
               //if bg1 is not null, then it is playing and bg2 needs to be created and bg1 faded out
               if (frameBg1Playing){
+                console.log('skipped'); 
 
                 if (!info){
                   //if there is no info then return early and fade out bg1
