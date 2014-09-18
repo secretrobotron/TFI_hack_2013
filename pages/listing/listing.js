@@ -6,8 +6,7 @@
 function init(e) {
 
 	// _timer.checkTimer(); 
-	hideNav(); 
-	
+
 	var address = document.querySelector("#address");
 	var price = document.querySelector("#price"); 
 	var agent = document.querySelector("#agent"); 
@@ -25,15 +24,16 @@ function init(e) {
 	var ignore = document.querySelector("#ignore"); 
 	// var callVideo = document.querySelector('video[data-video="calling"]'); 
 	var videoplayed = true; 
+	// var instructions = document.querySelector("#instructions"); 
 
-
-			setTimeout(function() {
+				// $('#overlay').addClass('hidden'); 
 				$("#instructions").removeClass('hidden');  
 				$('#prevbutton').addClass('hidden');
 			 	$('#nextbutton').addClass('hidden');
-			},4000); 
+		
 
 	hideNav(); 
+	//removeInstructions(); 
 
 	$(".fancybox").fancybox({
         padding : 0, 
@@ -106,7 +106,7 @@ function callComesIn() {
 				callComesIn();  
 			}
 		})    
-	},70000); 
+	},60000); 
 }
 
 function playStartVideo() {
@@ -123,6 +123,12 @@ function playStartVideo() {
 }
 
 
+function removeInstructions() {
+	window.addEventListener('click', function hideInstructions() {
+		window.removeEventListener('click', hideInstructions); 
+		instructions.classList.add('hidden'); 
+	}, false); 
+}
 
 
 

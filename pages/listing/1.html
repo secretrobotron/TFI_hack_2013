@@ -47,7 +47,7 @@
 
 <!-- here i will add the overlay--> 
   	</div> 
-  	<div id="overlay1" class="SouvenirStd-Light" style="font-size:2em">
+  		<div id="overlay1" class="SouvenirStd-Light" style="font-size:2em">
         	<h1>Scene 4: The Listing</h1>
     	</div> 
 
@@ -63,21 +63,17 @@
 	  	startVideo.play(); 
 	  	hideNav(); 
 	  	}, 5000); 
-
+ 
 	  var popcorn = Popcorn(startVideo); 
 	  var VIDEO_END_TIME = 48;
 
 	  popcorn.cue(VIDEO_END_TIME, function() {
 	  	// var instructions = $("#instructions"); 
+	  	overlay.fadeOut(); 
 	  	startVideo.pause(); 
-	  	// next(); 
-	  	//changeFrame('next'); 
+	  	 // changePage('nextlisting'); 
+	  	changeFrame('next'); 
 	  	console.log("enter the listing scene"); 
-	  	document.addEventListener('click', function() {
-	  		//next(); 
-	  		//go to the next one. 
-	  		//console.log("enter the listing scene"); 
-	  	}, false); 
 	  }); 
 
   </script> 

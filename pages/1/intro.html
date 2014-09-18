@@ -21,40 +21,17 @@
 }
 
 </style>
-<!-- <div id="overlay" style= "z-index:10" class="SouvenirStd-Light" style="margin-top:200px; margin-left:28%; font-size:2em">
-		
-		<h5>Scene 1: The Street</h5> 
-</div>
- -->
 
-	
-<!-- <div id="overlay" style= "z-index:10" class="SouvenirStd-Light" style="margin-top:200px; margin-left:28%; font-size:4em;">
-		Scene 1: The Street
-	</div> -->
 <div class="focalpoint" data-focus-scale="cover" data-focus-left=".66" data-focus-top=".66">
 
-<!-- <div id="overlay" style= "z-index:10" class="SouvenirStd-Light" style="margin-top:200px; margin-left:28%; font-size:4em; width:1280; height:720">
-		Scene 1: The Street
-	</div>
- -->
+
   <video width="1280" height="720" autoplay loop class="frame-video">
   	<source src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/video/1.1.webmhd.webm" type="video/webm"></source>
     <source src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/video/1.1.mp4" type="video/mp4"></source>
   </video>
 </div>
-<div class="fullScreen" style="background-color:rgba(50,50,50,0.5); z-index:3">
-	<!-- 	<div id="overlay" style= "z-index:10" class="SouvenirStd-Light" style="margin-top:200px; margin-left:28%; font-size:2em;">
-		<h5>Scene 1: The Street</h5> 
-</div> -->
-
-</div>
-<!-- <!this is where I will put the new gif --> 
-<div class="focalpoint" style="z-index:3;">
-<!-- 	<div id="overlay" style= "z-index:10" class="SouvenirStd-Light" style="margin-top:200px; margin-left:28%; font-size:2em;">
-		<h5>Scene 1: The Street</h5> 
-</div> -->
-
-		<div id="intro_gif" class="square" style="text-align:center; z-index: 5">
+<div class="fullScreen" id="intro_gif" style="background-color:rgba(50,50,50,0.5)">
+		<div class="square" style="text-align:center; z-index: 5; padding-top:200px;">
 		          <h3>The Southside neighborhood of Brooklyn, NY.</br>
 		                  </br>
 		        This is Marta's Block. </br>
@@ -69,17 +46,24 @@
 				</br>
 				</br>
 
-			<img style="width:40%; height:40%" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/arrows-key.gif">
+			<img style="width:20%; height:20%" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/arrows-key.gif">
 	<!-- 		<img style="width:40%; height:50%" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/nav1.png">  -->
 		</div>
 
-
 </div>
+
+
+		
 <script>
 
 hideNav(); 
 //this should only be to the right. 
 enableKeyRight(); 
+
+document.addEventListener('click', function() {
+	$('#intro_gif').remove(); 
+})
+
 
 
 </script>

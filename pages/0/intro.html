@@ -55,7 +55,10 @@
 	</head>
 
 	<body>
-		<div class="focalpoint" data-focus-scale="cover" data-focus-left=".66" data-focus-top=".66">
+		<!--the frameview is not loaded, which is why it is not showing up but you can hear it.--> 
+		<!-- <div class="fullScreen frameview"> -->
+		<div class="focalpoint" data-focus-scale="cover" data-focus-left=".66" data-focus-top=".66" style="
+		z-index:10">
 			  <video width="1280" height="720" class="frame-video" id="intro" data-video:"intro">
 			  	<source src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/video/1.0.mp4" type="video/ogg"></source>	
 			  	<source src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/video/1.0.webmhd.webm" type="video/webm"></source>
@@ -63,6 +66,7 @@
 		
 				<div id="title" class= "instructions fadeable" style= "background-color:rgba(0,0,0,0.5); z-index:5">
 
+					<!-- add a progress bar here--> 
 						 <div id="text" style="text-align:center; margin-top:15%">
 							 <img style="height:200px; width:100px; outline:none; margin-right:8%; padding-bottom:5%" src= "http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/UnionDocs-Logo.png">
 							<img style="height:230px; width: 300px; outline:none; margin-left:8%; padding-bottom:5%" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/POV_logo_nobackground.png"> 
@@ -72,8 +76,9 @@
 						 </h2>
 						</div>
 				</div>
+	<!-- 	</div> -->
 		</div>
-		<div class="focalpoint" style="z-index:3;"></div>
+	
 
 	<!-- <audio data-background="true" preload="auto">
       <source src="../../../assets/2/sound/2.0backgroundloop.mp3" type="audio/mp3"></source>
@@ -90,7 +95,7 @@
 
 	function init() {
 		console.log("init"); 
-			// $('#overlay').fadeIn(); 
+			//$('#overlay').fadeIn(); 
 			$('.nextbutton').addClass('hidden'); 
 
 			//var introvideo = document.querySelector('video[data-video="intro"]'); 
@@ -100,58 +105,49 @@
 
 			//var assets = popcorn; 
 
-			// //load video and pause it 
-			// popcorn.preload("auto");
-			// popcorn.pause(); 
-			// popcorn.autoplay(false); 
+			//load video and pause it 
+			popcorn.preload("auto");
+			popcorn.pause(); 
+			popcorn.autoplay(false); 
 			// popcorn.pause();
 
-			util.loader.ensureLoaded(popcorn, function() {
-				title.fadeIn(); 
-				popcorn.preload("auto");
-				popcorn.pause(); 
-				popcorn.autoplay(false); 
-			}, function() {
-				console.log("DONE"); 
-				title.fadeOut(); 
-				popcorn.play();  
+			if (popcorn.video.readyState === 4 ) {
+				title.classList.remove('hidden'); 
+					setTimeout(function() {
+						console.log('video is ready'); 
+						title.classList.add('hidden'); 
+						popcorn.play(); 
+					}, 10000); 
+			
 
-				popcorn.cue(52, function() {
+			} else {
+				popcorn.video.addEventListener('canplaythrough', function onCanPlayThrough() {
+					popcorn.video.removeEventListener('canplaythrough', onCanPlayThrough, false); 
+					title.classList.remove('hidden'); 
+						setTimeout(function() {
+							console.log('video is ready'); 
+							title.classList.add('hidden'); 
+							popcorn.play(); 
+						}, 10000);
+
+				}); 
+			}
+
+					
+			//the titles appear and then jump to the next one.
+			popcorn.cue(58, function() {
 				console.log("cued"); 
 				//go to the next chapter:
 				setTimeout(function() {
 					window.parent.next(); 
-					}, 8000); 
-				}); 
+				}, 8000); 
+			}); 
 
-			})
-		}
+	console.log("INTRO: I'm on page "+_pageIndex +" and frame: "+_frameIndex);
+	}
+
 	document.addEventListener('DOMContentLoaded', init, false);
 
-
-			// setTimeout(function() {
-			// 	popcorn.play(); 
-				// console.log("fired timeout"); 
-
-			// 	//set the timeout for the fadeout 
-			// 	setTimeout(function() {
-			// 		title.classList.add('hidden'); 
-			// 		// title.fadeOut(); //undefined is not a function. 
-			// 	}, 10000) //the seconds
-			// }, 3000); //start video after 4 seconds of firing the dom.
-			
-			//the titles appear and then jump to the next one.
-			// popcorn.cue(37, function() {
-			// 	console.log("cued"); 
-			// 	//go to the next chapter:
-			// 	setTimeout(function() {
-			// 		window.parent.next(); 
-			// 	}, 8000); 
-			// }); 
-
-	// console.log("INTRO: I'm on page "+_pageIndex +" and frame: "+_frameIndex);
-	// }
-	// document.addEventListener('DOMContentLoaded', init, false);
 	
 </script>
 

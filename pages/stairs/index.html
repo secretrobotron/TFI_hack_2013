@@ -147,6 +147,25 @@
 
       }
 
+      #StairsProgressBar{
+        position: absolute;
+        width: 300px;
+        height: 20px;
+        margin-left: -150px;
+        top: 50%;
+        left: 50%;
+        border: 2px solid white;
+      }
+
+      #StairsProgressBar #Progress{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 100%;
+        width: 0%;
+        background-color: white;
+      }
+
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="javascripts/vendor/jquery-2.0.0.min.js"><\/script>')</script>
@@ -227,6 +246,9 @@
 
     <div id="overlay" class="SouvenirStd-Light" style="margin-top:200px; margin-left:33%">
             <h5>Scene 2: The Stairs</h5> 
+            <div id="StairsProgressBar">
+              <div id="Progress"></div>
+            </div>
     </div>
     <div id="instructions" class="hidden fadeable centerpage" style="font-size:21px;">
           CLICK and HOLD 'go' to walk up the steps. </br>

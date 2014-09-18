@@ -436,8 +436,9 @@ var Pages = function () {
     //CHAPTER 5// 
 
     { 
-      url: "pages/5b.html", title: "The Listing", 
-      transition: 'vertical', 
+      url: "pages/5b.html", 
+      title: "The Listing",
+      trans: 'fade',  
       frames: [
       //frame 1 
         {

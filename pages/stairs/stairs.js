@@ -266,6 +266,13 @@
 
     util.loader.ensureLoaded(assets, function(percent) {
       console.log("total percentages: ", percent);
+      percent *= 100;
+      percent += "%";
+      $("#StairsProgressBar #Progress").stop()
+        .animate({
+          width : percent
+        }, 100);
+
     }, function() {
       console.log("DONEEEEE");
       $("#overlay").fadeOut();

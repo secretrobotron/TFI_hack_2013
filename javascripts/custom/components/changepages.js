@@ -152,116 +152,134 @@ function changeFrame(value, callback) {
     trans = false;
   }
 
-if (animating) {
-  trans = false;
-  animating = false;
-}
+  if (animating) {
+    trans = false;
+    animating = false;
+  }
 
-if (trans) {
-  if (trans === 'fade') trans = 'crossFade';
-  else if (trans === 'vertical') trans = (currentIndex > _frameIndex)  ? 'slideUp' : 'slideDown';
-  else if (trans === 'horizontal') trans = (currentIndex > _frameIndex)  ?'slideLeft' : 'slideRight';
+  if (trans) {
+    if (trans === 'fade') trans = 'crossFade';
+    else if (trans === 'vertical') trans = (currentIndex > _frameIndex)  ? 'slideUp' : 'slideDown';
+    else if (trans === 'horizontal') trans = (currentIndex > _frameIndex)  ?'slideLeft' : 'slideRight';
 
-  frameview.children().wrapAll('<div class="old ' + trans + '" />');
-  frameview.prepend('<div class="new ' + trans + '" />');
+    frameview.children().wrapAll('<div class="old ' + trans + '" />');
+    frameview.prepend('<div class="new ' + trans + '" />');
 
 
 
-  var frameNew = $('.new'),
-  frameOld = $('.old');
-  frameNew.eq(0).load(getCurrentFrameUrl(), function() {
-    $(this).imagesLoaded(function(){
-      focalpoint(function() {
-        frameNew.addClass('animate');
+    var frameNew = $('.new'),
+    frameOld = $('.old');
+    frameNew.eq(0).load(getCurrentFrameUrl(), function() {
 
-        ///special case for intro gif to last longer in its intro transition
-        if(_frameIndex == 1 && _pageIndex === 0){
-          frameOld.addClass("first_gif");
-        }
+      //this waits for images to get loaded. 
+      $(this).imagesLoaded(function(){
+        focalpoint(function() {
+          frameNew.addClass('animate');
 
-        frameOld.addClass('animate');
-        // changeSlider('first');
-        animating = true;
+          ///special case for intro gif to last longer in its intro transition
+          // if(_frameIndex == 1 && _pageIndex === 0){
+          //   frameOld.addClass("first_gif");
+          // }
 
-        setTimeout(function(){
-          frameOld.remove();
+          frameOld.addClass('animate');
+          // changeSlider('first');
+          animating = true;
+          console.log("everytime"); 
 
           frameNew.children().unwrap();
+            
+          setTimeout(function(){
+            frameOld.remove();
 
-          animating = false;
 
-          var videoElements = frameview[0].querySelectorAll('video.frame-video');
-          var videoCount = videoElements.length;
-          console.log(videoCount); 
-          var loadedVideos = 0;
+            animating = false;
 
-          // force video to play!
-          //this means the video is not buffered. 
-          Array.prototype.forEach.call(videoElements, function (v) {
-            //v.play();
-            //the audio is waiting for you to get through the videos
-            // v.load(); 
-            console.log(v); 
+            var videoElements = frameview[0].querySelectorAll('video.frame-video');
+            var videoCount = videoElements.length;
+            console.log(videoCount); 
+            var loadedVideos = 0;
 
-             v.addEventListener('canplaythrough', function onCanPlayThrough () { 
-               v.removeEventListener('canplaythrough', onCanPlayThrough); 
-            // v.oncanplaythrough = function(){
-              v.play(); 
-              console.log('bobby');  
+            // force video to play!
+            //this means the video is not buffered. 
+            Array.prototype.forEach.call(videoElements, function (v) {
+              //v.play();
+              //the audio is waiting for you to get through the videos
+              // v.load(); 
+              //console.log(v); 
 
-              loadedVideos++;
-              if (videoCount === loadedVideos){
-                // console.log("everything is loaded, " + videoCount === loadedVideos)
-                //everything is loaded
-                //start the audio
-                //clearDelayedAudio();
-                changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
+              //video is already loaded, if the video was already ready, callback was never called. 
+              if (v.readyState === 4){
+                v.play(); 
+                loadedVideos++;
+                if (videoCount === loadedVideos){
+                  //start the audio
+                  clearDelayedAudio();
+                  changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
+                  //this is what is happening it is not getting the narration 
+                  console.log("about to get narration"); 
+                  //this works. 
+                  changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
+                }
+              } else {
+                //wait for it to load
+                v.addEventListener('canplaythrough', function onCanPlayThrough () { 
+                  v.removeEventListener('canplaythrough', onCanPlayThrough); 
+                  // v.oncanplaythrough = function(){
+                  v.play(); 
+                  //console.log('bobby');  
 
-                //this is what is happening it is not getting the narration 
-                console.log("about to get narration"); 
-
-                //this works. 
-                changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
+                  loadedVideos++;
+                  if (videoCount === loadedVideos){
+                    // console.log("everything is loaded, " + videoCount === loadedVideos)
+                    //everything is loaded
+                    //start the audio
+                    clearDelayedAudio();
+                    changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
+                    //this is what is happening it is not getting the narration 
+                    console.log("about to get narration"); 
+                    //this works. 
+                    changeFrameNarration(_pages.getFrameNarration(_pageIndex, _frameIndex));
+                  }
+                 });
               }
-             });
 
 
-          });
-        },1500);
+            });
+          },1500);
+        });
       });
-    });
-  }); 
-} else {
+    }); 
+  } else {
 
-  //
+    //
 
-    frameview.fadeOut('fast', function() { 
-         if (getCurrentFrameContainer() === 'iframe') {
-         frameview.removeClass('loaded');
+      frameview.fadeOut('fast', function() { 
+           if (getCurrentFrameContainer() === 'iframe') {
+           frameview.removeClass('loaded');
 
-          var iframe = frameview[0].querySelector('iframe');
+            var iframe = frameview[0].querySelector('iframe');
 
-          if (!iframe) {
-            iframe = document.createElement('iframe');
-            frameview[0].appendChild(iframe);
-          }
+            if (!iframe) {
+              iframe = document.createElement('iframe');
+              frameview[0].appendChild(iframe);
+            }
 
-         iframe.src = getCurrentFrameUrl();
-            setTimeout(function () {
-            frameview.fadeIn();
-            frameview.addClass('loaded'); 
-         }, 100);
-      }
-      else {
-        frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() {
-            // changeSlider('first');
-            console.log("new frame fades in"); 
-            frameview.fadeIn();
+           iframe.src = getCurrentFrameUrl();
+              setTimeout(function () {
+              frameview.fadeIn();
+              frameview.addClass('loaded'); 
+           }, 100);
+        }
+        else {
+          frameview.removeClass('loaded').load(getCurrentFrameUrl(), function() {
+              // changeSlider('first');
+             // console.log("new frame fades in"); 
+              frameview.fadeIn();
 
-        }); 
-      }
-    });
-}
+          }); 
+        }
+      });
+  }
 
   //we have to stop the timer aevery time we change frames. 
   _timer.stopTimer(); 
@@ -330,8 +348,8 @@ function changePage(value, frame) {
 
     //only make keypress work if we are inside a chapter. 
     if (newChapter) {
-      console.log("you changed chapter"); 
-      newChapter = false; 
+/*      //console.log("you changed chapter"); 
+*/      newChapter = false; 
     //   //remove the event listener for the key press 
 
     }
@@ -379,4 +397,3 @@ function prev() {
     if (_frameIndex > 0) { changeFrame('prev'); } 
     else if(_pageIndex > 0) { changePage('prev', 'last');}
 }
-
