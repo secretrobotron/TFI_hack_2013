@@ -10,8 +10,7 @@ var Pages = function () {
             frames: [
               {
                   url: "pages/0/intro.html",  //page1, frame 0 
-                  container: 'iframe' 
-                  // container: 'iframe'
+                  container: 'iframe'
               }, 
             ], 
           },
@@ -25,6 +24,7 @@ var Pages = function () {
             sound: 
               { // 'background'
                 urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.0_entire_scene_background.mp3'],
+                container: 'iframe', 
                 loop: true,
                 buffer:true,
                 autoplay: false,
@@ -405,7 +405,7 @@ var Pages = function () {
           url: "pages/2/1.html", //this doesn't exist 
             sound: 
               { // 'background'
-                urls: ['http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.0backgroundloop.mp3','http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.0backgroundloop.ogg' ],
+                urls: [3,'http://dbef91h7r4asa.cloudfront.net/assets/2_stairs/sound/2.0backgroundloop.ogg' ],
                 loop: true,
                 buffer:true,
                 autoplay: false,
@@ -420,15 +420,7 @@ var Pages = function () {
       url: "pages/4.html", title: "The Apartment", 
       frames: [
         { 
-          url: "pages/4/1.html", //leads you to the next stuff. 
-            // sound: 
-            //   { // 'background'
-            //     urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.0_entire_scene_background.mp3'],
-            //     loop: true,
-            //     buffer:true,
-            //     autoplay: false,
-            //     fadein:800 
-            //   },
+          url: "pages/4/1.html", //leads you to the//this could also have a background audio here.  next stuff. 
         }
       ]
     },
@@ -461,6 +453,16 @@ var Pages = function () {
         //     //   },
         //   //onload: _timer.checkTimer(); 
         // }
+      ]
+    },
+
+      //PART 2 
+    { 
+      url: "pages/4.html", title: "Part II", 
+      frames: [
+        { 
+          url: "pages/part2/1.html", //leads you to the//this could also have a background audio here.  next stuff. 
+        }
       ]
     },
 
