@@ -461,7 +461,7 @@ var Pages = function () {
       url: "pages/4.html", title: "Part II", 
       frames: [
         { 
-          url: "pages/part2/1.html", //leads you to the//this could also have a background audio here.  next stuff. 
+          url: "pages/part2/index.html", //leads you to the//this could also have a background audio here.  next stuff. 
         }
       ]
     },

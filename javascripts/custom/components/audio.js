@@ -78,6 +78,7 @@
                   frameBg1Playing = false;
                   return;
                 }else{
+                  console.log('created new background audio'); 
                   //create 2 and fadeout 1
                   currentFrameBackground2 = new Howl(info);
                   currentFrameBackground2.fadeIn(1, info.fadein || 800);
