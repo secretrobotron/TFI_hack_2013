@@ -453,16 +453,18 @@ var Pages = function () {
             }, 
        ]
     }, //END OF CHAPTER 5 
+
+    { //Chapter 6: part 2
+      url: "pages/2.0.html", 
+      title: "Part II", 
+      trans: 'fade', 
+        frames: [
+          {
+            url: "pages/2.0/index.html", 
+          }
+        ]
+    }
         
-  
-    // { 
-    //   url: "pages/4.html", title: "Part II", 
-    //   frames: [
-    //     { 
-    //       url: "pages/part2/index.html", //leads you to the//this could also have a background audio here.  next stuff. 
-    //     }
-    //   ]
-    // },
 
     ];
 
