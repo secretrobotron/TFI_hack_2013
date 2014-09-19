@@ -121,11 +121,11 @@ function playStartVideo() {
 
 //this activates everything for the address 
 function activeAddress() {
-	address.addEventListener('hover', function(e) {
+	console.log('clicked address'); 
+	address.addEventListener('click', function(e) {
 			var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.02_address_audio_01.mp3'], 
 				buffer: false,
-				onend: 
 			}).play(); 
 		});
 
