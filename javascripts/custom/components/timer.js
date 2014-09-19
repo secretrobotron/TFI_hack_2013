@@ -8,7 +8,7 @@
 var Timer = function() {
 
 var firstNarration = {
-              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.10_narrative.mp3'],
+              urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.10_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.10_narrative.ogg'],
               loop: false,
               buffer:true,
               autoplay: false,
@@ -27,8 +27,8 @@ var secondNarration = {
             delay: 1000, 
             //this will take you to the next chapter (page)
           onend: function() {
-      changePage("next"); 
-      }
+              changePage("next"); 
+          }
 }; 
 
 var player,  
@@ -47,6 +47,7 @@ this.startTimer = function(delay)  {
   var delayTime = 15000; 
   if (delay)  delayTime = delay;
 
+console.log("the timer has started"); 
   timerOn = true;
   playSound = setTimeout(function()
     {
@@ -96,62 +97,31 @@ this.startTimer = function(delay)  {
 
     //IF THE USER DOES NOTHING, THEY WILL HEAR THIS. 
     //THIS IS ADDING THE TIMED OUT NARRATIONS FOR CHAPTER 1
-    //we fire this at the end of oned in the json objects
-
-// this.isCalling = function() {
-
-//   console.log("call coming in"); 
-
-//       var ring = {
-
-//                 urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3'],
-//                 loop: true,
-//                 buffer:true,
-//                 autoplay: false,
-//                 fadein:0, 
-//                 delay: 1000, 
-//                 //this will take you to the next chapter (page)
-//               onend: function() {
-//             //the ring has stopped 
-//           }
-//     }; 
-
-//     var player = new Howl(ring); 
-//     player.fadeIn(1, 800);
-    
-    
-//     // if (you clik on the button) {
-//     //   //stop the player 
-//     // }
-
- 
-//  }
-
+    //we fire this at the end of oned in the json object
 
 
   var currentFrameIndex = 0; 
 
   this.checkTimer = function() {
-    //console.log("i am checking the timer"); 
-        if (_pageIndex === 0) {
-          //console.log("you are in chapter 1")
+    console.log("i am checking the timer"); 
+debugger; 
+        if (_pageIndex === 1) {
+          console.log("you are in chapter 1")
           //if youw ere counting, count again every time we are in a new frame. 
           if (this.isTimerOn() ) {
             //console.log("the timer was on"); 
             //timer was on and i moved to next frame and im not in page 7. 
             //if ive moved. 
             if (_frameIndex != currentFrameIndex) {
-              //console.log("this is the frameindex" + _frameIndex); 
-              //console.log("this is the currentFrameIndex" + currentFrameIndex); 
+              console.log("the timer has been reset, because it was on and you are in a different frame"); 
               this.resetTimer(); 
-              //console.log("the timer has been reset, because it was on and you are in a different frame"); 
             } 
             //console.log("frames are equal"); 
           } else { 
             //if she has done speaking the delayed audio.. ?
             //give a bigger delay to 1.7 
               if (_frameIndex == 7) {
-                //console.log("frame is 7"); 
+                console.log("frame is 7"); 
                 //this is how long it will take to start the audio 
                 this.startTimer(45000); 
               } else {
@@ -167,7 +137,7 @@ this.startTimer = function(delay)  {
             //if you are not in chapter 1 or 1.7 
             ////console.log("you are not in chapter1 or you are at 1.7"); 
             this.stopTimer(); 
-            //console.log("the timer is stopped"); 
+            console.log("the timer is stopped"); 
         }
     }
 
