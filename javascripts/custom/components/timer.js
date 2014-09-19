@@ -104,7 +104,6 @@ console.log("the timer has started");
 
   this.checkTimer = function() {
     console.log("i am checking the timer"); 
-debugger; 
         if (_pageIndex === 1) {
           console.log("you are in chapter 1")
           //if youw ere counting, count again every time we are in a new frame. 
