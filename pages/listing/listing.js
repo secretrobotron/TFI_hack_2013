@@ -50,7 +50,7 @@ function init(e) {
 	 // activeA3(); 
 	 // activeA4(); 
 	 // activeA5(); 
-	 // changeMap(); 
+	  changeMap(); 
 	// activateAmenities(); 
 
 } //end of INIT
