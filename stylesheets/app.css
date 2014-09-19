@@ -2255,9 +2255,8 @@ button {
 /* line 236, ../sass/_shared.scss */
 .prevbutton, .nextbutton {
   width: 50%;
-  height: 65%;
-/*  bottom:100%;
-  top:95%;*/
+  height: 90%;
+  top:10%;
   position: absolute;
   -webkit-user-select: none;
   -webkit-user-drag: none;
@@ -2271,7 +2270,6 @@ button {
 *//*  border: 1px solid rgba(255, 255, 255, 0.2);
 */  display: block;
   position: absolute;
-  top:0;
   width: 30px;
   height: 40px;
   line-height: 38px;

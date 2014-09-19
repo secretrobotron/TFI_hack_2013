@@ -1,17 +1,11 @@
 //all the variables need to have event listeners, and that is how they will
 //bring in the noise and the images. 
 
-
-
 function init(e) {
 	//hide Navivgation for the listing. 
 	if (window.parent && window.parent.hideNav) {
       window.parent.hideNav();
     }
-
-
-
-	// _timer.checkTimer(); 
 
 	var address = document.querySelector("#address");
 	var price = document.querySelector("#price"); 
@@ -28,32 +22,24 @@ function init(e) {
 	var amenities = document.querySelector("#amen"); 
 	var answer = document.querySelector("#answer");
 	var ignore = document.querySelector("#ignore"); 
-	// var callVideo = document.querySelector('video[data-video="calling"]'); 
 	var videoplayed = true; 
-	// var instructions = document.querySelector("#instructions"); 
 
 				$("#instructions").removeClass('hidden');  
-				// removeInstructions(); 
 				window.addEventListener('click', function hideInstructions() {
 						window.removeEventListener('click', hideInstructions); 
 						instructions.classList.add('hidden'); 
 					}, false); 
 
-		
 
-	// hideNav(); 
-	
+				$(".fancybox").fancybox({
+			        padding : 0, 
+			        arrows: true, 
+			        closeBtn: true,
+			        nextEffect: 'fade', 
+			        prevEffect: 'fade', 
+			        // loop: true, 
+			    });
 
-	$(".fancybox").fancybox({
-        padding : 0, 
-        arrows: true, 
-        closeBtn: true,
-        nextEffect: 'fade', 
-        prevEffect: 'fade', 
-        // loop: true, 
-    });
-
-	 //playStartVideo(); 
 	 callComesIn(); 
  
 	// activeAddress(); 
@@ -69,7 +55,7 @@ function init(e) {
 
 } //end of INIT
 
- //CALL ENTERS:
+
 function callComesIn() {
 	setTimeout(function(){
 	console.log("call coming in"); 
@@ -96,7 +82,7 @@ function callComesIn() {
 			$('.calling').addClass('hidden');
 			//callVideo.classList.remove('hidden'); 
 			//callVideo.play(); 
-			changeFrame('next'); 
+			window.parent.next(); 
 			//remove the rest of the event listeners, so you can't click on anything else.  
 			videoplayed = true; 
 			//console.log(videoplayed); 
@@ -109,7 +95,7 @@ function callComesIn() {
 			player.pause(); 
 			$('.calling').addClass('hidden');
 			videoplayed = false; 
-			console.log(videoplayed); 
+
 				//GET A SECOND CALL IF YOU DIDN'T ANSWER
 				if (!videoplayed) {
 				console.log("you shoudl get another call soon"); 
@@ -128,26 +114,8 @@ function playStartVideo() {
 		popcorn.cue(VIDEO_END_TIME, function() {
 			startVideo.pause(); 
 			startVideo.classList.add('hidden'); 
-			//init(); 
 		})
 }
-
-
-// function removeInstructions() {
-// 	window.addEventListener('click', function hideInstructions() {
-// 		window.removeEventListener('click', hideInstructions); 
-// 		instructions.classList.add('hidden'); 
-// 	}, false); 
-// }
-
-
-
-
-
-// setTimeout(function(){
-// 	$('#prevbutton').addClass('hidden');
-// 	$('#nextbutton').addClass('hidden');
-// }, 100)
 
 
 
