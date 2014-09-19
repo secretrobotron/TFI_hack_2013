@@ -373,7 +373,7 @@ blockquote p {
   background-clip: padding-box;
  
   opacity: 1;
-  z-index: 10;
+  z-index: 100;
 }
 /* line 12, ../sass/_topbar.scss */
 .top-bar ul {
@@ -2264,11 +2264,7 @@ button {
 }
 /* line 244, ../sass/_shared.scss */
 .prevbutton .btn, .nextbutton .btn {
-/*  background-color: rgba(255, 255, 255, 0.8);
-*/  /*color: #fff;*/
-/*  color: 0;
-*//*  border: 1px solid rgba(255, 255, 255, 0.2);
-*/  display: block;
+  display: block;
   position: absolute;
   width: 30px;
   height: 40px;
