@@ -8,7 +8,7 @@
 
 
 <div class="focalpoint" data-focus-scale="cover" data-focus-left=".66" data-focus-top=".66">
-		   <video width="1280" height="720" preload="auto" data-video="call"  id="call" class="frame-video">
+		   <video width="1280" height="720" preload="auto" autoplay data-video="call"  id="call" class="frame-video">
 		    	<source src="http://dbef91h7r4asa.cloudfront.net/assets/5_website/video/5.21_martacall.mp4" type="video/mp4"></source>
 	    	<source src="http://dbef91h7r4asa.cloudfront.net/assets/5_website/video/5.21_martacall.webmhd.webm" type="video/webm"></source>
     		</video> 
@@ -24,7 +24,7 @@
 
 			var popcorn = Popcorn("#call");
 			//load video and pause it 
-			var VIDEO_END_TIME = 54.5; 
+			var VIDEO_END_TIME = 54; 
 
 			//the titles appear and then jump to the next one.
 			popcorn.cue(VIDEO_END_TIME, function() {

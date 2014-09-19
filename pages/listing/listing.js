@@ -11,7 +11,7 @@ function init(e) {
 	var price = document.querySelector("#price"); 
 	var agent = document.querySelector("#agent"); 
 	var map = document.querySelector("#map"); 
-	var a1 = document.querySelector("#a1"); 
+	var a1 = document.querySelector("#apartment1"); 
 	var a2 = document.querySelector("#a2"); 
 	var a3 = document.querySelector("#a3"); 
 	var a4 = document.querySelector("#a4");
@@ -45,13 +45,13 @@ function init(e) {
 	activeAddress(); 
 	activePrice(); 
 	activeAgent(); 
-	 // activeA1(); 
+	//activeA1(); //undefined is not a function
 	 // activeA2(); 
-	 // activeA3(); 
-	 // activeA4(); 
-	 // activeA5(); 
+	  //activeA3(); 
+	 //activeA4(); 
+	  //activeA5(); 
 	  changeMap(); 
-	// activateAmenities(); 
+	//activateAmenities(); //amenities is not defined
 
 } //end of INIT
 
@@ -78,11 +78,12 @@ function callComesIn() {
 
 		//ANSWER THE CALL
 		answer.addEventListener('click', function() {
-			player.pause(); 
+			//player.pause(); 
 			$('.calling').addClass('hidden');
-			//callVideo.classList.remove('hidden'); 
-			//callVideo.play(); 
+			//window.parent.next(); 
+			//next(); 
 			window.parent.next(); 
+			//maybe if I change it to next, it won't do this? 
 			//remove the rest of the event listeners, so you can't click on anything else.  
 			videoplayed = true; 
 			//console.log(videoplayed); 
@@ -102,7 +103,7 @@ function callComesIn() {
 				callComesIn();  
 			}
 		})    
-	},60000); 
+	},45000); //call comes in after 45 seconds 
 }
 
 function playStartVideo() {
@@ -182,21 +183,23 @@ function activeA3() {
 
 function activateAmenities() {
 	//here is where the amenities. 
-	// var sound = new Howl({
-	// 	urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.ogg']
-	// 	buffer: false 
-	// }).play(); 
+	amenities.addEventListener('click', function(e) {
+			var sound = new Howl({
+			urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.ogg'], 
+			buffer: false, 
+		}).play(); 
+	}); 	
 }
 
 function activeA4() {
 	a4.addEventListener('click', function(e) {
-		console.log("a4"); 
+		console.log("a4, no sound yet"); 
 	})
 }
 
 function activeA5() {
 	a5.addEventListener('click', function(e){
-		console.log("a5"); 
+		console.log("a5, no sound yet"); 
 	})
 }
 
