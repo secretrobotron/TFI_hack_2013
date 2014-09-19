@@ -285,6 +285,7 @@
           backgroundPause = true; 
 
           if (backgroundPause) {
+            console.log('background video is paused'); 
             //pause the background video after start video ends and add the instructions. 
             instructions.classList.remove('hidden'); 
 
