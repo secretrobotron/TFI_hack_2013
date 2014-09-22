@@ -45,7 +45,8 @@ function init(e) {
 	activeAddress(); 
 	activePrice(); 
 	activeAgent(); 
-	//activeA1(); //undefined is not a function
+debugger; 
+	activeA1(); //undefined is not a function
 	 // activeA2(); 
 	  //activeA3(); 
 	 //activeA4(); 
@@ -60,7 +61,7 @@ function callComesIn() {
 	setTimeout(function(){
 	console.log("call coming in"); 
 	var callVideo = document.querySelector('video[data-video="calling"]'); 
-	// var videoplayed = false; 
+	var videoplayed = false; 
 	var ring = {
 			urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.20ring.mp3'],
 			loop: true,
@@ -81,10 +82,12 @@ function callComesIn() {
 			//player.pause(); 
 			$('.calling').addClass('hidden');
 			//window.parent.next(); 
-			//next(); 
+			//next();
+debugger;  
 			window.parent.next(); 
 			//maybe if I change it to next, it won't do this? 
-			//remove the rest of the event listeners, so you can't click on anything else.  
+			//remove the rest of the event listeners, so you can't click on anything else. 
+debugger;  
 			videoplayed = true; 
 			//console.log(videoplayed); 
 									    
@@ -154,6 +157,7 @@ function activeAgent() {
 }
 
 function activeA1() {
+debugger; 
 	a1.addEventListener('click', function(e) {
 		var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.08_apt19_audio_01.mp3'], 

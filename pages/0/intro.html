@@ -25,6 +25,27 @@
 					      padding:20px;
 					    }
 
+
+			      #IntroProgressBar{
+			        position: absolute;
+			        width: 300px;
+			        height: 10px;
+			        margin-left: -150px;
+			        top: 75%;
+			        left: 50%;
+			        border: 2px solid white;
+			      }
+
+			      #IntroProgressBar #Progress{
+			        position: absolute;
+			        left: 0px;
+			        top: 0px;
+			        height: 100%;
+			        width: 0%;
+			        background-color: white;
+			      }
+
+			
     </style>
 		<!--the frameview is not loaded, which is why it is not showing up but you can hear it.--> 
 		<div class="focalpoint" data-focus-scale="cover" data-focus-left=".66" data-focus-top=".66" style="
@@ -34,16 +55,17 @@
 			  	<source src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/video/1.0.webmhd.webm" type="video/webm"></source>
 			  </video>
 		
-				<div id="title" class= "instructions fadeable" style= "background-color:rgba(0,0,0,0.5); z-index:5">
+				<div id="title" class= "instructions fadeable" style= "background-color:rgba(0,0,0,0.5); z-index:5; padding-top:10%">
 
 					<!-- add a progress bar here--> 
-						 <div id="text" style="text-align:center; margin-top:15%">
-							 <img style="height:200px; width:500px; outline:none; margin-right:5%; padding-bottom:5%" src= "http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/UnionDocs-Logo.png">
-							<img style="height:230px; width: 300px; outline:none; margin-left:5%; padding-bottom:5%" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/POV_logo_nobackground.png"> 
+						 <div id="text" style="text-align:center; margin-top:9%">
+							 <img style="height:142px; width:800px; outline:none; padding-bottom:2%;" src= "http://89steps.s3.amazonaws.com/assets/1_street/img/uniondocs_pov_logo.png">
 						 <h2> A UnionDocs Production
 						      <br>
 							Produced in association with American Documentary | POV
 						 </h2>
+						  <div id="IntroProgressBar">
+              				<div id="Progress"></div> -->
 						</div>
 				</div>
 	<!-- 	</div> -->
@@ -59,64 +81,87 @@
 
 	// init(); 
 	//console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
-	var video; 
-	// var popcorn; 
-	var nav = document.querySelector(".top-bar-section"); 
+	// var video; 
+	// // var popcorn; 
+	// var nav = document.querySelector(".top-bar-section"); 
 	function init() {
-		// $('.top-bar-section').hide(); 
-
-		//nav.hide(); 
-
 		console.log("init"); 
+			//var video;  
+			var nav = document.querySelector(".top-bar-section") 
 			$('.nextbutton').addClass('hidden'); 
 			var popcorn = Popcorn("#intro");
 			var title = document.querySelector("#title");
+			var assets = popcorn; 
 
-			//load video and pause it 
-			popcorn.preload("auto");
-			popcorn.pause(); 
-			popcorn.autoplay(false); 
+
+		var percent = popcorn.video.readyState; 
 
 			if (popcorn.video.readyState === 4 ) {
+				// nav.classList.remove('hidden'); 
 				title.classList.remove('hidden'); 
-					setTimeout(function() {
+					// setTimeout(function() {
 						console.log('video is ready'); 
 						title.classList.add('hidden'); 
+						nav.classList.remove('hidden'); 
 						popcorn.play(); 
-					}, 5000); 
-			
-
+					// }, 5000); 
 			} else {
 				popcorn.video.addEventListener('canplaythrough', function onCanPlayThrough() {
 					popcorn.video.removeEventListener('canplaythrough', onCanPlayThrough, false); 
-					title.classList.remove('hidden'); 
-						setTimeout(function() {
+					title.classList.remove('hidden');
+					nav.classList.remove('hidden');  
+						// setTimeout(function() {
 							console.log('video is ready'); 
 							title.classList.add('hidden'); 
+							nav.classList.remove('hidden');  
 							popcorn.play(); 
-						}, 5000);
+						// }, 5000);
 
 				}); 
 			}
 
-					
-			//the titles appear and then jump to the next one.
-			popcorn.cue(58, function() {
-				console.log("cued"); 
-				//go to the next chapter:
-				setTimeout(function() {
-					//window.parent.next(); 
-					next(); 
-				}, 8000); 
-			}); 
+		}
+   //  		util.loader.ensureLoaded(assets, function(percent) {
+		 // //      // popcorn.preload("auto");
+			// //   // popcorn.pause(); 
+		 // //      // console.log("total percentages: ", percent);
+		 // //      // percent *= 100;
+		 // //      // percent += "%";
+		 // //      // $("#IntroProgressBar #Progress").stop()
+		 // //      //   .animate({
+		 // //      //     width : percent
+		 // //      //   }, 100);
 
-	console.log("INTRO: I'm on page "+_pageIndex +" and frame: "+_frameIndex);
-	}
+		 //    }, function() {
+			//  	    console.log("DONEEEEE");
+			// // 	    title.fadeOut(); 
+			// // 		//load video and pause it 
+			// // 		// popcorn.autoplay(false); 
+			// // 		// popcorn.play(); 
+
+			// // 		// popcorn.cue(58, function() {
+			// // 		// console.log("cued"); 
+			// // 		// //go to the next chapter:
+			// // 		// setTimeout(function() {
+			// // 		// //window.parent.next(); 
+			// // 		// 		next(); 
+			// // 		// 	}, 8000); 
+			// // 		// }); 
+			// // }
+			// }
+
+
+
+	window.parent.disableKeyRight();  
+	window.parent.hideNavNext(); 
+
 
 	init(); 
 
+
 	
 </script>
+
 
 
 
