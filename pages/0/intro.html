@@ -15,7 +15,7 @@
 
 				      .instructions{
 					      z-index:30; 
-					      background-color:rgba(0,0,0,0.7); 
+					      background-color:rgba(0,0,0,1.0); 
 					      position:fixed;
 					      left:0;
 					      top:0;
@@ -50,12 +50,12 @@
 		<!--the frameview is not loaded, which is why it is not showing up but you can hear it.--> 
 		<div class="focalpoint" data-focus-scale="cover" data-focus-left=".66" data-focus-top=".66" style="
 		z-index:10">
-			  <video width="1280" height="720" preload="auto" class="frame-video" id="intro" data-video:"intro">
+			  <video controls width="1280" height="720" preload="auto" class="frame-video" id="intro" data-video:"intro">
 			  	<source src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/video/1.0.mp4" type="video/ogg"></source>	
 			  	<source src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/video/1.0.webmhd.webm" type="video/webm"></source>
 			  </video>
 		
-				<div id="title" class= "instructions fadeable" style= "background-color:rgba(0,0,0,0.5); z-index:5; padding-top:10%">
+				<div id="title" class= "instructions fadeable" style= "z-index:5; padding-top:10%">
 
 					<!-- add a progress bar here--> 
 						 <div id="text" style="text-align:center; margin-top:9%">
@@ -65,7 +65,7 @@
 							Produced in association with American Documentary | POV
 						 </h2>
 						  <div id="IntroProgressBar">
-              				<div id="Progress"></div> -->
+              				<div id="Progress"></div>
 						</div>
 				</div>
 	<!-- 	</div> -->
@@ -79,6 +79,8 @@
 
     <script>
 
+	var title = document.querySelector("#title");
+   // title.fadeIn(); 
     function init(e) {
 
 	console.log("init"); 
@@ -106,6 +108,7 @@
 		 }, function() {
 		 	console.log("i am done"); 
 		 	//alert("done"); 
+		 	//title.fadeOut(); 
 			
 			if (popcorn.video.readyState === 4 ) {
  			 title.classList.remove('hidden'); 

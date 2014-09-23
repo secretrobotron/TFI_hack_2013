@@ -53,33 +53,50 @@
   	</div> 
   		<div id="overlay1" class="SouvenirStd-Light" style="font-size:2em">
         	<h1>Scene 4: The Listing</h1>
+        	  <div id="ListingProgressBar">
+              		<div id="Progress"></div>
+				</div>
     	</div> 
 
   <script>
   	  window.top.hideNav(); 
 	  var overlay = $('#overlay1'); 
 	  var startVideo = document.querySelector('video[data-video="start"]'); 
+	  var assets = [];
+	  assets.push(startVideo); 
+	  console.log('assets.length'+ assets.length); 
 	  //var instructions = $("#instructions"); 
 
 	  overlay.fadeIn(); 
 
-	  setTimeout(function() {
-	  	overlay.fadeOut(); 
-	  	startVideo.play(); 
-	  	hideNav(); 
-	  	}, 5000); 
- 
-	  var popcorn = Popcorn(startVideo); 
-	  var VIDEO_END_TIME = 48;
+	util.loader.ensureLoaded(assets, function(percent){
+	  		console.log('total percent:' + percent); 
 
-	  popcorn.cue(VIDEO_END_TIME, function() {
-	  	// var instructions = $("#instructions"); 
-	  	overlay.fadeOut(); 
-	  	startVideo.pause(); 
-	  	 // changePage('nextlisting'); 
-	  	changeFrame('next'); 
-	  	console.log("enter the listing scene"); 
-	  }); 
+	  			percent *= 100;
+		      	percent += "%";
+		      	$("#ListingProgressBar #Progress").stop()
+		        .animate({
+		          width : percent
+		        }, 100);
+	  	}, function() {
+	  		console.log('done'); 
+	  		overlay.fadeOut(); 
+	  		startVideo.play(); 
+	  		hideNav(); 
+
+		 	var popcorn = Popcorn(startVideo); 
+	  		var VIDEO_END_TIME = 48;
+
+		  		popcorn.cue(VIDEO_END_TIME, function() {
+		  		// var instructions = $("#instructions"); 
+		  		overlay.fadeOut(); 
+		  		startVideo.pause(); 
+		  	 	// changePage('nextlisting'); 
+		  		changeFrame('next'); 
+		  		console.log("enter the listing scene"); 
+		  		}); 
+		}); 
+
 
   </script> 
 </html> 

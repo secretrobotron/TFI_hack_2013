@@ -22,6 +22,7 @@ function init(e) {
 	var amenities = document.querySelector("#amen"); 
 	var answer = document.querySelector("#answer");
 	var ignore = document.querySelector("#ignore"); 
+	// var video = document.querySelector()
 	var videoplayed = true; 
 
 				$("#instructions").removeClass('hidden');  
@@ -40,15 +41,13 @@ function init(e) {
 			        // loop: true, 
 			    });
 
-	 callComesIn(); 
- 
+	callComesIn(); 
 	activeAddress(); 
 	activePrice(); 
-	activeAgent(); 
-debugger; 
-	activeA1(); //undefined is not a function
+	activeAgent();  
+	//activeA1(); //undefined is not a function
 	changeMap(); 
-	activateAmenities(); //amenities is not defined
+	//activateAmenities(); //amenities is not defined
 
 } //end of INIT
 
@@ -75,17 +74,11 @@ function callComesIn() {
 
 		//ANSWER THE CALL
 		answer.addEventListener('click', function() {
-			//player.pause(); 
 			$('.calling').addClass('hidden');
-			//window.parent.next(); 
-			//next();
-debugger;  
 			window.parent.next(); 
 			//maybe if I change it to next, it won't do this? 
 			//remove the rest of the event listeners, so you can't click on anything else. 
-debugger;  
 			videoplayed = true; 
-			//console.log(videoplayed); 
 									    
 		})
 
@@ -153,7 +146,6 @@ function activeAgent() {
 }
 
 function activeA1() {
-debugger; 
 	a1.addEventListener('click', function(e) {
 		var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.08_apt19_audio_01.mp3'], 

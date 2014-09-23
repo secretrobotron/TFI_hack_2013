@@ -3,9 +3,9 @@
   window.top.hideNav();
 
   var FADE_TRANSITION_DURATION = 1000;
-  var FLOOR_SOUND_DELAY = 0;
-  var FLOOR_SOUND_SEQUENCE_DELAY = 1000;
-  var FLOOR_SOUND_SEQUENCE_DELAY_VARIANCE = 1000;
+  var FLOOR_SOUND_DELAY = 05;
+  var FLOOR_SOUND_SEQUENCE_DELAY = 10;
+  var FLOOR_SOUND_SEQUENCE_DELAY_VARIANCE = 10;
 
   var VIDEO_FPS = 24;
 
@@ -218,8 +218,7 @@
  
 
 
-  function init(e) {
-debugger; 
+  function init(e) { 
        //this should make you be able to click the button when you press key. 
 
     console.log("i am in init in stairs"); 
@@ -264,8 +263,7 @@ debugger;
     $("#overlay").fadeIn(); 
 
 
-    util.loader.ensureLoaded(assets, function(percent) {
-debugger; 
+    util.loader.ensureLoaded(assets, function(percent) { 
       console.log("total percentages: ", percent);
       percent *= 100;
       percent += "%";
@@ -274,8 +272,7 @@ debugger;
           width : percent
         }, 100);
 
-    }, function() {
-debugger; 
+    }, function() { 
       console.log("DONEEEEE");
       $("#overlay").fadeOut();
       video.classList.remove('hidden');  
