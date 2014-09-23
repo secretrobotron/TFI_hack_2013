@@ -219,7 +219,7 @@
 
 
   function init(e) {
-
+debugger; 
        //this should make you be able to click the button when you press key. 
 
     console.log("i am in init in stairs"); 
@@ -265,6 +265,7 @@
 
 
     util.loader.ensureLoaded(assets, function(percent) {
+debugger; 
       console.log("total percentages: ", percent);
       percent *= 100;
       percent += "%";
@@ -274,6 +275,7 @@
         }, 100);
 
     }, function() {
+debugger; 
       console.log("DONEEEEE");
       $("#overlay").fadeOut();
       video.classList.remove('hidden');  

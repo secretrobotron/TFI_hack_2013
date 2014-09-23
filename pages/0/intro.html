@@ -50,7 +50,7 @@
 		<!--the frameview is not loaded, which is why it is not showing up but you can hear it.--> 
 		<div class="focalpoint" data-focus-scale="cover" data-focus-left=".66" data-focus-top=".66" style="
 		z-index:10">
-			  <video width="1280" height="720" class="frame-video" id="intro" data-video:"intro">
+			  <video width="1280" height="720" preload="auto" class="frame-video" id="intro" data-video:"intro">
 			  	<source src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/video/1.0.mp4" type="video/ogg"></source>	
 			  	<source src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/video/1.0.webmhd.webm" type="video/webm"></source>
 			  </video>
@@ -79,84 +79,59 @@
 
     <script>
 
-	// init(); 
-	//console.log("I'm on page "+_pageIndex +" and frame: "+_frameIndex);
-	// var video; 
-	// // var popcorn; 
-	// var nav = document.querySelector(".top-bar-section"); 
-	function init() {
-		console.log("init"); 
-			//var video;  
+    function init(e) {
+
+	console.log("init"); 
+	window.top.hideNav(); 
+	window.top.disableRightLeft(); 
+
 			var nav = document.querySelector(".top-bar-section") 
 			$('.nextbutton').addClass('hidden'); 
 			var popcorn = Popcorn("#intro");
 			var title = document.querySelector("#title");
-			var assets = popcorn; 
+		 assets = []; 
+		 assets.push(popcorn.video); 
+		 console.log("assets" + assets.length);
 
-
-		var percent = popcorn.video.readyState; 
-
+ 		util.loader.ensureLoaded(assets, function(percent) {
+ 			  console.log("total percentages: ", percent); 
+		 	//console.log("progress"); 
+		 	  percent *= 100;
+		      percent += "%";
+		      $("#IntroProgressBar #Progress").stop()
+		        .animate({
+		          width : percent
+		        }, 100);
+ 
+		 }, function() {
+		 	console.log("i am done"); 
+		 	//alert("done"); 
+			
 			if (popcorn.video.readyState === 4 ) {
-				// nav.classList.remove('hidden'); 
-				title.classList.remove('hidden'); 
-					// setTimeout(function() {
-						console.log('video is ready'); 
+ 			 title.classList.remove('hidden'); 
+ 					 setTimeout(function() {
+ 						console.log('video is ready'); 
 						title.classList.add('hidden'); 
 						nav.classList.remove('hidden'); 
-						popcorn.play(); 
-					// }, 5000); 
-			} else {
-				popcorn.video.addEventListener('canplaythrough', function onCanPlayThrough() {
-					popcorn.video.removeEventListener('canplaythrough', onCanPlayThrough, false); 
-					title.classList.remove('hidden');
-					nav.classList.remove('hidden');  
-						// setTimeout(function() {
-							console.log('video is ready'); 
-							title.classList.add('hidden'); 
-							nav.classList.remove('hidden');  
-							popcorn.play(); 
-						// }, 5000);
+ 						popcorn.play(); 
+ 					 }, 2000); 
+				}
+ 			
 
-				}); 
-			}
+	 		popcorn.cue(58, function() {
+		 	console.log("cued"); 
+	 	 //go to the next chapter:
+	 			setTimeout(function() {
+	 		//window.parent.next(); 
+	 			next(); 
+	 			}, 5000); 
+	 	 		});
 
-		}
-   //  		util.loader.ensureLoaded(assets, function(percent) {
-		 // //      // popcorn.preload("auto");
-			// //   // popcorn.pause(); 
-		 // //      // console.log("total percentages: ", percent);
-		 // //      // percent *= 100;
-		 // //      // percent += "%";
-		 // //      // $("#IntroProgressBar #Progress").stop()
-		 // //      //   .animate({
-		 // //      //     width : percent
-		 // //      //   }, 100);
+		 });
 
-		 //    }, function() {
-			//  	    console.log("DONEEEEE");
-			// // 	    title.fadeOut(); 
-			// // 		//load video and pause it 
-			// // 		// popcorn.autoplay(false); 
-			// // 		// popcorn.play(); 
-
-			// // 		// popcorn.cue(58, function() {
-			// // 		// console.log("cued"); 
-			// // 		// //go to the next chapter:
-			// // 		// setTimeout(function() {
-			// // 		// //window.parent.next(); 
-			// // 		// 		next(); 
-			// // 		// 	}, 8000); 
-			// // 		// }); 
-			// // }
-			// }
-
-
-
-	window.parent.disableKeyRight();  
-	window.parent.hideNavNext(); 
-
-
-	init(); 
+ 	}
+ 
+ 	init(); 
 
 
 	
