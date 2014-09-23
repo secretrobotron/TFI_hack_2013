@@ -47,12 +47,8 @@ function init(e) {
 	activeAgent(); 
 debugger; 
 	activeA1(); //undefined is not a function
-	 // activeA2(); 
-	  //activeA3(); 
-	 //activeA4(); 
-	  //activeA5(); 
-	  changeMap(); 
-	//activateAmenities(); //amenities is not defined
+	changeMap(); 
+	activateAmenities(); //amenities is not defined
 
 } //end of INIT
 

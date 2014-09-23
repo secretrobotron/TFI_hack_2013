@@ -1,5 +1,10 @@
 (function() {
+  if (window.parent && window.parent.hideNav) {
+      window.parent.hideNav();
+      window.parent.disableRightLeft(); 
+    }
 
+  window.top.disableKeyLeft(); 
 
   var VIDEO_TRANSITION_DURATION = 1000;
   var BUTTON_SHOW_DELAY = 1500;
