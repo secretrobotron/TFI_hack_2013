@@ -1,25 +1,22 @@
 //all the variables need to have event listeners, and that is how they will
 //bring in the noise and the images. 
-
-function init(e) {
-	//hide Navivgation for the listing. 
 	if (window.parent && window.parent.hideNav) {
       window.parent.hideNav();
+      console.log('hid navigation'); 
     }
+function init(e) {
+	//hide Navivgation for the listing. 
+	// if (window.parent && window.parent.hideNav) {
+ //      window.parent.hideNav();
+ //      console.log('hid navigation'); 
+ //    }
 
 	var address = document.querySelector("#address");
 	var price = document.querySelector("#price"); 
 	var agent = document.querySelector("#agent"); 
 	var map = document.querySelector("#map"); 
-	var a1 = document.querySelector("#apartment1"); 
-	var a2 = document.querySelector("#a2"); 
-	var a3 = document.querySelector("#a3"); 
-	var a4 = document.querySelector("#a4");
-	var a5 = document.querySelector("#a5"); 
+	//var a1 = document.querySelector("#apartment1"); 
 	var nextButton = document.querySelector("#next-button"); 
-	var crime = document.querySelector("#crime"); 
-	var transit = document.querySelector("#transit"); 
-	var amenities = document.querySelector("#amen"); 
 	var answer = document.querySelector("#answer");
 	var ignore = document.querySelector("#ignore"); 
 	// var video = document.querySelector()
@@ -41,11 +38,16 @@ function init(e) {
 			        // loop: true, 
 			    });
 
-	callComesIn(); 
+	// var a1 = document.querySelector("#apartment1"); 
+	//callComesIn(); 
 	activeAddress(); 
 	activePrice(); 
 	activeAgent();  
-	//activeA1(); //undefined is not a function
+	activeA1(); //undefined is not a function
+	activeA2(); 
+	activeA3(); 
+	activeA4(); 
+	activeA5(); 
 	changeMap(); 
 	//activateAmenities(); //amenities is not defined
 
@@ -146,7 +148,8 @@ function activeAgent() {
 }
 
 function activeA1() {
-	a1.addEventListener('click', function(e) {
+	var apt1 = document.querySelector("#a1"); 
+	apt1.addEventListener('click', function(e) {
 		var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.08_apt19_audio_01.mp3'], 
 				buffer: false, 
@@ -156,18 +159,20 @@ function activeA1() {
 
 
 function activeA2() {
-	a2.addEventListener('click', function(e) {
+	var apt2 = document.querySelector("#a2"); 
+	apt2.addEventListener('click', function(e) {
 		var sound = new Howl({
-					urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.08_apt27_audio_01.mp3'], 
+					urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.09_apt27_audio_01.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.09_apt27_audio_01.ogg'], 
 					buffer: false, 
 				}).play(); 
 			});  
 }
 
 function activeA3() {
-	a3.addEventListener('click', function(e) {
+	var apt3 = document.querySelector("#a3"); 
+	apt3.addEventListener('click', function(e) {
 		var sound = new Howl({
-					urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.08_apt20_audio_01.mp3'], 
+					urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.10_apt20_audio_01.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.10_apt20_audio_01.ogg'], 
 					buffer: false, 
 				}).play(); 
 			});  
@@ -175,6 +180,7 @@ function activeA3() {
 
 function activateAmenities() {
 	//here is where the amenities. 
+	var amenities = document.querySelector("#amen"); 
 	amenities.addEventListener('click', function(e) {
 			var sound = new Howl({
 			urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.ogg'], 
@@ -183,16 +189,26 @@ function activateAmenities() {
 	}); 	
 }
 
+
 function activeA4() {
-	a4.addEventListener('click', function(e) {
-		console.log("a4, no sound yet"); 
-	})
+	var apt4 = document.querySelector("#a4"); 
+	apt4.addEventListener('click', function(e) {
+		var sound = new Howl({
+			urls:['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.11_apt23_audio.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.11_apt23_audio.ogg'], 
+			buffer: false, 
+		}).play(); 
+	}); 
 }
 
+
 function activeA5() {
-	a5.addEventListener('click', function(e){
-		console.log("a5, no sound yet"); 
-	})
+	var apt5 = document.querySelector("#a5"); 
+	apt5.addEventListener('click', function(e){
+		var sound = new Howl({
+			urls:['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.12_apt21_audio_01.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.12_apt21_audio_01.ogg'], 
+			buffer: false, 
+		}).play(); 
+	}); 
 }
 
 function changeMap() {

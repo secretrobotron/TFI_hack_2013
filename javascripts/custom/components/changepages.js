@@ -43,6 +43,12 @@
       }
     }
 
+    var keyReleaseUp = function(e) {
+      if (e.which == 38) {
+        $('#progress-button').trigger('mouseup'); 
+      }
+    }
+
     var keyPressBackspace = function(e) {
       if (e.which==32) {
         $("#skip-notice").trigger('click'); 
@@ -50,11 +56,17 @@
     }
 
     function enableKeyBackspace() {
+      console.log('enablebackspace'); 
       document.addEventListener('keydown', keyPressBackspace, false); 
     }
     
     function enableKeyUp() {
+      console.log('enablekeyup'); 
       document.addEventListener('keydown', keyPressUp, false); 
+    }
+
+    function enableKeyUpUp() {
+      document.addEventListener('keyup', keyReleaseUp, false); 
     }
 
     function enableKeyRight() {

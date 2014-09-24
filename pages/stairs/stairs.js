@@ -308,14 +308,16 @@
          setTimeout(function () {
           //this is to enable you to press the key up and go 
            progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
-           progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false);   
+           progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false); 
+           enableKeyBackspace(); 
+           enableKeyUp();   
            //this should allow you to go up the stairs. 
-           window.parent.enableKeyUp(); 
+           //window.parent.enableKeyUp(); 
            //to enable the backspace, to skip // this works. 
-           window.parent.enableKeyBackspace(); 
+           //window.parent.enableKeyBackspace(); 
            //pausing the video 
            popcorn.pause();
-         }, 700); //after a second allow skipping and the button interaction
+         }, 500); //after a second allow skipping and the button interaction
       }); //END INTERACTION START TIME. 
 
   
@@ -367,6 +369,7 @@
         }
       }
 
+      document.getElementById('progress-button').addEventListener('click', onProgressButtonMouseDown, false); 
 
       function tryAnotherFloorAudio () {
         setTimeout(function () {
