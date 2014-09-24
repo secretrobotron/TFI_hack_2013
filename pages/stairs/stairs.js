@@ -391,8 +391,6 @@
         }
       }
 
-      document.getElementById('progress-button').addEventListener('click', onProgressButtonMouseDown, false); 
-
       function tryAnotherFloorAudio () {
         setTimeout(function () {
           if (!playing) {
