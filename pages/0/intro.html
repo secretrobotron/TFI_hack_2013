@@ -84,8 +84,10 @@
     function init(e) {
 
 	console.log("init"); 
-	window.top.hideNav(); 
-	window.top.disableRightLeft(); 
+	if (window.parent && window.parent.hideNav) {
+     window.parent.hideNav();
+	}; 
+	window.parent.disableRightLeft(); 
 
 			var nav = document.querySelector(".top-bar-section") 
 			$('.nextbutton').addClass('hidden'); 
@@ -126,7 +128,10 @@
 	 	 //go to the next chapter:
 	 			setTimeout(function() {
 	 		//window.parent.next(); 
-	 			next(); 
+debugger; 
+				window.top.hideNav();   
+	 			next();
+	 			//window.top.hideNav();   
 	 			}, 5000); 
 	 	 		});
 

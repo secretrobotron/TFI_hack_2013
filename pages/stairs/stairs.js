@@ -1,6 +1,9 @@
 (function() {
+  window.parent.disableRightLeft();  
+  window.parent.hideNavPrev(); 
+  window.parent.hideNav();
 
-  window.top.hideNav();
+
 
   var FADE_TRANSITION_DURATION = 1000;
   var FLOOR_SOUND_DELAY = 05;
@@ -271,6 +274,7 @@
         .animate({
           width : percent
         }, 100);
+        window.top.disableKeyLeft(); 
 
     }, function() { 
       console.log("DONEEEEE");
@@ -340,8 +344,8 @@
         //console.log("it should go to the apartment scene now");
         //take me to the next page (apt) 
             window.parent.next()
-            hideNavNext(); 
-            hideNavPrev(); 
+            window.top.hideNavNext(); 
+            window.top.hideNavPrev(); 
           
       }); 
 

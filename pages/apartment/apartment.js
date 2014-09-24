@@ -1,8 +1,7 @@
 (function() {
-  if (window.parent && window.parent.hideNav) {
       window.parent.hideNav();
       window.parent.disableRightLeft(); 
-    }
+ 
 
   window.top.disableKeyLeft(); 
 

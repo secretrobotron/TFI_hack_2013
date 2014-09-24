@@ -39,7 +39,7 @@ function init(e) {
 			    });
 
 	// var a1 = document.querySelector("#apartment1"); 
-	//callComesIn(); 
+	callComesIn(); 
 	activeAddress(); 
 	activePrice(); 
 	activeAgent();  

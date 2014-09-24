@@ -292,7 +292,7 @@ function changeFrame(value, callback) {
   // if(_pageIndex === end && _frameIndex === frameEnd){ hideNavNext(); showNavPrev(); }
   if(_pageIndex === end && _frameIndex === frameEnd){ hideNavNext(); }
   else if (_pageIndex === 0 && _frameIndex === 0)   { hideNav(); }
-  else                           { showNav(); }
+  else                           { hideNav();}
 
     //optional call back
     if(callback) callback();
