@@ -294,7 +294,6 @@
       // start stairway interaction
     popcorn.cue(INTERACTION_START_TIME, function () {
         //this is where you call that initial event listener for the up button. 
-       window.parent.enableKeyUp(); 
 
         //show the instructions + pause video 
         instructions.classList.remove('hidden'); 
@@ -309,12 +308,31 @@
                     skipNotice.classList.remove('hidden');
                  }); 
 
+          var keyPressUp = function(e) {
+            console.log("pressed a key"); 
+            if (e.which == 38) {
+              console.log("up"); 
+              //this is not working, when you press up. 
+                onProgressButtonMouseDown(e); 
+              }
+            }
+
+
+            var keyReleaseUp = function(e) {
+              if (e.which == 38) {
+                onProgressButtonMouseUp(e); 
+              }
+            }
+
+
          setTimeout(function () {
           //this is to enable you to press the key up and go 
            progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
            progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false); 
+           document.addEventListener('keydown', keyPressUp, false); 
+           document.addEventListener('keyup',keyReleaseUp, false); 
            enableKeyBackspace(); 
-           enableKeyUp();   
+           //enableKeyUp();   
            //this should allow you to go up the stairs. 
            //window.parent.enableKeyUp(); 
            //to enable the backspace, to skip // this works. 
