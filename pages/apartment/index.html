@@ -137,7 +137,7 @@
         width: 300px;
         height: 10px;
         margin-left: -150px;
-        top: 50%;
+        top: 30%;
         left: 50%;
         border: 2px solid white;
       }
@@ -149,6 +149,20 @@
         height: 100%;
         width: 0%;
         background-color: white;
+      }
+
+      #overlay1{
+        z-index:9;
+        position: relative;
+        padding: 80px;
+        margin: 0 auto;
+        padding-top: 18%;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        color: rgb(250,250,250);
+        text-align: center;
+        display:none;
       }
     </style>
      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -226,16 +240,17 @@
             <img style="padding-top:7%" src="http://dbef91h7r4asa.cloudfront.net/assets/1_street/img/apt_nav.gif">
         </div> 
 
-                <div id="look-around" class= "hidden fadeable"></div>
+          <div id="look-around" class= "hidden fadeable"></div>
         <div id="right-button" class="hidden fadeable"></div>
         <div id="left-button" class="hidden fadeable"></div>
         <div id="continue-message" class="hidden fadeable">Continue</div>
 
-    <div id="overlay" class="SouvenirStd-Light" style="margin-top:230px; margin-left:18%">
-        <h5>Scene 3: The Apartment</h5> 
+      <div id="overlay1" class="SouvenirStd-Light" style="font-size:0.5em">
+        <h1>Scene 3: The Apartment</h1> 
              <div id="AptProgressBar">
               <div id="Progress"></div>
-    </div>
+        </div>
+      </div>
   </br>
 </br>
 </br><!-- 

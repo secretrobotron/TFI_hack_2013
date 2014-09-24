@@ -245,7 +245,7 @@
     console.log('asset length', assets.length); 
     //console.dir(assets)
 
-      $('#overlay').fadeIn();
+      $('#overlay1').fadeIn();
     util.loader.ensureLoaded(assets, function(percent) {
       console.log("total percenteges: ", percent);
           percent *= 100;
@@ -256,7 +256,7 @@
         }, 100);
     }, function(){
       console.log("DONEEEEE");
-      $('#overlay').fadeOut();
+      $('#overlay1').fadeOut();
       
       window.addEventListener('resize', positionVideo, false);
       positionVideo();

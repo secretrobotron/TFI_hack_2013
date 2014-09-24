@@ -55,8 +55,19 @@ function init(e) {
 	activeSchools(); 
 
 } //end of INIT
+		//if a howl already exists, then replace it with this one.
+		//make this into a function 
+		//fade out the old one. 
+		//changeAudio(urls) { }
 
-function checkAudio(url) {
+function checkSound(sound) {
+	var currentSound = sound; 
+	console.log(currentSound); 
+
+	if(currentSound.duration != currentSound.end) {
+		console.log('havent finished this sound'); 
+		currentSound.fadeOut(0,1); 
+	}
 	//if a howl instance is still playing, only start a new one if you can. 
 }
 
@@ -103,7 +114,7 @@ function callComesIn() {
 				callComesIn();  
 			}
 		})    
-	},45000); //call comes in after 45 seconds 
+	},75000); //call comes in after 45 seconds 
 }
 
 function playStartVideo() {
@@ -124,16 +135,14 @@ function playStartVideo() {
 function activeAddress() {
 	console.log('clicked address'); 
 	address.addEventListener('click', function(e) {
-		//if a howl already exists, then replace it with this one.
-		//make this into a function 
-		//fade out the old one. 
-		//changeAudio(urls) { }
+			 
 			var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.02_address_audio_01.mp3'], 
 				buffer: false,
 			}).play(); 
-		});
 
+			checkSound(sound);
+		});
 } 
 
 function activePrice() {
