@@ -49,7 +49,10 @@ function init(e) {
 	activeA4(); 
 	activeA5(); 
 	changeMap(); 
-	//activateAmenities(); //amenities is not defined
+	activateAmenities(); //amenities is not defined
+	activeTransit(); 
+	activeCrime(); 
+	activeSchools(); 
 
 } //end of INIT
 
@@ -188,6 +191,38 @@ function activateAmenities() {
 		}).play(); 
 	}); 	
 }
+
+
+function activeTransit() {
+	var transit = document.querySelector("#transit"); 
+	transit.addEventListener('click', function(e){
+		var sound = new Howl ({
+			urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.16_transit_audio_01.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.16_transit_audio_01.ogg'], 
+			buffer: false, 
+		}).play(); 
+	}); 
+}
+
+function activeCrime() {
+	var crime = document.querySelector("#crime"); 
+	crime.addEventListener('click', function(e){
+		var sound = new Howl ({
+			urls:['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.15_crime_audio_01.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.15_crime_audio_01.ogg'], 
+			buffer: false, 
+		}).play();
+	}); 
+} 
+
+function activeSchools() {
+	var schools = document.querySelector("#schools"); 
+	schools.addEventListener('click', function(e){
+		var sound = new Howl ({
+			urls:['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.17_schools_audio.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.17_schools_audio.ogg'], 
+			buffer: false, 
+		}).play(); 
+	}); 
+}   
+
 
 
 function activeA4() {
