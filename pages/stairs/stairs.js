@@ -299,14 +299,19 @@
         instructions.classList.remove('hidden'); 
         video.classList.add('paused');
 
-               window.addEventListener('click', function() {
-                    instructions.classList.add('hidden'); 
+
+        var removeInstructions = function(e){
+                instructions.classList.add('hidden'); 
                     stairCounter.classList.remove('hidden');
                     floorCounter.classList.remove('hidden');
                     progressButton.classList.remove('hidden');
                 //shows you you can skip when the button is paused(); 
                     skipNotice.classList.remove('hidden');
-                 }); 
+        }
+
+          
+               window.addEventListener('click', removeInstructions, false);  
+
 
           var keyPressUp = function(e) {
             console.log("pressed a key"); 
@@ -325,12 +330,22 @@
             }
 
 
+            var keyPressNext = function(e) {
+                if (e.which == 39) {
+                  removeInstructions(); 
+                }
+            }
+
+
          setTimeout(function () {
           //this is to enable you to press the key up and go 
            progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
            progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false); 
+           document.addEventListener('keydown', keyPressNext, false); 
+
            document.addEventListener('keydown', keyPressUp, false); 
            document.addEventListener('keyup',keyReleaseUp, false); 
+           // document.addEventListener('keypress', keyPressNext, false); 
            enableKeyBackspace(); 
            //enableKeyUp();   
            //this should allow you to go up the stairs. 
