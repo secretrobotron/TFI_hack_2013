@@ -1,5 +1,5 @@
 $(function(){
-    console.log("initialization.js"); 
+    // console.log("initialization.js"); 
 
         changePage(0);
 

@@ -379,7 +379,7 @@ var Pages = function () {
                     urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.9_narrative.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.9_narrative.ogg'],
                     onload: function() {
                         hideNavNext(); 
-                        console.log("the right arrow is removed"); 
+                        // console.log("the right arrow is removed"); 
                       }, 
                     loop: false,
                     buffer:true,
@@ -500,11 +500,11 @@ var Pages = function () {
 
       var n = this.getSubframeByIndex( page, frame, this.currentSubframeIndex ).narration;
       return n;
-      console.log(n); 
-      console.log("got subframe narration"); 
+      // console.log(n); 
+      // console.log("got subframe narration"); 
 
     }else{
-      console.log("got narration"); 
+      // console.log("got narration"); 
       return pageinfo[page].frames[frame].narration; 
     }
 
@@ -514,10 +514,10 @@ var Pages = function () {
     if( this.doesFrameHaveSubframes( page,frame )  ){
       // console.log("getting subframe sound for subframe: "+this.currentSubframeIndex);
       var s = this.getSubframeByIndex( page, frame, this.currentSubframeIndex ).sound;
-      console.log(s);
+      // console.log(s);
       return s;
     }else{
-      console.log("got sound"); 
+      // console.log("got sound"); 
       return pageinfo[page].frames[frame].sound; 
     }
 
@@ -568,7 +568,7 @@ var Pages = function () {
           //if we've already been there, skip this and go to the next loop iteration. 
           if(subframes[i].visited) continue;
           else {
-            console.log("new subframe"); 
+            // console.log("new subframe"); 
             this.currentSubframeIndex = i;
             // console.log("found unvisited subframe ad index: "+this.currentSubframeIndex);
             foundSubframe = true;
@@ -585,7 +585,7 @@ var Pages = function () {
           //if we've already been there, skip this and go to the next loop iteration. 
           if(subframes[i].isDefault){
             this.currentSubframeIndex = i;
-            console.log("found default");
+            // console.log("found default");
             //this means you are now in the second one. 
             return subframes[i];
           } 
@@ -619,6 +619,12 @@ function getCurrentFrameUrl() {
   }
   else{
       return _pages.getFrames(_pageIndex)[_frameIndex].url; 
+  }
+}
+
+function resetSubframes() {
+  if (_pages.doesHaveSubframes(_pageIndex, _frameIndex).visited = true) {
+    _pages.doesHaveSubframes(_pageIndex,_frameIndex).visited = false; 
   }
 }
 

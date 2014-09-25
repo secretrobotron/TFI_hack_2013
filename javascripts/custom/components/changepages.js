@@ -41,7 +41,7 @@
     }
 
     function enableKeyBackspace() {
-      console.log('enablebackspace'); 
+      // console.log('enablebackspace'); 
       document.addEventListener('keydown', keyPressBackspace, false); 
     }
     
@@ -63,7 +63,7 @@
     }
     //You can move left and right through the chapter. 
     function enablekeyRightLeft() {
-      console.log('called keys'); 
+      // console.log('called keys'); 
       document.addEventListener('keydown', keyPressRight, false); 
       document.addEventListener('keydown', keyPressLeft, false); 
     }
@@ -186,7 +186,7 @@ function changeFrame(value, callback) {
 
                     var videoElements = frameview[0].querySelectorAll('video.frame-video');
                     var videoCount = videoElements.length;
-                    console.log(videoCount); 
+                    // console.log(videoCount); 
                     var loadedVideos = 0;
 
                     // force video to play!
@@ -230,7 +230,7 @@ function changeFrame(value, callback) {
  
       frameview.fadeOut('fast', function() { 
            if (getCurrentFrameContainer() === 'iframe') {
-            console.log('iframe here'); 
+            // console.log('iframe here'); 
            frameview.removeClass('loaded');
 
             var iframe = frameview[0].querySelector('iframe');
@@ -244,7 +244,7 @@ function changeFrame(value, callback) {
               setTimeout(function () {
               frameview.fadeIn();
               frameview.addClass('loaded'); 
-              console.log('added iframe'); 
+              // console.log('added iframe'); 
            }, 100);
         }
         else {
@@ -318,9 +318,11 @@ function changePage(value, frame) {
 
     //only make keypress work if we are inside a chapter. 
     if (newChapter) {
-/*      //console.log("you changed chapter"); 
-*/      newChapter = false; 
-    //   //remove the event listener for the key press 
+     console.log("you changed chapter"); 
+     newChapter = false; 
+        resetSubframes(); 
+        //reset the subframes to false visited. 
+
 
     }
   
