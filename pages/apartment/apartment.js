@@ -198,10 +198,12 @@
               }
             }
 
-    document.addEventListener('keydown', keyPressRight, false); 
-    document.addEventListener('keydown',keyPressLeft, false); 
+    // document.addEventListener('keydown',keyPressLeft, false); 
 
     function onLeftButtonClick (e) {
+      // document.addEventListener('keydown',keyPressLeft, false); 
+      // document.addEventListener('keydown', keyPressRight, false); 
+
       videoContainerIndex = Math.min(videoContainerIndex + 1, 1);
       playPositionedVideo();
       videoContainer.style.left = 50 + videoContainerIndex * 100 + '%';
@@ -210,15 +212,23 @@
         leftButton.classList.add('hidden');
         lookAround.classList.add('hidden'); 
         leftButton.removeEventListener('click', onLeftButtonClick, false);
+        document.removeEventListener('keydown',keyPressLeft, false); 
+
       }
       else if (videoContainerIndex === 0) {
         rightButton.classList.remove('hidden');
         lookAround.classList.remove('hidden'); 
-        rightButton.addEventListener('click', onRightButtonClick, false);        
+        rightButton.addEventListener('click', onRightButtonClick, false);
+        document.addEventListener('keydown', keyPressRight, false);    
+        // document.addEventListener('keydown', keyPressRight, false); 
+     
       }
     }
 
     function onRightButtonClick (e) {
+      // document.addEventListener('keydown', keyPressRight, false); 
+      // document.addEventListener('keydown',keyPressLeft, false); 
+
       videoContainerIndex = Math.max(videoContainerIndex - 1, -1);
       playPositionedVideo();
       videoContainer.style.left = 50 + videoContainerIndex * 100 + '%';
@@ -227,11 +237,13 @@
         rightButton.classList.add('hidden');
         lookAround.classList.add('hidden'); 
         rightButton.removeEventListener('click', onRightButtonClick, false);
+        document.removeEventListener('keydown', keyPressRight, false); 
       }
       else if (videoContainerIndex === 0) {
         leftButton.classList.remove('hidden');
         lookAround.classList.remove('hidden'); 
-        leftButton.addEventListener('click', onLeftButtonClick, false);        
+        leftButton.addEventListener('click', onLeftButtonClick, false);   
+        document.addEventListener('keydown', keyPressLeft, false);      
       }
     }
 
@@ -327,6 +339,8 @@
                    leftButton.classList.remove('hidden');
                    leftButton.addEventListener('click', onLeftButtonClick, false);
                    rightButton.addEventListener('click', onRightButtonClick, false);
+                   document.addEventListener('keydown', keyPressRight, false); 
+                   document.addEventListener('keydown', keyPressLeft, false); 
 
                 backgroundVideo.addEventListener('ended', function (e) {
                   if (window.parent && window.parent.next) {
@@ -336,6 +350,8 @@
                     videoContainer.style.left = '50%';
                     leftButton.removeEventListener('click', onLeftButtonClick, false);
                     rightButton.removeEventListener('click', onRightButtonClick, false);
+                    document.removeEventListener('keydown', keyPressLeft, false); 
+                    document.removeEventListener('keydown', keyPressRight, false); 
                     rightButton.classList.remove('hidden');
                     leftButton.classList.add('hidden');
                     rightButton.addEventListener('click', function (e) {

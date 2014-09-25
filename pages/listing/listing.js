@@ -5,8 +5,6 @@
       console.log('hid navigation'); 
     }
 
-
-
 	// var currentSound = null; 
 
 function init(e) {
@@ -56,10 +54,6 @@ function init(e) {
 
 } //end of INIT
 		
-		//if a howl already exists, then replace it with this one.
-		//make this into a function 
-		//fade out the old one. 
-		//changeAudio(urls) { }
 
 function callComesIn() {
 	setTimeout(function(){
@@ -104,49 +98,58 @@ function callComesIn() {
 				callComesIn();  
 			}
 		})    
-	},75000); //call comes in after 45 seconds 
+	},90000); //call comes in after 45 seconds 
 }
 
-function playStartVideo() {
-	var startVideo = document.querySelector('video[data-video="start"]'); 
-	startVideo.play(); 
-	popcorn = Popcorn(startVideo); 
-	var VIDEO_END_TIME = 48; //in seconds
+// function playStartVideo() {
+// 	var startVideo = document.querySelector('video[data-video="start"]'); 
+// 	startVideo.play(); 
+// 	popcorn = Popcorn(startVideo); 
+// 	var VIDEO_END_TIME = 48; //in seconds
 
-		popcorn.cue(VIDEO_END_TIME, function() {
-			startVideo.pause(); 
-			startVideo.classList.add('hidden'); 
-		})
-}
+// 		popcorn.cue(VIDEO_END_TIME, function() {
+// 			startVideo.pause(); 
+// 			startVideo.classList.add('hidden'); 
+// 		})
+// }
 
- 
+var currentSound = null;
 
 //this activates everything for the address 
 function activeAddress() {
 	address.addEventListener('click', function(e) { 
-		console.log('clicked address'); 
-			// if (currentSound) {
-			// 	currentSound.fadeOut(); 
-			// }
+		 console.log('clicked address');
+			if (currentSound) {
+				currentSound.stop(); 
+
+//				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
 			var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.02_address_audio_01.mp3'], 
 				buffer: false,
 			}).play(); 
-			// currentSound = sound;
+			currentSound = sound; 
+			console.log('current sound . urls is' + currentSound.urls);
+//debugger; 
+//			checkSound(currentSound); 
+//debugger; 
 		});
 } 
 
 function activePrice() {
 	price.addEventListener('click', function(e) {
 		console.log('clicked price'); 
-			// if (currentSound) {
-			// 	currentSound.fadeOut(); 
-			// }
+			if (currentSound) {
+				currentSound.stop(); 
+//				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
 			var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.03_price_audio_01.mp3'], 
 				buffer: false, 
 			}).play(); 
-			// currentSound = sound;
+			currentSound = sound;
 		}); 
 
 	// price.removeEventListener('hover', function(e), false); 
@@ -155,20 +158,34 @@ function activePrice() {
 
 function activeAgent() {
 	agent.addEventListener('click', function(e) {
+			if (currentSound) {
+				currentSound.stop(); 
+//				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
 		var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.05_agent_audio_01.mp3'], 
 				buffer: false, 
 			}).play(); 
+			currentSound = sound; 
+
 		}); 
 }
 
 function activeA1() {
 	var apt1 = document.querySelector("#a1"); 
 	apt1.addEventListener('click', function(e) {
+			if (currentSound) {
+				currentSound.stop(); 
+				//currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
 		var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.08_apt19_audio_01.mp3'], 
 				buffer: false, 
-			}).play(); 
+			}).fadeIn(1, 250);
+			currentSound = sound; 
+ 
 		}); 
 }
 
@@ -176,20 +193,34 @@ function activeA1() {
 function activeA2() {
 	var apt2 = document.querySelector("#a2"); 
 	apt2.addEventListener('click', function(e) {
+			if (currentSound) {
+//				currentSound.stop(); 
+				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
 		var sound = new Howl({
 					urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.09_apt27_audio_01.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.09_apt27_audio_01.ogg'], 
-					buffer: false, 
-				}).play(); 
+					buffer: true, 
+				}).fadeIn(1,250); 
+				currentSound = sound; 
+
 			});  
 }
 
 function activeA3() {
 	var apt3 = document.querySelector("#a3"); 
 	apt3.addEventListener('click', function(e) {
+			if (currentSound) {
+//				currentSound.stop(); 
+				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
 		var sound = new Howl({
 					urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.10_apt20_audio_01.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.10_apt20_audio_01.ogg'], 
-					buffer: false, 
-				}).play(); 
+					buffer: true, 
+				}).fadeIn(1, 250);
+				currentSound = sound; 
+
 			});  
 }
 
@@ -197,10 +228,17 @@ function activateAmenities() {
 	//here is where the amenities. 
 	var amenities = document.querySelector("#amen"); 
 	amenities.addEventListener('click', function(e) {
+			if (currentSound) {
+				currentSound.stop(); 
+//				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
 			var sound = new Howl({
 			urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.18_amenities_audio.ogg'], 
-			buffer: false, 
+			buffer: true, 
 		}).play(); 
+		currentSound = sound; 
+
 	}); 	
 }
 
@@ -208,30 +246,48 @@ function activateAmenities() {
 function activeTransit() {
 	var transit = document.querySelector("#transit"); 
 	transit.addEventListener('click', function(e){
+			if (currentSound) {
+				currentSound.stop(); 
+//				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
 		var sound = new Howl ({
 			urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.16_transit_audio_01.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.16_transit_audio_01.ogg'], 
-			buffer: false, 
-		}).play(); 
+			buffer: true, 
+		}).play();
+		currentSound = sound; 
 	}); 
 }
 
 function activeCrime() {
 	var crime = document.querySelector("#crime"); 
 	crime.addEventListener('click', function(e){
+			if (currentSound) {
+				currentSound.stop(); 
+//				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
 		var sound = new Howl ({
 			urls:['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.15_crime_audio_01.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.15_crime_audio_01.ogg'], 
-			buffer: false, 
+			buffer: true, 
 		}).play();
+		currentSound = sound; 
 	}); 
 } 
 
 function activeSchools() {
 	var schools = document.querySelector("#schools"); 
 	schools.addEventListener('click', function(e){
+			if (currentSound) {
+				currentSound.stop(); 
+//				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
 		var sound = new Howl ({
 			urls:['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.17_schools_audio.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.17_schools_audio.ogg'], 
-			buffer: false, 
-		}).play(); 
+			buffer: true, 
+		}).play();
+		currentSound = sound; 
 	}); 
 }   
 
@@ -240,10 +296,16 @@ function activeSchools() {
 function activeA4() {
 	var apt4 = document.querySelector("#a4"); 
 	apt4.addEventListener('click', function(e) {
+			if (currentSound) {
+//				currentSound.stop(); 
+				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
 		var sound = new Howl({
 			urls:['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.11_apt23_audio.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.11_apt23_audio.ogg'], 
 			buffer: false, 
-		}).play(); 
+		}).fadeIn(1, 250);
+		currentSound = sound; 
 	}); 
 }
 
@@ -251,22 +313,34 @@ function activeA4() {
 function activeA5() {
 	var apt5 = document.querySelector("#a5"); 
 	apt5.addEventListener('click', function(e){
+			if (currentSound) {
+//				currentSound.stop(); 
+				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
 		var sound = new Howl({
 			urls:['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.12_apt21_audio_01.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.12_apt21_audio_01.ogg'], 
 			buffer: false, 
-		}).play(); 
+		}).fadeIn(1, 250); 
+		currentSound = sound; 
 	}); 
 }
 
 function changeMap() {
 	map.addEventListener('click', function(e) {
+			if (currentSound) {
+				currentSound.stop(); 
+//				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
 		console.log("changed the src"); 
 		this.src="http://dbef91h7r4asa.cloudfront.net/assets/5_website/img/5.14_map_02.gif"; 
 
 			var sound = new Howl({
 					urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.14_map_audio_01.mp3'], 
 					buffer: false, 
-				}).play(); 
+				}).play();
+		currentSound = sound; 
 	}); 
 }
 
