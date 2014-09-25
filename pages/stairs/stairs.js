@@ -285,6 +285,7 @@
       var playing = false;
       var keyUpTimeout = -1;
       var skipping = false;
+      //var InstructionsVisible = true; 
 
       window.addEventListener('resize', positionVideo, false);
       positionVideo();
@@ -300,29 +301,35 @@
          //alert(instructionsVisible); 
          video.classList.add('paused');
 
-         // var instructionsVisible = true; 
+              var InstructionsVisible = true; 
 
                             var removeInstructions = function(e){
-                                    instructions.classList.add('hidden'); 
+                              console.log('instructions out'); 
+                                        instructions.classList.add('hidden'); 
                                         stairCounter.classList.remove('hidden');
                                         floorCounter.classList.remove('hidden');
                                         progressButton.classList.remove('hidden');
                                     //shows you you can skip when the button is paused(); 
                                         skipNotice.classList.remove('hidden');
-                                        instructionsVisible = false; 
+                                        InstructionsVisible = false; 
                                     }
 
                               
                         
 
-                            var instructionsVisible = true; 
+                            //var instructionsVisible = true; 
                             var keyPressUp = function(e) {
                               console.log('up'); 
-                              if (e.which == 38 && instructionsVisible) {
+                              if (e.which == 38) {
                                 //console.log('up'); 
-                                      removeInstructions(); 
-                                    } else if (e.which == 38 && !instructionsVisible) {
-                                        onProgressButtonMouseDown(e); 
+                                      instructions.classList.add('hidden'); 
+                                        stairCounter.classList.remove('hidden');
+                                        floorCounter.classList.remove('hidden');
+                                        progressButton.classList.remove('hidden');
+                                    //shows you you can skip when the button is paused(); 
+                                        skipNotice.classList.remove('hidden');
+                                        InstructionsVisible = false; 
+                                      onProgressButtonMouseDown(e); 
                                     } 
                               } 
 
@@ -333,7 +340,8 @@
                                 }
                               }
 
-                              window.addEventListener('click', removeInstructions, false); 
+                              //window.addEventListener('click', removeInstructions, false); 
+                              //document.addEventListener('keydown', keyPressUp, false); 
 
                                setTimeout(function () {
                                  //popcorn.pause();
@@ -341,15 +349,18 @@
                                 //this is to enable you to press the key up and go 
                                  progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
                                  progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false); 
-                                 document.addEventListener('keydown', keyPressUp, false); 
+                                 //document.addEventListener('keydown', keyPressUp, false); 
                                  document.addEventListener('keyup',keyReleaseUp, false); 
-                                 //window.addEventListener('click', removeInstructions, false);  
-                                 //RemoveInstructions(); 
+                                 window.addEventListener('click', removeInstructions, false);  
+                                 document.addEventListener('keydown', keyPressUp, false);
                                  enableKeyBackspace(); 
                                  //this should allow you to go up the stairs. 
                                  //pausing the video 
                                  popcorn.pause();
                                }, 500); //after a second allow skipping and the button interaction
+       
+                  // document.addEventListener('keydown', keyPressUp, false);
+                  //window.addEventListener('click', removeInstructions, false); 
         }); //END INTERACTION START TIME. 
 
   
