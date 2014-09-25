@@ -463,8 +463,20 @@ var Pages = function () {
             url: "pages/2.0/index.html", 
           }
         ]
-    }
+    }, 
+
+        { //Credits
+        url: "pages/credits.html", 
+        title: "Credits", 
+        trans: 'fade', 
+          frames: [
+            {
+              url: "pages/credits/index.html", 
+            }
+          ]
+      }
         
+          
 
     ];
 
