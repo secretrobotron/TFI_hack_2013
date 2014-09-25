@@ -595,7 +595,7 @@ var Pages = function () {
   this.getFrameCount = function (page) {
     return pageinfo[page].frames.length;
   };
-
+}; 
 
 //get the current container of the frame 
 function getCurrentFrameContainer() {
@@ -620,27 +620,22 @@ function getCurrentFrameUrl() {
 }
 
 function resetChapter1Subframes() {
-
+  console.log('reset subframes XXXXX'); 
   var frames = _pages.getFrames(1); //all the frames in chapter 1
-  var subframes = pageinfo[page].frames[frame].subframes; //this is the array that has all the visited; 
+  // var subframes = pageinfo[page].frames[frame].subframes; //this is the array that has all the visited; 
 
       for(var i = 0; i < frames.length; i++ ){
-        if (frames.doesHaveSubframes) {
-          for (var j=0; j< subframes.length; j++) {
-              if(subframes[j].visited = true) {
-              subframes[j].visited = false;
+        if (_pages.doesHaveSubframes(1, i)) {
+          for (var j=0; j < frames[i].subframes.length; j++) {
+              if(frames[i].subframes[j].visited = true) {
+              frames[i].subframes[j].visited = false;
             }
-          }
-        } 
+        }
+      } 
    }
 }
 
-// function resetSubframes() {
-//   console.log('resetsubframes'); 
-//   if (_pages.visitSubframe(_pageIndex, _frameIndex).visited = true) {
-//     _pages.visitSubframe(_pageIndex,_frameIndex).visited = false; 
-//   }
-// }
+
 
 var _pages = new Pages();
 

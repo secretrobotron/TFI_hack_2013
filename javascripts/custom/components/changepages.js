@@ -293,9 +293,11 @@ function changePage(value, frame) {
   //why do you need to get the parameter of frame 
     var pagect = _pages.pageCount();
 
+    //resetChapter1Subframes(); 
+
     var newChapter = false; 
 
-    if (value==="next") { if (_pageIndex < pagect-1) _pageIndex++; _pages.resetSubframe(); }
+    if (value==="next") { if (_pageIndex < pagect-1) _pageIndex++; resetChapter1Subframes();  }
     else if (value==="prev") { if (_pageIndex > 0) _pageIndex--; } 
     else if (value==="first") { _pageIndex = 0; } 
     else if (value==="last"){ _pageIndex = pagect - 1; } 
@@ -317,6 +319,7 @@ function changePage(value, frame) {
 
     pagetitle.text(_pages.getPageTitle(_pageIndex));
   
+    //resetChapter1Subframes(); 
 }
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -336,6 +339,7 @@ function next() {
             }
           } else if(_pageIndex < _pages.pageCount()-1){ 
           changePage('next'); 
+          console.log('changed chapters'); 
           }
       }
 
