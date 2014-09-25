@@ -313,9 +313,9 @@
                                     }
 
                               
-                        var instructionsVisible = true; 
+                        
 
-
+                            var instructionsVisible = true; 
                             var keyPressUp = function(e) {
                               console.log('up'); 
                               if (e.which == 38 && instructionsVisible) {
@@ -333,21 +333,22 @@
                                 }
                               }
 
+                              window.addEventListener('click', removeInstructions, false); 
 
                                setTimeout(function () {
-                                 popcorn.pause();
+                                 //popcorn.pause();
 
                                 //this is to enable you to press the key up and go 
                                  progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
                                  progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false); 
-                                 window.addEventListener('keydown', keyPressUp, false); 
+                                 document.addEventListener('keydown', keyPressUp, false); 
                                  document.addEventListener('keyup',keyReleaseUp, false); 
-                                 window.addEventListener('click', removeInstructions, false);  
+                                 //window.addEventListener('click', removeInstructions, false);  
                                  //RemoveInstructions(); 
                                  enableKeyBackspace(); 
                                  //this should allow you to go up the stairs. 
                                  //pausing the video 
-                                 //popcorn.pause();
+                                 popcorn.pause();
                                }, 500); //after a second allow skipping and the button interaction
         }); //END INTERACTION START TIME. 
 
