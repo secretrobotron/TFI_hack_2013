@@ -33,22 +33,7 @@
           $('.nextbutton').trigger("click"); 
         }
     }
-
-    // var keyPressUp = function(e) {
-    //   console.log("pressed a key"); 
-    //   if (e.which == 38) {
-    //     console.log("up"); 
-    //     //this is not working, when you press up. 
-    //     $("#progress-button").trigger('click'); 
-    //   }
-    // }
-
-    // var keyReleaseUp = function(e) {
-    //   if (e.which == 38) {
-    //     $('#progress-button').trigger('mouseup'); 
-    //   }
-    // }
-
+    
     var keyPressBackspace = function(e) {
       if (e.which==32) {
         $("#skip-notice").trigger('click'); 

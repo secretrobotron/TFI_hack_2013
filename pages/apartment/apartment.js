@@ -182,6 +182,25 @@
       }
     }
 
+         var keyPressRight = function(e) {
+            console.log("pressed a key"); 
+            if (e.which == 39) {
+              console.log("right"); 
+              //this is not working, when you press up. 
+                onRightButtonClick(e); 
+              }
+            }
+
+
+            var keyPressLeft = function(e) {
+              if (e.which == 37) {
+                onLeftButtonClick(e); 
+              }
+            }
+
+    document.addEventListener('keydown', keyPressRight, false); 
+    document.addEventListener('keydown',keyPressLeft, false); 
+
     function onLeftButtonClick (e) {
       videoContainerIndex = Math.min(videoContainerIndex + 1, 1);
       playPositionedVideo();

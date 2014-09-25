@@ -4,13 +4,12 @@
       window.parent.hideNav();
       console.log('hid navigation'); 
     }
-function init(e) {
-	//hide Navivgation for the listing. 
-	// if (window.parent && window.parent.hideNav) {
- //      window.parent.hideNav();
- //      console.log('hid navigation'); 
- //    }
 
+
+
+	// var currentSound = null; 
+
+function init(e) {
 	var address = document.querySelector("#address");
 	var price = document.querySelector("#price"); 
 	var agent = document.querySelector("#agent"); 
@@ -54,22 +53,13 @@ function init(e) {
 	activeCrime(); 
 	activeSchools(); 
 
+
 } //end of INIT
+		
 		//if a howl already exists, then replace it with this one.
 		//make this into a function 
 		//fade out the old one. 
 		//changeAudio(urls) { }
-
-function checkSound(sound) {
-	var currentSound = sound; 
-	console.log(currentSound); 
-
-	if(currentSound.duration != currentSound.end) {
-		console.log('havent finished this sound'); 
-		currentSound.fadeOut(0,1); 
-	}
-	//if a howl instance is still playing, only start a new one if you can. 
-}
 
 function callComesIn() {
 	setTimeout(function(){
@@ -129,28 +119,34 @@ function playStartVideo() {
 		})
 }
 
-
+ 
 
 //this activates everything for the address 
 function activeAddress() {
-	console.log('clicked address'); 
-	address.addEventListener('click', function(e) {
-			 
+	address.addEventListener('click', function(e) { 
+		console.log('clicked address'); 
+			// if (currentSound) {
+			// 	currentSound.fadeOut(); 
+			// }
 			var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.02_address_audio_01.mp3'], 
 				buffer: false,
 			}).play(); 
-
-			checkSound(sound);
+			// currentSound = sound;
 		});
 } 
 
 function activePrice() {
 	price.addEventListener('click', function(e) {
+		console.log('clicked price'); 
+			// if (currentSound) {
+			// 	currentSound.fadeOut(); 
+			// }
 			var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.03_price_audio_01.mp3'], 
 				buffer: false, 
 			}).play(); 
+			// currentSound = sound;
 		}); 
 
 	// price.removeEventListener('hover', function(e), false); 
