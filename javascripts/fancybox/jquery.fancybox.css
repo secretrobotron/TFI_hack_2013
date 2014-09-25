@@ -105,7 +105,7 @@
 	width: 36px;
 	height: 36px;
 	cursor: pointer;
-	z-index: 10040;
+	z-index: 12040;;
 }
 
 .fancybox-nav {
@@ -265,7 +265,7 @@
 
 	#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
 		background-image: url('fancybox_sprite@2x.png');
-		z-index:13;
+		z-index:12040;;
 		background-size: 44px 152px; /*The size of the normal image, half the size of the hi-res image*/
 	}
 
