@@ -131,9 +131,9 @@ function activeAddress() {
 			}).play(); 
 			currentSound = sound; 
 			console.log('current sound . urls is' + currentSound.urls);
-//debugger; 
+
 //			checkSound(currentSound); 
-//debugger; 
+
 		});
 } 
 
