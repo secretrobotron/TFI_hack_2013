@@ -97,6 +97,8 @@
 		 assets.push(popcorn.video); 
 		 console.log("assets" + assets.length);
 
+ 	title.classList.remove('hidden'); 
+
  		util.loader.ensureLoaded(assets, function(percent) {
  			  console.log("total percentages: ", percent); 
 		 	//console.log("progress"); 
@@ -112,14 +114,17 @@
 		 	//alert("done"); 
 		 	//title.fadeOut(); 
 			
+
 			if (popcorn.video.readyState === 4 ) {
- 			 title.classList.remove('hidden'); 
+				console.log('video ready'); 
  					 setTimeout(function() {
- 						console.log('video is ready'); 
+ 					 	//console.log('timeout'); 
+ 						// console.log('video is ready'); 
 						title.classList.add('hidden'); 
+						//title.fadeOut(1500); 
 						nav.classList.remove('hidden'); 
  						popcorn.play(); 
- 					 }, 2000); 
+ 					 }, 5000); 
 				}
  			
 
@@ -128,11 +133,10 @@
 	 	 //go to the next chapter:
 	 			setTimeout(function() {
 	 		//window.parent.next(); 
-debugger; 
 				window.top.hideNav();   
 	 			next();
 	 			//window.top.hideNav();   
-	 			}, 5000); 
+	 			}, 3500); 
 	 	 		});
 
 		 });

@@ -310,6 +310,14 @@
       backgroundPause = false; 
       backgroundPlaying = false; 
 
+
+        var keyPressInstructions = function(e) {
+            console.log('pressed a key'); 
+                    if (e.which !== 37 || e.which !== 39) {
+                      console.log('not left or right'); 
+                     hideInstructions(); 
+                    }
+                  }
       //this is when the start video ends, what do you want to have happen?
       startVideo.addEventListener('ended', function onStartVideoEnded (e) {
         startVideo.removeEventListener('ended', onStartVideoEnded, false);
@@ -323,12 +331,15 @@
             console.log('background video is paused'); 
             //pause the background video after start video ends and add the instructions. 
             instructions.classList.remove('hidden'); 
+             document.addEventListener('keydown', keyPressInstructions, false); 
 
-                window.addEventListener('click', function showInstructions() {
-                  window.removeEventListener('click', showInstructions, false )
+                window.addEventListener('click', function hideInstructions() {
+                  window.removeEventListener('click', hideInstructions, false )
                   instructions.classList.add('hidden'); 
                   backgroundVideo.play(); 
                 }, false); 
+
+                // document.addEventListener('keydown', keyPressInstructions, false); 
           }
 
           backgroundPlaying = true; 
