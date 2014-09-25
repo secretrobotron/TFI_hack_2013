@@ -295,7 +295,7 @@ function changePage(value, frame) {
 
     var newChapter = false; 
 
-    if (value==="next") { if (_pageIndex < pagect-1) _pageIndex++; }
+    if (value==="next") { if (_pageIndex < pagect-1) _pageIndex++; _pages.resetSubframe(); }
     else if (value==="prev") { if (_pageIndex > 0) _pageIndex--; } 
     else if (value==="first") { _pageIndex = 0; } 
     else if (value==="last"){ _pageIndex = pagect - 1; } 
@@ -309,8 +309,6 @@ function changePage(value, frame) {
             changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
             //resetSubframes(); 
             pageview.fadeIn();
-            console.log('changed chapter'); 
-            resetSubframes(); 
             //start the audio after the fade in. 
         }); 
     });
@@ -318,16 +316,6 @@ function changePage(value, frame) {
     changePageBackground(_pages.getPageSound(_pageIndex));
 
     pagetitle.text(_pages.getPageTitle(_pageIndex));
-
-    //only make keypress work if we are inside a chapter. 
-    // if (newChapter) {
-    //  console.log("you changed chapter"); 
-    //  newChapter = false; 
-    //     resetSubframes(); 
-    //     //reset the subframes to false visited. 
-
-
-    // }
   
 }
 

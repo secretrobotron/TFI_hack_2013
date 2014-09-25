@@ -555,12 +555,10 @@ var Pages = function () {
       // console.log("you asked for a subframe that was not there at index: "+subframe_index);
       return (subframe_index); 
     }
-
   } 
 
   this.visitSubframe = function( page, frame ){
-
-     console.log( "getting subframe" );
+    console.log( "getting subframe" );
     var subframes = pageinfo[page].frames[frame].subframes;
 
     var foundSubframe = false;
@@ -578,7 +576,6 @@ var Pages = function () {
           }
 
       }
-    
       if(!foundSubframe){
         // console.log("all subframes visted");
         for(var i = 0; i < subframes.length; i++ ){
@@ -598,7 +595,7 @@ var Pages = function () {
   this.getFrameCount = function (page) {
     return pageinfo[page].frames.length;
   };
-};
+
 
 //get the current container of the frame 
 function getCurrentFrameContainer() {
@@ -622,12 +619,28 @@ function getCurrentFrameUrl() {
   }
 }
 
-function resetSubframes() {
-  console.log('resetsubframes'); 
-  if (_pages.getSubframeByIndex(_pageIndex, _frameIndex).visited = true) {
-    _pages.getSubframeByIndex(_pageIndex,_frameIndex).visited = false; 
-  }
+function resetChapter1Subframes() {
+
+  var frames = _pages.getFrames(1); //all the frames in chapter 1
+  var subframes = pageinfo[page].frames[frame].subframes; //this is the array that has all the visited; 
+
+      for(var i = 0; i < frames.length; i++ ){
+        if (frames.doesHaveSubframes) {
+          for (var j=0; j< subframes.length; j++) {
+              if(subframes[j].visited = true) {
+              subframes[j].visited = false;
+            }
+          }
+        } 
+   }
 }
+
+// function resetSubframes() {
+//   console.log('resetsubframes'); 
+//   if (_pages.visitSubframe(_pageIndex, _frameIndex).visited = true) {
+//     _pages.visitSubframe(_pageIndex,_frameIndex).visited = false; 
+//   }
+// }
 
 var _pages = new Pages();
 
