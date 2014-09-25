@@ -623,8 +623,9 @@ function getCurrentFrameUrl() {
 }
 
 function resetSubframes() {
-  if (_pages.doesHaveSubframes(_pageIndex, _frameIndex).visited = true) {
-    _pages.doesHaveSubframes(_pageIndex,_frameIndex).visited = false; 
+  console.log('resetsubframes'); 
+  if (_pages.getSubframeByIndex(_pageIndex, _frameIndex).visited = true) {
+    _pages.getSubframeByIndex(_pageIndex,_frameIndex).visited = false; 
   }
 }
 
