@@ -15,7 +15,7 @@
 
 
   <div class="focalpoint" data-focus-scale="cover" data-focus-left=".66" data-focus-top=".66">
-    <video width="1280" height="720" preload="auto" autoplay class="frame-video">
+    <video width="1280" height="720" preload="auto" autoplay class="frame-video" data-video="part2">
     	<source src="http://dbef91h7r4asa.cloudfront.net/assets/part2/Part2_Trailer.webmhd.webm" type="video/webm"></source>
       <source src="http://dbef91h7r4asa.cloudfront.net/assets/part2/Part2_Trailer.mp4" type="video/mp4"></source>
     </video>
@@ -26,5 +26,8 @@
 //so you can't go to the intro page 
 disableKeyLeft();
 window.parent.hideNav(); 
+
+    var video = document.querySelector('video[data-video="part2"]');
+    popcorn = new Popcorn(video); 
 
 </script>
