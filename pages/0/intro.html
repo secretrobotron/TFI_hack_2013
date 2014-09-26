@@ -108,26 +108,42 @@
 		        .animate({
 		          width : percent
 		        }, 100);
+
+		        if (_pageIndex != 0) {
+		        	console.log('u are not in intro'); 
+		        	return; 
+		        }
  
 		 }, function() {
 		 	console.log("i am done"); 
-		 	//alert("done"); 
-		 	//title.fadeOut(); 
-		 	var currentMovie = null; 
-			if (popcorn.video.readyState === 4 ) {
-							if (currentMovie) {
- 					 		currentMovie.stop(); 
- 					 	}
-				console.log('video ready'); 
- 					 setTimeout(function() { 
-	 					 	title.classList.add('hidden'); 
-							//title.fadeOut(1500); 
-							nav.classList.remove('hidden'); 
-	 						popcorn.play(); 
-	 						currentMovie = popcorn; 
- 					 }, 5000); 
-				}
- 			
+
+		 	if (_pageIndex != 0 ) {
+		 		console.log('you left');
+		 		return; 
+		 	} else{
+
+			 	//alert("done"); 
+			 	//title.fadeOut(); 
+			 	var currentMovie = null; 
+				if (popcorn.video.readyState === 4 ) {
+								if (currentMovie) {
+	 					 		currentMovie.stop(); 
+	 					 	}
+					console.log('video ready'); 
+	 					 setTimeout(function() { 
+		 					 	title.classList.add('hidden'); 
+								//title.fadeOut(1500); 
+								nav.classList.remove('hidden'); 
+								if (_pageIndex === 0) {
+									popcorn.play(); 
+								} else {
+									popcorn.pause(); 
+								}
+		 						
+		 						currentMovie = popcorn; 
+	 					 }, 5000); 
+					}
+ 			}
 
 	 		popcorn.cue(58, function() {
 		 	console.log("cued"); 

@@ -680,8 +680,8 @@ function resetChapter1Subframes() {
 
          if (_pages.doesFrameHaveSubframes(1, i)) {
           for (var j=0; j < frames[i].subframes.length; j++) {
-            console.log("Subframe object at position: "+i);
-            console.log(frames[i].subframes[j]);
+            // console.log("Subframe object at position: "+i);
+            // console.log(frames[i].subframes[j]);
               if(frames[i].subframes[j].visited = true) {
               frames[i].subframes[j].visited = false;
 
