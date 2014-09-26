@@ -50,7 +50,8 @@ function init(e) {
 	activeTransit(); 
 	activeCrime(); 
 	activeSchools(); 
-
+	activeListingTest(); 
+	activeStove(); 
 
 } //end of INIT
 		
@@ -101,18 +102,6 @@ function callComesIn() {
 	},90000); //call comes in after 45 seconds 
 }
 
-// function playStartVideo() {
-// 	var startVideo = document.querySelector('video[data-video="start"]'); 
-// 	startVideo.play(); 
-// 	popcorn = Popcorn(startVideo); 
-// 	var VIDEO_END_TIME = 48; //in seconds
-
-// 		popcorn.cue(VIDEO_END_TIME, function() {
-// 			startVideo.pause(); 
-// 			startVideo.classList.add('hidden'); 
-// 		})
-// }
-
 var currentSound = null;
 
 //this activates everything for the address 
@@ -136,6 +125,44 @@ function activeAddress() {
 
 		});
 } 
+
+function activeStove() {
+	var stove = document.querySelector("#stove"); 
+	stove.addEventListener('click', function(e) {
+				if (currentSound) {
+				currentSound.stop(); 
+//				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
+		var sound = new Howl({
+				urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.04_02_stove_01.mp3'], 
+				buffer: false, 
+			}).play(); 
+			currentSound = sound; 
+
+		}); 
+}
+
+
+
+function activeListingTest() {
+	var listing = document.querySelector("#livingtest"); 
+	listing.addEventListener('click', function(e) {
+				if (currentSound) {
+				currentSound.stop(); 
+//				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
+		var sound = new Howl({
+				urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.04_05_living_01.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.04_05_living_01.oga'], 
+				buffer: false, 
+			}).play(); 
+			currentSound = sound; 
+
+		}); 
+}
+
+
 
 function activePrice() {
 	price.addEventListener('click', function(e) {

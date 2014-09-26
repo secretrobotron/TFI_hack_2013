@@ -113,10 +113,7 @@
 		 	console.log("i am done"); 
 		 	//alert("done"); 
 		 	//title.fadeOut(); 
-			
-
 		 	var currentMovie = null; 
-
 			if (popcorn.video.readyState === 4 ) {
 							if (currentMovie) {
  					 		currentMovie.stop(); 
@@ -128,16 +125,6 @@
 							nav.classList.remove('hidden'); 
 	 						popcorn.play(); 
 	 						currentMovie = popcorn; 
- 					 	// if (currentMovie) {
- 					 	// 	currentMovie.stop(); 
- 					 	// }
- 					 	//console.log('timeout'); 
- 						// console.log('video is ready'); 
-						// title.classList.add('hidden'); 
-						// //title.fadeOut(1500); 
-						// nav.classList.remove('hidden'); 
- 					// 	popcorn.play(); 
- 					// 	currentMovie = popcorn; 
  					 }, 5000); 
 				}
  			
