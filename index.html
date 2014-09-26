@@ -10,7 +10,12 @@
  <link rel="stylesheet" type="text/css" href="webfonts/MyFontsWebfontsKit.css">
   <link rel="stylesheet" href="stylesheets/normalize.css" />
   <link rel="stylesheet" href="stylesheets/app.css" />
+  <link rel="stylesheet" href="persistentmenu/style.css" />
   <script src="javascripts/vendor/custom.modernizr.js"></script>
+
+<!-- PERSISTENT MENU--> 
+
+    <!-- /PERSISTENT MENU -->
 
     <style>
    .frameview.fullScreen > iframe {
@@ -49,14 +54,17 @@
 
 <nav id="nav" class="top-bar SouvenirStd-Light">
 
-  <h1 class="name"><a href="#" onClick="changePage(0)">89 Steps</a></h1>
-
 
   <section class="top-bar-section hidden SouvenirStd-Light ">
+
+  <ul class="left" style="left:3px">
+
+
+</ul>
     <!-- Left Nav Section -->
     <ul class="center">
       <li class="divider"></li>
-      <li class="has-dropdown"><a class="pagetitle center" href="#">Chapters</a>
+      <li class="has-dropdown center"><a class="pagetitle center" href="#">Chapters</a>
         <ul class="dropdown" id="mainnav">
         </ul>
       </li>
@@ -95,6 +103,7 @@
   <script src="javascripts/custom/components/placement.js"></script>
   <script src="javascripts/custom/components/initialization.js"></script>
   <script src="javascripts/custom/components/loader.js"></script>
+  <script src="persistentmenu/functions.js"></script>
 
 </body>
 </html>

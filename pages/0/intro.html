@@ -47,6 +47,7 @@
 
 			
     </style>
+
 		<!--the frameview is not loaded, which is why it is not showing up but you can hear it.--> 
 		<div class="focalpoint" data-focus-scale="cover" data-focus-left=".66" data-focus-top=".66" style="
 		z-index:10">
@@ -58,7 +59,7 @@
 				<div id="title" class= "instructions fadeable" style= "z-index:5; padding-top:10%">
 
 					<!-- add a progress bar here--> 
-						 <div id="text" style="text-align:center; margin-top:9%">
+						 <div id="text" style="text-align:center; margin-top:2%">
 							 <img style="height:142px; width:800px; outline:none; padding-bottom:2%;" src= "http://89steps.s3.amazonaws.com/assets/1_street/img/uniondocs_pov_logo.png">
 						 <h2> A UnionDocs Production
 						      <br>
@@ -136,8 +137,10 @@
 								nav.classList.remove('hidden'); 
 								if (_pageIndex === 0) {
 									popcorn.play(); 
+									console.log('play video'); 
 								} else {
-									popcorn.pause(); 
+									popcorn.pause();
+									console.log('stop video');  
 								}
 		 						
 		 						currentMovie = popcorn; 
