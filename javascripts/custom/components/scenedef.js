@@ -621,17 +621,23 @@ function getCurrentFrameUrl() {
 
 function resetChapter1Subframes() {
   console.log('reset subframes XXXXX'); 
-  var frames = _pages.getFrames(1); //all the frames in chapter 1
+  // var _pageIndex = 1; 
+  // var frames = _pages.getFrames(_pageIndex); //all the frames in chapter 1
+  //var subframes = _pageIndex.frames[frame].subframes;
+  // var _pageIndex = 1; 
   // var subframes = pageinfo[page].frames[frame].subframes; //this is the array that has all the visited; 
 
       for(var i = 0; i < frames.length; i++ ){
-        if (_pages.doesHaveSubframes(1, i)) {
+        var _pageIndex = 1; 
+          var frames = _pages.getFrames(_pageIndex); 
+          var subframes = _pageIndex.frames[i].subframes;
+        // if (_pages.doesHaveSubframes(1, i)) {
           for (var j=0; j < frames[i].subframes.length; j++) {
               if(frames[i].subframes[j].visited = true) {
               frames[i].subframes[j].visited = false;
             }
         }
-      } 
+      // } 
    }
 }
 

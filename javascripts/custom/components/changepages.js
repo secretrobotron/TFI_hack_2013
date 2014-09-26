@@ -44,15 +44,6 @@
       // console.log('enablebackspace'); 
       document.addEventListener('keydown', keyPressBackspace, false); 
     }
-    
-    // function enableKeyUp() {
-    //   console.log('enablekeyup'); 
-    //   document.addEventListener('keydown', keyPressUp, false); 
-    // }
-
-    // function enableKeyUpUp() {
-    //   document.addEventListener('keyup', keyReleaseUp, false); 
-    // }
 
     function enableKeyRight() {
       document.addEventListener('keydown', keyPressRight, false); 
@@ -83,7 +74,6 @@
       document.removeEventListener('keydown', keyPressRight, false); 
     }
   
-
     function hideNavNext() {nextbutton.addClass('hidden');}
     function showNavNext() { if( nextbutton.hasClass("hidden") ){ nextbutton.removeClass('hidden'); } }
     function hideNavPrev() {prevbutton.addClass('hidden');}
@@ -92,7 +82,6 @@
     function showNav() {nextbutton.removeClass('hidden'); prevbutton.removeClass('hidden');}
 
     // function disableKeyPress() {$("body").removeEventListener('keydown', keyPress, false);}
-
 
 // Fills the navigation with the appropriate links and dropdowns
 //$.each(pages, function(pageNumber){
@@ -295,9 +284,9 @@ function changePage(value, frame) {
 
     //resetChapter1Subframes(); 
 
-    var newChapter = false; 
+    //var newChapter = false; 
 
-    if (value==="next") { if (_pageIndex < pagect-1) _pageIndex++; resetChapter1Subframes();  }
+    if (value==="next") { if (_pageIndex < pagect-1) _pageIndex++; }
     else if (value==="prev") { if (_pageIndex > 0) _pageIndex--; } 
     else if (value==="first") { _pageIndex = 0; } 
     else if (value==="last"){ _pageIndex = pagect - 1; } 
@@ -309,7 +298,6 @@ function changePage(value, frame) {
         pageview.removeClass('loaded').load(_pages.getPageUrl(_pageIndex), function() {
             frame ?  changeFrame(frame) : changeFrame('first');
             changeFrameBackground(_pages.getFrameSound(_pageIndex, _frameIndex));
-            //resetSubframes(); 
             pageview.fadeIn();
             //start the audio after the fade in. 
         }); 
@@ -318,15 +306,22 @@ function changePage(value, frame) {
     changePageBackground(_pages.getPageSound(_pageIndex));
 
     pagetitle.text(_pages.getPageTitle(_pageIndex));
+
+    if (_pageIndex > 1 && pagetitle != 'The Street') {
+      console.log('ourside of the street'); 
+      //resetChapter1Subframes(); 
+    }
   
-    //resetChapter1Subframes(); 
 }
 
 /////////////////////////////////////////////////////////////////////////////////
 //  COMBO FUNCTIONS ///////////////
 /////////////////////////////////////////////////////////////////////////////////
 
+
 function next() { 
+
+  console.log("I'm on page:" + _pageIndex + "and frame" + _frameIndex); 
 
     if (_frameIndex < _pages.getFrameCount(_pageIndex)-1) { 
           ///special cases 
@@ -341,6 +336,13 @@ function next() {
           changePage('next'); 
           console.log('changed chapters'); 
           }
+
+
+          if (_pageIndex > 1) {
+              //resetChapter1Subframes(); 
+              console.log('resetting subframes in next'); 
+              //resetChapter1Subframes(); 
+            }
       }
 
 function prev() { 

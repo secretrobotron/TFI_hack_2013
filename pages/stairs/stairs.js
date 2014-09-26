@@ -315,44 +315,59 @@
                                     }
 
                               
-                        
+                                    var UpandInstructions = function(e) {
+                                                 if (e.which == 38) {
+                                                  alert('uandinst0'); 
+                                            //console.log('up'); 
+                                                  instructions.classList.add('hidden'); 
+                                                    stairCounter.classList.remove('hidden');
+                                                    floorCounter.classList.remove('hidden');
+                                                    progressButton.classList.remove('hidden');
+                                                //shows you you can skip when the button is paused(); 
+                                                    skipNotice.classList.remove('hidden');
+                                                    InstructionsVisible = false; 
+                                                  }
 
-                            //var instructionsVisible = true; 
-                            var keyPressUp = function(e) {
-                              console.log('up'); 
-                              if (e.which == 38) {
-                                //console.log('up'); 
-                                      instructions.classList.add('hidden'); 
-                                        stairCounter.classList.remove('hidden');
-                                        floorCounter.classList.remove('hidden');
-                                        progressButton.classList.remove('hidden');
-                                    //shows you you can skip when the button is paused(); 
-                                        skipNotice.classList.remove('hidden');
-                                        InstructionsVisible = false; 
-                                      onProgressButtonMouseDown(e); 
-                                    } 
-                              } 
+                                    }
+                    
 
 
-                              var keyReleaseUp = function(e) {
-                                if (e.which == 38) {
-                                    onProgressButtonMouseUp(e); 
-                                }
-                              }
+                                        //var instructionsVisible = true; 
+                                        var keyPressUp = function(e) {
+                                          console.log('up'); 
+                                          if (e.which == 38) {
+                                            //console.log('up'); 
+                                                  onProgressButtonMouseDown(e); 
+                                                } 
+                                          } 
 
-                              //window.addEventListener('click', removeInstructions, false); 
-                              //document.addEventListener('keydown', keyPressUp, false); 
+
+                                          var keyReleaseUp = function(e) {
+                                            if (e.which == 38) {
+                                                onProgressButtonMouseUp(e); 
+                                            }
+                                          }
+
 
                                setTimeout(function () {
-                                 //popcorn.pause();
+
+                          
+                                 document.on('keydown mouseup',function() {
+                                   alert('done');
+
+                                  });
+                                // document.addEventListener('keydown', UpandInstructions, false); 
+                                // document.addEventListener('keydown', keyPressUp, false);
+                                //  window.addEventListener('click', removeInstructions, false); 
+
+                                 // document.addEventListener('keydown', myTest, false); 
 
                                 //this is to enable you to press the key up and go 
                                  progressButton.addEventListener('mousedown', onProgressButtonMouseDown, false);
                                  progressButton.addEventListener('mouseup', onProgressButtonMouseUp, false); 
-                                 //document.addEventListener('keydown', keyPressUp, false); 
                                  document.addEventListener('keyup',keyReleaseUp, false); 
-                                 window.addEventListener('click', removeInstructions, false);  
-                                 document.addEventListener('keydown', keyPressUp, false);
+           
+
                                  enableKeyBackspace(); 
                                  //this should allow you to go up the stairs. 
                                  //pausing the video 
