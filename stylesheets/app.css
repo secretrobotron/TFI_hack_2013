@@ -479,7 +479,7 @@ blockquote p {
   top: 17.5px;
   right: 0;
   display: block;
-  margin-right: 12px;
+  margin-right: 1px;
   width: 0;
   height: 0;
   border: solid 5px;
@@ -588,7 +588,7 @@ body, #modal {
 .center{
   display: inline-block;
   float: left;
-  margin-left: 0px;
+  margin-left: 36px;
 }
 
 /* line 23, ../sass/_shared.scss */
