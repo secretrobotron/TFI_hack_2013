@@ -115,15 +115,29 @@
 		 	//title.fadeOut(); 
 			
 
+		 	var currentMovie = null; 
+
 			if (popcorn.video.readyState === 4 ) {
+							if (currentMovie) {
+ 					 		currentMovie.stop(); 
+ 					 	}
 				console.log('video ready'); 
- 					 setTimeout(function() {
+ 					 setTimeout(function() { 
+	 					 	title.classList.add('hidden'); 
+							//title.fadeOut(1500); 
+							nav.classList.remove('hidden'); 
+	 						popcorn.play(); 
+	 						currentMovie = popcorn; 
+ 					 	// if (currentMovie) {
+ 					 	// 	currentMovie.stop(); 
+ 					 	// }
  					 	//console.log('timeout'); 
  						// console.log('video is ready'); 
-						title.classList.add('hidden'); 
-						//title.fadeOut(1500); 
-						nav.classList.remove('hidden'); 
- 						popcorn.play(); 
+						// title.classList.add('hidden'); 
+						// //title.fadeOut(1500); 
+						// nav.classList.remove('hidden'); 
+ 					// 	popcorn.play(); 
+ 					// 	currentMovie = popcorn; 
  					 }, 5000); 
 				}
  			

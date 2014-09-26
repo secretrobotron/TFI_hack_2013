@@ -154,7 +154,7 @@ var Pages = function () {
                         fadein:0,
                         delay: 0, 
                         onend: function() {
-                            _timer.checkTimer(); 
+                            _timer.checkTimer();
                           }
                       }
                       ]
@@ -178,8 +178,8 @@ var Pages = function () {
                 subframes: [
                   { //subframe 1
                     url: "pages/1/5.html",
-                    visited: false, 
-                    isDefault: false, 
+                    visited: false,
+                    isDefault: false,
                       sound: {
                         urls: ['http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.5_background.mp3', 'http://dbef91h7r4asa.cloudfront.net/assets/1_street/sound/1.5_background.oga'],
                         loop: true,
@@ -499,6 +499,8 @@ var Pages = function () {
       console.log("inside of getFrameNarration"); 
 
       var n = this.getSubframeByIndex( page, frame, this.currentSubframeIndex ).narration;
+      console.log(n); 
+      console.log("got subframe narration"); 
       return n;
       // console.log(n); 
       // console.log("got subframe narration"); 
@@ -548,6 +550,8 @@ var Pages = function () {
   this.getSubframeByIndex = function( page, frame, subframe_index ){
     if( subframe_index < pageinfo[page].frames[frame].subframes.length ){
         var sf = pageinfo[page].frames[frame].subframes[subframe_index];
+        console.log("logging subframe for frame :", frame, "at index ", subframe_index);
+        console.log(sf);
        return sf;
 
     }
@@ -557,18 +561,53 @@ var Pages = function () {
     }
   } 
 
+ this.getUnvisitedSubframeAt = function( page, frame ){
+    console.log( "getting subframe" );
+    var subframes = pageinfo[page].frames[frame].subframes;
+
+    var foundSubframe = false;
+      for(var i = 0; i < subframes.length; i++ ){
+        console.log(subframes[i]);
+          //if we've already been there, skip this and go to the next loop iteration. 
+          if(subframes[i].visited) {console.log('this subframe has been visited at' + i); continue;}
+          else {
+             console.log("new subframe"); 
+            this.currentSubframeIndex = i;
+             console.log("found unvisited subframe ad index: "+this.currentSubframeIndex);
+            foundSubframe = true;
+            return subframes[i];
+            break;
+          }
+
+      }
+      if(!foundSubframe){
+        // console.log("all subframes visted");
+        for(var i = 0; i < subframes.length; i++ ){
+          //if we've already been there, skip this and go to the next loop iteration. 
+          if(subframes[i].isDefault){
+            this.currentSubframeIndex = i;
+            // console.log("found default");
+            //this means you are now in the second one. 
+            return subframes[i];
+          } 
+        }
+      }
+
+  }
+
   this.visitSubframe = function( page, frame ){
     console.log( "getting subframe" );
     var subframes = pageinfo[page].frames[frame].subframes;
 
     var foundSubframe = false;
       for(var i = 0; i < subframes.length; i++ ){
+        console.log(subframes[i]);
           //if we've already been there, skip this and go to the next loop iteration. 
-          if(subframes[i].visited) continue;
+          if(subframes[i].visited) {console.log('this subframe has been visited at' + i); continue;}
           else {
-            // console.log("new subframe"); 
+             console.log("new subframe"); 
             this.currentSubframeIndex = i;
-            // console.log("found unvisited subframe ad index: "+this.currentSubframeIndex);
+             console.log("found unvisited subframe ad index: "+this.currentSubframeIndex);
             foundSubframe = true;
             subframes[i].visited = true;
             return subframes[i];
@@ -601,7 +640,7 @@ var Pages = function () {
 function getCurrentFrameContainer() {
  //checking if the current frame has any subrames within the chapter. 
    if( _pages.doesFrameHaveSubframes( _pageIndex, _frameIndex ) ){
-    return _pages.visitSubframe( _pageIndex, _frameIndex ).container;
+    return _pages.getUnvisitedSubframeAt( _pageIndex, _frameIndex).container;
   }
   else{
       return _pages.getFrames(_pageIndex)[_frameIndex].container;
@@ -622,22 +661,40 @@ function getCurrentFrameUrl() {
 function resetChapter1Subframes() {
   console.log('reset subframes XXXXX'); 
   // var _pageIndex = 1; 
-  // var frames = _pages.getFrames(_pageIndex); //all the frames in chapter 1
+   var frames = _pages.getFrames(1); //all the frames in chapter 1
   //var subframes = _pageIndex.frames[frame].subframes;
   // var _pageIndex = 1; 
   // var subframes = pageinfo[page].frames[frame].subframes; //this is the array that has all the visited; 
 
       for(var i = 0; i < frames.length; i++ ){
-        var _pageIndex = 1; 
-          var frames = _pages.getFrames(_pageIndex); 
-          var subframes = _pageIndex.frames[i].subframes;
-        // if (_pages.doesHaveSubframes(1, i)) {
+
+        if(i==1 || i==9){
+          if( Array.isArray(frames[i].narration) )
+              {
+                for( var s = 0; s < frames[i].narration.length; s++ ){
+                    console.log("reset frame 1 narration");
+                    frames[i].narration[s].played = false;
+                }
+              }
+        }
+
+         if (_pages.doesFrameHaveSubframes(1, i)) {
           for (var j=0; j < frames[i].subframes.length; j++) {
+            console.log("Subframe object at position: "+i);
+            console.log(frames[i].subframes[j]);
               if(frames[i].subframes[j].visited = true) {
               frames[i].subframes[j].visited = false;
+
+              if( Array.isArray(frames[i].subframes[j].narration) )
+              {
+                for( var s = 0; s < frames[i].subframes[j].narration.length; s++ ){
+                    frames[i].subframes[j].narration[s].played = false;
+                }
+              }
+
             }
         }
-      // } 
+       } 
    }
 }
 

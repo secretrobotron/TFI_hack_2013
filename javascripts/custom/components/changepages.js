@@ -307,9 +307,9 @@ function changePage(value, frame) {
 
     pagetitle.text(_pages.getPageTitle(_pageIndex));
 
-    if (_pageIndex > 1 && pagetitle != 'The Street' && pagetitle != 'The Introduction') {
+    if (pagetitle != 'The Street') {
       console.log('ourside of the street'); 
-      //resetChapter1Subframes(); 
+      resetChapter1Subframes(); 
     }
   
 }
