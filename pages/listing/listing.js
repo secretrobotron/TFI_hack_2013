@@ -52,6 +52,7 @@ function init(e) {
 	activeSchools(); 
 	activeListingTest(); 
 	activeStove(); 
+	activeDays(); 
 
 } //end of INIT
 		
@@ -78,7 +79,7 @@ function callComesIn() {
 
 		//ANSWER THE CALL
 		answer.addEventListener('click', function() {
-			$('.calling').addClass('hidden');
+			//$('.calling').addClass('hidden');
 			window.parent.next(); 
 			//maybe if I change it to next, it won't do this? 
 			//remove the rest of the event listeners, so you can't click on anything else. 
@@ -116,7 +117,7 @@ function activeAddress() {
 			}
 			var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.02_address_audio_01.mp3'], 
-				buffer: false,
+				buffer: true,
 			}).play(); 
 			currentSound = sound; 
 			console.log('current sound . urls is' + currentSound.urls);
@@ -142,7 +143,7 @@ function activeStove() {
 			}
 		var sound = new Howl({
 				urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.04_02_stove_01.mp3'], 
-				buffer: false, 
+				buffer: true, 
 			}).play(); 
 			currentSound = sound; 
 				console.log('stove sound'); 
@@ -150,6 +151,23 @@ function activeStove() {
 		}); 
 }
 
+function activeDays() {
+	var days = document.querySelector("#days"); 
+	days.addEventListener('click', function(e) {
+				if (currentSound) {
+				currentSound.stop(); 
+//				currentSound.fadeOut(0,250); 
+				console.log('fading out' + currentSound);
+			}
+
+		var sound = new Howl({
+				urls: ['http://89steps.s3.amazonaws.com/assets/5_website/audio/5.06a_days_audio_01.mp3', 'http://89steps.s3.amazonaws.com/assets/5_website/audio/5.06a_days_audio_01.ogg'], 
+				buffer: true, 
+			}).play(); 
+			currentSound = sound; 
+
+		}); 
+}
 
 
 function activeListingTest() {
@@ -162,7 +180,7 @@ function activeListingTest() {
 			}
 		var sound = new Howl({
 				urls: ['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.04_05_living_01.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.04_05_living_01.oga'], 
-				buffer: false, 
+				buffer: true, 
 			}).play(); 
 			currentSound = sound; 
 
@@ -181,7 +199,7 @@ function activePrice() {
 			}
 			var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.03_price_audio_01.mp3'], 
-				buffer: false, 
+				buffer: true, 
 			}).play(); 
 			currentSound = sound;
 		}); 
@@ -199,7 +217,7 @@ function activeAgent() {
 			}
 		var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.05_agent_audio_01.mp3'], 
-				buffer: false, 
+				buffer: true, 
 			}).play(); 
 			currentSound = sound; 
 
@@ -216,7 +234,7 @@ function activeA1() {
 			}
 		var sound = new Howl({
 				urls: ['http://dbef91h7r4asa.cloudfront.net/assets/5_website/audio/5.08_apt19_audio_01.mp3'], 
-				buffer: false, 
+				buffer: true, 
 			}).fadeIn(1, 250);
 			currentSound = sound; 
  
@@ -337,7 +355,7 @@ function activeA4() {
 			}
 		var sound = new Howl({
 			urls:['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.11_apt23_audio.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.11_apt23_audio.ogg'], 
-			buffer: false, 
+			buffer: true, 
 		}).fadeIn(1, 250);
 		currentSound = sound; 
 	}); 
@@ -354,7 +372,7 @@ function activeA5() {
 			}
 		var sound = new Howl({
 			urls:['https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.12_apt21_audio_01.mp3', 'https://s3-us-west-2.amazonaws.com/89steps/assets/5_website/audio/5.12_apt21_audio_01.ogg'], 
-			buffer: false, 
+			buffer: true, 
 		}).fadeIn(1, 250); 
 		currentSound = sound; 
 	}); 
