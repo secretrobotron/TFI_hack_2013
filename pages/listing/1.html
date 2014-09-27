@@ -92,38 +92,49 @@
 
 	  overlay.fadeIn(); 
 
-	util.loader.ensureLoaded(assets, function(percent){
-	  		console.log('total percent:' + percent); 
+    util.loader.ensureLoaded(assets, function(percent){
+      console.log('total percent:' + percent); 
 
-	  			percent *= 100;
-		      	percent += "%";
-		      	$("#ListingProgressBar #Progress").stop()
-		        .animate({
-		          width : percent
-		        }, 100);
-	  	}, function() {
-	  		console.log('done'); 
+      percent *= 100;
+      percent += "%";
+      $("#ListingProgressBar #Progress").stop()
+      .animate({
+        width : percent
+      }, 100);
+    }, function() {
+      console.log('done'); 
 	  		//overlay.fadeOut(); 
-	  		startVideo.pause(); 
-	  		setTimeout(function() {
-				overlay.fadeOut(); 
-	  			hideNav(); 
-	  			startVideo.play(); 
-	  		},2000);  
+    	startVideo.pause(); 
+    	setTimeout(function() {
+        overlay.fadeOut(); 
+        hideNav(); 
+        startVideo.play(); 
+      },2000);  
 
-		 	var popcorn = Popcorn(startVideo); 
-	  		var VIDEO_END_TIME = 48;
+      function listenForSKey (e) {
+        console.log(e.which);
+        if (e.which === 115) {
+          document.removeEventListener('keypress', listenForSKey);
+          popcorn.currentTime(popcorn.duration());
+        }
+      }
 
-		  		popcorn.cue(VIDEO_END_TIME, function() {
-		  		// var instructions = $("#instructions"); 
-		  		overlay.fadeOut(); 
-		  		startVideo.pause(); 
-		  	 	// changePage('nextlisting'); 
-		  		changeFrame('next'); 
-		  		console.log("enter the listing scene"); 
-		  		}); 
-		}); 
-	if (window.parent && window.parent.hideNav) {
+      var popcorn = Popcorn(startVideo); 
+      var VIDEO_END_TIME = 48;
+
+      popcorn.cue(VIDEO_END_TIME, function() {
+      	// var instructions = $("#instructions"); 
+      	overlay.fadeOut(); 
+      	startVideo.pause(); 
+       	// changePage('nextlisting'); 
+        changeFrame('next'); 
+        console.log("enter the listing scene"); 
+        document.removeEventListener('keypress', listenForSKey);
+      });
+
+      document.addEventListener('keypress', listenForSKey);
+    }); 
+    if (window.parent && window.parent.hideNav) {
       window.parent.hideNav();
       console.log('hid navigation'); 
     }
