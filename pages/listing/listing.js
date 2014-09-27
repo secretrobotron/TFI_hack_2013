@@ -131,8 +131,10 @@ function activeStove() {
 
 	// var stove = $(".fancybox").fancybox.element.find('img').attr('alt').stove
 	var stove = document.querySelector("#stove"); 
+	console.log('added stove listener'); 
 
 	stove.addEventListener('click', function(e) {
+		console.log('clicked on stove'); 
 				if (currentSound) {
 				currentSound.stop(); 
 //				currentSound.fadeOut(0,250); 
@@ -143,6 +145,7 @@ function activeStove() {
 				buffer: false, 
 			}).play(); 
 			currentSound = sound; 
+				console.log('stove sound'); 
 
 		}); 
 }
