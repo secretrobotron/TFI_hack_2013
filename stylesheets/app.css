@@ -505,6 +505,8 @@ blockquote p {
   border: none;
   content: "\00bb";
 }
+
+
 /* line 117, ../sass/_topbar.scss */
 .top-bar-section .dropdown {
   position: absolute;
@@ -522,7 +524,6 @@ blockquote p {
 }
 /* line 128, ../sass/_topbar.scss */
 .top-bar-section .dropdown li a {
-  padding: 0 12px;
   background: #131313;
   color: white;
   white-space: nowrap;
@@ -532,8 +533,8 @@ blockquote p {
 /* line 137, ../sass/_topbar.scss */
 .top-bar-section .dropdown li .dropdown {
   top: 0;
-  left: 100%;
-}
+/*  left: 100%;
+*/}
 /* line 144, ../sass/_topbar.scss */
 .top-bar-section .framecounter {
   line-height: 35px;
