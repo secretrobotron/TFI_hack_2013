@@ -374,6 +374,7 @@ blockquote p {
 }
 
 #container-dropdown {
+  position:relative;
   width:300px;
   top: 5px;
   margin-left: auto;
@@ -476,7 +477,7 @@ blockquote p {
 }
 /* line 90, ../sass/_topbar.scss */
 .top-bar-section .has-dropdown > a {
-  padding-right: 35px !important;
+  padding-right: 5px !important;
 /*  margin-left: 200px;
 */}
 /* line 93, ../sass/_topbar.scss */
