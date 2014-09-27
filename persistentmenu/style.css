@@ -1,5 +1,9 @@
 
-
+.SouvenirStd-Light { 
+  font-family: SouvenirStd-Light;
+  font-weight: normal;
+  font-style: normal;
+}
 
 
 .persistentmenu .overlay {
@@ -11,6 +15,7 @@
   top: 0;
   left: 0;
   display: none;
+  font-family: SouvenirStd-Light;
 }
 
 
@@ -32,6 +37,7 @@
   z-index: 200100;
   display: none;
   overflow: auto;
+  font-family: SouvenirStd-Light;
 }
 
 
