@@ -99,7 +99,7 @@ function callComesIn() {
 				callComesIn();  
 			}
 		})    
-	},90000); //call comes in after 45 seconds 
+	},90000); //call comes in after 45 seconds 90000
 }
 
 var currentSound = null;
