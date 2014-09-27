@@ -180,6 +180,7 @@
                   // console.log("changing played to true"); 
                   si.played = true;
                   // console.log("played" + si.played); 
+                  clearDelayedAudio(); 
                   currentFrameNarration = new Howl(si);
                   if (si.delay) {
 
@@ -188,6 +189,7 @@
                     delayAudio(currentFrameNarration, si);
                   }
                   else  
+                    clearDelayedAudio(); 
                     currentFrameNarration.fadeIn(1, si.fadein || 0); 
                   break;
                 }

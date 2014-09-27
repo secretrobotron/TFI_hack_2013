@@ -359,7 +359,7 @@ blockquote p {
 /* line 1, ../sass/_topbar.scss */
 .top-bar {
   position: fixed;
-  top: 5px;
+  top: 2px;
   left: 0px;
   right: 0px;
   overflow: hidden;
@@ -379,7 +379,7 @@ blockquote p {
   top: 0px;
   margin-left: auto;
   margin-right: auto;
-  z-index:10000;
+  z-index:10;
 }
 /* line 12, ../sass/_topbar.scss */
 .top-bar ul {
