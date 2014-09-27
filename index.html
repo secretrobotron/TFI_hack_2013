@@ -13,10 +13,6 @@
   <link rel="stylesheet" href="persistentmenu/style.css" />
   <script src="javascripts/vendor/custom.modernizr.js"></script>
 
-<!-- PERSISTENT MENU--> 
-
-    <!-- /PERSISTENT MENU -->
-
     <style>
    .frameview.fullScreen > iframe {
       width: 100%;
@@ -53,37 +49,19 @@
 </div>
 
 <nav id="nav" class="top-bar SouvenirStd-Light">
+  <div id="container-dropdown"> 
+      <section class="top-bar-section hidden SouvenirStd-Light ">
 
+                  <ul>
+                    <li class="has-dropdown"><a class="pagetitle center" href="#">Chapters</a>
+                      <ul class="dropdown" id="mainnav">
+                      </ul>
+                    </li>
 
-  <section class="top-bar-section hidden SouvenirStd-Light ">
+                </ul>
 
-  <ul class="left" style="left:3px">
-
-
-</ul>
-    <!-- Left Nav Section -->
-    <ul class="center">
-      <li class="divider"></li>
-      <li class="has-dropdown center"><a class="pagetitle center" href="#">Chapters</a>
-        <ul class="dropdown" id="mainnav">
-        </ul>
-      </li>
-      <li class="divider"></li>
-      <li class="hide-for-small"><label class="framecounter"></label></li>
-      <li class="divider"></li>
-
-    </ul>
-
-    <ul class="right">
-      <li class="divider"></li>
-      <li><a class="closedc" href="#"></a></li>
-      <li><a class="audio" href="#" onClick="toggleSound()"></a></li> 
-<!-- 
-      <img style="width:30px; height:40px" src="https://s3-us-west-2.amazonaws.com/89steps/assets/ux/Menu/Sound_On.svg"> -->
-        </ul>
-      </li>
-      <li class="divider"></li>    </ul>
-  </section>
+        </section>
+    </div>
 </nav>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="javascripts/vendor/jquery-2.0.0.min.js"><\/script>')</script>
