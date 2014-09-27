@@ -485,14 +485,15 @@ blockquote p {
 
 .top-bar-section .has-dropdown > a:after {
   position: absolute;
-  top: 20.5px;
-  right: 0;
-  display: none;
+  top: 26px;
+  right: 50%;
+  left: 50%;
+  display: block;
   margin-right: 1px;
   width: 0;
   height: 0;
   border: solid 5px;
-  border-color: rgba(255, 255, 255, 0.5) transparent transparent transparent;
+  border-color: rgba(255, 255, 255, 0.7) transparent transparent transparent;
   content: "";
 }
 /* line 106, ../sass/_topbar.scss */
