@@ -66,8 +66,8 @@ window.parent.hideNav();
 
     var video = document.querySelector('video[data-video="part2"]');
     popcorn = new Popcorn(video); 
-    var SHOW_FLOWERS = 4.25; //time in seconds; 
-    var VIDEO_END_TIME = 82; 
+    var SHOW_FLOWERS = 4.1; //time in seconds; 
+    var VIDEO_END_TIME = 89.95; 
     
     popcorn.cue(SHOW_FLOWERS, function() {
       //console.log('show the text'); 
@@ -83,6 +83,9 @@ window.parent.hideNav();
 
   popcorn.cue(VIDEO_END_TIME, function() {
     $("#text2").removeClass('hidden'); 
+      setTimeout(function() {
+        changePage('next'); 
+      }, 3750); 
 
   })
 

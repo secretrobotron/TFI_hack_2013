@@ -127,7 +127,10 @@ function activeAddress() {
 } 
 
 function activeStove() {
-	var stove = document.querySelector("#stove"); 
+
+	// var stove = $(".fancybox").fancybox.element.find('img').attr('alt').stove
+
+
 	stove.addEventListener('click', function(e) {
 				if (currentSound) {
 				currentSound.stop(); 
