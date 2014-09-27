@@ -17,8 +17,8 @@
 
 
 .persistentmenu .menu-button { position: fixed; top: 25px; left: 20px; z-index: 200200; }
-.persistentmenu .menu-button.open, .persistentmenu .menu-button.open:hover, .persistentmenu .menu-button.open:active { border:none; width: 30px; height: 22px; background: url( 'hamburger.png' ); }
-.persistentmenu .menu-button.close, .persistentmenu .menu-button.close:hover, .persistentmenu .menu-button.close:active { width: 25px; height: 25px; background: url( 'x.png' ); display: none; }
+.persistentmenu .menu-button.open, .persistentmenu .menu-button.open:hover, .persistentmenu .menu-button.open:active { cursor:pointer; border:none; width: 30px; height: 22px; background: url( 'hamburger.png' ); }
+.persistentmenu .menu-button.close, .persistentmenu .menu-button.close:hover, .persistentmenu .menu-button.close:active { cursor:pointer; width: 25px; height: 25px; background: url( 'x.png' ); display: none; }
 
 
 

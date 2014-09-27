@@ -61,9 +61,7 @@ div,
 dl,
 dt,
 dd,
-ul,
 ol,
-li,
 h1,
 h2,
 h3,
@@ -398,7 +396,7 @@ blockquote p {
 /* line 24, ../sass/_topbar.scss */
 .top-bar .name a {
   display: block;
-  padding: 0 12px;
+  padding: 12px 0;
   width: 50%;
   color: #ffffff;
   text-transform: uppercase;
